@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import AnimatedSection from "@/components/AnimatedSection";
 import Layout from "@/components/Layout";
 import { ShoppingCart, Check, ArrowRight } from "lucide-react";
+import heroEcommerce from "@/assets/hero-ecommerce.jpg";
 
 const inclus = [
   "Boutique en ligne complète",
