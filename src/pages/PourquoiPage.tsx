@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import AnimatedSection from "@/components/AnimatedSection";
 import Layout from "@/components/Layout";
 import { ArrowRight, XCircle, CheckCircle, TrendingUp, Users, Search, Clock } from "lucide-react";
+import heroPourquoi from "@/assets/hero-pourquoi.jpg";
 
 const stats = [
   { icon: Search, value: "97%", label: "des consommateurs utilisent internet pour trouver un professionnel local" },
