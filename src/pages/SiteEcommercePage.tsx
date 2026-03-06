@@ -32,8 +32,10 @@ const faqs = [
 
 const SiteEcommercePage = () => (
   <Layout>
-    <AnimatedSection className="section-padding bg-background">
-      <div className="section-container text-center">
+    <AnimatedSection className="relative py-24 md:py-32 overflow-hidden">
+      <img src={heroEcommerce} alt="" className="absolute inset-0 w-full h-full object-cover opacity-30" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/40" />
+      <div className="section-container text-center relative z-10">
         <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
           <ShoppingCart className="text-primary" size={32} />
         </div>
