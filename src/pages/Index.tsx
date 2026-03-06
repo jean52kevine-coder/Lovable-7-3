@@ -26,7 +26,6 @@ const HeroSection = () => (
         </Link>
       </div>
     </div>
-    </div>
   </AnimatedSection>
 );
 
