@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import AnimatedSection from "@/components/AnimatedSection";
 import Layout from "@/components/Layout";
 import { Wrench, Check, ArrowRight } from "lucide-react";
+import heroMaintenance from "@/assets/hero-maintenance.jpg";
 
 const formules = [
   {
