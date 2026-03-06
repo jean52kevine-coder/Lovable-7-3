@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import AnimatedSection from "@/components/AnimatedSection";
 import Layout from "@/components/Layout";
 import { Globe, ShoppingCart, Wrench, ArrowRight } from "lucide-react";
+import heroServices from "@/assets/hero-services.jpg";
 
 const services = [
   {
@@ -29,8 +30,10 @@ const services = [
 
 const ServicesPage = () => (
   <Layout>
-    <AnimatedSection className="section-padding bg-background">
-      <div className="section-container text-center">
+    <AnimatedSection className="relative py-24 md:py-32 overflow-hidden">
+      <img src={heroServices} alt="" className="absolute inset-0 w-full h-full object-cover opacity-30" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/40" />
+      <div className="section-container text-center relative z-10">
         <h1 className="heading-display text-4xl md:text-6xl mb-6">
           Nos <span className="text-gradient">services</span>
         </h1>

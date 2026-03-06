@@ -2,10 +2,13 @@ import { Link } from "react-router-dom";
 import AnimatedSection from "@/components/AnimatedSection";
 import Layout from "@/components/Layout";
 import { ArrowRight, Globe, ShoppingCart, Wrench, TrendingUp, Star, Zap, Shield, Users, BarChart3 } from "lucide-react";
+import heroHome from "@/assets/hero-home.jpg";
 
 const HeroSection = () => (
-  <AnimatedSection className="section-padding bg-background">
-    <div className="section-container text-center">
+  <AnimatedSection className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+    <img src={heroHome} alt="" className="absolute inset-0 w-full h-full object-cover opacity-40" />
+    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent" />
+    <div className="section-container text-center relative z-10 py-20">
       <h1 className="heading-display text-4xl sm:text-5xl md:text-7xl leading-tight mb-6">
         Votre site web,<br />
         <span className="text-gradient">votre meilleur commercial.</span>

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import AnimatedSection from "@/components/AnimatedSection";
 import Layout from "@/components/Layout";
 import { ArrowRight, XCircle, CheckCircle, TrendingUp, Users, Search, Clock } from "lucide-react";
+import heroPourquoi from "@/assets/hero-pourquoi.jpg";
 
 const stats = [
   { icon: Search, value: "97%", label: "des consommateurs utilisent internet pour trouver un professionnel local" },
@@ -20,8 +21,10 @@ const sansAvec = [
 
 const PourquoiPage = () => (
   <Layout>
-    <AnimatedSection className="section-padding bg-background">
-      <div className="section-container text-center">
+    <AnimatedSection className="relative py-24 md:py-32 overflow-hidden">
+      <img src={heroPourquoi} alt="" className="absolute inset-0 w-full h-full object-cover opacity-30" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/40" />
+      <div className="section-container text-center relative z-10">
         <h1 className="heading-display text-4xl md:text-6xl mb-6">
           Pourquoi avoir <span className="text-gradient">un site web</span> ?
         </h1>

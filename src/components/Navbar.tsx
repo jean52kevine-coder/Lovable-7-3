@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import logoAltera from "@/assets/logo-altera.png";
 
 const navLinks = [
   { label: "Accueil", to: "/" },
@@ -31,8 +32,9 @@ const Navbar = () => {
       }`}
     >
       <div className="section-container flex items-center justify-between h-16 md:h-20">
-        <Link to="/" className="heading-display text-2xl md:text-3xl text-primary">
-          ALTÉRA
+        <Link to="/" className="flex items-center gap-2">
+          <img src={logoAltera} alt="ALTÉRA" className="h-8 w-8" />
+          <span className="heading-display text-2xl md:text-3xl text-primary">ALTÉRA</span>
         </Link>
 
         {/* Desktop */}
