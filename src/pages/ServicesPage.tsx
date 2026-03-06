@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import AnimatedSection from "@/components/AnimatedSection";
 import Layout from "@/components/Layout";
 import { Globe, ShoppingCart, Wrench, ArrowRight } from "lucide-react";
+import heroServices from "@/assets/hero-services.jpg";
 
 const services = [
   {
