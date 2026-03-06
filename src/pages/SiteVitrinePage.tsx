@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import AnimatedSection from "@/components/AnimatedSection";
 import Layout from "@/components/Layout";
 import { Globe, Check, ArrowRight } from "lucide-react";
+import heroVitrine from "@/assets/hero-vitrine.jpg";
 
 const inclus = [
   "Design moderne et personnalisé",
