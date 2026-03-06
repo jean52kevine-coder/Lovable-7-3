@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logoAltera from "@/assets/logo-altera.png";
 
 const Footer = () => (
   <footer className="bg-footer border-t border-border">
@@ -6,7 +7,10 @@ const Footer = () => (
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         {/* Logo + Tagline */}
         <div>
-          <span className="heading-display text-2xl text-primary">ALTÉRA</span>
+          <div className="flex items-center gap-2 mb-1">
+            <img src={logoAltera} alt="ALTÉRA" className="h-8 w-8" />
+            <span className="heading-display text-2xl text-primary">ALTÉRA</span>
+          </div>
           <p className="mt-3 text-muted-foreground text-sm leading-relaxed">
             Votre présence en ligne, notre expertise.
           </p>
