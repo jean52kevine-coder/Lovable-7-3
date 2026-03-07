@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-import AnimatedSection from "@/components/AnimatedSection";
+import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
 import { Wrench, Check, ArrowRight } from "lucide-react";
+import { BorderBeam } from "@/components/ui/border-beam";
+import { CtaSection } from "@/components/ui/cta-section";
 import heroMaintenance from "@/assets/hero-maintenance.jpg";
 
 const formules = [
@@ -25,39 +27,77 @@ const formules = [
   },
 ];
 
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.15 } },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
+};
+
 const MaintenancePage = () => (
   <Layout>
-    <AnimatedSection className="relative py-24 md:py-32 overflow-hidden">
-      <img src={heroMaintenance} alt="" className="absolute inset-0 w-full h-full object-cover opacity-30" />
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/40" />
-      <div className="section-container text-center relative z-10">
+    {/* Hero */}
+    <section className="relative py-24 md:py-32 overflow-hidden">
+      <img src={heroMaintenance} alt="" className="absolute inset-0 w-full h-full object-cover opacity-20" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
+      <motion.div
+        className="section-container text-center relative z-10"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
         <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
           <Wrench className="text-primary" size={32} />
         </div>
         <h1 className="heading-display text-4xl md:text-6xl mb-4">
-          <span className="text-gradient">Maintenance</span> web
+          <span className="text-primary">MAINTENANCE</span> WEB
         </h1>
-        <p className="text-muted-foreground text-lg max-w-xl mx-auto">
+        <p className="font-dm text-lg max-w-xl mx-auto text-muted-foreground">
           Gardez votre site à jour, sécurisé et performant. On s'en occupe pour vous.
         </p>
-      </div>
-    </AnimatedSection>
+      </motion.div>
+    </section>
 
-    <AnimatedSection className="section-padding bg-card">
+    {/* Formules */}
+    <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg))" }}>
       <div className="section-container">
-        <h2 className="heading-display text-2xl md:text-3xl text-center mb-12">Nos formules</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <motion.h2
+          className="heading-display text-2xl md:text-3xl text-center mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.6 }}
+        >
+          NOS <span className="text-primary">FORMULES</span>
+        </motion.h2>
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
           {formules.map((f, i) => (
-            <div
+            <motion.div
               key={i}
-              className={`card-altera flex flex-col ${f.highlighted ? "border-2 border-primary relative" : ""}`}
+              variants={fadeUp}
+              className={`relative rounded-2xl p-7 flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1.5 ${
+                f.highlighted ? "ring-2 ring-primary" : ""
+              }`}
+              style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}
             >
               {f.highlighted && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full">
-                  Populaire
-                </span>
+                <>
+                  <span className="absolute -top-0 left-1/2 -translate-x-1/2 translate-y-0 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-b-lg">
+                    Populaire
+                  </span>
+                  <BorderBeam size={200} duration={12} />
+                </>
               )}
-              <h3 className="font-display font-bold text-xl mb-2">{f.name}</h3>
+              <h3 className="font-display font-bold text-xl mb-2 mt-4">{f.name}</h3>
               <div className="mb-6">
                 <span className="text-primary heading-display text-3xl">{f.price}€</span>
                 <span className="text-muted-foreground text-sm">/mois</span>
@@ -76,22 +116,25 @@ const MaintenancePage = () => (
               >
                 Choisir cette formule
               </Link>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </AnimatedSection>
+    </section>
 
-    <AnimatedSection className="section-padding bg-background">
-      <div className="section-container text-center">
-        <h2 className="heading-display text-2xl md:text-4xl mb-6">
-          Une question sur nos <span className="text-gradient">formules</span> ?
-        </h2>
-        <Link to="/contact" className="btn-primary text-lg">
-          Nous contacter <ArrowRight className="ml-2 inline" size={20} />
-        </Link>
-      </div>
-    </AnimatedSection>
+    {/* CTA */}
+    <CtaSection
+      title="Une question sur nos formules ?"
+      description="On vous aide à choisir la formule adaptée à vos besoins."
+      buttonText="Nous contacter"
+      buttonUrl="/contact"
+      items={[
+        "Sans engagement",
+        "Résiliation à tout moment",
+        "Support réactif",
+        "Rapport de suivi",
+      ]}
+    />
   </Layout>
 );
 
