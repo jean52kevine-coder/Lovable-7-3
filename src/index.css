@@ -41,6 +41,12 @@
 
     --font-display: 'Barlow', sans-serif;
     --font-body: 'Inter', sans-serif;
+    --font-dm: 'DM Sans', sans-serif;
+
+    --hero-bg: 120 33% 4%;
+    --section-alt-bg: 120 18% 5%;
+    --card-dark: 120 14% 7%;
+    --border-green: 120 28% 14%;
   }
 }
 
@@ -114,4 +120,35 @@
   .btn-outline:hover {
     @apply bg-primary text-primary-foreground;
   }
+
+  .font-dm {
+    font-family: var(--font-dm);
+  }
+}
+
+/* Carousel infinite scroll animations */
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scroll-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* Floating orbs */
+@keyframes float-a {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(40px, 30px); }
+}
+
+@keyframes float-b {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-50px, -40px); }
+}
+
+@keyframes float-c {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(20px, 50px); }
 }
