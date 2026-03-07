@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-import AnimatedSection from "@/components/AnimatedSection";
+import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
-import { ArrowRight, XCircle, CheckCircle, TrendingUp, Users, Search, Clock } from "lucide-react";
+import { ArrowRight, XCircle, CheckCircle, TrendingUp, Users, Search, Clock, Zap, Shield } from "lucide-react";
+import { FeatureCard } from "@/components/ui/grid-feature-cards";
+import { CtaSection } from "@/components/ui/cta-section";
 import heroPourquoi from "@/assets/hero-pourquoi.jpg";
 
 const stats = [
@@ -19,74 +21,175 @@ const sansAvec = [
   { sans: "Concurrents en première page", avec: "Vous aussi, en première page" },
 ];
 
+const advantages = [
+  {
+    title: "Visibilité locale",
+    icon: Search,
+    description: "Apparaissez sur Google quand vos clients cherchent un professionnel dans votre ville.",
+  },
+  {
+    title: "Crédibilité immédiate",
+    icon: Shield,
+    description: "Un site pro rassure vos prospects et vous démarque de la concurrence.",
+  },
+  {
+    title: "Génération de leads",
+    icon: Zap,
+    description: "Transformez les visiteurs en clients grâce à des formulaires et appels à l'action efficaces.",
+  },
+  {
+    title: "Croissance mesurable",
+    icon: TrendingUp,
+    description: "Suivez vos résultats et ajustez votre stratégie pour maximiser votre retour sur investissement.",
+  },
+];
+
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
+};
+
 const PourquoiPage = () => (
   <Layout>
-    <AnimatedSection className="relative py-24 md:py-32 overflow-hidden">
-      <img src={heroPourquoi} alt="" className="absolute inset-0 w-full h-full object-cover opacity-30" />
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/40" />
-      <div className="section-container text-center relative z-10">
+    {/* Hero */}
+    <section className="relative py-24 md:py-32 overflow-hidden">
+      <img src={heroPourquoi} alt="" className="absolute inset-0 w-full h-full object-cover opacity-20" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
+      <motion.div
+        className="section-container text-center relative z-10"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
         <h1 className="heading-display text-4xl md:text-6xl mb-6">
-          Pourquoi avoir <span className="text-gradient">un site web</span> ?
+          POURQUOI AVOIR <span className="text-primary">UN SITE WEB</span> ?
         </h1>
-        <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+        <p className="font-dm text-lg max-w-2xl mx-auto text-muted-foreground">
           En 2025, ne pas avoir de site internet c'est comme ne pas avoir de vitrine.
           Vos clients vous cherchent en ligne — soyez là.
         </p>
-      </div>
-    </AnimatedSection>
+      </motion.div>
+    </section>
 
-    <AnimatedSection className="section-padding bg-card">
+    {/* Stats */}
+    <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg))" }}>
       <div className="section-container">
-        <h2 className="heading-display text-2xl md:text-3xl text-center mb-12">Les chiffres parlent d'eux-mêmes</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <motion.h2
+          className="heading-display text-2xl md:text-3xl text-center mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.6 }}
+        >
+          LES CHIFFRES PARLENT <span className="text-primary">D'EUX-MÊMES</span>
+        </motion.h2>
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
           {stats.map((s, i) => (
-            <div key={i} className="card-altera text-center">
+            <motion.div
+              key={i}
+              variants={fadeUp}
+              className="rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-1"
+              style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}
+            >
               <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-4">
                 <s.icon className="text-primary" size={24} />
               </div>
               <div className="text-primary heading-display text-3xl mb-2">{s.value}</div>
               <p className="text-muted-foreground text-sm">{s.label}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </AnimatedSection>
+    </section>
 
-    <AnimatedSection className="section-padding bg-background">
+    {/* Sans vs Avec */}
+    <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg))" }}>
       <div className="section-container max-w-3xl mx-auto">
-        <h2 className="heading-display text-2xl md:text-3xl text-center mb-12">
-          <span className="text-destructive">Sans site</span> vs <span className="text-gradient">Avec site</span>
-        </h2>
+        <motion.h2
+          className="heading-display text-2xl md:text-3xl text-center mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="text-destructive">SANS SITE</span> VS <span className="text-primary">AVEC SITE</span>
+        </motion.h2>
         <div className="space-y-4">
           {sansAvec.map((row, i) => (
-            <div key={i} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="flex items-center gap-3 bg-destructive/10 rounded-lg p-4">
+            <motion.div
+              key={i}
+              className="grid grid-cols-1 md:grid-cols-2 gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+            >
+              <div className="flex items-center gap-3 bg-destructive/10 rounded-xl p-4">
                 <XCircle className="text-destructive flex-shrink-0" size={20} />
-                <span className="text-sm">{row.sans}</span>
+                <span className="text-sm text-foreground">{row.sans}</span>
               </div>
-              <div className="flex items-center gap-3 bg-primary/10 rounded-lg p-4">
+              <div className="flex items-center gap-3 bg-primary/10 rounded-xl p-4">
                 <CheckCircle className="text-primary flex-shrink-0" size={20} />
-                <span className="text-sm">{row.avec}</span>
+                <span className="text-sm text-foreground">{row.avec}</span>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </AnimatedSection>
+    </section>
 
-    <AnimatedSection className="section-padding bg-card">
-      <div className="section-container text-center">
-        <h2 className="heading-display text-2xl md:text-4xl mb-4">
-          Ne laissez plus vos <span className="text-gradient">clients partir</span>
-        </h2>
-        <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-          Chaque jour sans site, c'est du chiffre d'affaires perdu. Passez à l'action maintenant.
-        </p>
-        <Link to="/contact" className="btn-primary text-lg">
-          Obtenir mon site web <ArrowRight className="ml-2 inline" size={20} />
-        </Link>
+    {/* Feature Grid */}
+    <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg))" }}>
+      <div className="section-container">
+        <motion.h2
+          className="heading-display text-2xl md:text-3xl text-center mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.6 }}
+        >
+          LES AVANTAGES <span className="text-primary">CONCRETS</span>
+        </motion.h2>
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto"
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
+          {advantages.map((feature, i) => (
+            <motion.div key={i} variants={fadeUp}>
+              <FeatureCard feature={feature} />
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
-    </AnimatedSection>
+    </section>
+
+    {/* CTA */}
+    <CtaSection
+      title="Ne laissez plus vos clients partir"
+      description="Chaque jour sans site, c'est du chiffre d'affaires perdu. Passez à l'action maintenant."
+      buttonText="Obtenir mon site web"
+      buttonUrl="/contact"
+      items={[
+        "Livraison en 14 jours",
+        "À partir de 497€",
+        "Devis gratuit",
+        "Sans engagement",
+      ]}
+    />
   </Layout>
 );
 
