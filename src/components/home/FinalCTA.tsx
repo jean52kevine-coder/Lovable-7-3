@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import BlurReveal from "@/components/animations/BlurReveal";
+import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
 
 const FinalCTA = () => {
   const ref = useRef<HTMLElement>(null);
@@ -45,7 +46,7 @@ const FinalCTA = () => {
           >
             PRÊT À LANCER
             <br />
-            <span className="text-primary">VOTRE PROJET ?</span>
+            <AnimatedGradientText className="heading-display">VOTRE PROJET ?</AnimatedGradientText>
           </h2>
         </BlurReveal>
 
