@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import logoImage from "@/assets/logo-altera.png";
+import AlteraLogo from "@/components/AlteraLogo";
 
 const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
   const [show, setShow] = useState(() => {
@@ -72,14 +72,7 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
                   transform: "scale(1.5)",
                 }}
               />
-              <img
-                src={logoImage}
-                alt="Altéra"
-                width={147}
-                height={80}
-                fetchPriority="high"
-                className="h-16 md:h-20 w-auto object-contain"
-              />
+              <AlteraLogo size="lg" />
             </motion.div>
 
             {/* Loading bar */}
@@ -99,15 +92,6 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
             </motion.div>
 
             {/* Tagline */}
-            <motion.p
-              className="mt-4 text-sm font-dm"
-              style={{ color: "rgba(255,255,255,0.4)" }}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2, duration: 0.5 }}
-            >
-              Digital Studio
-            </motion.p>
           </motion.div>
         </motion.div>
       )}
