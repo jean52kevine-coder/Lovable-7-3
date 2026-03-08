@@ -186,6 +186,12 @@ const HeroSection = () => {
               ))}
             </div>
           </BlurReveal>
+          </div>
+
+          {/* Right: laptop illustration (hidden on small mobile) */}
+          <BlurReveal delay={0.5} className="hidden md:block flex-1 max-w-[480px]">
+            <HeroLaptopIllustration />
+          </BlurReveal>
         </motion.div>
 
         {/* Phase 3 reveal text */}
