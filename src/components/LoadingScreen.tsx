@@ -75,6 +75,9 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
               <img
                 src={logoImage}
                 alt="Altéra"
+                width={147}
+                height={80}
+                fetchPriority="high"
                 className="h-16 md:h-20 w-auto object-contain"
               />
             </motion.div>
