@@ -12,7 +12,7 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
-import heroEcommerce from "@/assets/hero-ecommerce.jpg";
+import heroEcommerceVideo from "@/assets/videos/hero-ecommerce.mp4";
 
 const inclus = [
   "Boutique en ligne complète", "Jusqu'à 50 produits", "Paiement sécurisé (CB, PayPal)", "Gestion des stocks intégrée",
