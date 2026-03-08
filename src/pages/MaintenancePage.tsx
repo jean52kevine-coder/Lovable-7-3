@@ -1,7 +1,8 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
-import { Wrench, Check } from "lucide-react";
+import { Wrench, Check, AlertTriangle } from "lucide-react";
 import { BorderBeam } from "@/components/ui/border-beam";
 import { CtaSection } from "@/components/ui/cta-section";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
@@ -10,6 +11,13 @@ import ScaleSection from "@/components/animations/ScaleSection";
 import TextSplit from "@/components/animations/TextSplit";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
 import heroMaintenance from "@/assets/hero-maintenance.jpg";
+
+const dangers = [
+  { title: "Failles de sécurité", desc: "Un plugin non mis à jour, c'est une porte ouverte pour les hackers. Vos données et celles de vos clients sont en danger." },
+  { title: "Perte de référencement", desc: "Google pénalise les sites lents et obsolètes. Sans optimisation continue, vous perdez vos positions." },
+  { title: "Pannes non détectées", desc: "Votre site peut tomber à 3h du matin. Sans monitoring, vous l'apprenez quand un client se plaint." },
+  { title: "Perte de données", desc: "Sans sauvegarde régulière, une erreur suffit à tout effacer. Définitivement." },
+];
 
 const formules = [
   {
@@ -29,8 +37,41 @@ const formules = [
   },
 ];
 
+const faqs = [
+  { q: "Puis-je résilier à tout moment ?", a: "Oui, sans engagement ni frais. Préavis de 30 jours." },
+  { q: "Mon site n'est pas fait par ALTÉRA, puis-je souscrire ?", a: "Oui. On effectue d'abord un audit gratuit de votre site, puis on prend en charge la maintenance." },
+  { q: "Que sont exactement les 'modifications' incluses ?", a: "Changements de textes, d'images, ajout d'une section, mise à jour de prix ou d'horaires." },
+  { q: "Que se passe-t-il si mon site tombe ?", a: "Selon votre formule, on intervient sous 4h à 48h. Vous êtes alerté immédiatement par email." },
+  { q: "Puis-je changer de formule en cours de route ?", a: "Oui, à tout moment. Upgrade ou downgrade effectif le mois suivant, sans frais." },
+];
+
+const FAQItem = ({ faq, index }: { faq: { q: string; a: string }; index: number }) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.4, delay: index * 0.1 }}
+    >
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full text-left rounded-xl p-5 flex items-center justify-between"
+        style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}
+      >
+        <h3 className="font-display font-bold text-foreground pr-4">{faq.q}</h3>
+        <motion.span animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.3 }} className="text-primary flex-shrink-0">▼</motion.span>
+      </button>
+      <motion.div initial={false} animate={{ height: open ? "auto" : 0, opacity: open ? 1 : 0 }} transition={{ duration: 0.3 }} className="overflow-hidden">
+        <p className="text-muted-foreground text-sm px-5 pt-3 pb-1">{faq.a}</p>
+      </motion.div>
+    </motion.div>
+  );
+};
+
 const MaintenancePage = () => (
   <Layout>
+    {/* Hero */}
     <section className="relative py-24 md:py-32 overflow-hidden">
       <img src={heroMaintenance} alt="" className="absolute inset-0 w-full h-full object-cover opacity-20" />
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
@@ -45,6 +86,39 @@ const MaintenancePage = () => (
       </div>
     </section>
 
+    {/* Dangers */}
+    <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg))" }}>
+      <div className="section-container">
+        <BlurReveal className="text-center mb-14">
+          <h2 className="heading-display text-2xl md:text-3xl">
+            UN SITE SANS MAINTENANCE,{" "}
+            <span style={{ color: "rgba(239,68,68,0.9)" }}>C'EST UN RISQUE PERMANENT</span>
+          </h2>
+        </BlurReveal>
+        <ScaleSection>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto" staggerDelay={0.1}>
+            {dangers.map((d, i) => (
+              <motion.div key={i} variants={itemVariants}>
+                <div
+                  className="rounded-xl p-6 h-full"
+                  style={{
+                    backgroundColor: "rgba(239,68,68,0.04)",
+                    border: "1px solid rgba(239,68,68,0.15)",
+                    borderRadius: "12px",
+                  }}
+                >
+                  <AlertTriangle className="mb-3" size={24} style={{ color: "rgba(239,68,68,0.8)" }} />
+                  <h3 className="font-display font-black text-white mb-2">{d.title}</h3>
+                  <p className="font-dm text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>{d.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </StaggerContainer>
+        </ScaleSection>
+      </div>
+    </section>
+
+    {/* Formules */}
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg))" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
@@ -78,6 +152,22 @@ const MaintenancePage = () => (
             ))}
           </StaggerContainer>
         </ScaleSection>
+      </div>
+    </section>
+
+    {/* FAQ */}
+    <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg))" }}>
+      <div className="section-container max-w-2xl mx-auto">
+        <BlurReveal className="text-center mb-12">
+          <h2 className="heading-display text-2xl md:text-3xl">
+            VOS QUESTIONS <span className="text-primary">NOS RÉPONSES</span>
+          </h2>
+        </BlurReveal>
+        <div className="space-y-4">
+          {faqs.map((faq, i) => (
+            <FAQItem key={i} faq={faq} index={i} />
+          ))}
+        </div>
       </div>
     </section>
 

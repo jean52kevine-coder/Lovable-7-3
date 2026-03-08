@@ -1,14 +1,29 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { GlowingEffect } from "@/components/ui/glowing-effect";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 
 const steps = [
-  { num: "01", icon: "💬", title: "Échange découverte", detail: "Consultation 30min offerte. On analyse votre activité, vos objectifs et votre marché." },
-  { num: "02", icon: "🎨", title: "Design sur-mesure", detail: "Maquette unique validée par vous avant tout développement. Aucune surprise." },
-  { num: "03", icon: "⚡", title: "Développement", detail: "Code propre, rapide, optimisé SEO. Livrable en 14 jours chrono après validation." },
-  { num: "04", icon: "🚀", title: "Livraison + formation", detail: "Mise en ligne complète, formation à l'utilisation, support inclus 30 jours." },
+  {
+    num: "01",
+    title: "Échange découverte",
+    detail: "Appel 30min offert. On étudie votre activité, vos clients cibles et vos objectifs. Zéro engagement.",
+  },
+  {
+    num: "02",
+    title: "Maquette validée",
+    detail: "Une maquette sur-mesure créée en 48h. Vous validez avant qu'on code une seule ligne.",
+  },
+  {
+    num: "03",
+    title: "Développement",
+    detail: "Code propre, rapide, SEO-ready. Vous suivez l'avancement en temps réel.",
+  },
+  {
+    num: "04",
+    title: "Livraison & formation",
+    detail: "Mise en ligne, formation, remise des accès. Votre site est en ligne en 14 jours.",
+  },
 ];
 
 const StepperSection = () => {
@@ -25,10 +40,12 @@ const StepperSection = () => {
 
         <ScaleSection>
           {/* Desktop horizontal stepper */}
-          <BlurReveal className="hidden md:flex items-start justify-between relative mb-8" delay={0.2}>
-            <div className="absolute top-6 left-[12.5%] right-[12.5%] h-[2px]" style={{ backgroundColor: "#1a2e1a" }} />
+          <BlurReveal className="hidden md:flex items-start justify-between relative mb-10" delay={0.2}>
+            {/* Background line */}
+            <div className="absolute top-8 left-[12.5%] right-[12.5%] h-[2px]" style={{ backgroundColor: "#1a2e1a" }} />
+            {/* Active line */}
             <motion.div
-              className="absolute top-6 left-[12.5%] h-[2px]"
+              className="absolute top-8 left-[12.5%] h-[2px]"
               style={{ backgroundColor: "hsl(145, 63%, 42%)", transformOrigin: "left" }}
               animate={{ width: `${(active / 3) * 75}%` }}
               transition={{ duration: 0.4 }}
@@ -41,18 +58,21 @@ const StepperSection = () => {
                 className="relative z-10 flex flex-col items-center w-1/4 cursor-pointer group"
               >
                 <motion.div
-                  className="w-12 h-12 rounded-full flex items-center justify-center text-sm font-black font-display mb-3"
+                  className="font-display font-black mb-3"
                   animate={{
-                    backgroundColor: i <= active ? "hsl(145, 63%, 42%)" : "#1a2e1a",
-                    color: i <= active ? "#000" : "rgba(255,255,255,0.4)",
+                    color: i === active ? "hsl(145, 63%, 42%)" : "rgba(255,255,255,0.2)",
                     scale: i === active ? 1.1 : 1,
                   }}
                   transition={{ duration: 0.3 }}
+                  style={{ fontSize: "clamp(36px, 4vw, 60px)" }}
                 >
                   {s.num}
                 </motion.div>
-                <span className="text-sm font-dm text-center" style={{ color: i === active ? "#fff" : "rgba(255,255,255,0.45)" }}>
-                  {s.icon} {s.title}
+                <span
+                  className="text-sm font-dm text-center font-medium"
+                  style={{ color: i === active ? "#fff" : "rgba(255,255,255,0.45)" }}
+                >
+                  {s.title}
                 </span>
               </button>
             ))}
@@ -66,17 +86,14 @@ const StepperSection = () => {
                 onClick={() => setActive(i)}
                 className="flex items-center gap-4 w-full text-left"
               >
-                <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-black font-display flex-shrink-0 transition-colors"
-                  style={{
-                    backgroundColor: i <= active ? "hsl(145, 63%, 42%)" : "#1a2e1a",
-                    color: i <= active ? "#000" : "rgba(255,255,255,0.4)",
-                  }}
+                <span
+                  className="font-display font-black text-2xl flex-shrink-0 transition-colors"
+                  style={{ color: i === active ? "hsl(145, 63%, 42%)" : "rgba(255,255,255,0.2)" }}
                 >
                   {s.num}
-                </div>
+                </span>
                 <span className="font-dm text-sm" style={{ color: i === active ? "#fff" : "rgba(255,255,255,0.45)" }}>
-                  {s.icon} {s.title}
+                  {s.title}
                 </span>
               </button>
             ))}
@@ -91,19 +108,17 @@ const StepperSection = () => {
               exit={{ opacity: 0, y: -10, filter: "blur(4px)", scale: 0.98 }}
               transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
             >
-              <div className="relative rounded-xl">
-                <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
-                <div
-                  className="relative z-10 rounded-xl p-6 font-dm"
-                  style={{
-                    backgroundColor: "#111811",
-                    borderLeft: "3px solid hsl(145, 63%, 42%)",
-                  }}
-                >
-                  <span className="text-2xl mb-2 block">{steps[active].icon}</span>
-                  <h3 className="font-display font-black text-lg text-white mb-2">{steps[active].title}</h3>
-                  <p style={{ color: "rgba(255,255,255,0.6)" }}>{steps[active].detail}</p>
-                </div>
+              <div
+                className="relative z-10 rounded-xl p-6 font-dm"
+                style={{
+                  backgroundColor: "#111811",
+                  border: "1px solid #1a2e1a",
+                  borderLeftWidth: "3px",
+                  borderLeftColor: "hsl(145, 63%, 42%)",
+                }}
+              >
+                <h3 className="font-display font-black text-lg text-white mb-2">{steps[active].title}</h3>
+                <p style={{ color: "rgba(255,255,255,0.6)" }}>{steps[active].detail}</p>
               </div>
             </motion.div>
           </AnimatePresence>
