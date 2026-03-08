@@ -1,6 +1,7 @@
-import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
+import BlurReveal from "@/components/animations/BlurReveal";
+import ScaleSection from "@/components/animations/ScaleSection";
 
 const testimonials = [
   { text: "Mon agence a généré 40% de nouveaux clients. Professionnalisme exemplaire.", name: "Thomas B.", role: "Artisan plombier, Lyon" },
@@ -35,47 +36,44 @@ const Card = ({ t }: { t: typeof testimonials[0] }) => (
 const TestimonialsCarousel = () => (
   <section style={{ backgroundColor: "#0a0f0a" }} className="py-[100px] overflow-hidden">
     <div className="section-container">
-      <motion.h2
-        className="heading-display text-center mb-14"
-        style={{ fontSize: "clamp(28px, 4vw, 44px)" }}
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.15 }}
-        transition={{ duration: 0.6 }}
-      >
-        CE QU'EN DISENT <span className="text-primary">NOS CLIENTS</span>
-      </motion.h2>
+      <BlurReveal className="text-center mb-14">
+        <h2 className="heading-display" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>
+          CE QU'EN DISENT <span className="text-primary">NOS CLIENTS</span>
+        </h2>
+      </BlurReveal>
     </div>
 
-    <div
-      className="relative mb-6"
-      style={{
-        maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-        WebkitMaskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-      }}
-    >
+    <ScaleSection>
       <div
-        className="flex gap-6 hover:[animation-play-state:paused]"
-        style={{ animation: "scroll-left 35s linear infinite", width: "max-content" }}
+        className="relative mb-6"
+        style={{
+          maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+          WebkitMaskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+        }}
       >
-        {doubled.map((t, i) => <Card key={`r1-${i}`} t={t} />)}
+        <div
+          className="flex gap-6 hover:[animation-play-state:paused]"
+          style={{ animation: "scroll-left 35s linear infinite", width: "max-content" }}
+        >
+          {doubled.map((t, i) => <Card key={`r1-${i}`} t={t} />)}
+        </div>
       </div>
-    </div>
 
-    <div
-      className="relative"
-      style={{
-        maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-        WebkitMaskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-      }}
-    >
       <div
-        className="flex gap-6 hover:[animation-play-state:paused]"
-        style={{ animation: "scroll-right 35s linear infinite", width: "max-content" }}
+        className="relative"
+        style={{
+          maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+          WebkitMaskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+        }}
       >
-        {doubled.map((t, i) => <Card key={`r2-${i}`} t={t} />)}
+        <div
+          className="flex gap-6 hover:[animation-play-state:paused]"
+          style={{ animation: "scroll-right 35s linear infinite", width: "max-content" }}
+        >
+          {doubled.map((t, i) => <Card key={`r2-${i}`} t={t} />)}
+        </div>
       </div>
-    </div>
+    </ScaleSection>
   </section>
 );
 
