@@ -61,9 +61,11 @@ const roiTestimonials = [
   },
 ];
 
-const AnimatedStat = ({ stat }: { stat: typeof stats[0] }) => {
+const AnimatedStat = ({ stat, index }: { stat: typeof stats[0]; index: number }) => {
+  const Illustration = statIllustrations[index];
   return (
     <div className="rounded-2xl p-6 text-center" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+      <Illustration />
       <div className="text-primary font-display font-black mb-2" style={{ fontSize: "clamp(48px, 6vw, 80px)" }}>
         <NumberTicker value={stat.numValue} />{stat.suffix}
       </div>
