@@ -1,21 +1,23 @@
 import { useRef, useEffect, useState, useCallback } from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
+import LightBeam from "@/components/animations/LightBeam";
 
 const WORDS = ["commercial", "vendeur", "atout", "levier", "avantage"];
 
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } },
-};
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
+const blurUp = (delay = 0) => ({
+  hidden: { opacity: 0, y: 30, filter: "blur(12px)" },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const },
+    filter: "blur(0px)",
+    transition: { duration: 0.8, delay, ease: [0.25, 0.4, 0.25, 1] as const },
   },
+});
+
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.15 } },
 };
 
 const CountUp = ({ target, suffix = "" }: { target: number; suffix?: string }) => {
@@ -47,13 +49,14 @@ const RotatingWord = () => {
         <motion.span
           key={word}
           className="absolute left-0 text-primary"
-          initial={{ clipPath: "inset(0 0 100% 0)" }}
+          initial={{ clipPath: "inset(0 0 100% 0)", filter: "blur(4px)" }}
           animate={{
             clipPath: i === index ? "inset(0 0 0% 0)" : "inset(100% 0 0% 0)",
+            filter: i === index ? "blur(0px)" : "blur(4px)",
           }}
           transition={{
-            duration: i === index ? 0.45 : 0.35,
-            ease: i === index ? "easeOut" : "easeIn",
+            duration: i === index ? 0.5 : 0.35,
+            ease: i === index ? [0.25, 0.4, 0.25, 1] : "easeIn",
           }}
         >
           {word}.
@@ -92,19 +95,19 @@ const Orbs = () => (
         filter: "blur(80px)", animation: "float-b 22s ease-in-out infinite alternate",
       }}
     />
-    <div
-      className="absolute pointer-events-none"
-      style={{
-        width: 300, height: 200, top: "40%", right: "10%",
-        background: "rgba(255,255,255,0.03)", borderRadius: "50%",
-        filter: "blur(80px)", animation: "float-c 15s ease-in-out infinite alternate",
-      }}
-    />
   </>
 );
 
 const HeroSection = () => {
   const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  const heroY = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.7], [1, 0.92]);
 
   const handleMouse = useCallback((e: MouseEvent) => {
     const el = heroRef.current;
@@ -136,6 +139,7 @@ const HeroSection = () => {
     >
       <DotGrid />
       <Orbs />
+      <LightBeam />
 
       {/* Spotlight */}
       <div
@@ -148,79 +152,79 @@ const HeroSection = () => {
 
       <motion.div
         className="relative z-[2] text-center section-container py-20"
-        variants={stagger}
-        initial="hidden"
-        animate="visible"
+        style={{ y: heroY, opacity: heroOpacity, scale: heroScale }}
       >
-        {/* Badge */}
-        <motion.div variants={fadeUp} className="flex justify-center mb-8">
-          <span
-            className="font-dm text-[13px] font-semibold px-4 py-1.5 rounded-full text-primary"
-            style={{
-              background: "rgba(29,185,84,0.1)",
-              border: "1px solid rgba(29,185,84,0.35)",
-            }}
-          >
-            ⚡ Livraison en 14 jours
-          </span>
-        </motion.div>
-
-        {/* Headline */}
-        <motion.h1 variants={fadeUp} className="heading-display leading-tight mb-2" style={{ fontSize: "clamp(32px, 5vw, 56px)", letterSpacing: "0.02em" }}>
-          LE SITE WEB DES
-          <br />
-          <span className="text-primary">PME LOCALES</span>
-        </motion.h1>
-
-        {/* Rotating word */}
-        <motion.p variants={fadeUp} className="heading-display mb-6" style={{ fontSize: "clamp(24px, 3.5vw, 40px)" }}>
-          Votre meilleur <RotatingWord />
-        </motion.p>
-
-        {/* Subtitle */}
-        <motion.p
-          variants={fadeUp}
-          className="font-dm text-[18px] mx-auto mb-10 max-w-[560px]"
-          style={{ color: "rgba(255,255,255,0.65)" }}
-        >
-          Design sur-mesure, livraison en 14 jours, résultats concrets.
-          Artisans, commerçants, PME — on s'occupe de tout.
-        </motion.p>
-
-        {/* CTAs */}
-        <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
-          <Link
-            to="/contact"
-            className="inline-flex items-center justify-center font-bold px-7 py-3.5 rounded-lg text-primary-foreground transition-all duration-200 hover:-translate-y-0.5"
-            style={{ background: "hsl(145, 63%, 42%)" }}
-          >
-            Demander un devis →
-          </Link>
-          <Link
-            to="/tarifs"
-            className="inline-flex items-center justify-center font-bold px-7 py-3.5 rounded-lg transition-all duration-200 text-white hover:text-primary"
-            style={{ border: "1px solid rgba(255,255,255,0.25)" }}
-          >
-            Voir les tarifs
-          </Link>
-        </motion.div>
-
-        {/* Stats bar */}
-        <motion.div
-          variants={fadeUp}
-          className="flex flex-wrap justify-center gap-x-0 gap-y-2 font-dm text-[13px]"
-          style={{ color: "rgba(255,255,255,0.45)" }}
-        >
-          {stats.map((s, i) => (
-            <span key={i} className="flex items-center">
-              {i > 0 && <span className="mx-3" style={{ color: "rgba(255,255,255,0.15)" }}>|</span>}
-              <span className="font-semibold text-white mr-1">
-                {s.label === "dès" ? s.label + " " : ""}
-                <CountUp target={s.value} suffix={s.suffix} />
-              </span>
-              {s.label !== "dès" && <span>{s.label}</span>}
+        <motion.div variants={stagger} initial="hidden" animate="visible">
+          {/* Badge */}
+          <motion.div variants={blurUp(0)} className="flex justify-center mb-8">
+            <span
+              className="font-dm text-[13px] font-semibold px-4 py-1.5 rounded-full text-primary"
+              style={{
+                background: "rgba(29,185,84,0.1)",
+                border: "1px solid rgba(29,185,84,0.35)",
+              }}
+            >
+              ⚡ Livraison en 14 jours
             </span>
-          ))}
+          </motion.div>
+
+          {/* Headline */}
+          <motion.h1 variants={blurUp(0.1)} className="heading-display leading-tight mb-2" style={{ fontSize: "clamp(32px, 5vw, 56px)", letterSpacing: "0.02em" }}>
+            LE SITE WEB DES
+            <br />
+            <span className="text-primary">PME LOCALES</span>
+          </motion.h1>
+
+          {/* Rotating word */}
+          <motion.p variants={blurUp(0.2)} className="heading-display mb-6" style={{ fontSize: "clamp(24px, 3.5vw, 40px)" }}>
+            Votre meilleur <RotatingWord />
+          </motion.p>
+
+          {/* Subtitle */}
+          <motion.p
+            variants={blurUp(0.3)}
+            className="font-dm text-[18px] mx-auto mb-10 max-w-[560px]"
+            style={{ color: "rgba(255,255,255,0.65)" }}
+          >
+            Design sur-mesure, livraison en 14 jours, résultats concrets.
+            Artisans, commerçants, PME — on s'occupe de tout.
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div variants={blurUp(0.4)} className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center font-bold px-7 py-3.5 rounded-lg text-primary-foreground transition-all duration-200 hover:-translate-y-0.5"
+              style={{ background: "hsl(145, 63%, 42%)" }}
+            >
+              Demander un devis →
+            </Link>
+            <Link
+              to="/tarifs"
+              className="inline-flex items-center justify-center font-bold px-7 py-3.5 rounded-lg transition-all duration-200 text-white hover:text-primary"
+              style={{ border: "1px solid rgba(255,255,255,0.25)" }}
+            >
+              Voir les tarifs
+            </Link>
+          </motion.div>
+
+          {/* Stats bar */}
+          <motion.div
+            variants={blurUp(0.5)}
+            className="flex flex-wrap justify-center gap-x-0 gap-y-2 font-dm text-[13px]"
+            style={{ color: "rgba(255,255,255,0.45)" }}
+          >
+            {stats.map((s, i) => (
+              <span key={i} className="flex items-center">
+                {i > 0 && <span className="mx-3" style={{ color: "rgba(255,255,255,0.15)" }}>|</span>}
+                <span className="font-semibold text-white mr-1">
+                  {s.label === "dès" ? s.label + " " : ""}
+                  <CountUp target={s.value} suffix={s.suffix} />
+                </span>
+                {s.label !== "dès" && <span>{s.label}</span>}
+              </span>
+            ))}
+          </motion.div>
         </motion.div>
       </motion.div>
     </section>

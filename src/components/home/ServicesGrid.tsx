@@ -1,7 +1,10 @@
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Globe, ShoppingCart, Shield, Check } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
+import BlurReveal from "@/components/animations/BlurReveal";
+import ScaleSection from "@/components/animations/ScaleSection";
+import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
+import { motion } from "framer-motion";
 
 const cards = [
   {
@@ -33,99 +36,79 @@ const cards = [
   },
 ];
 
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.15 } },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
-};
-
 const ServicesGrid = () => (
   <section style={{ backgroundColor: "#0a0f0a" }} className="py-[100px]">
     <div className="section-container">
-      <motion.div
-        className="text-center mb-14"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.15 }}
-        transition={{ duration: 0.6 }}
-      >
+      <BlurReveal className="text-center mb-14">
         <h2 className="heading-display mb-4" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>
           CE QUE NOUS CRÉONS <span className="text-primary">POUR VOUS</span>
         </h2>
         <p className="font-dm text-[16px]" style={{ color: "rgba(255,255,255,0.55)" }}>
           Des solutions web complètes, adaptées à chaque budget.
         </p>
-      </motion.div>
+      </BlurReveal>
 
-      <motion.div
-        className="grid grid-cols-1 md:grid-cols-3 gap-6"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.15 }}
-      >
-        {cards.map((c, i) => (
-          <motion.div
-            key={i}
-            variants={cardVariants}
-            className="relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5 group"
-          >
-            <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
-            <div
-              className="relative z-10 rounded-2xl p-7"
-              style={{
-                backgroundColor: "#111811",
-                border: "1px solid #1a2e1a",
-              }}
+      <ScaleSection>
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.18}>
+          {cards.map((c, i) => (
+            <motion.div
+              key={i}
+              variants={itemVariants}
+              className="relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5 group"
             >
-              {c.popular && (
+              <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
+              <div
+                className="relative z-10 rounded-2xl p-7"
+                style={{
+                  backgroundColor: "#111811",
+                  border: "1px solid #1a2e1a",
+                }}
+              >
+                {c.popular && (
+                  <span
+                    className="absolute top-4 right-4 text-[11px] font-bold px-2.5 py-1 rounded-full text-primary-foreground"
+                    style={{ background: "hsl(145, 63%, 42%)" }}
+                  >
+                    ⭐ POPULAIRE
+                  </span>
+                )}
+
                 <span
-                  className="absolute top-4 right-4 text-[11px] font-bold px-2.5 py-1 rounded-full text-primary-foreground"
-                  style={{ background: "hsl(145, 63%, 42%)" }}
+                  className="inline-block text-[13px] font-semibold px-3 py-1 rounded-full text-primary mb-4"
+                  style={{ background: "rgba(29,185,84,0.12)" }}
                 >
-                  ⭐ POPULAIRE
+                  {c.badge}
                 </span>
-              )}
 
-              <span
-                className="inline-block text-[13px] font-semibold px-3 py-1 rounded-full text-primary mb-4"
-                style={{ background: "rgba(29,185,84,0.12)" }}
-              >
-                {c.badge}
-              </span>
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                  <c.icon className="text-primary" size={20} />
+                </div>
 
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                <c.icon className="text-primary" size={20} />
+                <h3 className="font-display font-black text-xl text-white mb-2">{c.title}</h3>
+                <p className="font-dm text-sm mb-5" style={{ color: "rgba(255,255,255,0.55)" }}>
+                  {c.desc}
+                </p>
+
+                <ul className="space-y-2 mb-6">
+                  {c.bullets.map((b, j) => (
+                    <li key={j} className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Check className="text-primary flex-shrink-0" size={14} />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+
+                <Link
+                  to={c.link}
+                  className="text-primary text-sm font-semibold hover:underline"
+                >
+                  En savoir plus →
+                </Link>
               </div>
-
-              <h3 className="font-display font-black text-xl text-white mb-2">{c.title}</h3>
-              <p className="font-dm text-sm mb-5" style={{ color: "rgba(255,255,255,0.55)" }}>
-                {c.desc}
-              </p>
-
-              <ul className="space-y-2 mb-6">
-                {c.bullets.map((b, j) => (
-                  <li key={j} className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Check className="text-primary flex-shrink-0" size={14} />
-                    {b}
-                  </li>
-                ))}
-              </ul>
-
-              <Link
-                to={c.link}
-                className="text-primary text-sm font-semibold hover:underline"
-              >
-                En savoir plus →
-              </Link>
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
+            </motion.div>
+          ))}
+        </StaggerContainer>
+      </ScaleSection>
     </div>
   </section>
 );
