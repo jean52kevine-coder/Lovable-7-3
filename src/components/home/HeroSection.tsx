@@ -209,13 +209,10 @@ const HeroSection = () => {
           }}
         />
 
-        {/* Mouse spotlight */}
-        <div
-          className="absolute inset-0 pointer-events-none z-[1]"
-          style={{
-            background:
-              "radial-gradient(400px circle at var(--mx, 50%) var(--my, 50%), rgba(29,185,84,0.05), transparent 70%)",
-          }}
+        {/* Spotlight 21st.dev */}
+        <Spotlight
+          fill="rgba(29,185,84,0.08)"
+          fillSecondary="rgba(29,185,84,0.04)"
         />
 
         {/* Vignette */}
