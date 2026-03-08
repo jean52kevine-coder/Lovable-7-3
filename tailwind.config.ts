@@ -79,12 +79,22 @@ export default {
         "border-beam": {
           "100%": { "offset-distance": "100%" },
         },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(calc(-100% - 1.5rem))" },
+        },
+        "gradient-text": {
+          "0%": { backgroundPosition: "0% center" },
+          "100%": { backgroundPosition: "200% center" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in-up": "fade-in-up 0.6s ease-out forwards",
         "border-beam": "border-beam calc(var(--duration)) infinite linear",
+        marquee: "marquee var(--duration, 40s) linear infinite",
+        "gradient-text": "gradient-text 3s linear infinite",
       },
     },
   },
