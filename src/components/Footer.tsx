@@ -36,8 +36,7 @@ const Footer = () => (
         {/* Brand */}
         <div className="lg:col-span-4">
           <div className="flex items-center gap-2 mb-4">
-            <img src={logoAltera} alt="ALTÉRA" className="h-8 w-8" />
-            <span className="heading-display text-2xl text-primary">ALTÉRA</span>
+            <AlteraLogo size="sm" />
           </div>
           <p className="font-dm text-sm text-muted-foreground leading-relaxed max-w-xs mb-6">
             Agence web française spécialisée dans la création de sites modernes pour artisans, commerçants et PME. Livraison en 14 jours, prix fixes, design sur-mesure.
