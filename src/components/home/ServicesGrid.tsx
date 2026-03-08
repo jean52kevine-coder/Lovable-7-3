@@ -5,6 +5,7 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
 import { motion } from "framer-motion";
+import { VitrineMockup, EcommerceMockup, MaintenanceMockup } from "@/components/illustrations/SvgIllustrations";
 
 const cards = [
   {
