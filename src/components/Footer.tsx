@@ -113,9 +113,9 @@ const Footer = () => (
             ))}
           </ul>
           <p className="font-dm text-xs text-muted-foreground/60 mt-5">Réponse sous 24h</p>
+        </div>
       </div>
       </BlurReveal>
-      </div>
 
       {/* Bottom bar */}
       <div
