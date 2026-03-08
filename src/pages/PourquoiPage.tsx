@@ -1,13 +1,15 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
 import { CheckCircle, XCircle, ArrowRight, Eye, Mail, Euro, BarChart3 } from "lucide-react";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import TextSplit from "@/components/animations/TextSplit";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 import NumberFlow from "@number-flow/react";
+import PageBackground, { FloatingOrb, GradientDivider } from "@/components/PageBackground";
 
 /* ─── DATA ─── */
 const statsData = [
@@ -44,7 +46,6 @@ const temoignages = [
   { emoji: "🍕", name: "Ahmed T., Restaurateur Nantes", badge: "+55% de réservations", text: "Les gens cherchaient mon restaurant sur Google et ne trouvaient rien. Maintenant j'ai une page avec le menu, les horaires, les photos. Les réservations ont explosé." },
 ];
 
-/* ─── PAGE ─── */
 const PourquoiPage = () => {
   const [secteur, setSecteur] = useState("Artisan");
   const [zone, setZone] = useState("Ville moyenne");
@@ -61,38 +62,38 @@ const PourquoiPage = () => {
 
   return (
     <Layout>
+      {/* Background — hexagon pattern */}
+      <PageBackground pattern="hexagons" color="rgba(234,179,8,0.06)" />
+
       {/* HERO */}
-      <section className="relative py-28 md:py-36 overflow-hidden" style={{ backgroundColor: "#0a0f0a" }}>
-        <div className="absolute inset-0 opacity-25" style={{ backgroundImage: "radial-gradient(circle, #1DB954 1px, transparent 1px)", backgroundSize: "28px 28px" }} />
+      <section className="relative py-20 md:py-36 overflow-hidden">
+        <FloatingOrb color="rgba(234,179,8,0.06)" size={500} x="15%" y="25%" />
+        <FloatingOrb color="rgba(29,185,84,0.04)" size={350} x="80%" y="55%" delay={4} />
         <div className="section-container text-center relative z-10">
-          <TextSplit className="heading-display text-foreground" style={{ fontSize: "clamp(40px,5.5vw,72px)" }} as="h1">
-            POURQUOI VOTRE ENTREPRISE A
-          </TextSplit>
-          <BlurReveal delay={0.4}>
-            <span className="heading-display text-primary block" style={{ fontSize: "clamp(40px,5.5vw,72px)" }}>BESOIN D'UN SITE WEB ?</span>
-          </BlurReveal>
+          <TextSplit className="heading-display text-foreground" style={{ fontSize: "clamp(32px,5.5vw,72px)" }} as="h1">POURQUOI VOTRE ENTREPRISE A</TextSplit>
+          <BlurReveal delay={0.4}><span className="heading-display text-primary block" style={{ fontSize: "clamp(32px,5.5vw,72px)" }}>BESOIN D'UN SITE WEB ?</span></BlurReveal>
           <BlurReveal delay={0.55}>
-            <p className="font-dm text-lg max-w-2xl mx-auto mt-6 text-muted-foreground">
+            <p className="font-dm text-sm md:text-lg max-w-2xl mx-auto mt-4 md:mt-6 text-muted-foreground px-2">
               En 2025, ne pas avoir de site internet, c'est donner vos clients à vos concurrents. Voici pourquoi.
             </p>
           </BlurReveal>
         </div>
       </section>
 
+      <GradientDivider color="rgba(234,179,8,0.2)" />
+
       {/* STATS */}
-      <section className="py-[100px]" style={{ backgroundColor: "#0d130d" }}>
-        <div className="section-container">
-          <BlurReveal className="text-center mb-14">
-            <h2 className="heading-display text-2xl md:text-4xl">
-              LES CHIFFRES PARLENT <span className="text-primary">D'EUX-MÊMES</span>
-            </h2>
+      <section className="relative py-16 md:py-[100px]">
+        <div className="section-container relative z-10">
+          <BlurReveal className="text-center mb-10 md:mb-14">
+            <h2 className="heading-display text-xl md:text-4xl">LES CHIFFRES PARLENT <span className="text-primary">D'EUX-MÊMES</span></h2>
           </BlurReveal>
           <ScaleSection>
-            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" staggerDelay={0.12}>
+            <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6" staggerDelay={0.12}>
               {statsData.map((s, i) => (
-                <motion.div key={i} variants={itemVariants} className="text-center rounded-xl p-6 card-shimmer" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
-                  <div className="text-primary heading-display text-4xl md:text-5xl mb-3">{s.value}{s.suffix}</div>
-                  <p className="font-dm text-sm text-muted-foreground">{s.label}</p>
+                <motion.div key={i} variants={itemVariants} className="text-center rounded-xl p-3 md:p-6 card-shimmer" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+                  <div className="text-primary heading-display text-2xl md:text-5xl mb-1 md:mb-3">{s.value}{s.suffix}</div>
+                  <p className="font-dm text-[10px] md:text-sm text-muted-foreground">{s.label}</p>
                 </motion.div>
               ))}
             </StaggerContainer>
@@ -100,33 +101,31 @@ const PourquoiPage = () => {
         </div>
       </section>
 
+      <GradientDivider color="rgba(234,179,8,0.2)" />
+
       {/* SANS VS AVEC */}
-      <section className="py-[100px]" style={{ backgroundColor: "#0a0f0a" }}>
-        <div className="section-container">
-          <BlurReveal className="text-center mb-14">
-            <h2 className="heading-display text-2xl md:text-4xl">
-              <span className="text-destructive">SANS SITE</span> VS <span className="text-primary">AVEC ALTÉRA</span>
-            </h2>
+      <section className="relative py-16 md:py-[100px]">
+        <div className="section-container relative z-10">
+          <BlurReveal className="text-center mb-10 md:mb-14">
+            <h2 className="heading-display text-xl md:text-4xl"><span className="text-destructive">SANS SITE</span> VS <span className="text-primary">AVEC ALTÉRA</span></h2>
           </BlurReveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {/* Sans */}
-            <div className="rounded-2xl p-6" style={{ backgroundColor: "rgba(239,68,68,0.05)", border: "1px solid rgba(239,68,68,0.2)" }}>
-              <StaggerContainer className="space-y-3" staggerDelay={0.08}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto">
+            <div className="rounded-2xl p-4 md:p-6" style={{ backgroundColor: "rgba(239,68,68,0.05)", border: "1px solid rgba(239,68,68,0.2)" }}>
+              <StaggerContainer className="space-y-2 md:space-y-3" staggerDelay={0.08}>
                 {sansItems.map((item, i) => (
-                  <motion.div key={i} variants={itemVariants} className="flex items-start gap-3">
-                    <XCircle className="text-destructive flex-shrink-0 mt-0.5" size={18} />
-                    <span className="text-sm text-foreground">{item}</span>
+                  <motion.div key={i} variants={itemVariants} className="flex items-start gap-2 md:gap-3">
+                    <XCircle className="text-destructive flex-shrink-0 mt-0.5" size={16} />
+                    <span className="text-xs md:text-sm text-foreground">{item}</span>
                   </motion.div>
                 ))}
               </StaggerContainer>
             </div>
-            {/* Avec */}
-            <div className="rounded-2xl p-6" style={{ backgroundColor: "rgba(29,185,84,0.05)", border: "1px solid rgba(29,185,84,0.2)" }}>
-              <StaggerContainer className="space-y-3" staggerDelay={0.08}>
+            <div className="rounded-2xl p-4 md:p-6" style={{ backgroundColor: "rgba(29,185,84,0.05)", border: "1px solid rgba(29,185,84,0.2)" }}>
+              <StaggerContainer className="space-y-2 md:space-y-3" staggerDelay={0.08}>
                 {avecItems.map((item, i) => (
-                  <motion.div key={i} variants={itemVariants} className="flex items-start gap-3">
-                    <CheckCircle className="text-primary flex-shrink-0 mt-0.5" size={18} />
-                    <span className="text-sm text-foreground">{item}</span>
+                  <motion.div key={i} variants={itemVariants} className="flex items-start gap-2 md:gap-3">
+                    <CheckCircle className="text-primary flex-shrink-0 mt-0.5" size={16} />
+                    <span className="text-xs md:text-sm text-foreground">{item}</span>
                   </motion.div>
                 ))}
               </StaggerContainer>
@@ -135,108 +134,92 @@ const PourquoiPage = () => {
         </div>
       </section>
 
-      {/* SIMULATEUR ROI */}
-      <section className="py-[100px]" style={{ backgroundColor: "#0d130d" }}>
-        <div className="section-container">
-          <BlurReveal className="text-center mb-12">
-            <h2 className="heading-display text-2xl md:text-4xl mb-3">
-              ESTIMEZ CE QUE VOUS PERDEZ <span className="text-primary">SANS SITE</span>
-            </h2>
-            <p className="font-dm text-muted-foreground">Renseignez votre activité pour une estimation personnalisée.</p>
+      <GradientDivider color="rgba(234,179,8,0.2)" />
+
+      {/* ROI SIMULATOR */}
+      <section className="relative py-16 md:py-[100px]">
+        <div className="section-container relative z-10">
+          <BlurReveal className="text-center mb-8 md:mb-12">
+            <h2 className="heading-display text-xl md:text-4xl mb-2">ESTIMEZ CE QUE VOUS PERDEZ <span className="text-primary">SANS SITE</span></h2>
+            <p className="font-dm text-xs md:text-base text-muted-foreground">Renseignez votre activité pour une estimation personnalisée.</p>
           </BlurReveal>
-
           <ScaleSection>
-            <div className="max-w-[680px] mx-auto rounded-2xl p-8 md:p-10" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
-              {/* Inputs */}
-              <div className="space-y-6 mb-8">
-                <div>
-                  <label className="block font-display font-bold text-foreground text-sm mb-2">Votre secteur</label>
-                  <select
-                    value={secteur}
-                    onChange={(e) => setSecteur(e.target.value)}
-                    className="w-full rounded-lg p-3 text-sm bg-background border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-                  >
-                    {Object.keys(secteurs).map((s) => <option key={s} value={s}>{s}</option>)}
-                  </select>
-                </div>
-                <div>
-                  <label className="block font-display font-bold text-foreground text-sm mb-2">Votre zone</label>
-                  <select
-                    value={zone}
-                    onChange={(e) => setZone(e.target.value)}
-                    className="w-full rounded-lg p-3 text-sm bg-background border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-                  >
-                    {Object.keys(zones).map((z) => <option key={z} value={z}>{z}</option>)}
-                  </select>
-                </div>
-                <div>
-                  <div className="flex justify-between items-center mb-2">
-                    <label className="font-display font-bold text-foreground text-sm">Valeur moyenne d'un client (€)</label>
-                    <span className="text-primary font-bold text-lg">{valeurClient}€</span>
+            <div className="relative max-w-[680px] mx-auto rounded-2xl">
+              <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
+              <div className="relative z-10 rounded-2xl p-5 md:p-10" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+                <div className="space-y-4 md:space-y-6 mb-6 md:mb-8">
+                  <div>
+                    <label className="block font-display font-bold text-foreground text-xs md:text-sm mb-1.5 md:mb-2">Votre secteur</label>
+                    <select value={secteur} onChange={(e) => setSecteur(e.target.value)} className="w-full rounded-lg p-2.5 md:p-3 text-xs md:text-sm bg-background border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-primary">
+                      {Object.keys(secteurs).map((s) => <option key={s} value={s}>{s}</option>)}
+                    </select>
                   </div>
-                  <input
-                    type="range" min={50} max={3000} step={50} value={valeurClient}
-                    onChange={(e) => setValeurClient(Number(e.target.value))}
-                    className="w-full accent-primary"
-                  />
-                  <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                    <span>50€</span><span>3 000€</span>
+                  <div>
+                    <label className="block font-display font-bold text-foreground text-xs md:text-sm mb-1.5 md:mb-2">Votre zone</label>
+                    <select value={zone} onChange={(e) => setZone(e.target.value)} className="w-full rounded-lg p-2.5 md:p-3 text-xs md:text-sm bg-background border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-primary">
+                      {Object.keys(zones).map((z) => <option key={z} value={z}>{z}</option>)}
+                    </select>
                   </div>
-                </div>
-              </div>
-
-              {/* Results */}
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                {[
-                  { icon: Eye, label: "Visiteurs/mois estimés", value: results.visiteurs },
-                  { icon: Mail, label: "Nouveaux contacts/mois", value: results.leads },
-                  { icon: Euro, label: "CA potentiel gagné/mois", value: results.caMensuel, suffix: "€" },
-                  { icon: BarChart3, label: "ROI estimé sur 1 an", value: results.roi, suffix: "%" },
-                ].map((r, i) => (
-                  <div key={i} className="rounded-xl p-4 text-center" style={{ backgroundColor: "#0d130d", border: "1px solid #1a2e1a" }}>
-                    <r.icon className="text-primary mx-auto mb-2" size={20} />
-                    <div className="text-primary heading-display text-2xl md:text-3xl">
-                      <NumberFlow value={r.value} format={{ style: "decimal" }} transformTiming={{ duration: 400, easing: "ease-out" }} />
-                      {r.suffix && <span>{r.suffix}</span>}
+                  <div>
+                    <div className="flex justify-between items-center mb-1.5 md:mb-2">
+                      <label className="font-display font-bold text-foreground text-xs md:text-sm">Valeur moyenne d'un client (€)</label>
+                      <span className="text-primary font-bold text-sm md:text-lg">{valeurClient}€</span>
                     </div>
-                    <p className="font-dm text-xs text-muted-foreground mt-1">{r.label}</p>
+                    <input type="range" min={50} max={3000} step={50} value={valeurClient} onChange={(e) => setValeurClient(Number(e.target.value))} className="w-full accent-primary" />
+                    <div className="flex justify-between text-[10px] md:text-xs text-muted-foreground mt-1"><span>50€</span><span>3 000€</span></div>
                   </div>
-                ))}
-              </div>
+                </div>
 
-              <p className="text-xs text-muted-foreground mb-6 text-center">
-                *Estimations basées sur des moyennes sectorielles. Les résultats réels varient selon votre activité, votre zone et la qualité de votre site.
-              </p>
+                <div className="grid grid-cols-2 gap-3 md:gap-4 mb-6 md:mb-8">
+                  {[
+                    { icon: Eye, label: "Visiteurs/mois estimés", value: results.visiteurs },
+                    { icon: Mail, label: "Nouveaux contacts/mois", value: results.leads },
+                    { icon: Euro, label: "CA potentiel gagné/mois", value: results.caMensuel, suffix: "€" },
+                    { icon: BarChart3, label: "ROI estimé sur 1 an", value: results.roi, suffix: "%" },
+                  ].map((r, i) => (
+                    <div key={i} className="rounded-xl p-3 md:p-4 text-center" style={{ backgroundColor: "#0d130d", border: "1px solid #1a2e1a" }}>
+                      <r.icon className="text-primary mx-auto mb-1.5 md:mb-2" size={18} />
+                      <div className="text-primary heading-display text-xl md:text-3xl">
+                        <NumberFlow value={r.value} format={{ style: "decimal" }} transformTiming={{ duration: 400, easing: "ease-out" }} />
+                        {r.suffix && <span>{r.suffix}</span>}
+                      </div>
+                      <p className="font-dm text-[9px] md:text-xs text-muted-foreground mt-0.5 md:mt-1">{r.label}</p>
+                    </div>
+                  ))}
+                </div>
 
-              <div className="text-center">
-                <Link to="/contact" className="btn-primary text-base">
-                  Obtenir mon site maintenant <ArrowRight className="ml-2 inline" size={16} />
-                </Link>
+                <p className="text-[10px] md:text-xs text-muted-foreground mb-4 md:mb-6 text-center">
+                  *Estimations basées sur des moyennes sectorielles. Les résultats réels varient selon votre activité, votre zone et la qualité de votre site.
+                </p>
+                <div className="text-center">
+                  <Link to="/contact" className="btn-primary text-xs md:text-base">Obtenir mon site maintenant <ArrowRight className="ml-2 inline" size={16} /></Link>
+                </div>
               </div>
             </div>
           </ScaleSection>
         </div>
       </section>
 
+      <GradientDivider color="rgba(234,179,8,0.2)" />
+
       {/* TÉMOIGNAGES */}
-      <section className="py-[100px]" style={{ backgroundColor: "#0a0f0a" }}>
-        <div className="section-container">
-          <BlurReveal className="text-center mb-14">
-            <h2 className="heading-display text-2xl md:text-4xl">
-              ILS L'ONT FAIT. <span className="text-primary">VOICI LEURS RÉSULTATS.</span>
-            </h2>
+      <section className="relative py-16 md:py-[100px]">
+        <div className="section-container relative z-10">
+          <BlurReveal className="text-center mb-10 md:mb-14">
+            <h2 className="heading-display text-xl md:text-4xl">ILS L'ONT FAIT. <span className="text-primary">VOICI LEURS RÉSULTATS.</span></h2>
           </BlurReveal>
           <ScaleSection>
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.15}>
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6" staggerDelay={0.15}>
               {temoignages.map((t, i) => (
-                <motion.div key={i} variants={itemVariants} className="rounded-xl p-6 card-shimmer" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
-                  <span className="text-3xl mb-3 block">{t.emoji}</span>
-                  <h4 className="font-display font-bold text-foreground mb-2">{t.name}</h4>
-                  <span className="inline-block text-xs font-bold px-3 py-1 rounded-full mb-3 text-primary" style={{ backgroundColor: "rgba(29,185,84,0.12)" }}>
-                    {t.badge}
-                  </span>
-                  <p className="font-dm text-sm mb-3" style={{ color: "rgba(255,255,255,0.6)" }}>"{t.text}"</p>
-                  <span className="text-xs text-muted-foreground italic">*Résultat fictif illustratif</span>
+                <motion.div key={i} variants={itemVariants} whileHover={{ y: -6 }} className="relative rounded-xl card-shimmer">
+                  <GlowingEffect spread={25} glow proximity={40} inactiveZone={0.01} borderWidth={2} disabled={false} />
+                  <div className="relative z-10 rounded-xl p-5 md:p-6" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+                    <span className="text-2xl md:text-3xl mb-2 block">{t.emoji}</span>
+                    <h4 className="font-display font-bold text-foreground text-sm md:text-base mb-1 md:mb-2">{t.name}</h4>
+                    <span className="inline-block text-[10px] md:text-xs font-bold px-2 md:px-3 py-0.5 md:py-1 rounded-full mb-2 md:mb-3 text-primary" style={{ backgroundColor: "rgba(29,185,84,0.12)" }}>{t.badge}</span>
+                    <p className="font-dm text-xs md:text-sm mb-2" style={{ color: "rgba(255,255,255,0.6)" }}>"{t.text}"</p>
+                    <span className="text-[9px] md:text-xs text-muted-foreground italic">*Résultat fictif illustratif</span>
+                  </div>
                 </motion.div>
               ))}
             </StaggerContainer>
@@ -245,28 +228,15 @@ const PourquoiPage = () => {
       </section>
 
       {/* CTA */}
-      <section className="relative py-[120px] px-6 overflow-hidden" style={{ background: "linear-gradient(160deg, #0d1f13 0%, #0a0f0a 60%)", borderTop: "1px solid #1a2e1a" }}>
+      <section className="relative py-20 md:py-[120px] px-4 md:px-6 overflow-hidden" style={{ background: "linear-gradient(160deg, #1a1508 0%, #0a0f0a 60%)", borderTop: "1px solid rgba(234,179,8,0.15)" }}>
+        <FloatingOrb color="rgba(234,179,8,0.05)" size={400} x="50%" y="30%" />
         <div className="section-container text-center relative z-10">
-          <BlurReveal>
-            <h2 className="heading-display mb-6" style={{ fontSize: "clamp(32px, 4vw, 56px)" }}>
-              NE LAISSEZ PLUS VOS CLIENTS<br /><span className="text-primary">PARTIR CHEZ VOS CONCURRENTS</span>
-            </h2>
-          </BlurReveal>
-          <BlurReveal delay={0.15}>
-            <p className="font-dm text-lg mb-10 mx-auto max-w-lg" style={{ color: "rgba(255,255,255,0.6)" }}>
-              Chaque jour sans site, c'est du chiffre d'affaires perdu. ALTÉRA vous livre votre site en 14 jours.
-            </p>
-          </BlurReveal>
-          <BlurReveal delay={0.3}>
-            <Link to="/contact" className="btn-primary text-lg px-10 py-[18px]">
-              Obtenir mon site maintenant <ArrowRight className="ml-2 inline" size={18} />
-            </Link>
-          </BlurReveal>
+          <BlurReveal><h2 className="heading-display mb-4 md:mb-6" style={{ fontSize: "clamp(24px, 4vw, 56px)" }}>NE LAISSEZ PLUS VOS CLIENTS<br /><span className="text-primary">PARTIR CHEZ VOS CONCURRENTS</span></h2></BlurReveal>
+          <BlurReveal delay={0.15}><p className="font-dm text-sm md:text-lg mb-8 md:mb-10 mx-auto max-w-lg" style={{ color: "rgba(255,255,255,0.6)" }}>Chaque jour sans site, c'est du chiffre d'affaires perdu. ALTÉRA vous livre votre site en 14 jours.</p></BlurReveal>
+          <BlurReveal delay={0.3}><Link to="/contact" className="btn-primary text-sm md:text-lg px-8 md:px-10 py-3 md:py-[18px]">Obtenir mon site maintenant <ArrowRight className="ml-2 inline" size={18} /></Link></BlurReveal>
           <BlurReveal delay={0.45}>
-            <div className="flex flex-wrap justify-center gap-6 mt-8 font-dm text-[13px]" style={{ color: "rgba(255,255,255,0.4)" }}>
-              <span>✓ Devis gratuit sous 24h</span>
-              <span>✓ 14 jours de livraison</span>
-              <span>✓ 497€ tout inclus</span>
+            <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-6 md:mt-8 font-dm text-[11px] md:text-[13px]" style={{ color: "rgba(255,255,255,0.4)" }}>
+              <span>✓ Devis gratuit sous 24h</span><span>✓ 14 jours de livraison</span><span>✓ 497€ tout inclus</span>
             </div>
           </BlurReveal>
         </div>
