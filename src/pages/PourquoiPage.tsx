@@ -1,12 +1,13 @@
 import { useState, useMemo } from "react";
 import { motion, useInView } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { XCircle, CheckCircle, TrendingUp, Users, Search, Clock, Zap, Shield, Eye, Mail, BarChart3, ArrowRight } from "lucide-react";
 import { FeatureCard } from "@/components/ui/grid-feature-cards";
 import { CtaSection } from "@/components/ui/cta-section";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { NumberTicker } from "@/components/ui/number-ticker";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import TextSplit from "@/components/animations/TextSplit";
