@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, MapPin, Phone, Instagram, Facebook } from "lucide-react";
-import logoAltera from "@/assets/logo-altera.png";
+import AlteraLogo from "@/components/AlteraLogo";
 import BlurReveal from "@/components/animations/BlurReveal";
 
 const services = [
