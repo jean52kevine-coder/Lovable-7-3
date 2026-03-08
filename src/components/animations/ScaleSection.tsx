@@ -1,5 +1,5 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ReactNode, useRef } from "react";
+import { motion } from "framer-motion";
+import { ReactNode } from "react";
 
 interface ScaleSectionProps {
   children: ReactNode;
@@ -7,17 +7,15 @@ interface ScaleSectionProps {
 }
 
 const ScaleSection = ({ children, className = "" }: ScaleSectionProps) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "start 0.3"],
-  });
-
-  const scale = useTransform(scrollYProgress, [0, 1], [0.94, 1]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
-
   return (
-    <motion.div ref={ref} style={{ scale, opacity }} className={className}>
+    <motion.div
+      initial={{ scale: 0.94, opacity: 0 }}
+      whileInView={{ scale: 1, opacity: 1 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className={className}
+      style={{ willChange: "transform, opacity" }}
+    >
       {children}
     </motion.div>
   );
