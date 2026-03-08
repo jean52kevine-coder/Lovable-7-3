@@ -68,6 +68,7 @@ export function PricingWithChart() {
               </ul>
             </div>
           </div>
+          </div>
         </GlowingShadow>
 
         {/* Site E-commerce - Hero card with chart */}
