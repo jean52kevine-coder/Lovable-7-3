@@ -16,6 +16,8 @@ import { StaggerContainer, itemVariants } from "@/components/animations/StaggerC
 import NumberFlow from "@number-flow/react";
 import heroPourquoi from "@/assets/hero-pourquoi.jpg";
 
+const statIllustrations = [StatMobileSearch, StatScreenBrowse, StatBarsGrowing, StatClock];
+
 const stats = [
   { value: "97%", numValue: 97, suffix: "%", label: "des consommateurs utilisent internet pour trouver un professionnel local" },
   { value: "75%", numValue: 75, suffix: "%", label: "des clients vérifient un site web avant de contacter une entreprise" },
