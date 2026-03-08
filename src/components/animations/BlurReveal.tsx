@@ -11,10 +11,10 @@ interface BlurRevealProps {
 }
 
 const directionMap = {
-  up: { y: 40 },
-  down: { y: -40 },
-  left: { x: 60 },
-  right: { x: -60 },
+  up: { y: 24 },
+  down: { y: -24 },
+  left: { x: 36 },
+  right: { x: -36 },
 };
 
 const BlurReveal = ({
