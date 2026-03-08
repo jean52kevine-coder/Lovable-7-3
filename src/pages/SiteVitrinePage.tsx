@@ -6,6 +6,7 @@ import Layout from "@/components/Layout";
 import { Globe, Check, Users, Briefcase, Store, ChefHat, Dumbbell } from "lucide-react";
 import { CtaSection } from "@/components/ui/cta-section";
 import { BorderBeam } from "@/components/ui/border-beam";
+import { VitrineHeroIllustration } from "@/components/illustrations/SvgIllustrations";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
 import BlurReveal from "@/components/animations/BlurReveal";
