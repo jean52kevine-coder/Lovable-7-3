@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 const testimonials = [
   { text: "Mon agence a généré 40% de nouveaux clients. Professionnalisme exemplaire.", name: "Thomas B.", role: "Artisan plombier, Lyon" },
@@ -13,18 +14,21 @@ const testimonials = [
 const doubled = [...testimonials, ...testimonials];
 
 const Card = ({ t }: { t: typeof testimonials[0] }) => (
-  <div
-    className="flex-shrink-0 rounded-xl p-5 min-w-[300px] max-w-[340px]"
-    style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}
-  >
-    <div className="flex gap-0.5 mb-3">
-      {Array(5).fill(0).map((_, i) => (
-        <Star key={i} className="text-primary fill-primary" size={14} />
-      ))}
+  <div className="relative flex-shrink-0 rounded-xl min-w-[300px] max-w-[340px]">
+    <GlowingEffect spread={30} glow proximity={50} inactiveZone={0.01} borderWidth={2} disabled={false} />
+    <div
+      className="relative z-10 rounded-xl p-5"
+      style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}
+    >
+      <div className="flex gap-0.5 mb-3">
+        {Array(5).fill(0).map((_, i) => (
+          <Star key={i} className="text-primary fill-primary" size={14} />
+        ))}
+      </div>
+      <p className="font-dm text-sm text-white mb-4 italic">"{t.text}"</p>
+      <p className="font-dm font-semibold text-sm text-white">{t.name}</p>
+      <p className="font-dm text-[13px]" style={{ color: "rgba(255,255,255,0.45)" }}>{t.role}</p>
     </div>
-    <p className="font-dm text-sm text-white mb-4 italic">"{t.text}"</p>
-    <p className="font-dm font-semibold text-sm text-white">{t.name}</p>
-    <p className="font-dm text-[13px]" style={{ color: "rgba(255,255,255,0.45)" }}>{t.role}</p>
   </div>
 );
 
@@ -43,7 +47,6 @@ const TestimonialsCarousel = () => (
       </motion.h2>
     </div>
 
-    {/* Row 1 - left scroll */}
     <div
       className="relative mb-6"
       style={{
@@ -59,7 +62,6 @@ const TestimonialsCarousel = () => (
       </div>
     </div>
 
-    {/* Row 2 - right scroll */}
     <div
       className="relative"
       style={{

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 const steps = [
   {
@@ -54,12 +55,10 @@ const StepperSection = () => {
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          {/* Background line */}
           <div
             className="absolute top-6 left-[12.5%] right-[12.5%] h-[2px]"
             style={{ backgroundColor: "#1a2e1a" }}
           />
-          {/* Progress line */}
           <motion.div
             className="absolute top-6 left-[12.5%] h-[2px]"
             style={{ backgroundColor: "hsl(145, 63%, 42%)", transformOrigin: "left" }}
@@ -123,16 +122,19 @@ const StepperSection = () => {
             transition={{ duration: 0.35 }}
             className="overflow-hidden"
           >
-            <div
-              className="rounded-xl p-6 font-dm"
-              style={{
-                backgroundColor: "#111811",
-                borderLeft: "3px solid hsl(145, 63%, 42%)",
-              }}
-            >
-              <span className="text-2xl mb-2 block">{steps[active].icon}</span>
-              <h3 className="font-display font-black text-lg text-white mb-2">{steps[active].title}</h3>
-              <p style={{ color: "rgba(255,255,255,0.6)" }}>{steps[active].detail}</p>
+            <div className="relative rounded-xl">
+              <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
+              <div
+                className="relative z-10 rounded-xl p-6 font-dm"
+                style={{
+                  backgroundColor: "#111811",
+                  borderLeft: "3px solid hsl(145, 63%, 42%)",
+                }}
+              >
+                <span className="text-2xl mb-2 block">{steps[active].icon}</span>
+                <h3 className="font-display font-black text-lg text-white mb-2">{steps[active].title}</h3>
+                <p style={{ color: "rgba(255,255,255,0.6)" }}>{steps[active].detail}</p>
+              </div>
             </div>
           </motion.div>
         </AnimatePresence>
