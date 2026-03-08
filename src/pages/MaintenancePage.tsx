@@ -11,7 +11,7 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
-import heroMaintenance from "@/assets/hero-maintenance.jpg";
+import heroMaintenanceVideo from "@/assets/videos/hero-maintenance.mp4";
 
 const dangers = [
   { title: "Failles de sécurité", desc: "Un plugin non mis à jour, c'est une porte ouverte pour les hackers. Vos données et celles de vos clients sont en danger." },
