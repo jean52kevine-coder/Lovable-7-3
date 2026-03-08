@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Palette, Clock, HeadphonesIcon, Ban, Sparkles, Shield } from "lucide-react";
+import { Palette, Clock, HeadphonesIcon, Ban, Sparkles, Shield, BadgeEuro, AlertTriangle, FileWarning, RefreshCw, BookOpen, BadgeCheck } from "lucide-react";
 import BlurReveal from "@/components/animations/BlurReveal";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 
@@ -7,12 +7,18 @@ const others = [
   { icon: Ban, label: "Templates génériques", sub: "Le même site que tout le monde." },
   { icon: Clock, label: "Délais de 2-3 mois", sub: "Et souvent repoussés." },
   { icon: HeadphonesIcon, label: "Chatbot impersonnel", sub: "Impossible de parler à quelqu'un." },
+  { icon: AlertTriangle, label: "Devis à 2000-5000€", sub: "Tarifs opaques et surprises à la facture." },
+  { icon: FileWarning, label: "Aucune garantie", sub: "Pas de suivi après livraison." },
+  { icon: RefreshCw, label: "Modifications payantes", sub: "Chaque retouche est facturée en plus." },
 ];
 
 const altera = [
   { icon: Palette, label: "Design 100% sur-mesure", sub: "Aucun template. Unique pour vous." },
   { icon: Sparkles, label: "Livré en 14 jours", sub: "En ligne pendant que d'autres attendent." },
   { icon: Shield, label: "Un humain dédié", sub: "Réponse dans la journée, toujours." },
+  { icon: BadgeEuro, label: "Prix fixe dès 497€", sub: "Zéro surprise, tout est inclus dans le tarif." },
+  { icon: BadgeCheck, label: "Satisfaction garantie", sub: "Révisions illimitées jusqu'à validation." },
+  { icon: BookOpen, label: "Formation offerte", sub: "Vous êtes autonome dès le premier jour." },
 ];
 
 const DistinguishSection = () => (
