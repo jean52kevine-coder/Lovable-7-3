@@ -42,20 +42,26 @@ const RotatingWord = () => {
     return () => clearInterval(id);
   }, []);
 
+  // Find the longest word for stable width
+  const longestWord = WORDS.reduce((a, b) => (a.length > b.length ? a : b));
+
   return (
-    <span className="inline-block relative overflow-hidden h-[1.2em] align-bottom" style={{ minWidth: "200px" }}>
+    <span className="inline-flex justify-center relative overflow-hidden" style={{ height: "1.15em" }}>
+      {/* Invisible longest word to reserve stable width */}
+      <span className="invisible whitespace-nowrap">{longestWord}.</span>
       {WORDS.map((word, i) => (
         <motion.span
           key={word}
-          className="absolute left-0 text-primary"
-          initial={{ clipPath: "inset(0 0 100% 0)", filter: "blur(4px)" }}
+          className="absolute inset-0 flex items-center justify-center text-primary whitespace-nowrap"
+          initial={false}
           animate={{
-            clipPath: i === index ? "inset(0 0 0% 0)" : "inset(100% 0 0% 0)",
-            filter: i === index ? "blur(0px)" : "blur(4px)",
+            y: i === index ? "0%" : i > index || (index === WORDS.length - 1 && i === 0) ? "110%" : "-110%",
+            opacity: i === index ? 1 : 0,
+            filter: i === index ? "blur(0px)" : "blur(6px)",
           }}
           transition={{
-            duration: i === index ? 0.5 : 0.35,
-            ease: i === index ? [0.25, 0.4, 0.25, 1] : "easeIn",
+            duration: 0.45,
+            ease: [0.25, 0.4, 0.25, 1],
           }}
         >
           {word}.
