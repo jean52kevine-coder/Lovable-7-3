@@ -343,6 +343,13 @@
   padding: calc(var(--card-width) / 8);
 }
 
+.glow-flex .glow-content {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  background: transparent;
+}
+
 .glow-content span {
   display: inline-block;
   padding: 0.25em;
