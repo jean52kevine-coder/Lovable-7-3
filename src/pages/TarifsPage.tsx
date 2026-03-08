@@ -11,42 +11,6 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
 
-const plans = [
-  {
-    icon: Globe, name: "Site Vitrine", price: "497",
-    features: ["Design sur-mesure", "Jusqu'à 5 pages", "Responsive mobile", "SEO optimisé", "Formulaire de contact", "Hébergement 1 an inclus", "Livraison 14 jours"],
-    description: "Idéal pour artisans et indépendants", href: "/services/site-vitrine", buttonText: "Choisir Vitrine →", isPopular: false
-  },
-  {
-    icon: ShoppingCart, name: "Site E-commerce", price: "747",
-    features: ["Boutique complète", "Jusqu'à 50 produits", "Paiement sécurisé Stripe", "Gestion des stocks", "Responsive mobile", "SEO avancé", "Formation incluse"],
-    description: "Pour vendre en ligne efficacement", href: "/services/site-ecommerce", buttonText: "Choisir E-commerce →", isPopular: true
-  },
-  {
-    icon: Shield, name: "Maintenance", price: "39", suffix: "€/mois",
-    features: ["Mises à jour régulières", "Sauvegardes automatiques", "Support réactif", "Monitoring 24/7", "Rapport de suivi"],
-    subFormulas: "Essentielle 39€ · Pro 49€ · Premium 59€", badge: "Sans engagement",
-    description: "Gardez votre site performant", href: "/services/maintenance", buttonText: "Choisir un forfait →", isPopular: false
-  }
-];
-
-const maintenancePlans = [
-  { name: "Essentielle", price: "39", period: "/mois", description: "Maintenance de base", buttonText: "Souscrire", href: "/contact", isPopular: false },
-  { name: "Professionnelle", price: "49", period: "/mois", description: "Notre recommandation", buttonText: "Souscrire", href: "/contact", isPopular: true },
-  { name: "Premium", price: "59", period: "/mois", description: "Tranquillité totale", buttonText: "Souscrire", href: "/contact", isPopular: false }
-];
-
-const maintenanceFeatures = [
-  { name: "Mises à jour de sécurité", essential: true, professional: true, premium: true },
-  { name: "Sauvegardes", essential: "Hebdo", professional: "Quotidienne", premium: "Temps réel" },
-  { name: "Support", essential: "Email", professional: "Email & Tel", premium: "Prioritaire 7j/7" },
-  { name: "Modifications mineures", essential: false, professional: "2/mois", premium: "Illimitées" },
-  { name: "Monitoring 24/7", essential: false, professional: true, premium: true },
-  { name: "Rapport de performance", essential: false, professional: "Mensuel", premium: "Hebdo" },
-  { name: "Optimisation SEO", essential: false, professional: false, premium: true },
-  { name: "Temps de réponse", essential: "48h", professional: "24h", premium: "4h" }
-];
-
 const faqs = [
   { q: "Y a-t-il des frais récurrents après livraison ?", a: "L'hébergement est offert la première année. À partir de la 2e année : environ 80-120€/an. Notre maintenance l'inclut." },
   { q: "Puis-je payer en plusieurs fois ?", a: "Oui. Vitrine en 2x, E-commerce en 3x, sans frais ni intérêts." },
