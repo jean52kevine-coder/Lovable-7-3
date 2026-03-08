@@ -2,6 +2,7 @@ import { useRef, useEffect, useState, useCallback, useMemo } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Spotlight } from "@/components/ui/spotlight";
 
 const WORDS = ["commercial", "vendeur", "atout", "levier", "avantage"];
 
@@ -114,21 +115,7 @@ const HeroSection = () => {
   const revealOpacity = useTransform(scrollYProgress, [0.65, 0.85], [0, 1]);
   const revealY = useTransform(scrollYProgress, [0.65, 0.85], [40, 0]);
 
-  // Mouse spotlight
-  const handleMouse = useCallback((e: MouseEvent) => {
-    const el = stickyRef.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    el.style.setProperty("--mx", `${e.clientX - rect.left}px`);
-    el.style.setProperty("--my", `${e.clientY - rect.top}px`);
-  }, []);
-
-  useEffect(() => {
-    const el = stickyRef.current;
-    if (!el) return;
-    el.addEventListener("mousemove", handleMouse);
-    return () => el.removeEventListener("mousemove", handleMouse);
-  }, [handleMouse]);
+  // Mouse spotlight now handled by Spotlight component
 
   const stats = useMemo(() => [
     { value: 50, suffix: "+", label: "sites livrés" },
@@ -208,13 +195,10 @@ const HeroSection = () => {
           }}
         />
 
-        {/* Mouse spotlight */}
-        <div
-          className="absolute inset-0 pointer-events-none z-[1]"
-          style={{
-            background:
-              "radial-gradient(400px circle at var(--mx, 50%) var(--my, 50%), rgba(29,185,84,0.05), transparent 70%)",
-          }}
+        {/* Spotlight 21st.dev */}
+        <Spotlight
+          fill="rgba(29,185,84,0.08)"
+          fillSecondary="rgba(29,185,84,0.04)"
         />
 
         {/* Vignette */}
