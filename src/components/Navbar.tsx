@@ -32,9 +32,8 @@ const Navbar = () => {
         }`}
       >
         <div className="section-container flex items-center justify-between h-16 md:h-20">
-          <Link to="/" className="flex items-center gap-2">
-            <img src={logoAltera} alt="ALTÉRA" className="h-8 w-8" />
-            <span className="heading-display text-2xl md:text-3xl text-primary">ALTÉRA</span>
+          <Link to="/" className="flex items-center">
+            <AlteraLogo size="md" />
           </Link>
 
           {/* Desktop CTA */}
