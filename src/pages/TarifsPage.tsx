@@ -1,10 +1,11 @@
 import Layout from "@/components/Layout";
 import { Pricing } from "@/components/ui/pricing-premium";
+import { PricingComparison } from "@/components/ui/pricing-comparison";
 import { CtaSection } from "@/components/ui/cta-section";
 import BlurReveal from "@/components/animations/BlurReveal";
 import TextSplit from "@/components/animations/TextSplit";
 
-const plans = [
+const creationPlans = [
   {
     name: "Site Vitrine",
     price: "497",
@@ -68,13 +69,7 @@ const maintenancePlans = [
   {
     name: "Essentielle",
     price: "39",
-    yearlyPrice: "35",
     period: "/mois",
-    features: [
-      "Mises à jour mensuelles",
-      "Sauvegarde hebdomadaire",
-      "Support email",
-    ],
     description: "Maintenance de base",
     buttonText: "Souscrire",
     href: "/contact",
@@ -83,14 +78,7 @@ const maintenancePlans = [
   {
     name: "Professionnelle",
     price: "49",
-    yearlyPrice: "44",
     period: "/mois",
-    features: [
-      "Mises à jour bi-mensuelles",
-      "Sauvegarde quotidienne",
-      "Support email & téléphone",
-      "Modifications mineures",
-    ],
     description: "Notre recommandation",
     buttonText: "Souscrire",
     href: "/contact",
@@ -99,14 +87,7 @@ const maintenancePlans = [
   {
     name: "Premium",
     price: "59",
-    yearlyPrice: "53",
     period: "/mois",
-    features: [
-      "Mises à jour hebdomadaires",
-      "Sauvegarde temps réel",
-      "Support prioritaire 7j/7",
-      "Modifications illimitées",
-    ],
     description: "Tranquillité totale",
     buttonText: "Souscrire",
     href: "/contact",
@@ -114,8 +95,20 @@ const maintenancePlans = [
   },
 ];
 
+const maintenanceFeatures = [
+  { name: "Mises à jour de sécurité", essential: true, professional: true, premium: true },
+  { name: "Sauvegardes", essential: "Hebdo", professional: "Quotidienne", premium: "Temps réel" },
+  { name: "Support", essential: "Email", professional: "Email & Tel", premium: "Prioritaire 7j/7" },
+  { name: "Modifications mineures", essential: false, professional: "2/mois", premium: "Illimitées" },
+  { name: "Monitoring 24/7", essential: false, professional: true, premium: true },
+  { name: "Rapport de performance", essential: false, professional: "Mensuel", premium: "Hebdo" },
+  { name: "Optimisation SEO", essential: false, professional: false, premium: true },
+  { name: "Temps de réponse", essential: "48h", professional: "24h", premium: "4h" },
+];
+
 const TarifsPage = () => (
   <Layout>
+    {/* Hero */}
     <section className="py-24 md:py-32" style={{ backgroundColor: "hsl(var(--hero-bg))" }}>
       <div className="section-container text-center">
         <TextSplit className="heading-display text-4xl md:text-6xl mb-4" as="h1">NOS TARIFS</TextSplit>
@@ -127,20 +120,23 @@ const TarifsPage = () => (
       </div>
     </section>
 
+    {/* Creation Plans - Premium Cards */}
     <section className="py-[80px]" style={{ backgroundColor: "hsl(var(--section-alt-bg))" }}>
       <div className="section-container">
         <Pricing
-          plans={plans}
+          plans={creationPlans}
           title="Création de Site Web"
           description="Choisissez la formule adaptée à votre projet. Prix unique, sans abonnement caché."
         />
       </div>
     </section>
 
+    {/* Maintenance Plans - Comparison Table */}
     <section className="py-[80px]" style={{ backgroundColor: "hsl(var(--hero-bg))" }}>
       <div className="section-container">
-        <Pricing
+        <PricingComparison
           plans={maintenancePlans}
+          features={maintenanceFeatures}
           title="Formules Maintenance"
           description="Gardez votre site à jour, sécurisé et performant. Sans engagement."
         />
