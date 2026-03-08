@@ -14,6 +14,7 @@ import MaintenancePage from "./pages/MaintenancePage";
 import TarifsPage from "./pages/TarifsPage";
 import PourquoiPage from "./pages/PourquoiPage";
 import ContactPage from "./pages/ContactPage";
+import SeoGeneratorPage from "./pages/SeoGeneratorPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
