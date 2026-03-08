@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
+import RotatingWords from "@/components/RotatingWords";
 import { Globe, ShoppingCart, Wrench, ArrowRight, Zap, Shield, Palette, Clock, HeadphonesIcon, TrendingUp } from "lucide-react";
 import { FeatureCard } from "@/components/ui/grid-feature-cards";
 import { CtaSection } from "@/components/ui/cta-section";
@@ -56,7 +57,7 @@ const ServicesPage = () => (
       <img src={heroServices} alt="" className="absolute inset-0 w-full h-full object-cover opacity-20" />
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
       <motion.div className="section-container text-center relative z-10" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-        <h1 className="heading-display text-4xl md:text-6xl mb-6">NOS <span className="text-primary">SERVICES</span></h1>
+        <h1 className="heading-display text-4xl md:text-6xl mb-6">NOS <RotatingWords words={["SERVICES", "SOLUTIONS", "OFFRES", "EXPERTISES"]} /></h1>
         <p className="font-dm text-lg max-w-2xl mx-auto" style={{ color: "rgba(255,255,255,0.6)" }}>Des solutions web complètes, adaptées aux artisans, commerçants et PME locales.</p>
       </motion.div>
     </section>
