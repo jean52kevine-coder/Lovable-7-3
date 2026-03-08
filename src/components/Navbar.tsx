@@ -32,15 +32,9 @@ const Navbar = () => {
   return (
     <>
       {/* Top bar with logo only */}
-      <nav
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-          scrolled
-            ? "bg-background/60 backdrop-blur-md border-b border-border/50"
-            : "bg-transparent"
-        }`}
-      >
+      <nav className="fixed top-0 left-0 right-0 z-40">
         <div className="section-container flex items-center justify-between h-16 md:h-20">
-          <Link to="/" className="flex items-center h-full py-1">
+          <Link to="/" className="flex items-center h-full py-1 transition-transform duration-300 hover:scale-105">
             <AlteraLogo size="md" className="max-h-[3.5rem] md:max-h-[4.5rem]" />
           </Link>
 
