@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
 import { Wrench, Check, AlertTriangle } from "lucide-react";
 import { BorderBeam } from "@/components/ui/border-beam";
+import { MaintenanceHeroIllustration } from "@/components/illustrations/SvgIllustrations";
 import { CtaSection } from "@/components/ui/cta-section";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import BlurReveal from "@/components/animations/BlurReveal";
