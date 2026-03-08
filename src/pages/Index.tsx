@@ -16,7 +16,7 @@ const Index = () => (
     <DistinguishSection />
     <ProcessSteps />
     <PricingCards />
-    <TrustBanner />
+    <TestimonialsSection />
     <CtaBlock />
   </Layout>
 );
