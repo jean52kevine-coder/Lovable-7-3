@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, Palette, Code2, Rocket } from "lucide-react";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 
@@ -75,7 +76,7 @@ const ProcessSteps = () => {
             ))}
           </div>
 
-          {/* Detail panel */}
+          {/* Detail panel with GlowingEffect */}
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
@@ -83,7 +84,9 @@ const ProcessSteps = () => {
               animate={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
               exit={{ opacity: 0, y: -10, filter: "blur(4px)", scale: 0.98 }}
               transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
+              className="relative rounded-xl"
             >
+              <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
               <div
                 className="relative z-10 rounded-xl p-6 font-dm"
                 style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))", borderLeftWidth: "3px", borderLeftColor: "hsl(var(--primary))" }}
