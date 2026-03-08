@@ -38,31 +38,37 @@ const StepperSection = () => {
               transition={{ duration: 0.4 }}
             />
 
-            {steps.map((s, i) => (
-              <button
-                key={i}
-                onClick={() => setActive(i)}
-                className="relative z-10 flex flex-col items-center w-1/4 cursor-pointer group"
-              >
-                <motion.div
-                  className="font-display font-black mb-3"
-                  animate={{
-                    color: i === active ? "hsl(145, 63%, 42%)" : "rgba(255,255,255,0.2)",
-                    scale: i === active ? 1.1 : 1,
-                  }}
-                  transition={{ duration: 0.3 }}
-                  style={{ fontSize: "clamp(36px, 4vw, 60px)" }}
+            {steps.map((s, i) => {
+              const Icon = stepIcons[i];
+              return (
+                <button
+                  key={i}
+                  onClick={() => setActive(i)}
+                  className="relative z-10 flex flex-col items-center w-1/4 cursor-pointer group"
                 >
-                  {s.num}
-                </motion.div>
-                <span
-                  className="text-sm font-dm text-center font-medium"
-                  style={{ color: i === active ? "#fff" : "rgba(255,255,255,0.45)" }}
-                >
-                  {s.title}
-                </span>
-              </button>
-            ))}
+                  <div className="mb-2">
+                    <Icon />
+                  </div>
+                  <motion.div
+                    className="font-display font-black mb-1"
+                    animate={{
+                      color: i === active ? "hsl(145, 63%, 42%)" : "rgba(255,255,255,0.2)",
+                      scale: i === active ? 1.1 : 1,
+                    }}
+                    transition={{ duration: 0.3 }}
+                    style={{ fontSize: "clamp(28px, 3vw, 44px)" }}
+                  >
+                    {s.num}
+                  </motion.div>
+                  <span
+                    className="text-sm font-dm text-center font-medium"
+                    style={{ color: i === active ? "#fff" : "rgba(255,255,255,0.45)" }}
+                  >
+                    {s.title}
+                  </span>
+                </button>
+              );
+            })}
           </BlurReveal>
 
           {/* Mobile vertical stepper */}
