@@ -191,8 +191,9 @@ const HeroSection = () => {
           </motion.h1>
 
           {/* Rotating word */}
-          <motion.p variants={blurUp(0.2)} className="heading-display mb-6" style={{ fontSize: "clamp(24px, 3.5vw, 40px)" }}>
-            Votre meilleur <RotatingWord />
+          <motion.p variants={blurUp(0.2)} className="heading-display mb-6 flex items-center justify-center gap-[0.3em] flex-wrap" style={{ fontSize: "clamp(24px, 3.5vw, 40px)" }}>
+            <span>Votre meilleur</span>
+            <RotatingWord />
           </motion.p>
 
           {/* Subtitle */}
