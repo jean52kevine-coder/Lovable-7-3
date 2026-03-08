@@ -13,8 +13,8 @@ const ScaleSection = ({ children, className = "" }: ScaleSectionProps) => {
     offset: ["start end", "start 0.3"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 1], [0.88, 1]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.94, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
   return (
     <motion.div ref={ref} style={{ scale, opacity }} className={className}>

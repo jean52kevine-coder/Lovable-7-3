@@ -9,7 +9,6 @@ const navItems = [
   { name: "Services", url: "/services", icon: Briefcase },
   { name: "Tarifs", url: "/tarifs", icon: DollarSign },
   { name: "Pourquoi", url: "/pourquoi-un-site", icon: HelpCircle },
-  { name: "Contact", url: "/contact", icon: Mail },
 ];
 
 const Navbar = () => {

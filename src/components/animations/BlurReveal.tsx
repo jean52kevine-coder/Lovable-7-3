@@ -21,9 +21,9 @@ const BlurReveal = ({
   children,
   className = "",
   delay = 0,
-  duration = 0.8,
+  duration = 0.5,
   direction = "up",
-  blur = 12,
+  blur = 8,
 }: BlurRevealProps) => (
   <motion.div
     className={className}
