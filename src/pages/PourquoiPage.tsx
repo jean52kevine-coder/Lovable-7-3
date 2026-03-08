@@ -8,6 +8,7 @@ import { FeatureCard } from "@/components/ui/grid-feature-cards";
 import { CtaSection } from "@/components/ui/cta-section";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { NumberTicker } from "@/components/ui/number-ticker";
+import { StatMobileSearch, StatScreenBrowse, StatBarsGrowing, StatClock } from "@/components/illustrations/SvgIllustrations";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import TextSplit from "@/components/animations/TextSplit";
