@@ -148,6 +148,8 @@ export function PricingMaintenance() {
                 {plan.description}
               </p>
             </div>
+            </div>
+            </GlowingShadow>
           </motion.div>
         ))}
       </div>
