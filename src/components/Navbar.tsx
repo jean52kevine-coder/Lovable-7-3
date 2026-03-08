@@ -1,19 +1,27 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Home, Briefcase, DollarSign, HelpCircle } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Home, Briefcase, DollarSign, HelpCircle, Globe, ShoppingCart, Wrench } from "lucide-react";
 import { NavBar } from "@/components/ui/tubelight-navbar";
 import AlteraLogo from "@/components/AlteraLogo";
 
 const navItems = [
   { name: "Accueil", url: "/", icon: Home },
-  { name: "Services", url: "/services", icon: Briefcase },
+  { 
+    name: "Services", 
+    url: "/services", 
+    icon: Briefcase,
+    submenu: [
+      { name: "Site Vitrine", url: "/services/site-vitrine", icon: Globe },
+      { name: "E-commerce", url: "/services/site-ecommerce", icon: ShoppingCart },
+      { name: "Maintenance", url: "/services/maintenance", icon: Wrench },
+    ]
+  },
   { name: "Tarifs", url: "/tarifs", icon: DollarSign },
   { name: "Pourquoi", url: "/pourquoi-un-site", icon: HelpCircle },
 ];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
