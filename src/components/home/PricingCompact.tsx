@@ -5,6 +5,7 @@ import { GlowingEffect } from "@/components/ui/glowing-effect";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
+import { cn } from "@/lib/utils";
 
 const plans = [
   {
