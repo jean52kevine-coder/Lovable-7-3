@@ -5,7 +5,7 @@ import WhyUs from "@/components/home/WhyUs";
 import DistinguishSection from "@/components/home/DistinguishSection";
 import ProcessSteps from "@/components/home/ProcessSteps";
 import PricingCards from "@/components/home/PricingCards";
-import TrustBanner from "@/components/home/TrustBanner";
+import TestimonialsSection from "@/components/home/TestimonialsSection";
 import CtaBlock from "@/components/home/CtaBlock";
 
 const Index = () => (
@@ -16,7 +16,7 @@ const Index = () => (
     <DistinguishSection />
     <ProcessSteps />
     <PricingCards />
-    <TrustBanner />
+    <TestimonialsSection />
     <CtaBlock />
   </Layout>
 );
