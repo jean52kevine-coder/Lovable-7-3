@@ -77,6 +77,10 @@ const ServicesGrid = () => (
                   backdropFilter: "blur(10px)",
                 }}
               >
+                {/* Mockup illustration */}
+                <div className="mb-4 rounded-lg overflow-hidden" style={{ backgroundColor: "#0d130d" }}>
+                  <c.Mockup />
+                </div>
                 {c.popular && (
                   <motion.span
                     initial={{ scale: 0 }}
