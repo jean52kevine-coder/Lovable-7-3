@@ -18,14 +18,15 @@ import {
 } from "@/components/ui/chart";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { BorderBeam } from "@/components/ui/border-beam";
+import { GlowingShadow } from "@/components/ui/glowing-shadow";
 
 export function PricingWithChart() {
   return (
     <div className="w-full max-w-6xl mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
         {/* Site Vitrine */}
-        <div className="lg:col-span-2 relative rounded-2xl">
-          <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
+        <GlowingShadow className="glow-flex lg:col-span-2">
+          <div className="relative rounded-2xl w-full">
           <div
             className="relative z-10 rounded-2xl p-7 h-full flex flex-col"
             style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}
@@ -67,11 +68,12 @@ export function PricingWithChart() {
               </ul>
             </div>
           </div>
-        </div>
+          </div>
+        </GlowingShadow>
 
         {/* Site E-commerce - Hero card with chart */}
-        <div className="lg:col-span-3 relative rounded-2xl">
-          <GlowingEffect spread={50} glow proximity={80} inactiveZone={0.01} borderWidth={2} disabled={false} />
+        <GlowingShadow className="glow-flex lg:col-span-3">
+          <div className="relative rounded-2xl w-full">
           <div
             className="relative z-10 rounded-2xl overflow-hidden h-full flex flex-col ring-2 ring-primary"
             style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(145, 63%, 42%)" }}
@@ -135,7 +137,8 @@ export function PricingWithChart() {
               </div>
             </div>
           </div>
-        </div>
+          </div>
+        </GlowingShadow>
       </div>
     </div>
   );

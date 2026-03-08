@@ -10,6 +10,7 @@ import NumberFlow from "@number-flow/react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { BorderBeam } from "@/components/ui/border-beam";
 import BlurReveal from "@/components/animations/BlurReveal";
+import { GlowingShadow } from "@/components/ui/glowing-shadow";
 
 interface MaintenancePlan {
   name: string;
@@ -84,13 +85,10 @@ export function PricingMaintenance() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.12, duration: 0.5 }}
-            className={cn(
-              "relative rounded-2xl",
-              plan.isPopular && "md:-mt-4 md:mb-4"
-            )}
+            className="relative rounded-2xl"
           >
-            <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
-
+            <GlowingShadow className={cn("glow-flex", plan.isPopular && "md:-mt-4 md:mb-4")}>
+            <div className="w-full relative">
             {plan.isPopular && (
               <span className="absolute -top-3 left-1/2 -translate-x-1/2 z-20 text-xs font-bold px-3 py-1 rounded-full text-primary-foreground flex items-center gap-1" style={{ background: "hsl(var(--primary))" }}>
                 <Star className="h-3 w-3 fill-current" /> RECOMMANDÉ
@@ -147,6 +145,8 @@ export function PricingMaintenance() {
                 {plan.description}
               </p>
             </div>
+            </div>
+            </GlowingShadow>
           </motion.div>
         ))}
       </div>
