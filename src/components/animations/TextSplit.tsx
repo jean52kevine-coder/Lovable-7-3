@@ -33,8 +33,8 @@ const TextSplit = ({
   children,
   className = "",
   delay = 0,
-  charDuration = 0.4,
-  staggerDelay = 0.03,
+  charDuration = 0.28,
+  staggerDelay = 0.018,
   as: Tag = "h2",
 }: TextSplitProps) => {
   const words = children.split(" ");

@@ -1,15 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Home, Briefcase, DollarSign, HelpCircle, Mail } from "lucide-react";
+import { Home, Briefcase, DollarSign, HelpCircle } from "lucide-react";
 import { NavBar } from "@/components/ui/tubelight-navbar";
-import logoAltera from "@/assets/logo-altera.png";
+import AlteraLogo from "@/components/AlteraLogo";
 
 const navItems = [
   { name: "Accueil", url: "/", icon: Home },
   { name: "Services", url: "/services", icon: Briefcase },
   { name: "Tarifs", url: "/tarifs", icon: DollarSign },
   { name: "Pourquoi", url: "/pourquoi-un-site", icon: HelpCircle },
-  { name: "Contact", url: "/contact", icon: Mail },
 ];
 
 const Navbar = () => {
@@ -33,9 +32,8 @@ const Navbar = () => {
         }`}
       >
         <div className="section-container flex items-center justify-between h-16 md:h-20">
-          <Link to="/" className="flex items-center gap-2">
-            <img src={logoAltera} alt="ALTÉRA" className="h-8 w-8" />
-            <span className="heading-display text-2xl md:text-3xl text-primary">ALTÉRA</span>
+          <Link to="/" className="flex items-center">
+            <AlteraLogo size="md" />
           </Link>
 
           {/* Desktop CTA */}

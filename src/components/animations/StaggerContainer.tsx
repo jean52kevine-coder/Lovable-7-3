@@ -17,9 +17,9 @@ const staggerVariants = {
 const itemVariants = {
   hidden: {
     opacity: 0,
-    y: 40,
-    filter: "blur(10px)",
-    scale: 0.95,
+    y: 24,
+    filter: "blur(6px)",
+    scale: 0.97,
   },
   visible: {
     opacity: 1,
@@ -27,7 +27,7 @@ const itemVariants = {
     filter: "blur(0px)",
     scale: 1,
     transition: {
-      duration: 0.7,
+      duration: 0.45,
       ease: [0.25, 0.4, 0.25, 1] as const,
     },
   },
