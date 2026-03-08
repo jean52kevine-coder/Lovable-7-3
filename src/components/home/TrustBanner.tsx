@@ -1,4 +1,7 @@
 import { Star } from "lucide-react";
+import { motion } from "framer-motion";
+import BlurReveal from "@/components/animations/BlurReveal";
+import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
 
 const testimonials = [
   { text: "Mon agenda est plein 3 semaines à l'avance.", name: "Thomas B.", role: "Plombier · Lyon", badge: "+8 demandes/mois" },
@@ -9,7 +12,7 @@ const testimonials = [
 const TrustBanner = () => (
   <section className="py-24" style={{ backgroundColor: "hsl(var(--background))" }}>
     <div className="section-container">
-      <div className="text-center mb-16">
+      <BlurReveal className="text-center mb-16">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style={{ background: "hsl(var(--primary) / 0.1)", border: "1px solid hsl(var(--primary) / 0.2)" }}>
           <Star className="text-primary fill-primary" size={16} />
           <span className="text-primary font-semibold text-sm">+50 clients satisfaits</span>
@@ -17,13 +20,15 @@ const TrustBanner = () => (
         <h2 className="heading-display" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>
           ILS NOUS FONT <span className="text-primary">CONFIANCE</span>
         </h2>
-      </div>
+      </BlurReveal>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.15}>
         {testimonials.map((t, i) => (
-          <div
+          <motion.div
             key={i}
-            className="rounded-2xl p-7 flex flex-col hover:-translate-y-1 transition-transform duration-300"
+            variants={itemVariants}
+            whileHover={{ y: -6, scale: 1.01 }}
+            className="rounded-2xl p-7 flex flex-col"
             style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}
           >
             <div className="flex gap-1 mb-4">
@@ -43,9 +48,9 @@ const TrustBanner = () => (
               <p className="font-dm text-[13px] text-muted-foreground">{t.role}</p>
             </div>
             <p className="font-dm text-[10px] text-muted-foreground mt-3 opacity-60">*Résultat fictif illustratif</p>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </StaggerContainer>
     </div>
   </section>
 );
