@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 const items = [
   { icon: "⚡", title: "Livraison rapide", desc: "Votre site en 14 jours. Pendant que vos concurrents attendent 3 mois." },
@@ -42,20 +43,22 @@ const DistinguishSection = () => (
           <motion.div
             key={i}
             variants={cardVariants}
-            className="rounded-xl p-6 transition-all duration-300"
-            style={{
-              backgroundColor: "#0d130d",
-              border: "1px solid #1a2e1a",
-            }}
-            whileHover={{
-              boxShadow: "0 0 0 1px rgba(29,185,84,0.3)",
-            }}
+            className="relative rounded-xl transition-all duration-300"
           >
-            <span className="text-2xl mb-3 block">{item.icon}</span>
-            <h3 className="font-display font-black text-lg text-white mb-2">{item.title}</h3>
-            <p className="font-dm text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>
-              {item.desc}
-            </p>
+            <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
+            <div
+              className="relative z-10 rounded-xl p-6"
+              style={{
+                backgroundColor: "#0d130d",
+                border: "1px solid #1a2e1a",
+              }}
+            >
+              <span className="text-2xl mb-3 block">{item.icon}</span>
+              <h3 className="font-display font-black text-lg text-white mb-2">{item.title}</h3>
+              <p className="font-dm text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>
+                {item.desc}
+              </p>
+            </div>
           </motion.div>
         ))}
       </motion.div>

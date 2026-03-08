@@ -4,6 +4,7 @@ import Layout from "@/components/Layout";
 import { Globe, ShoppingCart, Check, ArrowRight } from "lucide-react";
 import { BorderBeam } from "@/components/ui/border-beam";
 import { CtaSection } from "@/components/ui/cta-section";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 const offres = [
   {
@@ -73,35 +74,40 @@ const TarifsPage = () => (
             <motion.div
               key={i}
               variants={fadeUp}
-              className="relative rounded-2xl p-8 flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1.5"
-              style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}
+              className="relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5"
             >
-              {o.popular && (
-                <>
-                  <span className="absolute top-4 right-4 text-[11px] font-bold px-2.5 py-1 rounded-full bg-primary text-primary-foreground">
-                    ⭐ BEST SELLER
-                  </span>
-                  <BorderBeam size={250} duration={12} />
-                </>
-              )}
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                <o.icon className="text-primary" size={24} />
+              <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
+              <div
+                className="relative z-10 rounded-2xl p-8 flex flex-col overflow-hidden h-full"
+                style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}
+              >
+                {o.popular && (
+                  <>
+                    <span className="absolute top-4 right-4 text-[11px] font-bold px-2.5 py-1 rounded-full bg-primary text-primary-foreground">
+                      ⭐ BEST SELLER
+                    </span>
+                    <BorderBeam size={250} duration={12} />
+                  </>
+                )}
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                  <o.icon className="text-primary" size={24} />
+                </div>
+                <h2 className="font-display font-bold text-2xl mb-2">{o.title}</h2>
+                <div className="mb-6">
+                  <span className="text-primary heading-display text-4xl">{o.price}€</span>
+                </div>
+                <ul className="space-y-3 flex-1 mb-8">
+                  {o.features.map((f, j) => (
+                    <li key={j} className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Check className="text-primary flex-shrink-0" size={16} />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <Link to={o.link} className="btn-primary text-center text-sm">
+                  En savoir plus <ArrowRight className="ml-2 inline" size={16} />
+                </Link>
               </div>
-              <h2 className="font-display font-bold text-2xl mb-2">{o.title}</h2>
-              <div className="mb-6">
-                <span className="text-primary heading-display text-4xl">{o.price}€</span>
-              </div>
-              <ul className="space-y-3 flex-1 mb-8">
-                {o.features.map((f, j) => (
-                  <li key={j} className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Check className="text-primary flex-shrink-0" size={16} />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <Link to={o.link} className="btn-primary text-center text-sm">
-                En savoir plus <ArrowRight className="ml-2 inline" size={16} />
-              </Link>
             </motion.div>
           ))}
         </motion.div>
@@ -131,25 +137,30 @@ const TarifsPage = () => (
             <motion.div
               key={i}
               variants={fadeUp}
-              className={`relative rounded-2xl p-7 text-center overflow-hidden transition-all duration-300 hover:-translate-y-1 ${
-                m.highlighted ? "ring-2 ring-primary" : ""
-              }`}
-              style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}
+              className="relative rounded-2xl transition-all duration-300 hover:-translate-y-1"
             >
-              {m.highlighted && <BorderBeam size={200} duration={12} />}
-              <h3 className="font-display font-bold text-xl mb-2">{m.name}</h3>
-              <div className="mb-6">
-                <span className="text-primary heading-display text-3xl">{m.price}€</span>
-                <span className="text-muted-foreground text-sm">/mois</span>
+              <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
+              <div
+                className={`relative z-10 rounded-2xl p-7 text-center overflow-hidden h-full ${
+                  m.highlighted ? "ring-2 ring-primary" : ""
+                }`}
+                style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}
+              >
+                {m.highlighted && <BorderBeam size={200} duration={12} />}
+                <h3 className="font-display font-bold text-xl mb-2">{m.name}</h3>
+                <div className="mb-6">
+                  <span className="text-primary heading-display text-3xl">{m.price}€</span>
+                  <span className="text-muted-foreground text-sm">/mois</span>
+                </div>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  {m.features.map((f, j) => (
+                    <li key={j} className="flex items-center gap-2 justify-center">
+                      <Check className="text-primary flex-shrink-0" size={14} />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                {m.features.map((f, j) => (
-                  <li key={j} className="flex items-center gap-2 justify-center">
-                    <Check className="text-primary flex-shrink-0" size={14} />
-                    {f}
-                  </li>
-                ))}
-              </ul>
             </motion.div>
           ))}
         </motion.div>
