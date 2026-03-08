@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, useCallback } from "react";
+import { useRef, useEffect, useState, useCallback, useMemo } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
 import LightBeam from "@/components/animations/LightBeam";
@@ -20,6 +20,115 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.15 } },
 };
 
+/* ─── Animated gradient background ─── */
+const AnimatedBackground = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let animId: number;
+    let t = 0;
+
+    const resize = () => {
+      canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+      canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    };
+    resize();
+    window.addEventListener("resize", resize);
+
+    const draw = () => {
+      const w = canvas.offsetWidth;
+      const h = canvas.offsetHeight;
+      t += 0.003;
+
+      // Base dark gradient
+      const base = ctx.createLinearGradient(0, 0, w, h);
+      base.addColorStop(0, "#0a0f0a");
+      base.addColorStop(0.5, "#0d1a0d");
+      base.addColorStop(1, "#0a0f0a");
+      ctx.fillStyle = base;
+      ctx.fillRect(0, 0, w, h);
+
+      // Animated green orbs
+      const orbs = [
+        { x: 0.3 + Math.sin(t * 0.7) * 0.15, y: 0.2 + Math.cos(t * 0.5) * 0.1, r: 0.45, a: 0.08 },
+        { x: 0.7 + Math.cos(t * 0.6) * 0.12, y: 0.6 + Math.sin(t * 0.8) * 0.15, r: 0.35, a: 0.06 },
+        { x: 0.5 + Math.sin(t * 1.1) * 0.1, y: 0.4 + Math.cos(t * 0.9) * 0.12, r: 0.5, a: 0.1 },
+        { x: 0.15 + Math.cos(t * 0.4) * 0.08, y: 0.7 + Math.sin(t * 0.6) * 0.1, r: 0.3, a: 0.04 },
+        { x: 0.85 + Math.sin(t * 0.5) * 0.08, y: 0.15 + Math.cos(t * 0.7) * 0.08, r: 0.25, a: 0.05 },
+      ];
+
+      for (const orb of orbs) {
+        const grad = ctx.createRadialGradient(
+          orb.x * w, orb.y * h, 0,
+          orb.x * w, orb.y * h, orb.r * Math.max(w, h)
+        );
+        grad.addColorStop(0, `rgba(29, 185, 84, ${orb.a})`);
+        grad.addColorStop(0.4, `rgba(29, 185, 84, ${orb.a * 0.5})`);
+        grad.addColorStop(1, "rgba(29, 185, 84, 0)");
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, w, h);
+      }
+
+      // Subtle warm accent (very subtle orange-green interaction)
+      const warm = ctx.createRadialGradient(
+        (0.5 + Math.sin(t * 0.3) * 0.2) * w,
+        (0.5 + Math.cos(t * 0.4) * 0.2) * h,
+        0,
+        (0.5 + Math.sin(t * 0.3) * 0.2) * w,
+        (0.5 + Math.cos(t * 0.4) * 0.2) * h,
+        0.6 * Math.max(w, h)
+      );
+      warm.addColorStop(0, "rgba(29, 185, 84, 0.06)");
+      warm.addColorStop(0.5, "rgba(16, 100, 50, 0.03)");
+      warm.addColorStop(1, "rgba(0, 0, 0, 0)");
+      ctx.fillStyle = warm;
+      ctx.fillRect(0, 0, w, h);
+
+      // Floor glow (like reference site bottom glow)
+      const floor = ctx.createLinearGradient(0, h * 0.7, 0, h);
+      floor.addColorStop(0, "rgba(29, 185, 84, 0)");
+      floor.addColorStop(0.5, "rgba(29, 185, 84, 0.04)");
+      floor.addColorStop(1, "rgba(29, 185, 84, 0.08)");
+      ctx.fillStyle = floor;
+      ctx.fillRect(0, 0, w, h);
+
+      // Noise overlay for texture
+      ctx.globalAlpha = 0.015;
+      for (let i = 0; i < 800; i++) {
+        const nx = Math.random() * w;
+        const ny = Math.random() * h;
+        const ns = Math.random() * 2;
+        ctx.fillStyle = Math.random() > 0.5 ? "#fff" : "#1DB954";
+        ctx.fillRect(nx, ny, ns, ns);
+      }
+      ctx.globalAlpha = 1;
+
+      animId = requestAnimationFrame(draw);
+    };
+
+    draw();
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener("resize", resize);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 w-full h-full"
+      style={{ opacity: 1 }}
+    />
+  );
+};
+
+/* ─── Sub-components ─── */
 const CountUp = ({ target, suffix = "" }: { target: number; suffix?: string }) => {
   const [val, setVal] = useState(0);
   useEffect(() => {
@@ -66,38 +175,7 @@ const RotatingWord = () => {
   );
 };
 
-const DotGrid = () => (
-  <svg className="absolute inset-0 w-full h-full z-0 pointer-events-none" aria-hidden>
-    <defs>
-      <pattern id="dot-grid" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
-        <circle cx="14" cy="14" r="1" fill="hsl(145, 63%, 42%)" opacity="0.35" />
-      </pattern>
-    </defs>
-    <rect width="100%" height="100%" fill="url(#dot-grid)" />
-  </svg>
-);
-
-const Orbs = () => (
-  <>
-    <div
-      className="absolute pointer-events-none"
-      style={{
-        width: 500, height: 350, top: "-5%", left: "-5%",
-        background: "rgba(29,185,84,0.12)", borderRadius: "50%",
-        filter: "blur(80px)", animation: "float-a 18s ease-in-out infinite alternate",
-      }}
-    />
-    <div
-      className="absolute pointer-events-none"
-      style={{
-        width: 400, height: 280, bottom: "0%", right: "-5%",
-        background: "rgba(29,185,84,0.07)", borderRadius: "50%",
-        filter: "blur(80px)", animation: "float-b 22s ease-in-out infinite alternate",
-      }}
-    />
-  </>
-);
-
+/* ─── Main Component ─── */
 const HeroSection = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -124,29 +202,38 @@ const HeroSection = () => {
     return () => el.removeEventListener("mousemove", handleMouse);
   }, [handleMouse]);
 
-  const stats = [
+  const stats = useMemo(() => [
     { value: 50, suffix: "+", label: "sites livrés" },
     { value: 14, suffix: "j", label: "délai moyen" },
     { value: 98, suffix: "%", label: "clients satisfaits" },
     { value: 497, suffix: "€", label: "dès" },
-  ];
+  ], []);
 
   return (
     <section
       ref={heroRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ backgroundColor: "#0a0f0a" }}
     >
-      <DotGrid />
-      <Orbs />
+      {/* Animated canvas background */}
+      <AnimatedBackground />
+      
+      {/* Light beam */}
       <LightBeam />
 
-      {/* Spotlight */}
+      {/* Mouse spotlight */}
       <div
         className="absolute inset-0 pointer-events-none z-[1]"
         style={{
           background:
-            "radial-gradient(500px circle at var(--mx, 50%) var(--my, 50%), rgba(29,185,84,0.06), transparent 70%)",
+            "radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%), rgba(29,185,84,0.08), transparent 60%)",
+        }}
+      />
+
+      {/* Vignette overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none z-[1]"
+        style={{
+          background: "radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.4) 100%)",
         }}
       />
 
