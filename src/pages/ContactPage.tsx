@@ -19,7 +19,7 @@ const projectTypes = [
 
 const fadeSlide = {
   initial: { opacity: 0, x: 30 },
-  animate: { opacity: 1, x: 0, transition: { duration: 0.4, ease: "easeOut" } },
+  animate: { opacity: 1, x: 0, transition: { duration: 0.4, ease: "easeOut" as const } },
   exit: { opacity: 0, x: -30, transition: { duration: 0.3 } },
 };
 
