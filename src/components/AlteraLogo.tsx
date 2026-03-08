@@ -19,8 +19,8 @@ const AlteraLogo = ({ className = "", size = "md" }: AlteraLogoProps) => {
     <img
       src={logoImage}
       alt="Altéra Digital Studio"
-      className={cn("object-contain", className)}
-      style={{ height: `${height}px`, width: "auto" }}
+      className={cn("object-contain max-h-full", className)}
+      style={{ height: `${height}px`, maxHeight: '100%', width: "auto" }}
     />
   );
 };

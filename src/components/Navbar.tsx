@@ -40,8 +40,8 @@ const Navbar = () => {
         }`}
       >
         <div className="section-container flex items-center justify-between h-16 md:h-20">
-          <Link to="/" className="flex items-center">
-            <AlteraLogo size="md" />
+          <Link to="/" className="flex items-center h-full py-1">
+            <AlteraLogo size="md" className="max-h-[3.5rem] md:max-h-[4.5rem]" />
           </Link>
 
           {/* Desktop CTA */}
