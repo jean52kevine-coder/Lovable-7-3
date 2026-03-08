@@ -68,11 +68,11 @@ export function PricingWithChart() {
               </ul>
             </div>
           </div>
-        </div>
+        </GlowingShadow>
 
         {/* Site E-commerce - Hero card with chart */}
-        <div className="lg:col-span-3 relative rounded-2xl">
-          <GlowingEffect spread={50} glow proximity={80} inactiveZone={0.01} borderWidth={2} disabled={false} />
+        <GlowingShadow className="glow-flex lg:col-span-3">
+          <div className="relative rounded-2xl w-full">
           <div
             className="relative z-10 rounded-2xl overflow-hidden h-full flex flex-col ring-2 ring-primary"
             style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(145, 63%, 42%)" }}
