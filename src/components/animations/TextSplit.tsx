@@ -4,7 +4,6 @@ import { ReactNode } from "react";
 interface TextSplitProps {
   children: string;
   className?: string;
-  style?: React.CSSProperties;
   delay?: number;
   /** Duration per character */
   charDuration?: number;
@@ -33,7 +32,6 @@ const charVariants = {
 const TextSplit = ({
   children,
   className = "",
-  style,
   delay = 0,
   charDuration = 0.28,
   staggerDelay = 0.018,
@@ -42,7 +40,7 @@ const TextSplit = ({
   const words = children.split(" ");
 
   return (
-    <Tag className={className} style={{ perspective: "1000px", ...style }}>
+    <Tag className={className} style={{ perspective: "1000px" }}>
       <motion.span
         className="inline"
         initial="hidden"
