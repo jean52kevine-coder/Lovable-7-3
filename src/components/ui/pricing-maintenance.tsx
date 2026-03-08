@@ -10,6 +10,7 @@ import NumberFlow from "@number-flow/react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { BorderBeam } from "@/components/ui/border-beam";
 import BlurReveal from "@/components/animations/BlurReveal";
+import { GlowingShadow } from "@/components/ui/glowing-shadow";
 
 interface MaintenancePlan {
   name: string;
