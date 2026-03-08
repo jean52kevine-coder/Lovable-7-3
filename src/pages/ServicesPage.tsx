@@ -10,7 +10,7 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
-import heroServices from "@/assets/hero-services.jpg";
+import heroServicesVideo from "@/assets/videos/hero-services.mp4";
 
 const services = [
   {
