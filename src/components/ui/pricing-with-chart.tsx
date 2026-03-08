@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/chart";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { BorderBeam } from "@/components/ui/border-beam";
+import { GlowingShadow } from "@/components/ui/glowing-shadow";
 
 export function PricingWithChart() {
   return (
