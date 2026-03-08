@@ -119,7 +119,9 @@ const HeroSection = () => {
         <div className="absolute inset-0 pointer-events-none z-[1]" style={{ background: "radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%)" }} />
 
         {/* Hero content */}
-        <motion.div className="relative z-[2] text-center section-container py-20" style={{ opacity: textOpacity, y: textY }}>
+        <motion.div className="relative z-[2] section-container py-20 flex flex-col lg:flex-row items-center gap-10" style={{ opacity: textOpacity, y: textY }}>
+          {/* Left: text content */}
+          <div className="text-center lg:text-left flex-1">
           {/* Badge */}
           <BlurReveal className="flex justify-center mb-8" delay={0}>
             <span
