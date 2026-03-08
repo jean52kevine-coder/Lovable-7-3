@@ -10,7 +10,7 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
-import heroServices from "@/assets/hero-services.jpg";
+import heroServicesVideo from "@/assets/videos/hero-services.mp4";
 
 const services = [
   {
@@ -45,7 +45,7 @@ const features = [
 const ServicesPage = () => (
   <Layout>
     <section className="relative py-24 md:py-32 overflow-hidden">
-      <img src={heroServices} alt="" className="absolute inset-0 w-full h-full object-cover opacity-20" />
+      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-25"><source src={heroServicesVideo} type="video/mp4" /></video>
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
       <div className="section-container text-center relative z-10">
         <BlurReveal>

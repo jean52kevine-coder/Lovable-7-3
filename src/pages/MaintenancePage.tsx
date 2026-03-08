@@ -11,7 +11,7 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
-import heroMaintenance from "@/assets/hero-maintenance.jpg";
+import heroMaintenanceVideo from "@/assets/videos/hero-maintenance.mp4";
 
 const dangers = [
   { title: "Failles de sécurité", desc: "Un plugin non mis à jour, c'est une porte ouverte pour les hackers. Vos données et celles de vos clients sont en danger." },
@@ -56,7 +56,7 @@ const MaintenancePage = () => (
   <Layout>
     {/* Hero */}
     <section className="relative py-24 md:py-32 overflow-hidden">
-      <img src={heroMaintenance} alt="" className="absolute inset-0 w-full h-full object-cover opacity-20" />
+      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-25"><source src={heroMaintenanceVideo} type="video/mp4" /></video>
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
       <div className="section-container flex flex-col lg:flex-row items-center gap-10 relative z-10">
         <div className="text-center lg:text-left flex-1">

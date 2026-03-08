@@ -10,6 +10,7 @@ import { GlowingEffect } from "@/components/ui/glowing-effect";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
+import heroTarifsVideo from "@/assets/videos/hero-tarifs.mp4";
 
 const faqs = [
   { q: "Y a-t-il des frais récurrents après livraison ?", a: "L'hébergement est offert la première année. À partir de la 2e année : environ 80-120€/an. Notre maintenance l'inclut." },
@@ -48,7 +49,9 @@ const FAQItem = ({ faq, index }: { faq: { q: string; a: string }; index: number 
 const TarifsPage = () => (
   <Layout>
     {/* Hero */}
-    <section className="py-24 md:py-32" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
+    <section className="relative py-24 md:py-32 overflow-hidden">
+      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-25"><source src={heroTarifsVideo} type="video/mp4" /></video>
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
       <div className="section-container text-center">
         <BlurReveal>
           <span

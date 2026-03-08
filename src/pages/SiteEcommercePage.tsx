@@ -12,7 +12,7 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
-import heroEcommerce from "@/assets/hero-ecommerce.jpg";
+import heroEcommerceVideo from "@/assets/videos/hero-ecommerce.mp4";
 
 const inclus = [
   "Boutique en ligne complète", "Jusqu'à 50 produits", "Paiement sécurisé (CB, PayPal)", "Gestion des stocks intégrée",
@@ -76,7 +76,7 @@ const SiteEcommercePage = () => (
   <Layout>
     {/* Hero */}
     <section className="relative py-24 md:py-32 overflow-hidden">
-      <img src={heroEcommerce} alt="" className="absolute inset-0 w-full h-full object-cover opacity-20" />
+      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-25"><source src={heroEcommerceVideo} type="video/mp4" /></video>
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
       <div className="section-container flex flex-col lg:flex-row items-center gap-10 relative z-10">
         <div className="text-center lg:text-left flex-1">
