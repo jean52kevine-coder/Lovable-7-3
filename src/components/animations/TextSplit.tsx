@@ -42,7 +42,7 @@ const TextSplit = ({
   const words = children.split(" ");
 
   return (
-    <Tag className={className} style={{ perspective: "1000px" }}>
+    <Tag className={className} style={{ perspective: "1000px", ...style }}>
       <motion.span
         className="inline"
         initial="hidden"
