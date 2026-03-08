@@ -269,6 +269,5 @@ const FAQItem = ({ faq, index }: { faq: { q: string; a: string }; index: number 
   );
 };
 
-import { useState } from "react";
 
 export default SiteVitrinePage;
