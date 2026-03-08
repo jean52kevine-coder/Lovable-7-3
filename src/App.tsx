@@ -14,6 +14,7 @@ import MaintenancePage from "./pages/MaintenancePage";
 import TarifsPage from "./pages/TarifsPage";
 import PourquoiPage from "./pages/PourquoiPage";
 import ContactPage from "./pages/ContactPage";
+import SeoGeneratorPage from "./pages/SeoGeneratorPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const App = () => (
             <Route path="/tarifs" element={<TarifsPage />} />
             <Route path="/pourquoi-un-site" element={<PourquoiPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/seo-generator" element={<SeoGeneratorPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AnimatePresence>
