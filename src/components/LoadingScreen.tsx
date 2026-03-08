@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import logoImage from "@/assets/logo-altera.png";
+import AlteraLogo from "@/components/AlteraLogo";
 
 const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
   const [show, setShow] = useState(() => {
