@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
+import { StepChatIcon, StepDesignIcon, StepCodeIcon, StepRocketIcon } from "@/components/illustrations/SvgIllustrations";
 
 const steps = [
   {
