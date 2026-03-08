@@ -8,7 +8,7 @@ import { BorderBeam } from "@/components/ui/border-beam";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
-import TextSplit from "@/components/animations/TextSplit";
+import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
 import heroServices from "@/assets/hero-services.jpg";
 
@@ -48,14 +48,18 @@ const ServicesPage = () => (
       <img src={heroServices} alt="" className="absolute inset-0 w-full h-full object-cover opacity-20" />
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
       <div className="section-container text-center relative z-10">
-        <TextSplit className="heading-display text-4xl md:text-6xl mb-6" as="h1">NOS SERVICES</TextSplit>
-        <BlurReveal delay={0.4}>
+        <BlurReveal>
+          <h1 className="heading-display text-4xl md:text-6xl mb-6">
+            NOS <RotatingWords words={["SERVICES", "SOLUTIONS", "OFFRES", "FORMULES"]} />
+          </h1>
+        </BlurReveal>
+        <BlurReveal delay={0.3}>
           <p className="font-dm text-lg max-w-2xl mx-auto text-muted-foreground">Des solutions web complètes, adaptées aux artisans, commerçants et PME locales.</p>
         </BlurReveal>
       </div>
     </section>
 
-    <section style={{ backgroundColor: "hsl(var(--section-alt-bg))" }} className="py-[100px]">
+    <section style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }} className="py-[100px]">
       <div className="section-container">
         <BlurReveal className="text-center mb-14">
           <h2 className="heading-display mb-4" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>CHOISISSEZ VOTRE <span className="text-primary">FORMULE</span></h2>
@@ -91,7 +95,7 @@ const ServicesPage = () => (
       </div>
     </section>
 
-    <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg))" }}>
+    <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-14">
           <h2 className="heading-display mb-4" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>POURQUOI NOUS <span className="text-primary">CHOISIR</span></h2>
