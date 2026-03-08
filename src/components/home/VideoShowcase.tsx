@@ -5,36 +5,36 @@ import ScaleSection from "@/components/animations/ScaleSection";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
 
 const testimonials = [
-  {
-    emoji: "🔧",
-    text: "Mon agenda est plein 3 semaines à l'avance depuis la mise en ligne.",
-    name: "Thomas B.",
-    role: "Plombier · Lyon",
-    badge: "+8 demandes/mois",
-  },
-  {
-    emoji: "🌸",
-    text: "En 3 semaines, j'avais déjà rentabilisé mon investissement.",
-    name: "Sophie M.",
-    role: "Fleuriste · Bordeaux",
-    badge: "ROI en 3 semaines",
-  },
-  {
-    emoji: "🍕",
-    text: "Les réservations ont augmenté dès le premier mois. Résultat immédiat.",
-    name: "Ahmed T.",
-    role: "Restaurateur · Nantes",
-    badge: "+55% réservations",
-  },
-];
+{
+  emoji: "🔧",
+  text: "Mon agenda est plein 3 semaines à l'avance depuis la mise en ligne.",
+  name: "Thomas B.",
+  role: "Plombier · Lyon",
+  badge: "+8 demandes/mois"
+},
+{
+  emoji: "🌸",
+  text: "En 3 semaines, j'avais déjà rentabilisé mon investissement.",
+  name: "Sophie M.",
+  role: "Fleuriste · Bordeaux",
+  badge: "ROI en 3 semaines"
+},
+{
+  emoji: "🍕",
+  text: "Les réservations ont augmenté dès le premier mois. Résultat immédiat.",
+  name: "Ahmed T.",
+  role: "Restaurateur · Nantes",
+  badge: "+55% réservations"
+}];
 
-const TrustSection = () => (
-  <section
-    className="py-[100px] relative overflow-hidden"
-    style={{
-      background: "linear-gradient(180deg, #0a0f0a 0%, #0d1410 50%, #0a0f0a 100%)",
-    }}
-  >
+
+const TrustSection = () =>
+<section
+  className="py-[100px] relative overflow-hidden"
+  style={{
+    background: "linear-gradient(180deg, #0a0f0a 0%, #0d1410 50%, #0a0f0a 100%)"
+  }}>
+  
     <div className="section-container relative z-10">
       <BlurReveal className="text-center mb-14">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
@@ -48,29 +48,29 @@ const TrustSection = () => (
 
       <ScaleSection>
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.15}>
-          {testimonials.map((t, i) => (
-            <motion.div
-              key={i}
-              variants={itemVariants}
-              whileHover={{ y: -6, scale: 1.01 }}
-              className="relative rounded-2xl"
-            >
+          {testimonials.map((t, i) =>
+        <motion.div
+          key={i}
+          variants={itemVariants}
+          whileHover={{ y: -6, scale: 1.01 }}
+          className="relative rounded-2xl">
+          
               <div
-                className="relative z-10 rounded-2xl p-7 h-full flex flex-col"
-                style={{
-                  backgroundColor: "#111811",
-                  border: "1px solid #1a2e1a",
-                }}
-              >
+            className="relative z-10 rounded-2xl p-7 h-full flex flex-col"
+            style={{
+              backgroundColor: "#111811",
+              border: "1px solid #1a2e1a"
+            }}>
+            
                 <span className="text-3xl mb-4 block">{t.emoji}</span>
                 <p className="font-dm text-[15px] text-white italic leading-relaxed mb-5 flex-1">
                   "{t.text}"
                 </p>
                 <div className="mb-4">
                   <span
-                    className="inline-block text-[12px] font-semibold px-3 py-1 rounded-full text-primary"
-                    style={{ background: "rgba(29,185,84,0.15)", border: "1px solid rgba(29,185,84,0.3)" }}
-                  >
+                className="inline-block text-[12px] font-semibold px-3 py-1 rounded-full text-primary"
+                style={{ background: "rgba(29,185,84,0.15)", border: "1px solid rgba(29,185,84,0.3)" }}>
+                
                     {t.badge}
                   </span>
                 </div>
@@ -80,14 +80,14 @@ const TrustSection = () => (
                 </div>
               </div>
             </motion.div>
-          ))}
+        )}
         </StaggerContainer>
         <p className="text-center mt-6 font-dm text-[11px] text-muted-foreground">
-          *Résultats fictifs illustratifs
+          ​
         </p>
       </ScaleSection>
     </div>
-  </section>
-);
+  </section>;
+
 
 export default TrustSection;
