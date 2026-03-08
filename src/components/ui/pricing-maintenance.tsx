@@ -90,8 +90,8 @@ export function PricingMaintenance() {
               plan.isPopular && "md:-mt-4 md:mb-4"
             )}
           >
-            <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
-
+            <GlowingShadow className={cn("glow-flex", plan.isPopular && "md:-mt-4 md:mb-4")}>
+            <div className="w-full relative">
             {plan.isPopular && (
               <span className="absolute -top-3 left-1/2 -translate-x-1/2 z-20 text-xs font-bold px-3 py-1 rounded-full text-primary-foreground flex items-center gap-1" style={{ background: "hsl(var(--primary))" }}>
                 <Star className="h-3 w-3 fill-current" /> RECOMMANDÉ
