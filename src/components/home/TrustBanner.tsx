@@ -13,7 +13,20 @@ const testimonials = [
 
 const TrustBanner = () => (
   <section className="py-24 relative overflow-hidden">
-    <div className="section-container">
+    {/* Video background */}
+    <div className="absolute inset-0 z-0">
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="w-full h-full object-cover opacity-20"
+        src={testimonialsBg}
+      />
+      <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, hsl(var(--background)) 0%, transparent 20%, transparent 80%, hsl(var(--background)) 100%)" }} />
+    </div>
+
+    <div className="section-container relative z-10">
       <BlurReveal className="text-center mb-16">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style={{ background: "hsl(var(--primary) / 0.1)", border: "1px solid hsl(var(--primary) / 0.2)" }}>
           <Star className="text-primary fill-primary" size={16} />
