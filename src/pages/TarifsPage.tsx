@@ -12,10 +12,6 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import TextSplit from "@/components/animations/TextSplit";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
-import BlurReveal from "@/components/animations/BlurReveal";
-import ScaleSection from "@/components/animations/ScaleSection";
-import TextSplit from "@/components/animations/TextSplit";
-import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
 
 const plans = [
 {
