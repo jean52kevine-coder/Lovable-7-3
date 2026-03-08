@@ -1,5 +1,6 @@
 import { Star } from "lucide-react";
 import { motion } from "framer-motion";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 import BlurReveal from "@/components/animations/BlurReveal";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
 
@@ -10,7 +11,7 @@ const testimonials = [
 ];
 
 const TrustBanner = () => (
-  <section className="py-24" style={{ backgroundColor: "hsl(var(--background))" }}>
+  <section className="py-24" style={{ backgroundColor: "hsl(var(--background) / 0.8)" }}>
     <div className="section-container">
       <BlurReveal className="text-center mb-16">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style={{ background: "hsl(var(--primary) / 0.1)", border: "1px solid hsl(var(--primary) / 0.2)" }}>
@@ -28,26 +29,31 @@ const TrustBanner = () => (
             key={i}
             variants={itemVariants}
             whileHover={{ y: -6, scale: 1.01 }}
-            className="rounded-2xl p-7 flex flex-col"
-            style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}
+            className="relative rounded-2xl"
           >
-            <div className="flex gap-1 mb-4">
-              {Array(5).fill(0).map((_, j) => (
-                <Star key={j} className="text-primary fill-primary" size={14} />
-              ))}
-            </div>
-            <p className="font-dm text-[15px] text-white italic leading-relaxed mb-5 flex-1">"{t.text}"</p>
-            <span
-              className="inline-block self-start text-[12px] font-semibold px-3 py-1 rounded-full text-primary mb-4"
-              style={{ background: "hsl(var(--primary) / 0.12)", border: "1px solid hsl(var(--primary) / 0.25)" }}
+            <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
+            <div
+              className="relative z-10 rounded-2xl p-7 flex flex-col h-full"
+              style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}
             >
-              {t.badge}
-            </span>
-            <div>
-              <p className="font-dm font-semibold text-sm text-white">{t.name}</p>
-              <p className="font-dm text-[13px] text-muted-foreground">{t.role}</p>
+              <div className="flex gap-1 mb-4">
+                {Array(5).fill(0).map((_, j) => (
+                  <Star key={j} className="text-primary fill-primary" size={14} />
+                ))}
+              </div>
+              <p className="font-dm text-[15px] text-white italic leading-relaxed mb-5 flex-1">"{t.text}"</p>
+              <span
+                className="inline-block self-start text-[12px] font-semibold px-3 py-1 rounded-full text-primary mb-4"
+                style={{ background: "hsl(var(--primary) / 0.12)", border: "1px solid hsl(var(--primary) / 0.25)" }}
+              >
+                {t.badge}
+              </span>
+              <div>
+                <p className="font-dm font-semibold text-sm text-white">{t.name}</p>
+                <p className="font-dm text-[13px] text-muted-foreground">{t.role}</p>
+              </div>
+              <p className="font-dm text-[10px] text-muted-foreground mt-3 opacity-60">*Résultat fictif illustratif</p>
             </div>
-            <p className="font-dm text-[10px] text-muted-foreground mt-3 opacity-60">*Résultat fictif illustratif</p>
           </motion.div>
         ))}
       </StaggerContainer>
