@@ -108,7 +108,7 @@ const SiteVitrinePage = () => (
   <Layout>
     {/* Hero */}
     <section className="relative py-24 md:py-32 overflow-hidden">
-      <img src={heroVitrine} alt="" className="absolute inset-0 w-full h-full object-cover opacity-20" />
+      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-25"><source src={heroVitrineVideo} type="video/mp4" /></video>
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
       <div className="section-container flex flex-col lg:flex-row items-center gap-10 relative z-10">
         <div className="text-center lg:text-left flex-1">
