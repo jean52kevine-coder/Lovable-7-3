@@ -25,8 +25,8 @@ export function PricingWithChart() {
     <div className="w-full max-w-6xl mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
         {/* Site Vitrine */}
-        <div className="lg:col-span-2 relative rounded-2xl">
-          <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
+        <GlowingShadow className="glow-flex lg:col-span-2">
+          <div className="relative rounded-2xl w-full">
           <div
             className="relative z-10 rounded-2xl p-7 h-full flex flex-col"
             style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}
