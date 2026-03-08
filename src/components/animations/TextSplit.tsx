@@ -33,6 +33,7 @@ const charVariants = {
 const TextSplit = ({
   children,
   className = "",
+  style,
   delay = 0,
   charDuration = 0.28,
   staggerDelay = 0.018,
