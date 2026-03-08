@@ -13,7 +13,7 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
-import heroVitrine from "@/assets/hero-vitrine.jpg";
+import heroVitrineVideo from "@/assets/videos/hero-vitrine.mp4";
 
 const inclus = [
   "Design moderne et personnalisé", "Jusqu'à 5 pages", "Responsive mobile & tablette", "Optimisation SEO de base",
