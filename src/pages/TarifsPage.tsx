@@ -2,22 +2,14 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
-import { Globe, ShoppingCart, Shield, Check, Star, CreditCard, ArrowRight } from "lucide-react";
+import { CreditCard } from "lucide-react";
 import { PricingWithChart } from "@/components/ui/pricing-with-chart";
 import { PricingMaintenance } from "@/components/ui/pricing-maintenance";
 import { CtaSection } from "@/components/ui/cta-section";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
-import { BorderBeam } from "@/components/ui/border-beam";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
-import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
-import { GlowingEffect } from "@/components/ui/glowing-effect";
-import { BorderBeam } from "@/components/ui/border-beam";
-import BlurReveal from "@/components/animations/BlurReveal";
-import ScaleSection from "@/components/animations/ScaleSection";
-import RotatingWords from "@/components/RotatingWords";
-import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
 
 const plans = [
   {
