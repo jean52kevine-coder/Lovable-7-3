@@ -37,6 +37,7 @@ const App = () => (
             <Route path="/tarifs" element={<TarifsPage />} />
             <Route path="/pourquoi-un-site" element={<PourquoiPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/seo-generator" element={<SeoGeneratorPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AnimatePresence>
