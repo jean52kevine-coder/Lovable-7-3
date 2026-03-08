@@ -46,7 +46,7 @@ const FinalCTA = () => {
           >
             PRÊT À LANCER
             <br />
-            <span className="text-primary">VOTRE PROJET ?</span>
+            <AnimatedGradientText className="heading-display">VOTRE PROJET ?</AnimatedGradientText>
           </h2>
         </BlurReveal>
 

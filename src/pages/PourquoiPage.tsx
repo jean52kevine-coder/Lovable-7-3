@@ -59,27 +59,10 @@ const roiTestimonials = [
 ];
 
 const AnimatedStat = ({ stat }: { stat: typeof stats[0] }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!isInView) return;
-    const dur = 1500;
-    const start = performance.now();
-    const tick = (now: number) => {
-      const t = Math.min((now - start) / dur, 1);
-      const ease = 1 - Math.pow(1 - t, 3);
-      setCount(Math.round(stat.numValue * ease));
-      if (t < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  }, [isInView, stat.numValue]);
-
   return (
-    <div ref={ref} className="rounded-2xl p-6 text-center" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+    <div className="rounded-2xl p-6 text-center" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
       <div className="text-primary font-display font-black mb-2" style={{ fontSize: "clamp(48px, 6vw, 80px)" }}>
-        {count}{stat.suffix}
+        <NumberTicker value={stat.numValue} />{stat.suffix}
       </div>
       <p className="text-muted-foreground text-sm font-dm text-center">{stat.label}</p>
     </div>

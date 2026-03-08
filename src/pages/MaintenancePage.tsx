@@ -133,10 +133,10 @@ const MaintenancePage = () => (
                   className={`relative z-10 rounded-2xl p-7 flex flex-col overflow-hidden h-full ${f.highlighted ? "ring-2 ring-primary" : ""}`}
                   style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}
                 >
+                  <BorderBeam colorFrom="#1DB954" colorTo="#06B6D4" duration={f.highlighted ? 4 : 6} size={200} />
                   {f.highlighted && (
                     <>
                       <span className="absolute -top-0 left-1/2 -translate-x-1/2 translate-y-0 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-b-lg">Populaire</span>
-                      <BorderBeam size={200} duration={12} />
                     </>
                   )}
                   <h3 className="font-display font-bold text-xl mb-2 mt-4">{f.name}</h3>
