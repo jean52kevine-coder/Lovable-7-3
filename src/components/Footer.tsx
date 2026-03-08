@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Mail, MapPin, Phone, Instagram, Facebook } from "lucide-react";
 import logoAltera from "@/assets/logo-altera.png";
+import BlurReveal from "@/components/animations/BlurReveal";
 
 const services = [
   { text: "Site Vitrine", to: "/services/site-vitrine" },
@@ -30,6 +31,7 @@ const socialLinks = [
 const Footer = () => (
   <footer className="relative border-t" style={{ borderColor: "hsl(var(--border-green))", backgroundColor: "hsl(var(--card-dark))" }}>
     <div className="section-container py-14 md:py-20">
+      <BlurReveal>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
         {/* Brand */}
         <div className="lg:col-span-4">
@@ -113,6 +115,7 @@ const Footer = () => (
           <p className="font-dm text-xs text-muted-foreground/60 mt-5">Réponse sous 24h</p>
         </div>
       </div>
+      </BlurReveal>
 
       {/* Bottom bar */}
       <div
