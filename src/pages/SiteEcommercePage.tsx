@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
+import RotatingWords from "@/components/RotatingWords";
 import { ShoppingCart, Check, ArrowRight, Package, CreditCard, BarChart3, GraduationCap } from "lucide-react";
 import { CtaSection } from "@/components/ui/cta-section";
 import { FeaturesBento } from "@/components/ui/features-bento";
@@ -36,7 +37,7 @@ const SiteEcommercePage = () => (
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
       <motion.div className="section-container text-center relative z-10" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
         <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-6"><ShoppingCart className="text-primary" size={32} /></div>
-        <h1 className="heading-display text-4xl md:text-6xl mb-4">SITE <span className="text-primary">E-COMMERCE</span></h1>
+        <h1 className="heading-display text-4xl md:text-6xl mb-4">SITE <RotatingWords words={["E-COMMERCE", "BOUTIQUE", "MARCHAND", "EN LIGNE"]} /></h1>
         <p className="text-primary heading-display text-3xl mb-4">747 €</p>
         <p className="font-dm text-lg max-w-xl mx-auto text-muted-foreground">Vendez vos produits en ligne avec une boutique performante, sécurisée et facile à gérer.</p>
       </motion.div>
