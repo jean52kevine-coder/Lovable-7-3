@@ -5,17 +5,37 @@ import ScaleSection from "@/components/animations/ScaleSection";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
 
 const items = [
-  { icon: "⚡", title: "Livraison rapide", desc: "Votre site en 14 jours. Pendant que vos concurrents attendent 3 mois.", color: "#FFD700" },
-  { icon: "💰", title: "Prix fixes", desc: "Pas de surprise. Vous savez exactement ce que vous payez dès le premier message.", color: "#1DB954" },
-  { icon: "📈", title: "ROI mesurable", desc: "Chaque projet est conçu pour générer des résultats concrets : leads, ventes, visibilité.", color: "#00D4FF" },
-  { icon: "💬", title: "Support humain", desc: "Un vrai interlocuteur, pas un ticket automatique. On répond dans la journée.", color: "#FF6B35" },
+  {
+    icon: "⚡",
+    title: "Livraison en 14 jours",
+    desc: "Pendant que vos concurrents attendent 3 mois leur agence, votre site est déjà en ligne et génère des clients.",
+    color: "#FFD700",
+  },
+  {
+    icon: "💰",
+    title: "Prix fixe garanti",
+    desc: "497€ pour un site vitrine, 747€ pour un e-commerce. Aucun supplément, aucune mauvaise surprise à la livraison.",
+    color: "#1DB954",
+  },
+  {
+    icon: "📈",
+    title: "ROI mesurable",
+    desc: "Chaque site ALTÉRA est conçu pour convertir les visiteurs en clients. Pas juste pour faire joli.",
+    color: "#00D4FF",
+  },
+  {
+    icon: "💬",
+    title: "Support humain",
+    desc: "Un vrai interlocuteur qui connaît votre projet. Pas un ticket, pas un chatbot. On répond dans la journée.",
+    color: "#FF6B35",
+  },
 ];
 
 const DistinguishSection = () => (
-  <section 
+  <section
     className="py-[100px] relative"
-    style={{ 
-      background: "linear-gradient(180deg, #0a0f0a 0%, #0d1212 50%, #0a0f0a 100%)" 
+    style={{
+      background: "linear-gradient(180deg, #0a0f0a 0%, #0d1212 50%, #0a0f0a 100%)",
     }}
   >
     <div className="section-container">
@@ -42,7 +62,7 @@ const DistinguishSection = () => (
                   border: "1px solid rgba(26,46,26,0.8)",
                 }}
               >
-                <motion.span 
+                <motion.span
                   className="text-3xl mb-3 block"
                   whileHover={{ scale: 1.2, rotate: 5 }}
                   transition={{ type: "spring", stiffness: 400 }}
@@ -50,7 +70,7 @@ const DistinguishSection = () => (
                   {item.icon}
                 </motion.span>
                 <h3 className="font-display font-black text-lg text-white mb-2">{item.title}</h3>
-                <p className="font-dm text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>
+                <p className="font-dm text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
                   {item.desc}
                 </p>
               </div>

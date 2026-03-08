@@ -13,46 +13,35 @@ const testimonials = [
 
 const doubled = [...testimonials, ...testimonials];
 
-const Card = ({ t, index }: { t: typeof testimonials[0]; index: number }) => (
-  <motion.div 
+const Card = ({ t }: { t: typeof testimonials[0] }) => (
+  <motion.div
     className="relative flex-shrink-0 rounded-2xl min-w-[320px] max-w-[360px] group"
     whileHover={{ y: -8, scale: 1.02 }}
     transition={{ duration: 0.3 }}
   >
     <div
       className="relative z-10 rounded-2xl p-6 h-full transition-all duration-300"
-      style={{ 
+      style={{
         background: "linear-gradient(145deg, rgba(29,185,84,0.08) 0%, rgba(17,24,17,0.95) 50%)",
         border: "1px solid rgba(29,185,84,0.15)",
-        boxShadow: "0 8px 32px rgba(0,0,0,0.3)"
+        boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
       }}
     >
-      {/* Quote icon */}
-      <Quote 
-        className="absolute top-4 right-4 text-primary/20 group-hover:text-primary/40 transition-colors" 
-        size={32} 
+      <Quote
+        className="absolute top-4 right-4 text-primary/20 group-hover:text-primary/40 transition-colors"
+        size={32}
       />
 
-      {/* Stars */}
       <div className="flex gap-1 mb-4">
         {Array(5).fill(0).map((_, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.1 * i }}
-          >
-            <Star className="text-primary fill-primary" size={16} />
-          </motion.div>
+          <Star key={i} className="text-primary fill-primary" size={16} />
         ))}
       </div>
 
-      {/* Text */}
-      <p className="font-dm text-[15px] text-white mb-6 leading-relaxed">"{t.text}"</p>
+      <p className="font-dm text-[15px] text-white italic leading-relaxed mb-6">"{t.text}"</p>
 
-      {/* Author */}
       <div className="flex items-center gap-3">
-        <div 
+        <div
           className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-primary"
           style={{ background: "rgba(29,185,84,0.15)" }}
         >
@@ -60,7 +49,7 @@ const Card = ({ t, index }: { t: typeof testimonials[0]; index: number }) => (
         </div>
         <div>
           <p className="font-dm font-semibold text-sm text-white">{t.name}</p>
-          <p className="font-dm text-[12px] text-muted-foreground">{t.role}</p>
+          <p className="font-dm text-[13px] text-muted-foreground">{t.role}</p>
         </div>
       </div>
     </div>
@@ -68,19 +57,18 @@ const Card = ({ t, index }: { t: typeof testimonials[0]; index: number }) => (
 );
 
 const TestimonialsCarousel = () => (
-  <section 
+  <section
     className="py-[100px] overflow-hidden relative"
-    style={{ 
-      background: "linear-gradient(180deg, #0d130d 0%, #0a1210 50%, #0a0f0a 100%)" 
+    style={{
+      background: "linear-gradient(180deg, #0d130d 0%, #0a1210 50%, #0a0f0a 100%)",
     }}
   >
-    {/* Background decoration */}
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <div 
+      <div
         className="absolute w-full h-[1px] top-0"
         style={{ background: "linear-gradient(90deg, transparent, rgba(29,185,84,0.2), transparent)" }}
       />
-      <div 
+      <div
         className="absolute w-full h-[1px] bottom-0"
         style={{ background: "linear-gradient(90deg, transparent, rgba(29,185,84,0.2), transparent)" }}
       />
@@ -107,15 +95,15 @@ const TestimonialsCarousel = () => (
     <div
       className="relative mb-6"
       style={{
-        maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-        WebkitMaskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+        maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+        WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
       }}
     >
       <motion.div
         className="flex gap-6 hover:[animation-play-state:paused]"
-        style={{ animation: "scroll-left 40s linear infinite", width: "max-content" }}
+        style={{ animation: "scroll-left 35s linear infinite", width: "max-content" }}
       >
-        {doubled.map((t, i) => <Card key={`r1-${i}`} t={t} index={i} />)}
+        {doubled.map((t, i) => <Card key={`r1-${i}`} t={t} />)}
       </motion.div>
     </div>
 
@@ -123,15 +111,15 @@ const TestimonialsCarousel = () => (
     <div
       className="relative"
       style={{
-        maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-        WebkitMaskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+        maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+        WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
       }}
     >
       <motion.div
         className="flex gap-6 hover:[animation-play-state:paused]"
-        style={{ animation: "scroll-right 40s linear infinite", width: "max-content" }}
+        style={{ animation: "scroll-right 28s linear infinite", width: "max-content" }}
       >
-        {doubled.map((t, i) => <Card key={`r2-${i}`} t={t} index={i} />)}
+        {doubled.map((t, i) => <Card key={`r2-${i}`} t={t} />)}
       </motion.div>
     </div>
   </section>

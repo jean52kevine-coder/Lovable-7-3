@@ -1,7 +1,6 @@
 import { useRef, useEffect, useState, useCallback, useMemo } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
-import heroVideo from "@/assets/videos/hero-background.mp4";
 
 const WORDS = ["commercial", "vendeur", "atout", "levier", "avantage"];
 
@@ -20,7 +19,6 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.15 } },
 };
 
-/* ─── Sub-components ─── */
 const CountUp = ({ target, suffix = "" }: { target: number; suffix?: string }) => {
   const [val, setVal] = useState(0);
   useEffect(() => {
@@ -67,7 +65,6 @@ const RotatingWord = () => {
   );
 };
 
-/* ─── Main Component ─── */
 const HeroSection = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -105,35 +102,51 @@ const HeroSection = () => {
     <section
       ref={heroRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      style={{ backgroundColor: "#0a0f0a" }}
     >
-      {/* Video background */}
-      <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src={heroVideo} type="video/mp4" />
-        </video>
-        {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-black/50" />
-        {/* Green gradient overlay */}
-        <div 
-          className="absolute inset-0"
-          style={{
-            background: "radial-gradient(ellipse at center, rgba(29,185,84,0.08) 0%, transparent 60%)"
-          }}
-        />
-      </div>
+      {/* Dot grid SVG background */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `radial-gradient(circle, rgba(29,185,84,0.2) 1px, transparent 1px)`,
+          backgroundSize: "32px 32px",
+        }}
+      />
+
+      {/* Floating orbs */}
+      <motion.div
+        className="absolute rounded-full z-0 pointer-events-none"
+        style={{
+          width: 600,
+          height: 600,
+          background: "rgba(29,185,84,0.07)",
+          filter: "blur(100px)",
+          top: "10%",
+          left: "-10%",
+        }}
+        animate={{ x: [0, 40, 0], y: [0, -30, 0] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", repeatType: "reverse" }}
+      />
+      <motion.div
+        className="absolute rounded-full z-0 pointer-events-none"
+        style={{
+          width: 500,
+          height: 500,
+          background: "rgba(29,185,84,0.04)",
+          filter: "blur(100px)",
+          bottom: "5%",
+          right: "-5%",
+        }}
+        animate={{ x: [0, -30, 0], y: [0, 20, 0] }}
+        transition={{ duration: 28, repeat: Infinity, ease: "easeInOut", repeatType: "reverse" }}
+      />
 
       {/* Mouse spotlight */}
       <div
         className="absolute inset-0 pointer-events-none z-[1]"
         style={{
           background:
-            "radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%), rgba(29,185,84,0.12), transparent 60%)",
+            "radial-gradient(500px circle at var(--mx, 50%) var(--my, 50%), rgba(29,185,84,0.04), transparent 60%)",
         }}
       />
 
@@ -190,8 +203,7 @@ const HeroSection = () => {
           <motion.div variants={blurUp(0.4)} className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center font-bold px-7 py-3.5 rounded-lg text-primary-foreground transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/25"
-              style={{ background: "hsl(145, 63%, 42%)" }}
+              className="btn-primary text-center"
             >
               Demander un devis →
             </Link>
