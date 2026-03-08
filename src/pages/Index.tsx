@@ -1,7 +1,6 @@
 import Layout from "@/components/Layout";
 import HeroHome from "@/components/home/HeroHome";
 import ServicesShowcase from "@/components/home/ServicesShowcase";
-import ScrollShowcase from "@/components/home/ScrollShowcase";
 import WhyUs from "@/components/home/WhyUs";
 import DistinguishSection from "@/components/home/DistinguishSection";
 import ProcessSteps from "@/components/home/ProcessSteps";
@@ -13,7 +12,6 @@ const Index = () => (
   <Layout>
     <HeroHome />
     <ServicesShowcase />
-    <ScrollShowcase />
     <WhyUs />
     <DistinguishSection />
     <ProcessSteps />
