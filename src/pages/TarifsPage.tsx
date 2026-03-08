@@ -6,6 +6,12 @@ import { Globe, ShoppingCart, Shield, Check, Star, CreditCard, ArrowRight } from
 import { PricingComparison } from "@/components/ui/pricing-comparison";
 import { CtaSection } from "@/components/ui/cta-section";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { BorderBeam } from "@/components/ui/border-beam";
+import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
+import BlurReveal from "@/components/animations/BlurReveal";
+import ScaleSection from "@/components/animations/ScaleSection";
+import TextSplit from "@/components/animations/TextSplit";
+import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import TextSplit from "@/components/animations/TextSplit";
