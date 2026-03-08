@@ -68,8 +68,10 @@ const ServicesGrid = () => (
             <motion.div
               key={i}
               variants={itemVariants}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="relative rounded-2xl transition-all duration-300 group"
+              whileHover={{ y: -8, scale: 1.02, rotateX: 2, rotateY: -2 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="relative rounded-2xl transition-all duration-300 group card-shimmer"
+              style={{ perspective: 800, transformStyle: "preserve-3d" }}
             >
               <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
               <div

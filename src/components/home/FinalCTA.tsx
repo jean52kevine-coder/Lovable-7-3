@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
+import { ArrowRight } from "lucide-react";
 import BlurReveal from "@/components/animations/BlurReveal";
 
 const FinalCTA = () => {
@@ -60,21 +61,9 @@ const FinalCTA = () => {
         <BlurReveal delay={0.3}>
           <Link
             to="/contact"
-            className="inline-flex items-center justify-center font-bold text-lg px-10 py-[18px] rounded-[10px] text-primary-foreground transition-all duration-200 hover:-translate-y-[3px]"
-            style={{
-              background: "hsl(145, 63%, 42%)",
-              fontSize: "18px",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "hsl(145, 63%, 35%)";
-              e.currentTarget.style.boxShadow = "0 12px 40px rgba(29,185,84,0.3)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "hsl(145, 63%, 42%)";
-              e.currentTarget.style.boxShadow = "none";
-            }}
+            className="btn-primary text-lg px-10 py-[18px] rounded-[10px] font-bold"
           >
-            Démarrer mon projet →
+            Démarrer mon projet <ArrowRight className="ml-2 h-5 w-5" />
           </Link>
         </BlurReveal>
 
