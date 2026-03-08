@@ -7,9 +7,9 @@ interface AlteraLogoProps {
 }
 
 const sizeMap = {
-  sm: { height: 48 },
-  md: { height: 64 },
-  lg: { height: 88 },
+  sm: { height: 56 },
+  md: { height: 96 },
+  lg: { height: 120 },
 };
 
 const AlteraLogo = ({ className = "", size = "md" }: AlteraLogoProps) => {
