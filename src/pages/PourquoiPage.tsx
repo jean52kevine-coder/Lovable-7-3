@@ -14,7 +14,7 @@ import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
 import NumberFlow from "@number-flow/react";
-import heroPourquoi from "@/assets/hero-pourquoi.jpg";
+import heroPourquoiVideo from "@/assets/videos/hero-pourquoi.mp4";
 
 const statIllustrations = [StatMobileSearch, StatScreenBrowse, StatBarsGrowing, StatClock];
 
