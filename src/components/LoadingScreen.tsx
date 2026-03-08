@@ -92,15 +92,6 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
             </motion.div>
 
             {/* Tagline */}
-            <motion.p
-              className="mt-4 text-sm font-dm"
-              style={{ color: "rgba(255,255,255,0.4)" }}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2, duration: 0.5 }}
-            >
-              Digital Studio
-            </motion.p>
           </motion.div>
         </motion.div>
       )}
