@@ -4,27 +4,13 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import { StepChatIcon, StepDesignIcon, StepCodeIcon, StepRocketIcon } from "@/components/illustrations/SvgIllustrations";
 
+const stepIcons = [StepChatIcon, StepDesignIcon, StepCodeIcon, StepRocketIcon];
+
 const steps = [
-  {
-    num: "01",
-    title: "Échange découverte",
-    detail: "Appel 30min offert. On étudie votre activité, vos clients cibles et vos objectifs. Zéro engagement.",
-  },
-  {
-    num: "02",
-    title: "Maquette validée",
-    detail: "Une maquette sur-mesure créée en 48h. Vous validez avant qu'on code une seule ligne.",
-  },
-  {
-    num: "03",
-    title: "Développement",
-    detail: "Code propre, rapide, SEO-ready. Vous suivez l'avancement en temps réel.",
-  },
-  {
-    num: "04",
-    title: "Livraison & formation",
-    detail: "Mise en ligne, formation, remise des accès. Votre site est en ligne en 14 jours.",
-  },
+  { num: "01", title: "Échange découverte", detail: "Appel 30min offert. On étudie votre activité, vos clients cibles et vos objectifs. Zéro engagement." },
+  { num: "02", title: "Maquette validée", detail: "Une maquette sur-mesure créée en 48h. Vous validez avant qu'on code une seule ligne." },
+  { num: "03", title: "Développement", detail: "Code propre, rapide, SEO-ready. Vous suivez l'avancement en temps réel." },
+  { num: "04", title: "Livraison & formation", detail: "Mise en ligne, formation, remise des accès. Votre site est en ligne en 14 jours." },
 ];
 
 const StepperSection = () => {
