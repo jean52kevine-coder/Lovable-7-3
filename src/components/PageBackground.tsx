@@ -18,7 +18,7 @@ const PageBackground = () => {
     let h = 0;
 
     // Stars
-    const STAR_COUNT = 180;
+    const STAR_COUNT = 350;
     const stars: { x: number; y: number; r: number; baseAlpha: number; speed: number; phase: number }[] = [];
 
     // Shooting stars
