@@ -7,6 +7,7 @@ import { CtaSection } from "@/components/ui/cta-section";
 import { FeaturesBento } from "@/components/ui/features-bento";
 import { BorderBeam } from "@/components/ui/border-beam";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { EcommerceHeroIllustration } from "@/components/illustrations/SvgIllustrations";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import TextSplit from "@/components/animations/TextSplit";
