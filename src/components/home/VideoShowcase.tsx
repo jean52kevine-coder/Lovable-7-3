@@ -1,25 +1,25 @@
 import { motion } from "framer-motion";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
+import saasVideo from "@/assets/videos/saas-dashboard.mp4";
+import techVideo from "@/assets/videos/tech-interface.mp4";
+import ecommerceVideo from "@/assets/videos/ecommerce-showcase.mp4";
 
 const videos = [
   {
     title: "Design Moderne",
-    description: "Des interfaces élégantes et intuitives",
-    videoUrl: "https://videos.pexels.com/video-files/5971257/5971257-uhd_2560_1440_25fps.mp4",
-    poster: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600",
+    description: "Des interfaces élégantes et intuitives qui captivent vos visiteurs",
+    videoUrl: saasVideo,
   },
   {
     title: "Performance Optimale",
-    description: "Des sites ultra-rapides pour convertir",
-    videoUrl: "https://videos.pexels.com/video-files/5926397/5926397-uhd_2560_1440_25fps.mp4",
-    poster: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600",
+    description: "Technologies de pointe pour des sites ultra-rapides",
+    videoUrl: techVideo,
   },
   {
-    title: "Mobile First",
-    description: "Parfait sur tous les écrans",
-    videoUrl: "https://videos.pexels.com/video-files/3130284/3130284-uhd_2560_1440_30fps.mp4",
-    poster: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600",
+    title: "E-commerce Puissant",
+    description: "Boutiques en ligne qui convertissent et vendent",
+    videoUrl: ecommerceVideo,
   },
 ];
 
@@ -54,7 +54,6 @@ const VideoShowcase = () => {
                   muted
                   loop
                   playsInline
-                  poster={video.poster}
                 >
                   <source src={video.videoUrl} type="video/mp4" />
                 </video>
@@ -72,7 +71,7 @@ const VideoShowcase = () => {
                   </p>
                 </div>
 
-                {/* Glow effect on hover */}
+                {/* Glow on hover */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                   <div className="absolute inset-0 bg-primary/5" />
                   <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-primary/10 to-transparent" />
