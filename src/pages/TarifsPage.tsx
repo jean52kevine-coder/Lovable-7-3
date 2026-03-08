@@ -118,7 +118,7 @@ const TarifsPage = () =>
           DES PRIX CLAIRS.
         </TextSplit>
         <BlurReveal delay={0.2}>
-          <h2 className="heading-display text-3xl md:text-5xl text-primary mb-6">ZÉRO SURPRISE.</h2>
+          <h2 className="heading-display text-3xl md:text-5xl text-primary mb-6"><AnimatedGradientText>ZÉRO SURPRISE.</AnimatedGradientText></h2>
         </BlurReveal>
         <BlurReveal delay={0.3}>
           <p className="font-dm text-lg max-w-xl mx-auto text-muted-foreground">
