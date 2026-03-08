@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import BlurReveal from "@/components/animations/BlurReveal";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
+import testimonialsBg from "@/assets/videos/testimonials-background.mp4";
 
 const testimonials = [
   { text: "Mon agenda est plein 3 semaines à l'avance.", name: "Thomas B.", role: "Plombier · Lyon", badge: "+8 demandes/mois" },
@@ -11,7 +12,7 @@ const testimonials = [
 ];
 
 const TrustBanner = () => (
-  <section className="py-24" style={{ backgroundColor: "hsl(var(--background) / 0.8)" }}>
+  <section className="py-24 relative overflow-hidden">
     <div className="section-container">
       <BlurReveal className="text-center mb-16">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style={{ background: "hsl(var(--primary) / 0.1)", border: "1px solid hsl(var(--primary) / 0.2)" }}>
