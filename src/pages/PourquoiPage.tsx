@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
-import RotatingWords from "@/components/RotatingWords";
 import { ArrowRight, XCircle, CheckCircle, TrendingUp, Users, Search, Clock, Zap, Shield } from "lucide-react";
 import { FeatureCard } from "@/components/ui/grid-feature-cards";
 import { CtaSection } from "@/components/ui/cta-section";
@@ -39,7 +38,7 @@ const PourquoiPage = () => (
       <img src={heroPourquoi} alt="" className="absolute inset-0 w-full h-full object-cover opacity-20" />
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
       <motion.div className="section-container text-center relative z-10" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-        <h1 className="heading-display text-4xl md:text-6xl mb-6">POURQUOI AVOIR <RotatingWords words={["UN SITE WEB", "UNE VITRINE", "UNE PRÉSENCE", "UN AVANTAGE"]} /> ?</h1>
+        <h1 className="heading-display text-4xl md:text-6xl mb-6">POURQUOI AVOIR <span className="text-primary">UN SITE WEB</span> ?</h1>
         <p className="font-dm text-lg max-w-2xl mx-auto text-muted-foreground">En 2025, ne pas avoir de site internet c'est comme ne pas avoir de vitrine. Vos clients vous cherchent en ligne — soyez là.</p>
       </motion.div>
     </section>

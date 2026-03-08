@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
-import RotatingWords from "@/components/RotatingWords";
 import { Globe, ShoppingCart, Check, ArrowRight } from "lucide-react";
 import { BorderBeam } from "@/components/ui/border-beam";
 import { CtaSection } from "@/components/ui/cta-section";
@@ -53,7 +52,7 @@ const TarifsPage = () => (
         transition={{ duration: 0.6 }}
       >
         <h1 className="heading-display text-4xl md:text-6xl mb-4">
-          NOS <RotatingWords words={["TARIFS", "PRIX", "FORMULES", "OFFRES"]} />
+          NOS <span className="text-primary">TARIFS</span>
         </h1>
         <p className="font-dm text-lg max-w-xl mx-auto text-muted-foreground">
           Des prix clairs, sans surprise. Tout est inclus.

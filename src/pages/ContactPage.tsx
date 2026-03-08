@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Layout from "@/components/Layout";
-import RotatingWords from "@/components/RotatingWords";
 import {
   Send, User, Briefcase, MessageSquare, Check, ArrowRight, ArrowLeft,
   Globe, ShoppingCart, Wrench, Sparkles, Phone, Mail, MapPin, Clock,
@@ -82,7 +81,7 @@ const ContactPage = () => {
           </span>
           <h1 className="heading-display text-4xl md:text-6xl lg:text-7xl mb-4">
             Parlons de votre{" "}
-            <RotatingWords words={["projet", "vision", "ambition", "succès"]} />
+            <span className="bg-gradient-to-r from-primary via-emerald-400 to-primary bg-clip-text text-transparent">projet</span>
           </h1>
           <p className="font-dm text-base md:text-lg text-muted-foreground max-w-xl mx-auto">
             Réponse garantie sous 24h · Consultation 30 min offerte · Devis gratuit

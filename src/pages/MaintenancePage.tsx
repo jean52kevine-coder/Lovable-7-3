@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
-import RotatingWords from "@/components/RotatingWords";
 import { Wrench, Check, ArrowRight } from "lucide-react";
 import { BorderBeam } from "@/components/ui/border-beam";
 import { CtaSection } from "@/components/ui/cta-section";
@@ -39,7 +38,7 @@ const MaintenancePage = () => (
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
       <motion.div className="section-container text-center relative z-10" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
         <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-6"><Wrench className="text-primary" size={32} /></div>
-        <h1 className="heading-display text-4xl md:text-6xl mb-4"><RotatingWords words={["MAINTENANCE", "PERFORMANCE", "SÉCURITÉ", "SÉRÉNITÉ"]} /> WEB</h1>
+        <h1 className="heading-display text-4xl md:text-6xl mb-4"><span className="text-primary">MAINTENANCE</span> WEB</h1>
         <p className="font-dm text-lg max-w-xl mx-auto text-muted-foreground">Gardez votre site à jour, sécurisé et performant. On s'en occupe pour vous.</p>
       </motion.div>
     </section>
