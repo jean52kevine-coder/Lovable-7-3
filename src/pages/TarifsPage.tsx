@@ -74,7 +74,7 @@ const TarifsPage = () => (
       </div>
     </section>
 
-    {/* Pricing cards */}
+    {/* Pricing cards - Site Vitrine / E-commerce */}
     <section className="py-[80px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-10">
@@ -82,57 +82,7 @@ const TarifsPage = () => (
           <p className="text-muted-foreground text-base max-w-xl mx-auto font-dm mt-3">Choisissez la formule adaptée à votre projet. Prix unique, sans abonnement caché.</p>
         </BlurReveal>
         <ScaleSection>
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto" staggerDelay={0.12}>
-            {plans.map((plan, i) => (
-              <motion.div
-                key={i}
-                variants={itemVariants}
-                className={`relative rounded-2xl ${plan.isPopular ? "md:-mt-4 md:mb-4" : ""}`}
-              >
-                <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
-                <div
-                  className={`relative z-10 rounded-2xl p-7 flex flex-col h-full overflow-hidden ${plan.isPopular ? "ring-2 ring-primary" : ""}`}
-                  style={{
-                    backgroundColor: plan.name === "Maintenance" ? "#0d130d" : "hsl(var(--card-dark))",
-                    border: plan.isPopular ? "1px solid hsl(145, 63%, 42%)" : "1px solid hsl(var(--border-green))"
-                  }}
-                >
-                  <BorderBeam colorFrom="#1DB954" colorTo="#06B6D4" duration={plan.isPopular ? 4 : 6} size={200} />
-                  {plan.isPopular && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
-                      <Star className="h-3 w-3 fill-current" /> BEST SELLER
-                    </span>
-                  )}
-                  {"badge" in plan && plan.badge && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-bold px-3 py-1 rounded-full text-primary" style={{ background: "rgba(29,185,84,0.15)", border: "1px solid rgba(29,185,84,0.3)" }}>
-                      {plan.badge}
-                    </span>
-                  )}
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 mt-2">
-                    <plan.icon className="text-primary" size={20} />
-                  </div>
-                  <h3 className="text-lg font-bold text-foreground mb-2">{plan.name}</h3>
-                  <div className="flex items-baseline gap-1 mb-1">
-                    <span className="text-4xl font-bold text-primary heading-display">{plan.price}</span>
-                    <span className="text-xl text-primary">{"suffix" in plan ? "" : "€"}</span>
-                    {"suffix" in plan && <span className="text-muted-foreground text-sm">{plan.suffix}</span>}
-                  </div>
-                  {"subFormulas" in plan && <p className="text-xs text-muted-foreground mb-4">{plan.subFormulas}</p>}
-                  <ul className="space-y-3 flex-1 mb-6">
-                    {plan.features.map((f, j) => (
-                      <li key={j} className="flex items-start gap-2 text-sm text-muted-foreground">
-                        <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" /><span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link to={plan.href} className={plan.isPopular ? "btn-primary text-center text-sm font-bold" : "btn-outline text-center text-sm font-bold"}>
-                    {plan.buttonText}
-                  </Link>
-                  <p className="text-xs text-center text-muted-foreground mt-3">{plan.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </StaggerContainer>
+          <PricingWithChart />
         </ScaleSection>
       </div>
     </section>
@@ -173,15 +123,16 @@ const TarifsPage = () => (
       </div>
     </section>
 
-    {/* Maintenance comparison */}
+    {/* Maintenance */}
     <section className="py-[80px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
-        <PricingComparison
-          plans={maintenancePlans}
-          features={maintenanceFeatures}
-          title="Formules Maintenance"
-          description="Gardez votre site à jour, sécurisé et performant. Sans engagement."
-        />
+        <BlurReveal className="text-center mb-10">
+          <h2 className="heading-display text-3xl md:text-4xl">Formules <span className="text-primary">Maintenance</span></h2>
+          <p className="text-muted-foreground text-base max-w-xl mx-auto font-dm mt-3">Gardez votre site à jour, sécurisé et performant. Sans engagement.</p>
+        </BlurReveal>
+        <ScaleSection>
+          <PricingMaintenance />
+        </ScaleSection>
       </div>
     </section>
 
