@@ -1,18 +1,27 @@
-import { ReactNode } from "react";
+import { ReactNode, lazy, Suspense } from "react";
 import Navbar from "./Navbar";
-import Footer from "./Footer";
-import ChatBot from "./ChatBot";
 import PageBackground from "./PageBackground";
-import { BackgroundPaths } from "./ui/background-paths";
+
+const Footer = lazy(() => import("./Footer"));
+const ChatBot = lazy(() => import("./ChatBot"));
+const BackgroundPaths = lazy(() =>
+  import("./ui/background-paths").then((m) => ({ default: m.BackgroundPaths }))
+);
 
 const Layout = ({ children }: { children: ReactNode }) => (
   <div className="flex flex-col min-h-screen relative">
     <PageBackground />
-    <BackgroundPaths />
+    <Suspense fallback={null}>
+      <BackgroundPaths />
+    </Suspense>
     <Navbar />
     <main className="flex-1 pt-16 md:pt-20 pb-16 sm:pb-0 relative z-[1]">{children}</main>
-    <Footer />
-    <ChatBot />
+    <Suspense fallback={null}>
+      <Footer />
+    </Suspense>
+    <Suspense fallback={null}>
+      <ChatBot />
+    </Suspense>
   </div>
 );
 
