@@ -136,7 +136,8 @@ export function PricingWithChart() {
               </div>
             </div>
           </div>
-        </div>
+          </div>
+        </GlowingShadow>
       </div>
     </div>
   );
