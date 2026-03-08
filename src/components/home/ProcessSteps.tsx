@@ -1,4 +1,8 @@
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, Palette, Code2, Rocket } from "lucide-react";
+import BlurReveal from "@/components/animations/BlurReveal";
+import ScaleSection from "@/components/animations/ScaleSection";
 
 const steps = [
   { num: "01", Icon: MessageSquare, title: "Échange découverte", desc: "Appel 30min. On étudie vos besoins." },
@@ -7,34 +11,92 @@ const steps = [
   { num: "04", Icon: Rocket, title: "Livraison", desc: "En ligne en 14 jours." },
 ];
 
-const ProcessSteps = () => (
-  <section className="py-24" style={{ backgroundColor: "hsl(var(--background))" }}>
-    <div className="section-container">
-      <div className="text-center mb-16">
-        <h2 className="heading-display" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>
-          VOTRE SITE EN <span className="text-primary">4 ÉTAPES</span>
-        </h2>
-      </div>
+const ProcessSteps = () => {
+  const [active, setActive] = useState(0);
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        {steps.map((s, i) => (
-          <div key={i} className="relative text-center">
-            {/* Connector line (desktop only) */}
-            {i < steps.length - 1 && (
-              <div className="hidden lg:block absolute top-8 left-[calc(50%+32px)] right-[calc(-50%+32px)] h-px" style={{ background: "hsl(var(--border-green))" }} />
-            )}
+  return (
+    <section className="py-24" style={{ backgroundColor: "hsl(var(--background))" }}>
+      <div className="section-container">
+        <BlurReveal className="text-center mb-16">
+          <h2 className="heading-display" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>
+            VOTRE SITE EN <span className="text-primary">4 ÉTAPES</span>
+          </h2>
+        </BlurReveal>
 
-            <div className="w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center relative" style={{ background: "hsl(var(--primary) / 0.1)", border: "1px solid hsl(var(--primary) / 0.2)" }}>
-              <s.Icon className="text-primary" size={28} />
-            </div>
-            <span className="heading-display text-primary text-sm block mb-1">{s.num}</span>
-            <h3 className="heading-display text-base text-white mb-1">{s.title}</h3>
-            <p className="font-dm text-sm" style={{ color: "hsl(var(--muted-foreground))" }}>{s.desc}</p>
+        <ScaleSection>
+          {/* Desktop horizontal stepper */}
+          <BlurReveal className="hidden md:flex items-start justify-between relative mb-10" delay={0.2}>
+            <div className="absolute top-8 left-[12.5%] right-[12.5%] h-[2px]" style={{ backgroundColor: "hsl(var(--border-green))" }} />
+            <motion.div
+              className="absolute top-8 left-[12.5%] h-[2px]"
+              style={{ backgroundColor: "hsl(var(--primary))", transformOrigin: "left" }}
+              animate={{ width: `${(active / 3) * 75}%` }}
+              transition={{ duration: 0.4 }}
+            />
+            {steps.map((s, i) => (
+              <button
+                key={i}
+                onClick={() => setActive(i)}
+                className="relative z-10 flex flex-col items-center w-1/4 cursor-pointer group"
+              >
+                <div
+                  className="w-16 h-16 rounded-2xl mb-3 flex items-center justify-center transition-all duration-300"
+                  style={{
+                    background: i === active ? "hsl(var(--primary) / 0.15)" : "hsl(var(--primary) / 0.05)",
+                    border: i === active ? "1px solid hsl(var(--primary) / 0.4)" : "1px solid hsl(var(--primary) / 0.1)",
+                  }}
+                >
+                  <s.Icon className="text-primary" size={26} style={{ opacity: i === active ? 1 : 0.4 }} />
+                </div>
+                <motion.span
+                  className="heading-display mb-1"
+                  animate={{ color: i === active ? "hsl(145, 63%, 42%)" : "rgba(255,255,255,0.2)", scale: i === active ? 1.1 : 1 }}
+                  transition={{ duration: 0.3 }}
+                  style={{ fontSize: "clamp(24px, 2.5vw, 36px)" }}
+                >
+                  {s.num}
+                </motion.span>
+                <span className="text-sm font-dm text-center font-medium" style={{ color: i === active ? "#fff" : "rgba(255,255,255,0.45)" }}>
+                  {s.title}
+                </span>
+              </button>
+            ))}
+          </BlurReveal>
+
+          {/* Mobile vertical stepper */}
+          <div className="md:hidden space-y-4 mb-8">
+            {steps.map((s, i) => (
+              <button key={i} onClick={() => setActive(i)} className="flex items-center gap-4 w-full text-left">
+                <span className="heading-display text-2xl flex-shrink-0 transition-colors" style={{ color: i === active ? "hsl(var(--primary))" : "rgba(255,255,255,0.2)" }}>
+                  {s.num}
+                </span>
+                <span className="font-dm text-sm" style={{ color: i === active ? "#fff" : "rgba(255,255,255,0.45)" }}>{s.title}</span>
+              </button>
+            ))}
           </div>
-        ))}
+
+          {/* Detail panel */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, y: 20, filter: "blur(8px)", scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
+              exit={{ opacity: 0, y: -10, filter: "blur(4px)", scale: 0.98 }}
+              transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
+            >
+              <div
+                className="relative z-10 rounded-xl p-6 font-dm"
+                style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))", borderLeftWidth: "3px", borderLeftColor: "hsl(var(--primary))" }}
+              >
+                <h3 className="heading-display text-lg text-white mb-2">{steps[active].title}</h3>
+                <p style={{ color: "hsl(var(--muted-foreground))" }}>{steps[active].desc}</p>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </ScaleSection>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default ProcessSteps;
