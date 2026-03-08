@@ -215,7 +215,7 @@ const PourquoiPage = () => (
                 viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
-                <AnimatedStat stat={s} />
+                <AnimatedStat stat={s} index={i} />
               </motion.div>
             ))}
           </div>
