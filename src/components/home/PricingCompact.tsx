@@ -42,7 +42,9 @@ const PricingCompact = () => (
             <motion.div
               key={i}
               variants={itemVariants}
-              className="relative rounded-2xl transition-all duration-300 hover:-translate-y-1"
+              whileHover={{ y: -6, scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className={cn("relative rounded-2xl transition-all duration-300 card-shimmer", p.best && "animate-pulse-glow")}
             >
               <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
               <div
