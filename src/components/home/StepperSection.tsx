@@ -111,8 +111,7 @@ const StepperSection = () => {
               <div
                 className="relative z-10 rounded-xl p-6 font-dm"
                 style={{
-                  backgroundColor: i === active ? "rgba(17,24,17,0.9)" : "#111811",
-                  borderLeft: "3px solid hsl(145, 63%, 42%)",
+                  backgroundColor: "#111811",
                   border: "1px solid #1a2e1a",
                   borderLeftWidth: "3px",
                   borderLeftColor: "hsl(145, 63%, 42%)",
