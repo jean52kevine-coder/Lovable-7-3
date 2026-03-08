@@ -165,11 +165,11 @@ const PourquoiPage = () => (
       <div className="section-container text-center relative z-10">
         <BlurReveal>
           <h1 className="heading-display text-4xl md:text-6xl mb-6">
-            POURQUOI AVOIR UN <RotatingWords words={["SITE WEB", "VITRINE", "E-COMMERCE", "SITE PRO"]} />
+            POURQUOI AVOIR UN <RotatingWords words={["SITE WEB", "SITE PRO", "SITE MODERNE", "SITE QUI CONVERTIT"]} />
           </h1>
         </BlurReveal>
         <BlurReveal delay={0.3}>
-          <p className="font-dm text-lg max-w-2xl mx-auto text-muted-foreground">En 2025, ne pas avoir de site internet c'est comme ne pas avoir de vitrine. Vos clients vous cherchent en ligne — soyez là.</p>
+          <p className="font-dm text-lg max-w-2xl mx-auto text-muted-foreground">En 2026, ne pas avoir de site internet c'est comme ne pas exister. Vos clients vous cherchent en ligne — soyez là.</p>
         </BlurReveal>
       </div>
     </section>
