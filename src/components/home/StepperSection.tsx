@@ -2,28 +2,15 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
+import { StepChatIcon, StepDesignIcon, StepCodeIcon, StepRocketIcon } from "@/components/illustrations/SvgIllustrations";
+
+const stepIcons = [StepChatIcon, StepDesignIcon, StepCodeIcon, StepRocketIcon];
 
 const steps = [
-  {
-    num: "01",
-    title: "Échange découverte",
-    detail: "Appel 30min offert. On étudie votre activité, vos clients cibles et vos objectifs. Zéro engagement.",
-  },
-  {
-    num: "02",
-    title: "Maquette validée",
-    detail: "Une maquette sur-mesure créée en 48h. Vous validez avant qu'on code une seule ligne.",
-  },
-  {
-    num: "03",
-    title: "Développement",
-    detail: "Code propre, rapide, SEO-ready. Vous suivez l'avancement en temps réel.",
-  },
-  {
-    num: "04",
-    title: "Livraison & formation",
-    detail: "Mise en ligne, formation, remise des accès. Votre site est en ligne en 14 jours.",
-  },
+  { num: "01", title: "Échange découverte", detail: "Appel 30min offert. On étudie votre activité, vos clients cibles et vos objectifs. Zéro engagement." },
+  { num: "02", title: "Maquette validée", detail: "Une maquette sur-mesure créée en 48h. Vous validez avant qu'on code une seule ligne." },
+  { num: "03", title: "Développement", detail: "Code propre, rapide, SEO-ready. Vous suivez l'avancement en temps réel." },
+  { num: "04", title: "Livraison & formation", detail: "Mise en ligne, formation, remise des accès. Votre site est en ligne en 14 jours." },
 ];
 
 const StepperSection = () => {
@@ -51,31 +38,37 @@ const StepperSection = () => {
               transition={{ duration: 0.4 }}
             />
 
-            {steps.map((s, i) => (
-              <button
-                key={i}
-                onClick={() => setActive(i)}
-                className="relative z-10 flex flex-col items-center w-1/4 cursor-pointer group"
-              >
-                <motion.div
-                  className="font-display font-black mb-3"
-                  animate={{
-                    color: i === active ? "hsl(145, 63%, 42%)" : "rgba(255,255,255,0.2)",
-                    scale: i === active ? 1.1 : 1,
-                  }}
-                  transition={{ duration: 0.3 }}
-                  style={{ fontSize: "clamp(36px, 4vw, 60px)" }}
+            {steps.map((s, i) => {
+              const Icon = stepIcons[i];
+              return (
+                <button
+                  key={i}
+                  onClick={() => setActive(i)}
+                  className="relative z-10 flex flex-col items-center w-1/4 cursor-pointer group"
                 >
-                  {s.num}
-                </motion.div>
-                <span
-                  className="text-sm font-dm text-center font-medium"
-                  style={{ color: i === active ? "#fff" : "rgba(255,255,255,0.45)" }}
-                >
-                  {s.title}
-                </span>
-              </button>
-            ))}
+                  <div className="mb-2">
+                    <Icon />
+                  </div>
+                  <motion.div
+                    className="font-display font-black mb-1"
+                    animate={{
+                      color: i === active ? "hsl(145, 63%, 42%)" : "rgba(255,255,255,0.2)",
+                      scale: i === active ? 1.1 : 1,
+                    }}
+                    transition={{ duration: 0.3 }}
+                    style={{ fontSize: "clamp(28px, 3vw, 44px)" }}
+                  >
+                    {s.num}
+                  </motion.div>
+                  <span
+                    className="text-sm font-dm text-center font-medium"
+                    style={{ color: i === active ? "#fff" : "rgba(255,255,255,0.45)" }}
+                  >
+                    {s.title}
+                  </span>
+                </button>
+              );
+            })}
           </BlurReveal>
 
           {/* Mobile vertical stepper */}

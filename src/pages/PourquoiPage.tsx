@@ -8,12 +8,15 @@ import { FeatureCard } from "@/components/ui/grid-feature-cards";
 import { CtaSection } from "@/components/ui/cta-section";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { NumberTicker } from "@/components/ui/number-ticker";
+import { StatMobileSearch, StatScreenBrowse, StatBarsGrowing, StatClock } from "@/components/illustrations/SvgIllustrations";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import TextSplit from "@/components/animations/TextSplit";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
 import NumberFlow from "@number-flow/react";
 import heroPourquoi from "@/assets/hero-pourquoi.jpg";
+
+const statIllustrations = [StatMobileSearch, StatScreenBrowse, StatBarsGrowing, StatClock];
 
 const stats = [
   { value: "97%", numValue: 97, suffix: "%", label: "des consommateurs utilisent internet pour trouver un professionnel local" },
@@ -58,9 +61,11 @@ const roiTestimonials = [
   },
 ];
 
-const AnimatedStat = ({ stat }: { stat: typeof stats[0] }) => {
+const AnimatedStat = ({ stat, index }: { stat: typeof stats[0]; index: number }) => {
+  const Illustration = statIllustrations[index];
   return (
     <div className="rounded-2xl p-6 text-center" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+      <Illustration />
       <div className="text-primary font-display font-black mb-2" style={{ fontSize: "clamp(48px, 6vw, 80px)" }}>
         <NumberTicker value={stat.numValue} />{stat.suffix}
       </div>
@@ -210,7 +215,7 @@ const PourquoiPage = () => (
                 viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
-                <AnimatedStat stat={s} />
+                <AnimatedStat stat={s} index={i} />
               </motion.div>
             ))}
           </div>

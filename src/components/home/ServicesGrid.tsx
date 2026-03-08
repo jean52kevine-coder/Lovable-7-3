@@ -5,37 +5,32 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
 import { motion } from "framer-motion";
+import { VitrineMockup, EcommerceMockup, MaintenanceMockup } from "@/components/illustrations/SvgIllustrations";
 
 const cards = [
   {
-    icon: Globe,
-    badge: "497€",
-    title: "SITE VITRINE",
+    icon: Globe, badge: "497€", title: "SITE VITRINE",
     desc: "Une présence professionnelle qui inspire confiance et génère des contacts qualifiés.",
     bullets: ["Design sur-mesure", "1 à 5 pages", "SEO optimisé", "Livraison 14j"],
-    link: "/services/site-vitrine",
-    popular: false,
+    link: "/services/site-vitrine", popular: false,
     gradient: "from-emerald-500/10 to-transparent",
+    Mockup: VitrineMockup,
   },
   {
-    icon: ShoppingCart,
-    badge: "747€",
-    title: "SITE E-COMMERCE",
+    icon: ShoppingCart, badge: "747€", title: "SITE E-COMMERCE",
     desc: "Vendez en ligne avec une boutique performante, sécurisée et facile à gérer.",
     bullets: ["Catalogue illimité", "Paiement Stripe/PayPal", "Dashboard admin", "Formation incluse"],
-    link: "/services/site-ecommerce",
-    popular: true,
+    link: "/services/site-ecommerce", popular: true,
     gradient: "from-primary/15 to-transparent",
+    Mockup: EcommerceMockup,
   },
   {
-    icon: Shield,
-    badge: "dès 39€/mois",
-    title: "MAINTENANCE & SEO",
+    icon: Shield, badge: "dès 39€/mois", title: "MAINTENANCE & SEO",
     desc: "Gardez votre site rapide, sécurisé et visible sur Google en permanence.",
     bullets: ["Mises à jour", "Sauvegardes auto", "Monitoring 24/7", "Rapport mensuel"],
-    link: "/services/maintenance",
-    popular: false,
+    link: "/services/maintenance", popular: false,
     gradient: "from-cyan-500/10 to-transparent",
+    Mockup: MaintenanceMockup,
   },
 ];
 
@@ -82,6 +77,10 @@ const ServicesGrid = () => (
                   backdropFilter: "blur(10px)",
                 }}
               >
+                {/* Mockup illustration */}
+                <div className="mb-4 rounded-lg overflow-hidden" style={{ backgroundColor: "#0d130d" }}>
+                  <c.Mockup />
+                </div>
                 {c.popular && (
                   <motion.span
                     initial={{ scale: 0 }}
