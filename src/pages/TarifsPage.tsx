@@ -145,11 +145,12 @@ const TarifsPage = () =>
             
                 <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
                 <div
-              className={`relative z-10 rounded-2xl p-7 flex flex-col h-full ${plan.isPopular ? "ring-2 ring-primary" : ""}`}
+              className={`relative z-10 rounded-2xl p-7 flex flex-col h-full overflow-hidden ${plan.isPopular ? "ring-2 ring-primary" : ""}`}
               style={{
                 backgroundColor: plan.name === "Maintenance" ? "#0d130d" : "hsl(var(--card-dark))",
                 border: plan.isPopular ? "1px solid hsl(145, 63%, 42%)" : "1px solid hsl(var(--border-green))"
               }}>
+                <BorderBeam colorFrom="#1DB954" colorTo="#06B6D4" duration={plan.isPopular ? 4 : 6} size={200} />
               
                   {plan.isPopular &&
               <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
