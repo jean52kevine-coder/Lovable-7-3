@@ -315,6 +315,14 @@
   cursor: pointer;
 }
 
+.glow-container.glow-flex {
+  width: 100%;
+  aspect-ratio: unset;
+  --card-width: 100%;
+  --card-radius: 16px;
+  margin: 0;
+}
+
 .glow-container:before,
 .glow-container:after {
   content: "";
