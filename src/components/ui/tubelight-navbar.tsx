@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
-import { LucideIcon, ChevronDown, Globe, ShoppingCart, Wrench } from "lucide-react";
+import { LucideIcon, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface NavItem {
@@ -70,54 +70,59 @@ export function NavBar({ items, className }: NavBarProps) {
               onMouseEnter={() => hasSubmenu && handleMouseEnter(item.name)}
               onMouseLeave={handleMouseLeave}
             >
-              <Link
-                to={hasSubmenu ? "#" : item.url}
-                onClick={(e) => {
-                  if (hasSubmenu) {
-                    e.preventDefault();
-                    setOpenSubmenu(openSubmenu === item.name ? null : item.name);
-                  }
-                  setActiveTab(item.name);
-                }}
-                className={cn(
-                  "relative cursor-pointer text-sm font-semibold px-4 md:px-5 py-2 rounded-full transition-colors flex items-center gap-1",
-                  "text-foreground/80 hover:text-primary",
-                  isActive && "bg-muted text-primary"
-                )}
-              >
-                <span className="hidden md:inline">{item.name}</span>
-                <span className="md:hidden">
-                  <Icon size={18} strokeWidth={2.5} />
-                </span>
+              <div className="flex items-center">
+                {/* Main link - always navigates to the page */}
+                <Link
+                  to={item.url}
+                  onClick={() => setActiveTab(item.name)}
+                  className={cn(
+                    "relative cursor-pointer text-sm font-semibold px-4 md:px-5 py-2 rounded-full transition-colors flex items-center",
+                    "text-foreground/80 hover:text-primary",
+                    isActive && "bg-muted text-primary",
+                    hasSubmenu && "pr-1 md:pr-2"
+                  )}
+                >
+                  <span className="hidden md:inline">{item.name}</span>
+                  <span className="md:hidden">
+                    <Icon size={18} strokeWidth={2.5} />
+                  </span>
+                  {isActive && (
+                    <motion.div
+                      layoutId="tubelight"
+                      className="absolute inset-0 rounded-full -z-10"
+                      style={{
+                        backgroundColor: "hsl(var(--primary) / 0.08)",
+                      }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 350,
+                        damping: 30,
+                      }}
+                    >
+                      <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 rounded-full bg-primary opacity-80 blur-[3px]" />
+                      <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-primary opacity-100" />
+                      <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-1 rounded-full bg-primary opacity-80 blur-[3px] sm:hidden" />
+                      <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-primary opacity-100 sm:hidden" />
+                    </motion.div>
+                  )}
+                </Link>
+
+                {/* Dropdown arrow - separate button for submenu */}
                 {hasSubmenu && !isMobile && (
-                  <ChevronDown 
-                    size={14} 
-                    className={cn(
-                      "transition-transform duration-200 hidden md:block",
-                      openSubmenu === item.name && "rotate-180"
-                    )} 
-                  />
-                )}
-                {isActive && (
-                  <motion.div
-                    layoutId="tubelight"
-                    className="absolute inset-0 rounded-full -z-10"
-                    style={{
-                      backgroundColor: "hsl(var(--primary) / 0.08)",
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 350,
-                      damping: 30,
-                    }}
+                  <button
+                    onClick={() => setOpenSubmenu(openSubmenu === item.name ? null : item.name)}
+                    className="p-1.5 rounded-full hover:bg-muted transition-colors hidden md:flex items-center justify-center"
                   >
-                    <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 rounded-full bg-primary opacity-80 blur-[3px]" />
-                    <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-primary opacity-100" />
-                    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-1 rounded-full bg-primary opacity-80 blur-[3px] sm:hidden" />
-                    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-primary opacity-100 sm:hidden" />
-                  </motion.div>
+                    <ChevronDown 
+                      size={14} 
+                      className={cn(
+                        "transition-transform duration-200 text-foreground/60",
+                        openSubmenu === item.name && "rotate-180"
+                      )} 
+                    />
+                  </button>
                 )}
-              </Link>
+              </div>
 
               {/* Submenu dropdown */}
               {hasSubmenu && openSubmenu === item.name && !isMobile && (

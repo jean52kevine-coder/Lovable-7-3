@@ -7,6 +7,7 @@ import VideoShowcase from "@/components/home/VideoShowcase";
 import ProcessTimeline from "@/components/home/ProcessTimeline";
 import DistinguishSection from "@/components/home/DistinguishSection";
 import PricingCompact from "@/components/home/PricingCompact";
+import ROICalculator from "@/components/home/ROICalculator";
 import TestimonialsCarousel from "@/components/home/TestimonialsCarousel";
 import FinalCTA from "@/components/home/FinalCTA";
 
@@ -25,6 +26,7 @@ const Index = () => {
         <ProcessTimeline />
         <DistinguishSection />
         <PricingCompact />
+        <ROICalculator />
         <TestimonialsCarousel />
         <FinalCTA />
       </Layout>
