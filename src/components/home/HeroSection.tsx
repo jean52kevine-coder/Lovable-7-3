@@ -2,6 +2,7 @@ import { useRef, useEffect, useState, useCallback, useMemo } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Spotlight } from "@/components/ui/spotlight";
 
 const WORDS = ["commercial", "vendeur", "atout", "levier", "avantage"];
 
