@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 interface TextSplitProps {
   children: string;
   className?: string;
+  style?: React.CSSProperties;
   delay?: number;
   /** Duration per character */
   charDuration?: number;
