@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import BlurReveal from "@/components/animations/BlurReveal";
+import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
 
 const FinalCTA = () => {
   const ref = useRef<HTMLElement>(null);
