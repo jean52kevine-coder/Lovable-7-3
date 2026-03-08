@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { CreditCard } from "lucide-react";
 import { PricingWithChart } from "@/components/ui/pricing-with-chart";
+import { GlowingShadow } from "@/components/ui/glowing-shadow";
 import { PricingMaintenance } from "@/components/ui/pricing-maintenance";
 import { CtaSection } from "@/components/ui/cta-section";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
