@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
 import { Globe, ShoppingCart, Wrench, ArrowRight, Zap, Shield, Palette, Clock, HeadphonesIcon, TrendingUp } from "lucide-react";
-import { FeatureCard } from "@/components/ui/grid-feature-cards";
+import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
 import { CtaSection } from "@/components/ui/cta-section";
 import { BorderBeam } from "@/components/ui/border-beam";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
@@ -33,13 +33,62 @@ const services = [
   },
 ];
 
-const features = [
-  { title: "Rapidité", icon: Zap, description: "Livraison en 14 jours chrono. Pendant que d'autres attendent 3 mois, vous êtes déjà en ligne." },
-  { title: "Design unique", icon: Palette, description: "Aucun template. Chaque site est conçu sur-mesure pour refléter votre identité." },
-  { title: "Sécurité", icon: Shield, description: "SSL, sauvegardes automatiques et monitoring 24/7 pour une tranquillité totale." },
-  { title: "SEO optimisé", icon: TrendingUp, description: "Structuré pour Google dès le premier jour. Vos clients vous trouvent facilement." },
-  { title: "Support humain", icon: HeadphonesIcon, description: "Un vrai interlocuteur, pas un chatbot. Réponse garantie dans la journée." },
-  { title: "Délais respectés", icon: Clock, description: "On s'engage sur une date de livraison et on la tient. Toujours." },
+const bentoFeatures = [
+  {
+    Icon: Zap,
+    name: "Livraison express",
+    description: "14 jours chrono. Pendant que d'autres attendent 3 mois, vous êtes déjà en ligne.",
+    href: "/contact",
+    cta: "Démarrer",
+    background: (
+      <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: "radial-gradient(circle, hsl(var(--primary)) 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
+    ),
+    className: "lg:row-start-1 lg:row-end-3 lg:col-start-1 lg:col-end-2",
+  },
+  {
+    Icon: Palette,
+    name: "Design unique",
+    description: "Aucun template. Chaque site est conçu sur-mesure pour votre identité.",
+    href: "/services/site-vitrine",
+    cta: "Voir les offres",
+    background: (
+      <div className="absolute top-0 right-0 w-32 h-32 rounded-full opacity-10" style={{ background: "hsl(var(--primary))", filter: "blur(40px)" }} />
+    ),
+    className: "lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-2",
+  },
+  {
+    Icon: Shield,
+    name: "Sécurité totale",
+    description: "SSL, sauvegardes auto et monitoring 24/7.",
+    href: "/services/maintenance",
+    cta: "En savoir plus",
+    background: (
+      <div className="absolute bottom-0 left-0 w-24 h-24 rounded-full opacity-10" style={{ background: "hsl(var(--primary))", filter: "blur(30px)" }} />
+    ),
+    className: "lg:col-start-2 lg:col-end-3 lg:row-start-2 lg:row-end-3",
+  },
+  {
+    Icon: TrendingUp,
+    name: "SEO optimisé",
+    description: "Structuré pour Google dès le premier jour. Vos clients vous trouvent facilement.",
+    href: "/contact",
+    cta: "Discuter SEO",
+    background: (
+      <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "linear-gradient(135deg, hsl(var(--primary)) 25%, transparent 25%, transparent 50%, hsl(var(--primary)) 50%, hsl(var(--primary)) 75%, transparent 75%)", backgroundSize: "20px 20px" }} />
+    ),
+    className: "lg:col-start-3 lg:col-end-4 lg:row-start-1 lg:row-end-2",
+  },
+  {
+    Icon: HeadphonesIcon,
+    name: "Support humain",
+    description: "Un vrai interlocuteur, pas un chatbot. Réponse garantie dans la journée.",
+    href: "/contact",
+    cta: "Nous contacter",
+    background: (
+      <div className="absolute top-0 left-0 w-40 h-40 rounded-full opacity-10" style={{ background: "hsl(var(--primary))", filter: "blur(50px)" }} />
+    ),
+    className: "lg:col-start-3 lg:col-end-4 lg:row-start-2 lg:row-end-3",
+  },
 ];
 
 const ServicesPage = () => (
@@ -73,8 +122,8 @@ const ServicesPage = () => (
                       <BorderBeam size={250} duration={12} delay={0} />
                     </>
                   )}
-                  <span className="inline-block text-[13px] font-semibold px-3 py-1 rounded-full text-primary mb-4" style={{ background: "rgba(29,185,84,0.12)" }}>{s.price}</span>
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4"><s.icon className="text-primary" size={20} /></div>
+                  <span className="inline-block text-[13px] font-semibold px-3 py-1 rounded-full text-primary mb-4" style={{ background: "hsl(var(--primary) / 0.12)" }}>{s.price}</span>
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style={{ background: "hsl(var(--primary) / 0.1)" }}><s.icon className="text-primary" size={20} /></div>
                   <h3 className="font-display font-black text-xl text-foreground mb-2">{s.title}</h3>
                   <p className="font-dm text-sm mb-5 text-muted-foreground">{s.desc}</p>
                   <ul className="space-y-2 mb-6">
@@ -82,7 +131,9 @@ const ServicesPage = () => (
                       <li key={j} className="flex items-center gap-2 text-sm text-muted-foreground"><span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />{f}</li>
                     ))}
                   </ul>
-                  <Link to={s.link} className="text-primary text-sm font-semibold hover:underline">En savoir plus →</Link>
+                  <Link to={s.link} className="text-primary text-sm font-semibold hover:underline inline-flex items-center gap-1">
+                    En savoir plus <ArrowRight size={14} />
+                  </Link>
                 </div>
               </motion.div>
             ))}
@@ -98,11 +149,11 @@ const ServicesPage = () => (
           <p className="font-dm text-base text-muted-foreground">Tout ce qu'il faut pour réussir en ligne, sans compromis.</p>
         </BlurReveal>
         <ScaleSection>
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" staggerDelay={0.1}>
-            {features.map((feature, i) => (
-              <motion.div key={i} variants={itemVariants}><FeatureCard feature={feature} /></motion.div>
+          <BentoGrid className="lg:grid-rows-2 auto-rows-[18rem]">
+            {bentoFeatures.map((feature) => (
+              <BentoCard key={feature.name} {...feature} />
             ))}
-          </StaggerContainer>
+          </BentoGrid>
         </ScaleSection>
       </div>
     </section>
