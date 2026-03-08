@@ -1,31 +1,68 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { HeroLaptopIllustration } from "@/components/illustrations/SvgIllustrations";
 import RotatingWords from "@/components/RotatingWords";
 import BlurReveal from "@/components/animations/BlurReveal";
+import heroVideo from "@/assets/videos/hero-promo.mp4";
 
 const heroWords = ["PME LOCALES", "ARTISANS", "COMMERÇANTS", "INDÉPENDANTS"];
 
 const HeroHome = () => (
   <section className="relative min-h-[90vh] flex items-center overflow-hidden" style={{ backgroundColor: "hsl(var(--hero-bg))" }}>
-    {/* Glow orb */}
+    {/* Background video */}
+    <div className="absolute inset-0 z-0">
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ opacity: 0.35 }}
+      >
+        <source src={heroVideo} type="video/mp4" />
+      </video>
+
+      {/* Dark overlay gradient for readability */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `linear-gradient(
+            180deg,
+            hsl(var(--hero-bg) / 0.7) 0%,
+            hsl(var(--hero-bg) / 0.4) 40%,
+            hsl(var(--hero-bg) / 0.6) 70%,
+            hsl(var(--hero-bg) / 0.95) 100%
+          )`,
+        }}
+      />
+
+      {/* Green accent overlay */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "radial-gradient(ellipse at 30% 20%, hsl(var(--primary) / 0.08) 0%, transparent 60%)",
+        }}
+      />
+    </div>
+
+    {/* Glow orbs */}
     <div
-      className="absolute top-[-200px] left-[-100px] w-[600px] h-[600px] rounded-full pointer-events-none"
+      className="absolute top-[-200px] left-[-100px] w-[600px] h-[600px] rounded-full pointer-events-none z-[1]"
       style={{ background: "hsl(var(--primary) / 0.06)", filter: "blur(120px)" }}
     />
     <div
-      className="absolute bottom-[-150px] right-[-80px] w-[500px] h-[500px] rounded-full pointer-events-none"
+      className="absolute bottom-[-150px] right-[-80px] w-[500px] h-[500px] rounded-full pointer-events-none z-[1]"
       style={{ background: "hsl(var(--primary) / 0.04)", filter: "blur(100px)" }}
     />
 
     {/* Vignette */}
-    <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%)" }} />
+    <div className="absolute inset-0 pointer-events-none z-[2]" style={{ background: "radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%)" }} />
 
     <div className="section-container relative z-10 py-20 flex flex-col items-center text-center">
       <BlurReveal delay={0}>
         <span
           className="inline-block font-dm text-[13px] font-semibold px-4 py-1.5 rounded-full text-primary mb-6"
-          style={{ background: "hsl(var(--primary) / 0.12)", border: "1px solid hsl(var(--primary) / 0.25)" }}
+          style={{ background: "hsl(var(--primary) / 0.12)", border: "1px solid hsl(var(--primary) / 0.25)", backdropFilter: "blur(8px)" }}
         >
           ⚡ Livraison en 14 jours
         </span>
@@ -53,7 +90,7 @@ const HeroHome = () => (
           <Link
             to="/tarifs"
             className="inline-flex items-center justify-center font-bold px-7 py-3.5 rounded-lg text-white hover:text-primary transition-colors"
-            style={{ border: "1px solid hsl(var(--border))", background: "hsl(var(--card) / 0.5)" }}
+            style={{ border: "1px solid hsl(var(--border))", background: "hsl(var(--card) / 0.5)", backdropFilter: "blur(8px)" }}
           >
             Voir les tarifs
           </Link>
@@ -61,16 +98,11 @@ const HeroHome = () => (
       </BlurReveal>
 
       <BlurReveal delay={0.4}>
-        <div className="flex flex-wrap justify-center gap-6 font-dm text-sm mb-10" style={{ color: "hsl(var(--muted-foreground))" }}>
+        <div className="flex flex-wrap justify-center gap-6 font-dm text-sm" style={{ color: "hsl(var(--muted-foreground))" }}>
           <span><strong className="text-white">50+</strong> sites livrés</span>
           <span><strong className="text-white">14j</strong> délai moyen</span>
           <span><strong className="text-white">98%</strong> satisfaits</span>
         </div>
-      </BlurReveal>
-
-      {/* Illustration en dessous, centrée */}
-      <BlurReveal delay={0.5} className="w-full max-w-[520px]">
-        <HeroLaptopIllustration />
       </BlurReveal>
     </div>
   </section>
