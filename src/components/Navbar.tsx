@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Home, Briefcase, DollarSign, HelpCircle, Mail } from "lucide-react";
+import { Home, Briefcase, DollarSign, HelpCircle } from "lucide-react";
 import { NavBar } from "@/components/ui/tubelight-navbar";
-import logoAltera from "@/assets/logo-altera.png";
+import AlteraLogo from "@/components/AlteraLogo";
 
 const navItems = [
   { name: "Accueil", url: "/", icon: Home },
