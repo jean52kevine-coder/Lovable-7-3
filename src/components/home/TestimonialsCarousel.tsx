@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
 import BlurReveal from "@/components/animations/BlurReveal";
+import { Marquee } from "@/components/ui/marquee";
 
 const testimonials = [
   { text: "Mon agence a généré 40% de nouveaux clients. Professionnalisme exemplaire.", name: "Thomas B.", role: "Artisan plombier, Lyon", avatar: "TB" },
@@ -10,8 +11,6 @@ const testimonials = [
   { text: "Simple, efficace, abordable. Exactement ce qu'il me fallait.", name: "Dr. Marc L.", role: "Ostéopathe, Paris", avatar: "ML" },
   { text: "Réactivité impressionnante. Une question le soir, une réponse le matin.", name: "Yasmine B.", role: "Coach sportive, Marseille", avatar: "YB" },
 ];
-
-const doubled = [...testimonials, ...testimonials];
 
 const Card = ({ t }: { t: typeof testimonials[0] }) => (
   <motion.div
@@ -92,36 +91,16 @@ const TestimonialsCarousel = () => (
     </div>
 
     {/* Row 1 - scrolling left */}
-    <div
-      className="relative mb-6"
-      style={{
-        maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
-        WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
-      }}
-    >
-      <motion.div
-        className="flex gap-6 hover:[animation-play-state:paused]"
-        style={{ animation: "scroll-left 35s linear infinite", width: "max-content" }}
-      >
-        {doubled.map((t, i) => <Card key={`r1-${i}`} t={t} />)}
-      </motion.div>
+    <div className="mb-6">
+      <Marquee speed={35} pauseOnHover>
+        {testimonials.map((t, i) => <Card key={`r1-${i}`} t={t} />)}
+      </Marquee>
     </div>
 
-    {/* Row 2 - scrolling right */}
-    <div
-      className="relative"
-      style={{
-        maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
-        WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
-      }}
-    >
-      <motion.div
-        className="flex gap-6 hover:[animation-play-state:paused]"
-        style={{ animation: "scroll-right 28s linear infinite", width: "max-content" }}
-      >
-        {doubled.map((t, i) => <Card key={`r2-${i}`} t={t} />)}
-      </motion.div>
-    </div>
+    {/* Row 2 - scrolling right (reverse) */}
+    <Marquee speed={28} pauseOnHover reverse>
+      {testimonials.map((t, i) => <Card key={`r2-${i}`} t={t} />)}
+    </Marquee>
   </section>
 );
 

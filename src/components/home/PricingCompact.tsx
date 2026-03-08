@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Globe, ShoppingCart, Shield, Check, ArrowRight } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { BorderBeam } from "@/components/ui/border-beam";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
@@ -49,12 +50,18 @@ const PricingCompact = () => (
             >
               <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
               <div
-                className="relative z-10 rounded-2xl p-7 flex flex-col h-full"
+                className="relative z-10 rounded-2xl p-7 flex flex-col h-full overflow-hidden"
                 style={{
                   backgroundColor: "#111811",
                   border: p.best ? "1px solid hsl(145, 63%, 42%)" : "1px solid #1a2e1a",
                 }}
               >
+                <BorderBeam
+                  colorFrom="#1DB954"
+                  colorTo="#06B6D4"
+                  duration={p.best ? 4 : 6}
+                  size={200}
+                />
                 {p.best && (
                   <span
                     className="absolute -top-3 left-1/2 -translate-x-1/2 text-[11px] font-bold px-3 py-1 rounded-full text-primary-foreground"
