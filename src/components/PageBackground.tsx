@@ -18,7 +18,7 @@ const PageBackground = () => {
     let h = 0;
 
     // Stars
-    const STAR_COUNT = 180;
+    const STAR_COUNT = 350;
     const stars: { x: number; y: number; r: number; baseAlpha: number; speed: number; phase: number }[] = [];
 
     // Shooting stars
@@ -36,8 +36,8 @@ const PageBackground = () => {
         stars.push({
           x: Math.random() * w,
           y: Math.random() * h,
-          r: Math.random() * 1.4 + 0.3,
-          baseAlpha: Math.random() * 0.5 + 0.15,
+          r: Math.random() * 1.8 + 0.5,
+          baseAlpha: Math.random() * 0.6 + 0.35,
           speed: Math.random() * 0.0008 + 0.0003,
           phase: Math.random() * Math.PI * 2,
         });
