@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Spotlight } from "@/components/ui/spotlight";
 import { NumberTicker } from "@/components/ui/number-ticker";
+import { HeroLaptopIllustration } from "@/components/illustrations/SvgIllustrations";
 import BlurReveal from "@/components/animations/BlurReveal";
 
 const WORDS = ["commercial", "vendeur", "atout", "levier", "avantage"];
