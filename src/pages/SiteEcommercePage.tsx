@@ -96,13 +96,18 @@ const SiteEcommercePage = () => (
     <section className="relative py-24 md:py-32 overflow-hidden">
       <img src={heroEcommerce} alt="" className="absolute inset-0 w-full h-full object-cover opacity-20" />
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
-      <div className="section-container text-center relative z-10">
-        <BlurReveal>
-          <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-6"><ShoppingCart className="text-primary" size={32} /></div>
+      <div className="section-container flex flex-col lg:flex-row items-center gap-10 relative z-10">
+        <div className="text-center lg:text-left flex-1">
+          <BlurReveal>
+            <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto lg:mx-0 mb-6"><ShoppingCart className="text-primary" size={32} /></div>
+          </BlurReveal>
+          <TextSplit className="heading-display text-4xl md:text-6xl mb-4" as="h1">SITE E-COMMERCE</TextSplit>
+          <BlurReveal delay={0.4}><p className="text-primary heading-display text-3xl mb-4">747 €</p></BlurReveal>
+          <BlurReveal delay={0.5}><p className="font-dm text-lg max-w-xl mx-auto lg:mx-0 text-muted-foreground">Vendez vos produits en ligne avec une boutique performante, sécurisée et facile à gérer.</p></BlurReveal>
+        </div>
+        <BlurReveal delay={0.3} className="hidden md:block flex-1">
+          <EcommerceHeroIllustration />
         </BlurReveal>
-        <TextSplit className="heading-display text-4xl md:text-6xl mb-4" as="h1">SITE E-COMMERCE</TextSplit>
-        <BlurReveal delay={0.4}><p className="text-primary heading-display text-3xl mb-4">747 €</p></BlurReveal>
-        <BlurReveal delay={0.5}><p className="font-dm text-lg max-w-xl mx-auto text-muted-foreground">Vendez vos produits en ligne avec une boutique performante, sécurisée et facile à gérer.</p></BlurReveal>
       </div>
     </section>
 
