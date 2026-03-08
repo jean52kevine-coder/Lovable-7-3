@@ -3,7 +3,8 @@ import Layout from "@/components/Layout";
 import LoadingScreen from "@/components/LoadingScreen";
 import HeroSection from "@/components/home/HeroSection";
 import ServicesGrid from "@/components/home/ServicesGrid";
-import StepperSection from "@/components/home/StepperSection";
+import VideoShowcase from "@/components/home/VideoShowcase";
+import ProcessTimeline from "@/components/home/ProcessTimeline";
 import DistinguishSection from "@/components/home/DistinguishSection";
 import PricingCompact from "@/components/home/PricingCompact";
 import TestimonialsCarousel from "@/components/home/TestimonialsCarousel";
@@ -20,7 +21,8 @@ const Index = () => {
       <Layout>
         <HeroSection />
         <ServicesGrid />
-        <StepperSection />
+        <VideoShowcase />
+        <ProcessTimeline />
         <DistinguishSection />
         <PricingCompact />
         <TestimonialsCarousel />
