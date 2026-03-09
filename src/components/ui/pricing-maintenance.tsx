@@ -34,7 +34,7 @@ const maintenancePlans: MaintenancePlan[] = [
     ],
     description: "Maintenance de base pour garder votre site fonctionnel",
     buttonText: "Souscrire",
-    href: "/contact",
+    href: "/contact?service=maintenance-essentielle",
     isPopular: false,
   },
   {
@@ -51,7 +51,7 @@ const maintenancePlans: MaintenancePlan[] = [
     ],
     description: "Notre recommandation pour la tranquillité d'esprit",
     buttonText: "Souscrire",
-    href: "/contact",
+    href: "/contact?service=maintenance-professionnelle",
     isPopular: true,
   },
   {
@@ -69,7 +69,7 @@ const maintenancePlans: MaintenancePlan[] = [
     ],
     description: "Tranquillité totale, performances maximales",
     buttonText: "Souscrire",
-    href: "/contact",
+    href: "/contact?service=maintenance-premium",
     isPopular: false,
   },
 ];

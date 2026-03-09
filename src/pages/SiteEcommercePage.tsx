@@ -101,7 +101,7 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl">CE QUI EST <span className="text-primary">INCLUS</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl">CE QUI EST{" "}<span className="text-primary whitespace-nowrap">INCLUS</span></h2>
         </BlurReveal>
         <ScaleSection>
           <div className="relative max-w-2xl mx-auto rounded-2xl">
@@ -125,7 +125,7 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl">FONCTIONNALITÉS <span className="text-primary">CLÉS</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl">FONCTIONNALITÉS{" "}<span className="text-primary whitespace-nowrap">CLÉS</span></h2>
         </BlurReveal>
         <ScaleSection>
           <FeaturesBento items={bentoItems} className="max-w-4xl mx-auto grid-cols-1 md:grid-cols-2" />
@@ -137,7 +137,7 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl">À QUI ÇA <span className="text-primary">S'ADRESSE</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl">À QUI ÇA{" "}<span className="text-primary whitespace-nowrap">S'ADRESSE</span></h2>
         </BlurReveal>
         <ScaleSection>
           <StaggerContainer className="flex flex-wrap justify-center gap-4" staggerDelay={0.1}>
@@ -156,7 +156,7 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-14">
-          <h2 className="heading-display text-2xl md:text-3xl">FAITS POUR DES GENS <span className="text-primary">COMME VOUS</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl">FAITS POUR DES GENS{" "}<span className="text-primary whitespace-nowrap">COMME VOUS</span></h2>
         </BlurReveal>
         <ScaleSection>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.12}>
@@ -180,7 +180,7 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-14">
-          <h2 className="heading-display text-2xl md:text-3xl">VITRINE OU <span className="text-primary">E-COMMERCE ?</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl">VITRINE OU{" "}<span className="text-primary whitespace-nowrap">E-COMMERCE ?</span></h2>
           <p className="font-dm text-muted-foreground mt-3">Choisissez selon votre besoin.</p>
         </BlurReveal>
         <ScaleSection>
@@ -219,7 +219,7 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container text-center max-w-2xl mx-auto">
         <BlurReveal>
-          <h2 className="heading-display text-2xl md:text-3xl mb-6">POURQUOI <span className="text-primary">MAINTENANT</span> ?</h2>
+          <h2 className="heading-display text-2xl md:text-3xl mb-6">POURQUOI{" "}<span className="text-primary whitespace-nowrap">MAINTENANT</span> ?</h2>
           <p className="font-dm text-muted-foreground text-base leading-relaxed">Le e-commerce en France croît de <span className="text-primary font-semibold">15% par an</span>. Vos clients achètent en ligne — soyez là où ils cherchent.</p>
         </BlurReveal>
       </div>
@@ -229,7 +229,7 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container max-w-2xl mx-auto">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl">QUESTIONS <span className="text-primary">FRÉQUENTES</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl">QUESTIONS{" "}<span className="text-primary whitespace-nowrap">FRÉQUENTES</span></h2>
         </BlurReveal>
         <div className="space-y-4">
           {faqs.map((faq, i) => <FAQItem key={i} faq={faq} index={i} />)}

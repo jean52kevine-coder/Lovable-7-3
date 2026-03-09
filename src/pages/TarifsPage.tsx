@@ -94,7 +94,7 @@ const TarifsPage = () => (
     <section className="py-[80px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-10">
-          <h2 className="heading-display text-2xl md:text-3xl">FACILITEZ VOTRE <span className="text-primary">INVESTISSEMENT</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl">FACILITEZ VOTRE{" "}<span className="text-primary whitespace-nowrap">INVESTISSEMENT</span></h2>
         </BlurReveal>
         <ScaleSection>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
@@ -130,7 +130,7 @@ const TarifsPage = () => (
     <section className="py-[80px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-10">
-          <h2 className="heading-display text-3xl md:text-4xl">Formules <span className="text-primary">Maintenance</span></h2>
+          <h2 className="heading-display text-3xl md:text-4xl">Formules{" "}<span className="text-primary whitespace-nowrap">Maintenance</span></h2>
           <p className="text-muted-foreground text-base max-w-xl mx-auto font-dm mt-3">Gardez votre site à jour, sécurisé et performant. Sans engagement.</p>
         </BlurReveal>
         <ScaleSection>
@@ -143,7 +143,7 @@ const TarifsPage = () => (
     <section className="py-[80px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container max-w-2xl mx-auto">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl">VOS QUESTIONS <span className="text-primary">NOS RÉPONSES</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl">VOS QUESTIONS{" "}<span className="text-primary whitespace-nowrap">NOS RÉPONSES</span></h2>
         </BlurReveal>
         <div className="space-y-4">
           {faqs.map((faq, i) => <FAQItem key={i} faq={faq} index={i} />)}

@@ -6,10 +6,10 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 
 const steps = [
-  { num: "01", Icon: MessageSquare, title: "Échange découverte", desc: "Appel 30min. On étudie vos besoins." },
-  { num: "02", Icon: Palette, title: "Maquette validée", desc: "Design sur-mesure en 48h." },
-  { num: "03", Icon: Code2, title: "Développement", desc: "Code propre, rapide, SEO-ready." },
-  { num: "04", Icon: Rocket, title: "Livraison", desc: "En ligne en 14 jours." },
+  { num: "01", Icon: MessageSquare, title: "Échange découverte", desc: "Appel 30min offert. On étudie votre activité, vos clients cibles et vos objectifs. Zéro engagement, zéro pression." },
+  { num: "02", Icon: Palette, title: "Maquette validée", desc: "On crée une maquette sur-mesure en 48h. Vous validez le design avant qu'on code une seule ligne. Retouches illimitées." },
+  { num: "03", Icon: Code2, title: "Développement", desc: "Code propre, rapide, SEO-ready. Vous suivez l'avancement en temps réel sur un lien de prévisualisation dédié." },
+  { num: "04", Icon: Rocket, title: "Livraison & formation", desc: "Mise en ligne, formation à l'utilisation, remise de tous les accès. Votre site est opérationnel en 14 jours." },
 ];
 
 const ProcessSteps = () => {
@@ -20,7 +20,7 @@ const ProcessSteps = () => {
       <div className="section-container">
         <BlurReveal className="text-center mb-16">
           <h2 className="heading-display" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>
-            VOTRE SITE EN <span className="text-primary">4 ÉTAPES</span>
+            VOTRE SITE EN{" "}<span className="text-primary whitespace-nowrap">4 ÉTAPES</span>
           </h2>
         </BlurReveal>
 

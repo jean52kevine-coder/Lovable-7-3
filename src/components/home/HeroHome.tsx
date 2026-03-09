@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import RotatingWords from "@/components/RotatingWords";
@@ -104,6 +105,46 @@ const HeroHome = () => (
           <span><strong className="text-white">98%</strong> satisfaits</span>
         </div>
       </BlurReveal>
+
+      {/* Floating badges */}
+      <div className="hidden md:block absolute top-1/2 left-4 lg:left-[8%] -translate-y-1/2 z-20 space-y-4">
+        {[
+          { text: "✓ 14 jours", delay: "0s" },
+          { text: "✓ 497€", delay: "1.5s" },
+        ].map((badge, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.8 + i * 0.2, duration: 0.5 }}
+            className="animate-float font-dm text-xs font-semibold px-3 py-2 rounded-lg text-primary"
+            style={{
+              background: "hsl(var(--primary) / 0.12)",
+              border: "1px solid hsl(var(--primary) / 0.25)",
+              backdropFilter: "blur(8px)",
+              animationDelay: badge.delay,
+            }}
+          >
+            {badge.text}
+          </motion.div>
+        ))}
+      </div>
+      <div className="hidden md:block absolute top-1/2 right-4 lg:right-[8%] -translate-y-1/2 z-20">
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 1.2, duration: 0.5 }}
+          className="animate-float font-dm text-xs font-semibold px-3 py-2 rounded-lg text-primary"
+          style={{
+            background: "hsl(var(--primary) / 0.12)",
+            border: "1px solid hsl(var(--primary) / 0.25)",
+            backdropFilter: "blur(8px)",
+            animationDelay: "3s",
+          }}
+        >
+          ✓ SEO
+        </motion.div>
+      </div>
     </div>
   </section>
 );

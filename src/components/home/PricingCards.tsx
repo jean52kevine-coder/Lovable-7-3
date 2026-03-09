@@ -16,14 +16,14 @@ const PricingCards = () => (
     <div className="section-container">
       <BlurReveal className="text-center mb-16">
         <h2 className="heading-display mb-3" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>
-          DES PRIX CLAIRS. <span className="text-primary">ZÉRO SURPRISE.</span>
+          DES PRIX CLAIRS.{" "}<span className="text-primary whitespace-nowrap">ZÉRO SURPRISE.</span>
         </h2>
         <p className="font-dm text-base" style={{ color: "hsl(var(--muted-foreground))" }}>
           Tout est inclus. Pas de frais cachés.
         </p>
       </BlurReveal>
 
-      <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto" staggerDelay={0.12}>
+      <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto items-end" staggerDelay={0.12}>
         {plans.map((p, i) => (
           <motion.div
             key={i}
@@ -31,6 +31,7 @@ const PricingCards = () => (
             whileHover={{ y: -6, scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
             className="relative rounded-2xl"
+            style={p.best ? { transform: "scale(1.04)", zIndex: 10 } : undefined}
           >
             <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
             <div
