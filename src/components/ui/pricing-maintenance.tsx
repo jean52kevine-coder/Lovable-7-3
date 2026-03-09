@@ -34,7 +34,7 @@ const maintenancePlans: MaintenancePlan[] = [
     ],
     description: "Maintenance de base pour garder votre site fonctionnel",
     buttonText: "Souscrire",
-    href: "/contact",
+    href: "/contact?service=maintenance-essentielle",
     isPopular: false,
   },
   {
