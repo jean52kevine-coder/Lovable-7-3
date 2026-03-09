@@ -180,7 +180,7 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-14">
-          <h2 className="heading-display text-2xl md:text-3xl">VITRINE OU <span className="text-primary">E-COMMERCE ?</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl">VITRINE OU{" "}<span className="text-primary whitespace-nowrap">E-COMMERCE ?</span></h2>
           <p className="font-dm text-muted-foreground mt-3">Choisissez selon votre besoin.</p>
         </BlurReveal>
         <ScaleSection>
