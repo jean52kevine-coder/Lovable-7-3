@@ -51,7 +51,7 @@ const maintenancePlans: MaintenancePlan[] = [
     ],
     description: "Notre recommandation pour la tranquillité d'esprit",
     buttonText: "Souscrire",
-    href: "/contact",
+    href: "/contact?service=maintenance-professionnelle",
     isPopular: true,
   },
   {
