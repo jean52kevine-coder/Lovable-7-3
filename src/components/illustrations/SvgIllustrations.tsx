@@ -54,7 +54,7 @@ export const HeroLaptopIllustration = () => (
 
     {/* Floating badges */}
     <motion.div
-      className="absolute -top-2 -right-2 md:right-0 font-dm text-[11px] font-bold px-3 py-1.5 rounded-full text-primary whitespace-nowrap"
+      className="absolute top-3 right-3 font-dm text-[11px] font-bold px-3 py-1.5 rounded-full text-primary whitespace-nowrap"
       style={{ background: "rgba(29,185,84,0.15)", border: "1px solid rgba(29,185,84,0.3)", backdropFilter: "blur(8px)" }}
       animate={{ y: [0, -8, 0] }}
       transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -63,7 +63,7 @@ export const HeroLaptopIllustration = () => (
     </motion.div>
 
     <motion.div
-      className="absolute -bottom-2 -left-2 md:left-0 font-dm text-[11px] font-bold px-3 py-1.5 rounded-full text-primary whitespace-nowrap"
+      className="absolute bottom-3 left-3 font-dm text-[11px] font-bold px-3 py-1.5 rounded-full text-primary whitespace-nowrap"
       style={{ background: "rgba(29,185,84,0.15)", border: "1px solid rgba(29,185,84,0.3)", backdropFilter: "blur(8px)" }}
       animate={{ y: [0, 8, 0] }}
       transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
@@ -72,7 +72,7 @@ export const HeroLaptopIllustration = () => (
     </motion.div>
 
     <motion.div
-      className="absolute top-4 -left-4 md:left-[-16px] font-dm text-[11px] font-bold px-3 py-1.5 rounded-full text-primary whitespace-nowrap"
+      className="absolute top-12 left-3 font-dm text-[11px] font-bold px-3 py-1.5 rounded-full text-primary whitespace-nowrap"
       style={{ background: "rgba(29,185,84,0.15)", border: "1px solid rgba(29,185,84,0.3)", backdropFilter: "blur(8px)" }}
       animate={{ y: [0, -6, 0] }}
       transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
@@ -170,6 +170,47 @@ export const MaintenanceMockup = () => (
     <text x="150" y="144" textAnchor="middle" fill="#1DB954" fontSize="8" fontWeight="bold">Vitesse ✓</text>
     <rect x="202" y="130" width="82" height="22" rx="4" fill="#111811" stroke="#1a2e1a" strokeWidth="0.5" />
     <text x="243" y="144" textAnchor="middle" fill="#1DB954" fontSize="8" fontWeight="bold">Backup ✓</text>
+  </svg>
+);
+
+
+
+/** Bottom strip SVG for Site Vitrine offer card */
+export const VitrineOfferStrip = () => (
+  <svg viewBox="0 0 300 46" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-[46px]">
+    <rect width="300" height="46" fill="#0a0f0a" />
+    <rect x="12" y="10" width="64" height="8" rx="4" fill="#1DB954" opacity="0.35" />
+    <rect x="12" y="24" width="110" height="5" rx="2.5" fill="rgba(255,255,255,0.18)" />
+    <rect x="128" y="24" width="76" height="5" rx="2.5" fill="rgba(255,255,255,0.08)" />
+    <rect x="214" y="10" width="74" height="24" rx="12" fill="rgba(29,185,84,0.2)" stroke="#1DB954" strokeWidth="0.8" />
+    <text x="251" y="25" textAnchor="middle" fill="#1DB954" fontSize="9" fontWeight="700">Devis gratuit</text>
+  </svg>
+);
+
+/** Bottom strip SVG for Site E-commerce offer card */
+export const EcommerceOfferStrip = () => (
+  <svg viewBox="0 0 300 46" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-[46px]">
+    <rect width="300" height="46" fill="#0a0f0a" />
+    <rect x="12" y="10" width="52" height="8" rx="4" fill="#1DB954" opacity="0.32" />
+    <rect x="12" y="24" width="92" height="5" rx="2.5" fill="rgba(255,255,255,0.14)" />
+    <rect x="112" y="24" width="64" height="5" rx="2.5" fill="rgba(255,255,255,0.08)" />
+    <rect x="192" y="9" width="96" height="26" rx="6" fill="#111811" stroke="#1a2e1a" strokeWidth="0.8" />
+    <circle cx="208" cy="22" r="5" fill="#1DB954" />
+    <text x="224" y="25" fill="rgba(255,255,255,0.85)" fontSize="8" fontWeight="700">Paiement</text>
+    <text x="280" y="25" textAnchor="end" fill="#1DB954" fontSize="8" fontWeight="700">Stripe ✓</text>
+  </svg>
+);
+
+/** Bottom strip SVG for Maintenance offer card */
+export const MaintenanceOfferStrip = () => (
+  <svg viewBox="0 0 300 46" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-[46px]">
+    <rect width="300" height="46" fill="#0a0f0a" />
+    <rect x="12" y="10" width="64" height="8" rx="4" fill="#1DB954" opacity="0.3" />
+    <rect x="12" y="24" width="84" height="5" rx="2.5" fill="rgba(255,255,255,0.14)" />
+    <rect x="190" y="10" width="98" height="26" rx="6" fill="#111811" stroke="#1a2e1a" strokeWidth="0.8" />
+    <rect x="198" y="19" width="82" height="8" rx="4" fill="#1a2e1a" />
+    <rect x="198" y="19" width="76" height="8" rx="4" fill="#1DB954" opacity="0.6" />
+    <text x="248" y="16" textAnchor="middle" fill="rgba(255,255,255,0.55)" fontSize="7">Uptime</text>
   </svg>
 );
 
