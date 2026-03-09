@@ -219,7 +219,7 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container text-center max-w-2xl mx-auto">
         <BlurReveal>
-          <h2 className="heading-display text-2xl md:text-3xl mb-6">POURQUOI <span className="text-primary">MAINTENANT</span> ?</h2>
+          <h2 className="heading-display text-2xl md:text-3xl mb-6">POURQUOI{" "}<span className="text-primary whitespace-nowrap">MAINTENANT</span> ?</h2>
           <p className="font-dm text-muted-foreground text-base leading-relaxed">Le e-commerce en France croît de <span className="text-primary font-semibold">15% par an</span>. Vos clients achètent en ligne — soyez là où ils cherchent.</p>
         </BlurReveal>
       </div>
