@@ -130,7 +130,7 @@ const TarifsPage = () => (
     <section className="py-[80px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-10">
-          <h2 className="heading-display text-3xl md:text-4xl">Formules <span className="text-primary">Maintenance</span></h2>
+          <h2 className="heading-display text-3xl md:text-4xl">Formules{" "}<span className="text-primary whitespace-nowrap">Maintenance</span></h2>
           <p className="text-muted-foreground text-base max-w-xl mx-auto font-dm mt-3">Gardez votre site à jour, sécurisé et performant. Sans engagement.</p>
         </BlurReveal>
         <ScaleSection>
