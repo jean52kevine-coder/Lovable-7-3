@@ -204,7 +204,7 @@ const SiteVitrinePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container text-center max-w-2xl mx-auto">
         <BlurReveal>
-          <h2 className="heading-display text-2xl md:text-3xl mb-6">POURQUOI <span className="text-primary">MAINTENANT</span> ?</h2>
+          <h2 className="heading-display text-2xl md:text-3xl mb-6">POURQUOI{" "}<span className="text-primary whitespace-nowrap">MAINTENANT</span> ?</h2>
           <p className="font-dm text-muted-foreground text-base leading-relaxed mb-4">Chaque jour sans site web, <AnimatedGradientText className="heading-display text-base md:text-lg">C'EST DES CLIENTS PERDUS.</AnimatedGradientText></p>
           <p className="font-dm text-muted-foreground text-base leading-relaxed"><span className="text-primary font-semibold">80%</span> des consommateurs recherchent un professionnel en ligne avant de le contacter. Ne laissez plus cette opportunité à d'autres.</p>
         </BlurReveal>
