@@ -92,7 +92,7 @@ const ROISimulator = () => {
       <div className="section-container">
         <BlurReveal className="text-center mb-10">
           <h2 className="heading-display text-2xl md:text-3xl">
-            ESTIMEZ CE QUE VOUS PERDEZ <span className="text-primary">SANS SITE</span>
+            ESTIMEZ CE QUE VOUS PERDEZ{" "}<span className="text-primary whitespace-nowrap">SANS SITE</span>
           </h2>
           <p className="font-dm text-muted-foreground mt-3">Entrez votre activité pour une estimation personnalisée.</p>
         </BlurReveal>

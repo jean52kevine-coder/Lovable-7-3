@@ -20,7 +20,7 @@ const ProcessSteps = () => {
       <div className="section-container">
         <BlurReveal className="text-center mb-16">
           <h2 className="heading-display" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>
-            VOTRE SITE EN <span className="text-primary">4 ÉTAPES</span>
+            VOTRE SITE EN{" "}<span className="text-primary whitespace-nowrap">4 ÉTAPES</span>
           </h2>
         </BlurReveal>
 

@@ -16,7 +16,7 @@ const WhyUs = () => (
     <div className="section-container">
       <BlurReveal className="text-center mb-16">
         <h2 className="heading-display" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>
-          POURQUOI <span className="text-primary">ALTÉRA</span>
+          POURQUOI{" "}<span className="text-primary whitespace-nowrap">ALTÉRA</span>
         </h2>
       </BlurReveal>
 

@@ -69,7 +69,7 @@ const maintenancePlans: MaintenancePlan[] = [
     ],
     description: "Tranquillité totale, performances maximales",
     buttonText: "Souscrire",
-    href: "/contact",
+    href: "/contact?service=maintenance-premium",
     isPopular: false,
   },
 ];

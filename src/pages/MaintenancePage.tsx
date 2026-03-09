@@ -125,7 +125,7 @@ const MaintenancePage = () => (
                       <li key={j} className="flex items-center gap-2 text-sm text-muted-foreground"><Check className="text-primary flex-shrink-0" size={16} />{feat}</li>
                     ))}
                   </ul>
-                  <Link to="/contact" className={f.highlighted ? "btn-primary text-center text-sm" : "btn-outline text-center text-sm"}>Choisir cette formule</Link>
+                  <Link to={`/contact?service=maintenance-${f.name.toLowerCase()}`} className={f.highlighted ? "btn-primary text-center text-sm" : "btn-outline text-center text-sm"}>Choisir cette formule</Link>
                 </div>
               </motion.div>
             ))}

@@ -43,7 +43,7 @@ const ServicesShowcase = () => (
     <div className="section-container">
       <BlurReveal className="text-center mb-16">
         <h2 className="heading-display mb-3" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>
-          NOS <span className="text-primary">OFFRES</span>
+          NOS{" "}<span className="text-primary whitespace-nowrap">OFFRES</span>
         </h2>
         <p className="font-dm text-base" style={{ color: "hsl(var(--muted-foreground))" }}>
           Des solutions web adaptées à chaque budget.

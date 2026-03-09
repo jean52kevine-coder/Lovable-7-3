@@ -98,7 +98,7 @@ const ServicesPage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-14">
-          <h2 className="heading-display mb-4" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>POURQUOI NOUS <span className="text-primary">CHOISIR</span></h2>
+          <h2 className="heading-display mb-4" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>POURQUOI NOUS{" "}<span className="text-primary whitespace-nowrap">CHOISIR</span></h2>
           <p className="font-dm text-base text-muted-foreground">Tout ce qu'il faut pour réussir en ligne, sans compromis.</p>
         </BlurReveal>
         <ScaleSection>

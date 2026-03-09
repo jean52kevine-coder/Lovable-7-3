@@ -44,7 +44,7 @@ const TestimonialsSection = () => (
           <span className="text-primary font-semibold text-sm">+50 clients satisfaits</span>
         </div>
         <h2 className="heading-display" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>
-          ILS NOUS FONT <span className="text-primary">CONFIANCE</span>
+          ILS NOUS FONT{" "}<span className="text-primary whitespace-nowrap">CONFIANCE</span>
         </h2>
       </BlurReveal>
 
