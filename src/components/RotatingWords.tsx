@@ -18,12 +18,15 @@ const RotatingWords = ({ words, interval = 2800, className = "" }: RotatingWords
   const longest = words.reduce((a, b) => (a.length > b.length ? a : b));
 
   return (
-    <span className={`inline-flex justify-center relative overflow-hidden ${className}`} style={{ height: "1.15em" }}>
+    <span
+      className={`relative inline-flex items-baseline overflow-hidden whitespace-nowrap align-baseline leading-none ${className}`}
+      style={{ height: "1.15em" }}
+    >
       <span className="invisible whitespace-nowrap">{longest}</span>
       {words.map((word, i) => (
         <motion.span
           key={word}
-          className="absolute inset-0 flex items-center justify-center text-primary whitespace-nowrap"
+          className="absolute inset-0 flex items-baseline justify-start text-[#1DB954] whitespace-nowrap leading-none"
           initial={false}
           animate={{
             y: i === index ? "0%" : i > index || (index === words.length - 1 && i === 0) ? "110%" : "-110%",

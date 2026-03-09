@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Check } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
-import { VitrineMockup, EcommerceMockup, MaintenanceMockup } from "@/components/illustrations/SvgIllustrations";
+import { VitrineMockup, EcommerceMockup, MaintenanceMockup, VitrineOfferStrip, EcommerceOfferStrip, MaintenanceOfferStrip } from "@/components/illustrations/SvgIllustrations";
 import BlurReveal from "@/components/animations/BlurReveal";
 import { motion } from "framer-motion";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
@@ -14,6 +14,7 @@ const cards = [
     bullets: ["Design sur-mesure", "1 à 5 pages", "SEO optimisé", "Livraison 14j"],
     link: "/services/site-vitrine",
     Mockup: VitrineMockup,
+    OfferStrip: VitrineOfferStrip,
     popular: false,
   },
   {
@@ -23,6 +24,7 @@ const cards = [
     bullets: ["Catalogue illimité", "Paiement sécurisé", "Dashboard admin", "Formation incluse"],
     link: "/services/site-ecommerce",
     Mockup: EcommerceMockup,
+    OfferStrip: EcommerceOfferStrip,
     popular: true,
   },
   {
@@ -32,6 +34,7 @@ const cards = [
     bullets: ["Mises à jour", "Sauvegardes auto", "Monitoring 24/7", "Rapport mensuel"],
     link: "/services/maintenance",
     Mockup: MaintenanceMockup,
+    OfferStrip: MaintenanceOfferStrip,
     popular: false,
   },
 ];
@@ -78,6 +81,9 @@ const ServicesShowcase = () => (
               {/* Mockup illustration */}
               <div style={{ backgroundColor: "hsl(var(--hero-bg))" }}>
                 <c.Mockup />
+              </div>
+              <div className="border-t" style={{ borderColor: "hsl(var(--border-green))", backgroundColor: "hsl(var(--hero-bg))" }}>
+                <c.OfferStrip />
               </div>
 
               <div className="p-7">

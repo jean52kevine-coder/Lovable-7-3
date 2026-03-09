@@ -92,7 +92,7 @@ const ROISimulator = () => {
       <div className="section-container">
         <BlurReveal className="text-center mb-10">
           <h2 className="heading-display text-2xl md:text-3xl">
-            ESTIMEZ CE QUE VOUS PERDEZ{" "}<span className="text-primary whitespace-nowrap">SANS SITE</span>
+            <span className="inline">ESTIMEZ CE QUE VOUS PERDEZ </span><span className="text-[#1DB954] whitespace-nowrap inline">SANS SITE</span>
           </h2>
           <p className="font-dm text-muted-foreground mt-3">Entrez votre activité pour une estimation personnalisée.</p>
         </BlurReveal>
@@ -178,7 +178,7 @@ const PourquoiPage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl">LES CHIFFRES PARLENT{" "}<span className="text-primary whitespace-nowrap">D'EUX-MÊMES</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">LES CHIFFRES PARLENT </span><span className="text-[#1DB954] whitespace-nowrap inline">D'EUX-MÊMES</span></h2>
         </BlurReveal>
         <ScaleSection>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -229,7 +229,7 @@ const PourquoiPage = () => (
       <div className="section-container">
         <BlurReveal className="text-center mb-14">
           <h2 className="heading-display text-2xl md:text-3xl">
-            ILS L'ONT FAIT. VOICI{" "}<span className="text-primary whitespace-nowrap">LEURS RÉSULTATS.</span>
+            <span className="inline">ILS L'ONT FAIT. VOICI </span><span className="text-[#1DB954] whitespace-nowrap inline">LEURS RÉSULTATS.</span>
           </h2>
         </BlurReveal>
         <ScaleSection>
@@ -257,7 +257,7 @@ const PourquoiPage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl">LES AVANTAGES{" "}<span className="text-primary whitespace-nowrap">CONCRETS</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">LES AVANTAGES </span><span className="text-[#1DB954] whitespace-nowrap inline">CONCRETS</span></h2>
         </BlurReveal>
         <ScaleSection>
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto" staggerDelay={0.12}>
