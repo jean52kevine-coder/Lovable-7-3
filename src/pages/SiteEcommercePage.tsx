@@ -125,7 +125,7 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl">FONCTIONNALITÉS <span className="text-primary">CLÉS</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl">FONCTIONNALITÉS{" "}<span className="text-primary whitespace-nowrap">CLÉS</span></h2>
         </BlurReveal>
         <ScaleSection>
           <FeaturesBento items={bentoItems} className="max-w-4xl mx-auto grid-cols-1 md:grid-cols-2" />
