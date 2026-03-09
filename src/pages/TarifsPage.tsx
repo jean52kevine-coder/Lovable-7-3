@@ -94,7 +94,7 @@ const TarifsPage = () => (
     <section className="py-[80px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-10">
-          <h2 className="heading-display text-2xl md:text-3xl">FACILITEZ VOTRE <span className="text-primary">INVESTISSEMENT</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl">FACILITEZ VOTRE{" "}<span className="text-primary whitespace-nowrap">INVESTISSEMENT</span></h2>
         </BlurReveal>
         <ScaleSection>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
