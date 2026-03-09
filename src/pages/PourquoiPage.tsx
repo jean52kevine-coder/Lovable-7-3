@@ -257,7 +257,7 @@ const PourquoiPage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl">LES AVANTAGES <span className="text-primary">CONCRETS</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl">LES AVANTAGES{" "}<span className="text-primary whitespace-nowrap">CONCRETS</span></h2>
         </BlurReveal>
         <ScaleSection>
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto" staggerDelay={0.12}>
