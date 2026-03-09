@@ -178,7 +178,7 @@ const PourquoiPage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl">LES CHIFFRES PARLENT <span className="text-primary">D'EUX-MÊMES</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl">LES CHIFFRES PARLENT{" "}<span className="text-primary whitespace-nowrap">D'EUX-MÊMES</span></h2>
         </BlurReveal>
         <ScaleSection>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
