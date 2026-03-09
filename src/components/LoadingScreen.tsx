@@ -16,7 +16,7 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
       setShow(false);
       sessionStorage.setItem("altera_loaded", "true");
       onComplete();
-    }, 2800);
+    }, 2200);
     return () => clearTimeout(timer);
   }, [show, onComplete]);
 
@@ -32,7 +32,7 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
           style={{ backgroundColor: "#0a0f0a" }}
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.4, delay: 0 }}
         >
           {/* Background glow */}
           <motion.div
@@ -46,26 +46,19 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
           />
 
           <motion.div className="relative flex flex-col items-center">
-            {/* Logo image with glow effect */}
+            {/* Logo */}
             <motion.div
               className="relative"
-              initial={{ scale: 0.8, opacity: 0, filter: "blur(20px)" }}
-              animate={{ 
-                scale: [0.8, 1.05, 1], 
-                opacity: 1, 
-                filter: "blur(0px)" 
-              }}
-              transition={{
-                duration: 1.2,
-                ease: [0.25, 0.4, 0.25, 1],
-              }}
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
             >
               {/* Glow behind logo */}
               <motion.div
                 className="absolute inset-0 -z-10"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: [0, 0.8, 0.4] }}
-                transition={{ duration: 2, ease: "easeOut" }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
                 style={{
                   background: "radial-gradient(circle, rgba(29,185,84,0.4) 0%, transparent 70%)",
                   filter: "blur(30px)",
@@ -75,23 +68,25 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
               <AlteraLogo size="lg" />
             </motion.div>
 
-            {/* Loading bar */}
-            <motion.div
-              className="mt-8 w-48 h-[2px] bg-white/10 rounded-full overflow-hidden"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
+            {/* Tagline "Digital Studio" */}
+            <motion.p
+              className="font-dm text-sm tracking-[0.3em] uppercase mt-4"
+              style={{ color: "rgba(255,255,255,0.5)" }}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.5, ease: "easeOut" }}
             >
-              <motion.div
-                className="h-full rounded-full"
-                style={{ backgroundColor: "hsl(145, 63%, 42%)" }}
-                initial={{ width: "0%" }}
-                animate={{ width: "100%" }}
-                transition={{ duration: 1.8, delay: 0.9, ease: "easeInOut" }}
-              />
-            </motion.div>
+              Digital Studio
+            </motion.p>
 
-            {/* Tagline */}
+            {/* Green line */}
+            <motion.div
+              className="mt-5 h-[2px] rounded-full"
+              style={{ backgroundColor: "hsl(145, 63%, 42%)", width: 80 }}
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.5, delay: 0.9, ease: "easeOut" }}
+            />
           </motion.div>
         </motion.div>
       )}
