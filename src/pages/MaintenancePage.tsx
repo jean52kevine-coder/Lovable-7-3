@@ -138,7 +138,7 @@ const MaintenancePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container max-w-2xl mx-auto">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl">VOS QUESTIONS <span className="text-primary">NOS RÉPONSES</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl">VOS QUESTIONS{" "}<span className="text-primary whitespace-nowrap">NOS RÉPONSES</span></h2>
         </BlurReveal>
         <div className="space-y-4">
           {faqs.map((faq, i) => <FAQItem key={i} faq={faq} index={i} />)}
