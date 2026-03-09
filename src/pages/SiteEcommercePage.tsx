@@ -101,7 +101,7 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl">CE QUI EST <span className="text-primary">INCLUS</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl">CE QUI EST{" "}<span className="text-primary whitespace-nowrap">INCLUS</span></h2>
         </BlurReveal>
         <ScaleSection>
           <div className="relative max-w-2xl mx-auto rounded-2xl">
