@@ -62,7 +62,7 @@ const ServicesPage = () => (
     <section style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }} className="py-[100px]">
       <div className="section-container">
         <BlurReveal className="text-center mb-14">
-          <h2 className="heading-display mb-4" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>CHOISISSEZ VOTRE <span className="text-primary">FORMULE</span></h2>
+          <h2 className="heading-display mb-4" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>CHOISISSEZ VOTRE{" "}<span className="text-primary whitespace-nowrap">FORMULE</span></h2>
         </BlurReveal>
 
         <ScaleSection>
