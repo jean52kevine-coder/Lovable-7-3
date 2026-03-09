@@ -16,7 +16,7 @@ const PricingCards = () => (
     <div className="section-container">
       <BlurReveal className="text-center mb-16">
         <h2 className="heading-display mb-3" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>
-          DES PRIX CLAIRS. <span className="text-primary">ZÉRO SURPRISE.</span>
+          DES PRIX CLAIRS.{" "}<span className="text-primary whitespace-nowrap">ZÉRO SURPRISE.</span>
         </h2>
         <p className="font-dm text-base" style={{ color: "hsl(var(--muted-foreground))" }}>
           Tout est inclus. Pas de frais cachés.
