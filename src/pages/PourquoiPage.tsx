@@ -229,7 +229,7 @@ const PourquoiPage = () => (
       <div className="section-container">
         <BlurReveal className="text-center mb-14">
           <h2 className="heading-display text-2xl md:text-3xl">
-            ILS L'ONT FAIT. VOICI <span className="text-primary">LEURS RÉSULTATS.</span>
+            ILS L'ONT FAIT. VOICI{" "}<span className="text-primary whitespace-nowrap">LEURS RÉSULTATS.</span>
           </h2>
         </BlurReveal>
         <ScaleSection>
