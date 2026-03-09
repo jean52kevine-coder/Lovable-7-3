@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const SESSION_KEY = 'altera_loaded';
+const SESSION_KEY = 'altera_loaded_v2';
 
 export default function LoadingScreen() {
   const [visible, setVisible] = useState(() => {
