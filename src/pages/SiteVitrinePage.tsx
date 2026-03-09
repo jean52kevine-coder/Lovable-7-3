@@ -58,7 +58,7 @@ const TimelineSection = () => {
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-14">
-          <h2 className="heading-display text-2xl md:text-3xl">COMMENT ÇA <span className="text-primary">SE PASSE ?</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl">COMMENT ÇA{" "}<span className="text-primary whitespace-nowrap">SE PASSE ?</span></h2>
         </BlurReveal>
         <div ref={ref} className="relative max-w-3xl mx-auto">
           <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-[2px] bg-[#1a2e1a] -translate-x-1/2" />
