@@ -62,7 +62,7 @@ const ServicesPage = () => (
     <section style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }} className="py-[100px]">
       <div className="section-container">
         <BlurReveal className="text-center mb-14">
-          <h2 className="heading-display mb-4" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>CHOISISSEZ VOTRE{" "}<span className="text-primary whitespace-nowrap">FORMULE</span></h2>
+          <h2 className="heading-display mb-4 leading-tight" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}><span className="inline">CHOISISSEZ VOTRE </span><span className="text-[#1DB954] whitespace-nowrap inline">FORMULE</span></h2>
         </BlurReveal>
 
         <ScaleSection>
@@ -98,7 +98,7 @@ const ServicesPage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-14">
-          <h2 className="heading-display mb-4" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>POURQUOI NOUS{" "}<span className="text-primary whitespace-nowrap">CHOISIR</span></h2>
+          <h2 className="heading-display mb-4 leading-tight" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}><span className="inline">POURQUOI NOUS </span><span className="text-[#1DB954] whitespace-nowrap inline">CHOISIR</span></h2>
           <p className="font-dm text-base text-muted-foreground">Tout ce qu'il faut pour réussir en ligne, sans compromis.</p>
         </BlurReveal>
         <ScaleSection>

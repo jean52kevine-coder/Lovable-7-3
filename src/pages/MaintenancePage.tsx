@@ -108,7 +108,7 @@ const MaintenancePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl">NOS{" "}<span className="text-primary whitespace-nowrap">FORMULES</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">NOS </span><span className="text-[#1DB954] whitespace-nowrap inline">FORMULES</span></h2>
         </BlurReveal>
         <ScaleSection>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.15}>
@@ -138,7 +138,7 @@ const MaintenancePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container max-w-2xl mx-auto">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl">VOS QUESTIONS{" "}<span className="text-primary whitespace-nowrap">NOS RÉPONSES</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">VOS QUESTIONS </span><span className="text-[#1DB954] whitespace-nowrap inline">NOS RÉPONSES</span></h2>
         </BlurReveal>
         <div className="space-y-4">
           {faqs.map((faq, i) => <FAQItem key={i} faq={faq} index={i} />)}
