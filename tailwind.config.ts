@@ -99,6 +99,7 @@ export default {
         "border-beam": "border-beam calc(var(--duration)) infinite linear",
         marquee: "marquee var(--duration, 40s) linear infinite",
         "gradient-text": "gradient-text 3s linear infinite",
+        float: "float 3s ease-in-out infinite",
       },
     },
   },
