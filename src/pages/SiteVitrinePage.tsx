@@ -157,7 +157,7 @@ const SiteVitrinePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl">À QUI ÇA <span className="text-primary">S'ADRESSE</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl">À QUI ÇA{" "}<span className="text-primary whitespace-nowrap">S'ADRESSE</span></h2>
         </BlurReveal>
         <ScaleSection>
           <StaggerContainer className="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto" staggerDelay={0.1}>
