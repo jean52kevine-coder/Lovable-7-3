@@ -46,10 +46,10 @@ const DistinguishSection = () => (
               {others.map((item, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.12, duration: 0.4 }}
+                  transition={{ delay: i * 0.12 + 0.15, duration: 0.4 }}
                   className="flex items-start gap-4"
                 >
                   <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "rgba(239,68,68,0.08)" }}>

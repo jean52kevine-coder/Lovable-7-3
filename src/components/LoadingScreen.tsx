@@ -2,6 +2,11 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const SESSION_KEY = 'altera_loaded_v2';
+const LOADER_LOGS = [
+  'Initialisation du studio digital',
+  'Optimisation des animations',
+  'Préparation de votre expérience ALTÉRA',
+];
 
 export default function LoadingScreen() {
   const [visible, setVisible] = useState(() => {
@@ -31,7 +36,7 @@ export default function LoadingScreen() {
             initial={{ scale: 0.7, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col items-center gap-3"
+            className="flex flex-col items-center gap-4"
           >
             <div className="flex items-center gap-3">
               <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
@@ -79,6 +84,25 @@ export default function LoadingScreen() {
               style={{ originX: 0 }}
               className="w-48 h-[2px] bg-gradient-to-r from-transparent via-[#1DB954] to-transparent mt-2"
             />
+
+            <motion.div
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1, duration: 0.5 }}
+              className="w-[min(88vw,560px)] rounded-xl border border-[#1DB954]/20 bg-black/20 px-4 py-3 backdrop-blur-sm"
+            >
+              {LOADER_LOGS.map((line, index) => (
+                <motion.p
+                  key={line}
+                  initial={{ opacity: 0, x: -8 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.1 + index * 0.2, duration: 0.3 }}
+                  className="font-mono text-[11px] tracking-wide text-white/70"
+                >
+                  <span className="text-[#1DB954]">[0{index + 1}]</span> {line}
+                </motion.p>
+              ))}
+            </motion.div>
           </motion.div>
         </motion.div>
       )}
