@@ -155,7 +155,7 @@ const TarifsPage = () => (
       title="Convaincu ? Lancez-vous !"
       description="Devis gratuit, sans engagement. On vous répond sous 24h."
       buttonText="Demander un devis gratuit"
-      buttonUrl="/contact"
+      buttonUrl="/contact?service=vitrine"
     />
   </Layout>
 );

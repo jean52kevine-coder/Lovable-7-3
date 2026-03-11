@@ -1,10 +1,24 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useSearchParams } from "react-router-dom";
 import Layout from "@/components/Layout";
 import {
-  Send, User, Briefcase, MessageSquare, Check, ArrowRight, ArrowLeft,
-  Globe, ShoppingCart, Wrench, Sparkles, Phone, Mail, MapPin, Clock,
-  Calendar, PenTool
+  User,
+  MessageSquare,
+  Check,
+  ArrowRight,
+  ArrowLeft,
+  Globe,
+  ShoppingCart,
+  Wrench,
+  Sparkles,
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  Calendar,
+  PenTool,
+  X,
 } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 
@@ -17,9 +31,36 @@ const steps = [
 const projectTypes = [
   { id: "vitrine", icon: Globe, label: "Site Vitrine", price: "497€" },
   { id: "ecommerce", icon: ShoppingCart, label: "Site E-commerce", price: "747€" },
-  { id: "maintenance", icon: Wrench, label: "Maintenance", price: "dès 39€/m" },
+  { id: "maintenance", icon: Wrench, label: "Maintenance", price: "dès 29€/m" },
   { id: "refonte", icon: PenTool, label: "Refonte", price: "Sur devis" },
 ];
+
+const serviceLabelMap: Record<string, string> = {
+  vitrine: "Site Vitrine — 497€",
+  ecommerce: "Site E-commerce — 747€",
+  maintenance: "Maintenance Web",
+  "maintenance-essentielle": "Maintenance Essentielle — 29€/mois",
+  "maintenance-professionnelle": "Maintenance Professionnelle — 39€/mois",
+  "maintenance-premium": "Maintenance Premium — 49€/mois",
+};
+
+const serviceToProjectType: Record<string, string> = {
+  vitrine: "vitrine",
+  ecommerce: "ecommerce",
+  maintenance: "maintenance",
+  "maintenance-essentielle": "maintenance",
+  "maintenance-professionnelle": "maintenance",
+  "maintenance-premium": "maintenance",
+};
+
+const serviceMessageMap: Record<string, string> = {
+  vitrine: "Bonjour, je suis intéressé(e) par la création d'un site vitrine à 497€. Je souhaite en savoir plus et obtenir un devis personnalisé.",
+  ecommerce: "Bonjour, je souhaite créer une boutique en ligne. Je suis intéressé(e) par votre offre site e-commerce à 747€.",
+  maintenance: "Bonjour, je suis intéressé(e) par votre formule de maintenance web. Pouvez-vous me contacter pour en discuter ?",
+  "maintenance-essentielle": "Bonjour, je suis intéressé(e) par votre formule de maintenance web. Pouvez-vous me contacter pour en discuter ?",
+  "maintenance-professionnelle": "Bonjour, je suis intéressé(e) par votre formule de maintenance web. Pouvez-vous me contacter pour en discuter ?",
+  "maintenance-premium": "Bonjour, je suis intéressé(e) par votre formule de maintenance web. Pouvez-vous me contacter pour en discuter ?",
+};
 
 const budgetOptions = ["< 500€", "500–800€", "800–1500€", "1500€+", "À définir"];
 const delayOptions = ["Le plus tôt", "1 mois", "2–3 mois", "Flexible"];
@@ -30,20 +71,61 @@ const fadeSlide = {
   exit: { opacity: 0, x: -30, transition: { duration: 0.3 } },
 };
 
+const isEmailValid = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
 const ContactPage = () => {
+  const [searchParams] = useSearchParams();
+  const serviceParam = searchParams.get("service");
+  const planParam = searchParams.get("plan");
+
+  const initialService = (serviceParam || planParam || "").toLowerCase();
   const [step, setStep] = useState(0);
   const [form, setForm] = useState({
-    prenom: "", nom: "", email: "", telephone: "",
-    projectType: "", budget: "", delay: "", message: "", source: "",
+    prenom: "",
+    nom: "",
+    email: "",
+    telephone: "",
+    projectType: serviceToProjectType[initialService] || "",
+    budget: "",
+    delay: "",
+    message: serviceMessageMap[initialService] || "",
+    source: "",
   });
   const [submitted, setSubmitted] = useState(false);
-  const [charCount, setCharCount] = useState(0);
+  const [charCount, setCharCount] = useState(form.message.length);
+  const [prefilledService, setPrefilledService] = useState(initialService && serviceLabelMap[initialService] ? initialService : "");
+  const [touched, setTouched] = useState({ prenom: false, nom: false, email: false });
+
+  useEffect(() => {
+    setCharCount(form.message.length);
+  }, [form.message]);
 
   const update = (field: string, value: string) => setForm((p) => ({ ...p, [field]: value }));
-
   const projectLabel = projectTypes.find((p) => p.id === form.projectType)?.label || "";
+  const preselectedLabel = serviceLabelMap[prefilledService] || "";
+
+  const firstNameValid = form.prenom.trim().length > 0;
+  const lastNameValid = form.nom.trim().length > 0;
+  const emailValid = isEmailValid(form.email.trim());
+  const canGoStep2 = firstNameValid && lastNameValid && emailValid;
 
   const handleSubmit = () => setSubmitted(true);
+
+  const clearPrefill = () => {
+    setPrefilledService("");
+    setForm({ prenom: "", nom: "", email: "", telephone: "", projectType: "", budget: "", delay: "", message: "", source: "" });
+    setTouched({ prenom: false, nom: false, email: false });
+  };
+
+  const clientInfos = useMemo(
+    () => [
+      { icon: Clock, text: "Réponse sous 24h" },
+      { icon: Calendar, text: "Consultation offerte" },
+      { icon: Sparkles, text: "Devis gratuit" },
+      { icon: MessageSquare, text: "Sans engagement" },
+    ],
+    []
+  );
 
   if (submitted) {
     return (
@@ -58,9 +140,6 @@ const ContactPage = () => {
             </div>
             <h1 className="heading-display text-3xl md:text-5xl mb-4">DEMANDE <span className="text-primary">ENVOYÉE</span></h1>
             <p className="font-dm text-lg text-muted-foreground max-w-md mx-auto mb-8">Merci pour votre confiance ! Nous vous répondrons sous 24h avec un devis personnalisé.</p>
-            <div className="flex flex-wrap justify-center gap-6 font-dm text-[13px]" style={{ color: "rgba(255,255,255,0.4)" }}>
-              <span>✓ Réponse sous 24h</span><span>✓ Devis gratuit</span><span>✓ Sans engagement</span>
-            </div>
           </motion.div>
         </section>
       </Layout>
@@ -69,9 +148,7 @@ const ContactPage = () => {
 
   return (
     <Layout>
-      {/* Hero */}
       <section className="pt-24 pb-12 md:pt-32 md:pb-16 relative overflow-hidden" style={{ backgroundColor: "#0a0f0a" }}>
-        {/* Gradient orbs */}
         <div className="absolute top-0 left-1/4 w-[500px] h-[300px] rounded-full opacity-20 blur-[120px]" style={{ background: "linear-gradient(135deg, hsl(145,63%,42%), hsl(200,80%,50%))" }} />
         <div className="absolute top-10 right-1/4 w-[400px] h-[250px] rounded-full opacity-15 blur-[100px]" style={{ background: "linear-gradient(135deg, hsl(260,70%,50%), hsl(145,63%,42%))" }} />
 
@@ -79,134 +156,70 @@ const ContactPage = () => {
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold font-display tracking-[0.15em] uppercase mb-6 border" style={{ borderColor: "rgba(29,185,84,0.3)", color: "hsl(145,63%,42%)", backgroundColor: "rgba(29,185,84,0.08)" }}>
             <span className="w-2 h-2 rounded-full bg-primary" /> Contact
           </span>
-          <h1 className="heading-display text-4xl md:text-6xl lg:text-7xl mb-4">
-            Parlons de votre{" "}
-            <span className="bg-gradient-to-r from-primary via-emerald-400 to-primary bg-clip-text text-transparent">projet</span>
-          </h1>
-          <p className="font-dm text-base md:text-lg text-muted-foreground max-w-xl mx-auto">
-            Réponse garantie sous 24h · Consultation 30 min offerte · Devis gratuit
-          </p>
+          <h1 className="heading-display text-4xl md:text-6xl lg:text-7xl mb-4">Parlons de votre <span className="bg-gradient-to-r from-primary via-emerald-400 to-primary bg-clip-text text-transparent">projet</span></h1>
+          <p className="font-dm text-base md:text-lg text-muted-foreground max-w-xl mx-auto">Réponse garantie sous 24h · Consultation 30 min offerte · Devis gratuit</p>
         </motion.div>
       </section>
 
-      {/* Main content: sidebar + form */}
       <section className="pb-24" style={{ backgroundColor: "#0a0f0a" }}>
         <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-[340px_1fr] gap-8 max-w-6xl mx-auto">
-            {/* Left sidebar */}
-            <motion.div className="space-y-6 hidden lg:block" initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.2 }}>
-              {/* Consultation card */}
+            <motion.div className="space-y-6 hidden lg:block" initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
               <div className="relative rounded-2xl">
                 <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
                 <div className="relative z-10 rounded-2xl p-6" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
-                  <div className="w-10 h-10 rounded-xl bg-primary/15 flex items-center justify-center mb-4">
-                    <Calendar className="text-primary" size={20} />
-                  </div>
-                  <h3 className="font-display font-bold text-white text-lg mb-2">Consultation offerte</h3>
-                  <p className="font-dm text-sm text-muted-foreground leading-relaxed">30 minutes pour définir ensemble votre projet, vos objectifs et le meilleur chemin pour y arriver.</p>
-                </div>
-              </div>
-
-              {/* Contact info card */}
-              <div className="relative rounded-2xl">
-                <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
-                <div className="relative z-10 rounded-2xl p-6 space-y-4" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
-                  {[
-                    { icon: Mail, text: "contact@altera.fr" },
-                    { icon: MapPin, text: "Saint-Dizier, France (remote)" },
-                    { icon: Clock, text: "Réponse sous 24h" },
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <item.icon className="text-primary" size={16} />
+                  <h3 className="font-display font-black text-white mb-4">Pourquoi ALTÉRA ?</h3>
+                  <div className="space-y-3">
+                    {clientInfos.map((item) => (
+                      <div key={item.text} className="flex items-center gap-3">
+                        <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0"><item.icon className="text-primary" size={16} /></div>
+                        <span className="font-dm text-sm text-foreground/80">{item.text}</span>
                       </div>
-                      <span className="font-dm text-sm text-foreground/80">{item.text}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Testimonial card */}
-              <div className="relative rounded-2xl">
-                <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
-                <div className="relative z-10 rounded-2xl p-6" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
-                  <p className="font-dm text-sm italic text-foreground/70 leading-relaxed mb-3">
-                    "Votre investissement est récupéré en moyenne en 4 à 6 mois grâce aux nouveaux clients générés."
-                  </p>
-                  <span className="font-dm text-xs text-muted-foreground">— Résultat moyen · clients ALTÉRA</span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>
 
-            {/* Right: Form */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }}>
               <div className="relative rounded-2xl">
                 <GlowingEffect spread={50} glow proximity={80} inactiveZone={0.01} borderWidth={2} disabled={false} />
                 <div className="relative z-10 rounded-2xl p-6 md:p-8" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
-                  {/* Stepper */}
+                  {!!preselectedLabel && (
+                    <div className="mb-6 rounded-lg px-4 py-3 flex items-center justify-between" style={{ backgroundColor: "rgba(29,185,84,0.12)", border: "1px solid rgba(29,185,84,0.35)" }}>
+                      <span className="font-dm text-sm text-[#1DB954]">✓ Formule présélectionnée : {preselectedLabel}</span>
+                      <button onClick={clearPrefill} className="text-[#1DB954] hover:text-white transition-colors"><X size={16} /></button>
+                    </div>
+                  )}
+
                   <div className="flex items-center justify-between mb-8">
                     {steps.map((s, i) => (
-                      <button
-                        key={i}
-                        onClick={() => { if (i <= step) setStep(i); }}
-                        className="flex items-center gap-2 cursor-pointer group"
-                      >
-                        <div
-                          className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold font-display transition-all duration-300"
-                          style={{
-                            background: i < step
-                              ? "linear-gradient(135deg, hsl(145,63%,42%), hsl(160,60%,45%))"
-                              : i === step
-                                ? "linear-gradient(135deg, hsl(145,63%,42%), hsl(160,60%,45%))"
-                                : "#1a2e1a",
-                            color: i <= step ? "#000" : "rgba(255,255,255,0.4)",
-                            boxShadow: i === step ? "0 0 20px rgba(29,185,84,0.3)" : "none",
-                          }}
-                        >
+                      <button key={i} onClick={() => { if (i <= step) setStep(i); }} className="flex items-center gap-2 cursor-pointer group">
+                        <div className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold font-display transition-all duration-300" style={{ background: i <= step ? "linear-gradient(135deg, hsl(145,63%,42%), hsl(160,60%,45%))" : "#1a2e1a", color: i <= step ? "#000" : "rgba(255,255,255,0.4)" }}>
                           {i < step ? <Check size={14} /> : s.num}
                         </div>
-                        <span className="text-xs font-dm hidden sm:inline" style={{ color: i <= step ? "#fff" : "rgba(255,255,255,0.35)" }}>
-                          {s.label}
-                        </span>
-                        {i < steps.length - 1 && (
-                          <div className="hidden sm:block w-12 lg:w-20 h-[1px] mx-2" style={{ backgroundColor: i < step ? "hsl(145,63%,42%)" : "#1a2e1a" }} />
-                        )}
+                        <span className="text-xs font-dm hidden sm:inline" style={{ color: i <= step ? "#fff" : "rgba(255,255,255,0.35)" }}>{s.label}</span>
                       </button>
                     ))}
                   </div>
 
                   <AnimatePresence mode="wait">
-                    {/* Step 1: Votre projet */}
                     {step === 0 && (
                       <motion.div key="s0" {...fadeSlide} className="space-y-5">
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                          <InputField label="PRÉNOM *" placeholder="Jean" value={form.prenom} onChange={(v) => update("prenom", v)} />
-                          <InputField label="NOM *" placeholder="Dupont" value={form.nom} onChange={(v) => update("nom", v)} />
+                          <InputField label="PRÉNOM *" placeholder="Jean" value={form.prenom} onChange={(v) => update("prenom", v)} onBlur={() => setTouched((p) => ({ ...p, prenom: true }))} error={touched.prenom && !firstNameValid ? "Prénom requis" : ""} valid={firstNameValid} touched={touched.prenom} />
+                          <InputField label="NOM *" placeholder="Dupont" value={form.nom} onChange={(v) => update("nom", v)} onBlur={() => setTouched((p) => ({ ...p, nom: true }))} error={touched.nom && !lastNameValid ? "Nom requis" : ""} valid={lastNameValid} touched={touched.nom} />
                         </div>
-                        <InputField label="EMAIL *" placeholder="jean.dupont@email.fr" value={form.email} onChange={(v) => update("email", v)} type="email" />
-                        <InputField label="TÉLÉPHONE — optionnel" placeholder="06 12 34 56 78" value={form.telephone} onChange={(v) => update("telephone", v)} type="tel" />
+                        <InputField label="EMAIL *" placeholder="jean.dupont@email.fr" value={form.email} onChange={(v) => update("email", v)} onBlur={() => setTouched((p) => ({ ...p, email: true }))} error={touched.email && !emailValid ? "Email valide requis" : ""} valid={emailValid} touched={touched.email} type="email" />
+                        <InputField label="TÉLÉPHONE — Optionnel (recommandé)" placeholder="06 XX XX XX XX" value={form.telephone} onChange={(v) => update("telephone", v)} type="tel" />
 
                         <div>
                           <label className="block text-[11px] font-display font-bold tracking-[0.15em] uppercase text-muted-foreground mb-3">TYPE DE PROJET *</label>
                           <div className="grid grid-cols-2 gap-3">
                             {projectTypes.map((p) => (
-                              <button
-                                key={p.id}
-                                onClick={() => update("projectType", p.id)}
-                                className="relative rounded-xl text-left transition-all duration-200 group"
-                              >
-                                <div
-                                  className="rounded-xl p-4 transition-all duration-200"
-                                  style={{
-                                    backgroundColor: form.projectType === p.id ? "rgba(29,185,84,0.1)" : "#0d130d",
-                                    border: form.projectType === p.id ? "1px solid hsl(145,63%,42%)" : "1px solid #1a2e1a",
-                                  }}
-                                >
-                                  <p.icon
-                                    size={20}
-                                    className="mb-2"
-                                    style={{ color: form.projectType === p.id ? "hsl(145,63%,42%)" : "rgba(255,255,255,0.5)" }}
-                                  />
+                              <button key={p.id} onClick={() => update("projectType", p.id)} className="relative rounded-xl text-left transition-all duration-200 group">
+                                <div className="rounded-xl p-4 transition-all duration-200" style={{ backgroundColor: form.projectType === p.id ? "rgba(29,185,84,0.1)" : "#0d130d", border: form.projectType === p.id ? "1px solid hsl(145,63%,42%)" : "1px solid #1a2e1a" }}>
+                                  <p.icon size={20} className="mb-2" style={{ color: form.projectType === p.id ? "hsl(145,63%,42%)" : "rgba(255,255,255,0.5)" }} />
                                   <div className="font-display font-bold text-sm text-white">{p.label}</div>
                                   <div className="text-xs font-dm text-muted-foreground">{p.price}</div>
                                 </div>
@@ -215,68 +228,42 @@ const ContactPage = () => {
                           </div>
                         </div>
 
-                        <button
-                          onClick={() => setStep(1)}
-                          className="w-full inline-flex items-center justify-center font-bold px-7 py-3.5 rounded-xl text-primary-foreground transition-all duration-200 hover:-translate-y-0.5 gap-2 font-display text-sm"
-                          style={{ background: "linear-gradient(135deg, hsl(145,63%,42%), hsl(160,60%,45%))" }}
-                        >
+                        <button onClick={() => canGoStep2 && setStep(1)} disabled={!canGoStep2} className={`w-full inline-flex items-center justify-center font-bold px-7 py-3.5 rounded-xl text-primary-foreground transition-all duration-200 gap-2 font-display text-sm ${!canGoStep2 ? "opacity-50 cursor-not-allowed" : "hover:-translate-y-0.5"}`} style={{ background: "linear-gradient(135deg, hsl(145,63%,42%), hsl(160,60%,45%))" }}>
                           Suivant <ArrowRight size={18} />
                         </button>
                       </motion.div>
                     )}
 
-                    {/* Step 2: Vos besoins */}
                     {step === 1 && (
                       <motion.div key="s1" {...fadeSlide} className="space-y-6">
                         <div>
                           <label className="block text-[11px] font-display font-bold tracking-[0.15em] uppercase text-muted-foreground mb-3">BUDGET APPROXIMATIF</label>
-                          <div className="flex flex-wrap gap-2">
-                            {budgetOptions.map((b) => (
-                              <ChipButton key={b} label={b} selected={form.budget === b} onClick={() => update("budget", b)} />
-                            ))}
-                          </div>
+                          <div className="flex flex-wrap gap-2">{budgetOptions.map((b) => <ChipButton key={b} label={b} selected={form.budget === b} onClick={() => update("budget", b)} />)}</div>
                         </div>
 
                         <div>
                           <label className="block text-[11px] font-display font-bold tracking-[0.15em] uppercase text-muted-foreground mb-3">DÉLAI SOUHAITÉ</label>
-                          <div className="flex flex-wrap gap-2">
-                            {delayOptions.map((d) => (
-                              <ChipButton key={d} label={d} selected={form.delay === d} onClick={() => update("delay", d)} />
-                            ))}
-                          </div>
+                          <div className="flex flex-wrap gap-2">{delayOptions.map((d) => <ChipButton key={d} label={d} selected={form.delay === d} onClick={() => update("delay", d)} />)}</div>
                         </div>
 
                         <div>
                           <div className="flex items-center justify-between mb-2">
-                            <label className="text-[11px] font-display font-bold tracking-[0.15em] uppercase text-muted-foreground">DÉCRIVEZ VOTRE PROJET *</label>
+                            <label className="text-[11px] font-display font-bold tracking-[0.15em] uppercase text-muted-foreground">VOTRE MESSAGE</label>
                             <span className="text-[11px] font-dm text-muted-foreground">{charCount}/500</span>
                           </div>
-                          <textarea
-                            rows={5}
-                            maxLength={500}
-                            placeholder="Parlez-nous de votre activité et de vos objectifs…"
-                            value={form.message}
-                            onChange={(e) => { update("message", e.target.value); setCharCount(e.target.value.length); }}
-                            className="w-full px-4 py-3.5 rounded-xl bg-background/50 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all font-dm resize-none"
-                          />
+                          <textarea rows={5} maxLength={500} placeholder="Parlez-nous de votre activité et de vos objectifs…" value={form.message} onChange={(e) => update("message", e.target.value)} className="w-full px-4 py-3.5 rounded-xl bg-background/50 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all font-dm resize-none" />
                         </div>
 
                         <div className="flex gap-4">
-                          <button onClick={() => setStep(0)} className="flex-1 inline-flex items-center justify-center font-bold px-6 py-3.5 rounded-xl transition-all duration-200 text-white gap-2 font-display text-sm" style={{ border: "1px solid rgba(255,255,255,0.15)" }}>
-                            <ArrowLeft size={16} /> Retour
-                          </button>
-                          <button onClick={() => setStep(2)} className="flex-1 inline-flex items-center justify-center font-bold px-6 py-3.5 rounded-xl text-primary-foreground transition-all duration-200 hover:-translate-y-0.5 gap-2 font-display text-sm" style={{ background: "linear-gradient(135deg, hsl(145,63%,42%), hsl(160,60%,45%))" }}>
-                            Voir le résumé <ArrowRight size={18} />
-                          </button>
+                          <button onClick={() => setStep(0)} className="flex-1 inline-flex items-center justify-center font-bold px-6 py-3.5 rounded-xl transition-all duration-200 text-white gap-2 font-display text-sm" style={{ border: "1px solid rgba(255,255,255,0.15)" }}><ArrowLeft size={16} /> Retour</button>
+                          <button onClick={() => setStep(2)} className="flex-1 inline-flex items-center justify-center font-bold px-6 py-3.5 rounded-xl text-primary-foreground transition-all duration-200 hover:-translate-y-0.5 gap-2 font-display text-sm" style={{ background: "linear-gradient(135deg, hsl(145,63%,42%), hsl(160,60%,45%))" }}>Voir le résumé <ArrowRight size={18} /></button>
                         </div>
                       </motion.div>
                     )}
 
-                    {/* Step 3: Confirmation */}
                     {step === 2 && (
                       <motion.div key="s2" {...fadeSlide} className="space-y-6">
                         <h2 className="font-display font-black text-lg uppercase tracking-wide text-white">Récapitulatif</h2>
-
                         <div className="space-y-3">
                           <SummaryRow label="Contact" value={`${form.prenom} ${form.nom} · ${form.email}`} />
                           <SummaryRow label="Projet" value={projectLabel || "—"} />
@@ -284,20 +271,9 @@ const ContactPage = () => {
                           <SummaryRow label="Délai" value={form.delay || "—"} />
                           <SummaryRow label="Message" value={form.message || "—"} />
                         </div>
-
-                        <div className="flex flex-wrap justify-center gap-5 font-dm text-[12px] pt-2" style={{ color: "rgba(255,255,255,0.4)" }}>
-                          <span>✓ Réponse sous 24h</span>
-                          <span>✓ Devis gratuit</span>
-                          <span>✓ Sans engagement</span>
-                        </div>
-
                         <div className="flex gap-4">
-                          <button onClick={() => setStep(1)} className="flex-1 inline-flex items-center justify-center font-bold px-6 py-3.5 rounded-xl transition-all duration-200 text-white gap-2 font-display text-sm" style={{ border: "1px solid rgba(255,255,255,0.15)" }}>
-                            <ArrowLeft size={16} /> Retour
-                          </button>
-                          <button onClick={handleSubmit} className="flex-1 inline-flex items-center justify-center font-bold px-6 py-3.5 rounded-xl text-primary-foreground transition-all duration-200 hover:-translate-y-0.5 gap-2 font-display text-sm" style={{ background: "linear-gradient(135deg, hsl(145,63%,42%), hsl(160,60%,45%))" }}>
-                            Envoyer ma demande <Check size={16} />
-                          </button>
+                          <button onClick={() => setStep(1)} className="flex-1 inline-flex items-center justify-center font-bold px-6 py-3.5 rounded-xl transition-all duration-200 text-white gap-2 font-display text-sm" style={{ border: "1px solid rgba(255,255,255,0.15)" }}><ArrowLeft size={16} /> Retour</button>
+                          <button onClick={handleSubmit} className="flex-1 inline-flex items-center justify-center font-bold px-6 py-3.5 rounded-xl text-primary-foreground transition-all duration-200 hover:-translate-y-0.5 gap-2 font-display text-sm" style={{ background: "linear-gradient(135deg, hsl(145,63%,42%), hsl(160,60%,45%))" }}>Envoyer ma demande <Check size={16} /></button>
                         </div>
                       </motion.div>
                     )}
@@ -312,33 +288,26 @@ const ContactPage = () => {
   );
 };
 
-/* ---- Sub-components ---- */
-
-const InputField = ({ label, placeholder, value, onChange, type = "text" }: { label: string; placeholder: string; value: string; onChange: (v: string) => void; type?: string }) => (
+const InputField = ({ label, placeholder, value, onChange, type = "text", error, valid, touched, onBlur }: { label: string; placeholder: string; value: string; onChange: (v: string) => void; type?: string; error?: string; valid?: boolean; touched?: boolean; onBlur?: () => void }) => (
   <div>
     <label className="block text-[11px] font-display font-bold tracking-[0.15em] uppercase text-muted-foreground mb-2">{label}</label>
     <input
       type={type}
       placeholder={placeholder}
       value={value}
-      onChange={(e) => onChange(e.target.value)}
-      className="w-full px-4 py-3.5 rounded-xl bg-background/50 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all font-dm"
+      onBlur={onBlur}
+      onChange={(e) => {
+        onChange(e.target.value);
+      }}
+      className="w-full px-4 py-3.5 rounded-xl bg-background/50 border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all font-dm"
+      style={{ borderColor: touched ? (valid ? "#1DB954" : "#ef4444") : "hsl(var(--border))" }}
     />
+    {error ? <p className="text-xs mt-1" style={{ color: "#ef4444" }}>{error}</p> : null}
   </div>
 );
 
 const ChipButton = ({ label, selected, onClick }: { label: string; selected: boolean; onClick: () => void }) => (
-  <button
-    onClick={onClick}
-    className="px-4 py-2.5 rounded-xl text-sm font-dm transition-all duration-200"
-    style={{
-      backgroundColor: selected ? "rgba(29,185,84,0.12)" : "#0d130d",
-      border: selected ? "1px solid hsl(145,63%,42%)" : "1px solid #1a2e1a",
-      color: selected ? "hsl(145,63%,42%)" : "rgba(255,255,255,0.6)",
-    }}
-  >
-    {label}
-  </button>
+  <button onClick={onClick} className="px-4 py-2.5 rounded-xl text-sm font-dm transition-all duration-200" style={{ backgroundColor: selected ? "rgba(29,185,84,0.12)" : "#0d130d", border: selected ? "1px solid hsl(145,63%,42%)" : "1px solid #1a2e1a", color: selected ? "hsl(145,63%,42%)" : "rgba(255,255,255,0.6)" }}>{label}</button>
 );
 
 const SummaryRow = ({ label, value }: { label: string; value: string }) => (

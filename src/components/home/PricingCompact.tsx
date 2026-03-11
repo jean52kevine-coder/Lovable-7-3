@@ -20,8 +20,8 @@ const plans = [
     link: "/services/site-ecommerce", best: true,
   },
   {
-    icon: Shield, title: "Maintenance", price: "39", suffix: "/mois",
-    features: ["Mises à jour", "Sauvegardes auto", "Support réactif", "Monitoring 24/7", "Rapport mensuel"],
+    icon: Shield, title: "Maintenance", price: "29", suffix: "/mois",
+    features: ["Mises à jour de sécurité", "Sauvegarde hebdomadaire", "Support par email", "Monitoring de base", "Rapport trimestriel"],
     link: "/services/maintenance", best: false,
   },
 ];

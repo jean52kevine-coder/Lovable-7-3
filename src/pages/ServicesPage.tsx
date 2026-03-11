@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
-import { Globe, ShoppingCart, Wrench, ArrowRight, Zap, Shield, Palette, Clock, HeadphonesIcon, TrendingUp } from "lucide-react";
+import { Globe, ShoppingCart, Wrench, Zap, Shield, Palette, Clock, HeadphonesIcon, TrendingUp } from "lucide-react";
 import { FeatureCard } from "@/components/ui/grid-feature-cards";
 import { CtaSection } from "@/components/ui/cta-section";
 import { BorderBeam } from "@/components/ui/border-beam";
@@ -40,6 +40,24 @@ const features = [
   { title: "SEO optimisé", icon: TrendingUp, description: "Structuré pour Google dès le premier jour. Vos clients vous trouvent facilement." },
   { title: "Support humain", icon: HeadphonesIcon, description: "Un vrai interlocuteur, pas un chatbot. Réponse garantie dans la journée." },
   { title: "Délais respectés", icon: Clock, description: "On s'engage sur une date de livraison et on la tient. Toujours." },
+];
+
+const testimonials = [
+  {
+    name: "Thomas B., Plombier Lyon",
+    quote: "Avant mon site, je passais par le bouche-à-oreille uniquement. Maintenant j'ai 3 nouvelles demandes par semaine en moyenne.",
+    badge: "Site Vitrine",
+  },
+  {
+    name: "Sophie M., Fleuriste Bordeaux",
+    quote: "Les clientes trouvent maintenant mon site via Google. Les réservations pour la Saint-Valentin ont augmenté de 40%.",
+    badge: "Site Vitrine",
+  },
+  {
+    name: "Ahmed T., Restaurateur Nantes",
+    quote: "Les gens cherchent mon restaurant et ne me trouvaient pas. Le site a changé ça du jour au lendemain.",
+    badge: "Site E-commerce",
+  },
 ];
 
 const ServicesPage = () => (
@@ -92,6 +110,61 @@ const ServicesPage = () => (
             ))}
           </StaggerContainer>
         </ScaleSection>
+      </div>
+    </section>
+
+    <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
+      <div className="section-container">
+        <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="heading-display text-2xl md:text-3xl text-center mb-12">
+          Les autres agences vs ALTÉRA
+        </motion.h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="rounded-xl p-6" style={{ backgroundColor: "rgba(120, 24, 24, 0.15)", border: "1px solid rgba(220, 38, 38, 0.35)" }}>
+            <h3 className="font-dm font-bold text-red-400 mb-5">✗ Les autres agences</h3>
+            <ul className="space-y-3 text-red-300/90 font-dm text-sm">
+              {[
+                "✗ Templates génériques non personnalisés",
+                "✗ Délais de 2 à 6 mois",
+                "✗ Devis de 2 000€ à 15 000€",
+                "✗ Interlocuteur qui change",
+                "✗ Modifications payantes",
+                "✗ Contrats d'engagement longs",
+              ].map((item) => <li key={item}>{item}</li>)}
+            </ul>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="rounded-xl p-6" style={{ backgroundColor: "rgba(29, 185, 84, 0.1)", border: "1px solid #1DB954" }}>
+            <h3 className="font-dm font-bold text-[#1DB954] mb-5">✓ Chez ALTÉRA</h3>
+            <ul className="space-y-3 text-[#1DB954] font-dm text-sm">
+              {[
+                "✓ Design 100% sur-mesure pour vous",
+                "✓ Livraison en 14 jours garantie",
+                "✓ Tarif fixe : 497€ ou 747€, tout inclus",
+                "✓ Un seul interlocuteur du début à la fin",
+                "✓ Modifications incluses pendant 1 an",
+                "✓ Sans engagement, sans surprise",
+              ].map((item) => <li key={item}>{item}</li>)}
+            </ul>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+
+    <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
+      <div className="section-container">
+        <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="heading-display text-2xl md:text-3xl text-center mb-12">
+          Ils nous font confiance
+        </motion.h2>
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }} className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {testimonials.map((t) => (
+            <motion.div key={t.name} variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="relative rounded-xl p-6" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+              <span className="absolute top-4 right-4 text-xs font-semibold rounded-full px-3 py-1" style={{ backgroundColor: "rgba(29,185,84,0.15)", color: "#1DB954", border: "1px solid rgba(29,185,84,0.3)" }}>{t.badge}</span>
+              <p className="text-[#1DB954] mb-3">★★★★★</p>
+              <p className="font-dm text-sm text-white/80 italic mb-4">"{t.quote}"</p>
+              <p className="font-dm font-semibold text-sm text-white">{t.name}</p>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
 

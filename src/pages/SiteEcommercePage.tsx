@@ -167,7 +167,6 @@ const SiteEcommercePage = () => (
                   <span className="text-3xl block mb-4">{p.emoji}</span>
                   <h3 className="font-display font-black text-white mb-3">{p.name}</h3>
                   <p className="font-dm text-sm leading-relaxed mb-4" style={{ color: "rgba(255,255,255,0.6)" }}>{p.text}</p>
-                  <span className="inline-block text-[11px] text-muted-foreground italic">*Résultat fictif illustratif</span>
                 </div>
               </motion.div>
             ))}
@@ -209,7 +208,7 @@ const SiteEcommercePage = () => (
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             <Link to="/services/site-vitrine" className="btn-outline text-center">Choisir Vitrine →</Link>
-            <Link to="/contact" className="btn-primary text-center">Choisir E-commerce →</Link>
+            <Link to="/contact?service=ecommerce" className="btn-primary text-center">Choisir E-commerce →</Link>
           </div>
         </ScaleSection>
       </div>
@@ -237,7 +236,7 @@ const SiteEcommercePage = () => (
       </div>
     </section>
 
-    <CtaSection title="Lancez votre boutique en ligne" description="14 jours, 747€, tout inclus. Formation et support compris." buttonText="Demander un devis gratuit" buttonUrl="/contact" />
+    <CtaSection title="Lancez votre boutique en ligne" description="14 jours, 747€, tout inclus. Formation et support compris." buttonText="Demander un devis gratuit" buttonUrl="/contact?service=ecommerce" />
   </Layout>
 );
 

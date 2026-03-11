@@ -1,28 +1,38 @@
-import { useState, useMemo } from "react";
-import { motion } from "framer-motion";
-import { useRef } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { motion, useMotionValueEvent, useSpring } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import Layout from "@/components/Layout";
-import { XCircle, CheckCircle, TrendingUp, Users, Search, Clock, Zap, Shield, Eye, Mail, BarChart3, ArrowRight } from "lucide-react";
-import { FeatureCard } from "@/components/ui/grid-feature-cards";
-import { CtaSection } from "@/components/ui/cta-section";
+import {
+  XCircle,
+  CheckCircle,
+  TrendingUp,
+  Users,
+  Search,
+  Clock,
+  Globe,
+  Award,
+  UtensilsCrossed,
+  Wrench,
+  Stethoscope,
+  Briefcase,
+  ShoppingBag,
+  Building2,
+} from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { NumberTicker } from "@/components/ui/number-ticker";
 import { StatMobileSearch, StatScreenBrowse, StatBarsGrowing, StatClock } from "@/components/illustrations/SvgIllustrations";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
-import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
-import NumberFlow from "@number-flow/react";
 import heroPourquoiVideo from "@/assets/videos/hero-pourquoi.mp4";
 
 const statIllustrations = [StatMobileSearch, StatScreenBrowse, StatBarsGrowing, StatClock];
 
 const stats = [
-  { value: "97%", numValue: 97, suffix: "%", label: "des consommateurs utilisent internet pour trouver un professionnel local" },
-  { value: "75%", numValue: 75, suffix: "%", label: "des clients vérifient un site web avant de contacter une entreprise" },
-  { value: "3x", numValue: 3, suffix: "x", label: "plus de chiffre d'affaires pour les entreprises avec un site web" },
-  { value: "24/7", numValue: 24, suffix: "/7", label: "accessibilité permanente pour vos clients potentiels" },
+  { numValue: 97, suffix: "%", label: "des consommateurs utilisent internet pour trouver un professionnel local" },
+  { numValue: 75, suffix: "%", label: "des clients vérifient un site web avant de contacter une entreprise" },
+  { numValue: 3, suffix: "x", label: "plus de chiffre d'affaires pour les entreprises avec un site web" },
+  { numValue: 24, suffix: "/7", label: "accessibilité permanente pour vos clients potentiels" },
 ];
 
 const sansAvec = [
@@ -33,26 +43,37 @@ const sansAvec = [
   { sans: "Concurrents en première page", avec: "Vous aussi, en première page" },
 ];
 
-const advantages = [
-  { title: "Visibilité locale", icon: Search, description: "Apparaissez sur Google quand vos clients cherchent un professionnel dans votre ville." },
-  { title: "Crédibilité immédiate", icon: Shield, description: "Un site pro rassure vos prospects et vous démarque de la concurrence." },
-  { title: "Génération de leads", icon: Zap, description: "Transformez les visiteurs en clients grâce à des formulaires et appels à l'action efficaces." },
-  { title: "Croissance mesurable", icon: TrendingUp, description: "Suivez vos résultats et ajustez votre stratégie pour maximiser votre retour sur investissement." },
+const raisonsSite = [
+  { icon: Globe, title: "Visibilité 24/7", description: "Votre entreprise est visible en permanence, même quand vous dormez. Les clients peuvent vous trouver à tout moment." },
+  { icon: Users, title: "Crédibilité Professionnelle", description: "Un site web professionnel inspire confiance. Les clients préfèrent les entreprises avec une présence en ligne soignée." },
+  { icon: TrendingUp, title: "Croissance du Chiffre d'Affaires", description: "Attirez de nouveaux clients, générez des demandes de devis et développez votre activité grâce au digital." },
+  { icon: Search, title: "Référencement Local", description: "Apparaissez dans les recherches Google quand quelqu'un cherche vos services dans votre zone géographique." },
+  { icon: Clock, title: "Gain de Temps", description: "Répondez aux questions fréquentes, présentez vos services et recevez des demandes qualifiées automatiquement." },
+  { icon: Award, title: "Devancez la Concurrence", description: "Vos concurrents sont probablement déjà en ligne. Ne leur laissez pas l'avantage sur le marché digital." },
 ];
 
-const roiTestimonials = [
-  {
-    emoji: "🔧", name: "Thomas B., Plombier Lyon", badge: "+8 demandes/mois",
-    text: "Avant mon site, je n'avais quasiment aucun contact via internet. Maintenant j'en reçois presque tous les jours. Mon agenda est plein 3 semaines à l'avance.",
-  },
-  {
-    emoji: "🌸", name: "Sophie M., Fleuriste Bordeaux", badge: "ROI en 3 semaines",
-    text: "Je n'aurais jamais pensé qu'un site de 497€ pouvait transformer mon business. En 3 semaines j'avais déjà rentabilisé l'investissement.",
-  },
-  {
-    emoji: "🍕", name: "Ahmed T., Restaurateur Nantes", badge: "+55% réservations",
-    text: "Les gens cherchaient mon restaurant et ne trouvaient rien. Maintenant j'ai le menu, les photos, les horaires. Les réservations ont explosé dès le premier mois.",
-  },
+const secteurs = [
+  { label: "Artisan / BTP", taux: 0.038, clients_base: 14 },
+  { label: "Restaurant / Café", taux: 0.041, clients_base: 38 },
+  { label: "Commerce de proximité", taux: 0.033, clients_base: 25 },
+  { label: "Professions médicales", taux: 0.045, clients_base: 10 },
+  { label: "Consultant / Coach", taux: 0.042, clients_base: 7 },
+  { label: "Autre / PME", taux: 0.035, clients_base: 18 },
+];
+
+const zones = [
+  { label: "Ville < 20 000 hab.", facteur: 0.7 },
+  { label: "Ville 20k – 100k hab.", facteur: 1.0 },
+  { label: "Grande ville / Agglo", facteur: 1.5 },
+];
+
+const metierCards = [
+  { icon: UtensilsCrossed, title: "Restaurants & Cafés", bullets: ["Menu en ligne", "Réservations", "Avis clients", "Photos des plats"] },
+  { icon: Wrench, title: "Artisans & BTP", bullets: ["Portfolio travaux", "Devis en ligne", "Zone d'intervention", "Certifications"] },
+  { icon: Stethoscope, title: "Professions Médicales", bullets: ["Prise de RDV", "Horaires", "Spécialités", "Accès"] },
+  { icon: Briefcase, title: "Consultants & Coachs", bullets: ["Expertise", "Témoignages", "Réservation", "Blog"] },
+  { icon: ShoppingBag, title: "Commerces", bullets: ["Produits", "Horaires", "Actualités", "Click & Collect"] },
+  { icon: Building2, title: "Immobilier", bullets: ["Annonces", "Visites virtuelles", "Estimations", "Contact"] },
 ];
 
 const AnimatedStat = ({ stat, index }: { stat: typeof stats[0]; index: number }) => {
@@ -71,20 +92,44 @@ const AnimatedStat = ({ stat, index }: { stat: typeof stats[0]; index: number })
   );
 };
 
-const baseVisitors: Record<string, number> = { "Artisan": 380, "Commerçant": 320, "Restaurant": 450, "Coach / Consultant": 260, "Profession libérale": 310, "Autre": 280 };
-const zoneMult: Record<string, number> = { "Grande ville": 1.9, "Ville moyenne": 1.4, "Petite ville": 1.0, "Village": 0.65 };
+const SpringNumber = ({ value, suffix = "" }: { value: number; suffix?: string }) => {
+  const spring = useSpring(value, { stiffness: 120, damping: 20 });
+  const [display, setDisplay] = useState(value);
+
+  useEffect(() => {
+    spring.set(value);
+  }, [spring, value]);
+
+  useMotionValueEvent(spring, "change", (latest) => {
+    setDisplay(Math.round(latest));
+  });
+
+  return <span>{display.toLocaleString("fr-FR")}{suffix}</span>;
+};
 
 const ROISimulator = () => {
-  const [secteur, setSecteur] = useState("Artisan");
-  const [zone, setZone] = useState("Ville moyenne");
-  const [valeurClient, setValeurClient] = useState(350);
+  const navigate = useNavigate();
+  const [secteur, setSecteur] = useState(secteurs[0].label);
+  const [zone, setZone] = useState(zones[1].label);
+  const [valeurClient, setValeurClient] = useState(120);
 
   const results = useMemo(() => {
-    const visiteurs = Math.round(baseVisitors[secteur] * zoneMult[zone]);
-    const leads = Math.round(visiteurs * 0.042);
-    const ca_mensuel = Math.round(leads * valeurClient * 0.28);
-    const roi = Math.round(((ca_mensuel * 12 - 497) / 497) * 100);
-    return { visiteurs, leads, ca_mensuel, roi };
+    const secteurData = secteurs.find((s) => s.label === secteur) ?? secteurs[0];
+    const zoneData = zones.find((z) => z.label === zone) ?? zones[1];
+
+    const visiteurs_mois = Math.round(secteurData.clients_base * zoneData.facteur * 12);
+    const nouveaux_clients = Math.round(visiteurs_mois * secteurData.taux);
+    const ca_mensuel_additionnel = nouveaux_clients * valeurClient;
+    const ca_annuel = ca_mensuel_additionnel * 12;
+    const mois_remboursement = ca_mensuel_additionnel > 0 ? Math.ceil(497 / ca_mensuel_additionnel) : 0;
+
+    return {
+      visiteurs_mois,
+      nouveaux_clients,
+      nouveaux_clients_affichage: nouveaux_clients > 15 ? "15+" : `${nouveaux_clients}`,
+      ca_annuel,
+      mois_remboursement,
+    };
   }, [secteur, zone, valeurClient]);
 
   return (
@@ -94,60 +139,60 @@ const ROISimulator = () => {
           <h2 className="heading-display text-2xl md:text-3xl">
             <span className="inline">ESTIMEZ CE QUE VOUS PERDEZ </span><span className="text-[#1DB954] whitespace-nowrap inline">SANS SITE</span>
           </h2>
-          <p className="font-dm text-muted-foreground mt-3">Entrez votre activité pour une estimation personnalisée.</p>
         </BlurReveal>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="relative max-w-[680px] mx-auto rounded-2xl"
-        >
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="relative max-w-[760px] mx-auto rounded-2xl">
           <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
           <div className="relative z-10 rounded-2xl p-8 md:p-10" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
             <div className="space-y-6 mb-8">
               <div>
                 <label className="font-dm font-medium text-white text-sm block mb-2">Votre secteur</label>
                 <select value={secteur} onChange={(e) => setSecteur(e.target.value)} className="w-full rounded-lg px-4 py-3 text-sm font-dm bg-background border border-border text-foreground focus:border-primary focus:outline-none">
-                  {Object.keys(baseVisitors).map((s) => <option key={s} value={s}>{s}</option>)}
+                  {secteurs.map((s) => <option key={s.label} value={s.label}>{s.label}</option>)}
                 </select>
               </div>
               <div>
-                <label className="font-dm font-medium text-white text-sm block mb-2">Votre zone</label>
-                <select value={zone} onChange={(e) => setZone(e.target.value)} className="w-full rounded-lg px-4 py-3 text-sm font-dm bg-background border border-border text-foreground focus:border-primary focus:outline-none">
-                  {Object.keys(zoneMult).map((z) => <option key={z} value={z}>{z}</option>)}
-                </select>
+                <label className="font-dm font-medium text-white text-sm block mb-2">Taille de votre zone</label>
+                <div className="flex flex-wrap gap-2">
+                  {zones.map((z) => (
+                    <button key={z.label} onClick={() => setZone(z.label)} className="px-4 py-2 rounded-full text-sm font-dm transition-colors" style={{ backgroundColor: zone === z.label ? "rgba(29,185,84,0.15)" : "#0a0f0a", color: zone === z.label ? "#1DB954" : "rgba(255,255,255,0.7)", border: zone === z.label ? "1px solid rgba(29,185,84,0.45)" : "1px solid #1a2e1a" }}>
+                      {z.label}
+                    </button>
+                  ))}
+                </div>
               </div>
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <label className="font-dm font-medium text-white text-sm">Valeur moyenne d'un client</label>
-                  <span className="text-primary font-bold text-lg">{valeurClient}€</span>
+                  <label className="font-dm font-medium text-white text-sm">Valeur moyenne d'un client (€)</label>
+                  <span className="text-primary font-bold text-base">{valeurClient}€ par client</span>
                 </div>
-                <input type="range" min="50" max="3000" step="50" value={valeurClient} onChange={(e) => setValeurClient(Number(e.target.value))} className="w-full h-2 rounded-full appearance-none cursor-pointer" style={{ background: `linear-gradient(to right, hsl(145, 63%, 42%) 0%, hsl(145, 63%, 42%) ${((valeurClient - 50) / 2950) * 100}%, rgba(255,255,255,0.1) ${((valeurClient - 50) / 2950) * 100}%, rgba(255,255,255,0.1) 100%)` }} />
-                <div className="flex justify-between text-xs text-muted-foreground mt-1"><span>50€</span><span>3000€</span></div>
+                <input type="range" min="15" max="500" step="5" value={valeurClient} onChange={(e) => setValeurClient(Number(e.target.value))} className="w-full h-2 rounded-full appearance-none cursor-pointer" style={{ background: `linear-gradient(to right, #1DB954 0%, #1DB954 ${((valeurClient - 15) / 485) * 100}%, rgba(255,255,255,0.12) ${((valeurClient - 15) / 485) * 100}%, rgba(255,255,255,0.12) 100%)` }} />
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 mb-6">
-              {[
-                { icon: Eye, label: "Visiteurs/mois estimés", value: results.visiteurs },
-                { icon: Mail, label: "Nouveaux contacts/mois", value: results.leads },
-                { icon: BarChart3, label: "CA potentiel/mois", value: results.ca_mensuel, suffix: "€" },
-                { icon: TrendingUp, label: "ROI estimé sur 1 an", value: results.roi, suffix: "%" },
-              ].map((r, i) => (
-                <div key={i} className="rounded-xl p-4 text-center" style={{ backgroundColor: "rgba(29,185,84,0.06)", border: "1px solid rgba(29,185,84,0.15)" }}>
-                  <r.icon className="text-primary mx-auto mb-2" size={20} />
-                  <div className="text-2xl font-bold text-primary font-display">
-                    <NumberFlow value={r.value} transformTiming={{ duration: 400, easing: "ease-out" }} />{r.suffix || ""}
-                  </div>
-                  <p className="text-xs text-muted-foreground font-dm mt-1">{r.label}</p>
-                </div>
-              ))}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+              <div className="rounded-xl p-5 text-center" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+                <div className="text-3xl font-bold" style={{ color: "#1DB954" }}><SpringNumber value={results.visiteurs_mois} /></div>
+                <p className="text-xs text-muted-foreground font-dm mt-2">Visiteurs estimés/mois</p>
+              </div>
+              <div className="rounded-xl p-5 text-center" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+                <div className="text-3xl font-bold" style={{ color: "#1DB954" }}>{results.nouveaux_clients_affichage}</div>
+                <p className="text-xs text-muted-foreground font-dm mt-2">Nouveaux clients/mois</p>
+              </div>
+              <div className="rounded-xl p-5 text-center" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+                <div className="text-3xl font-bold" style={{ color: "#1DB954" }}><SpringNumber value={results.ca_annuel} suffix="€" /></div>
+                <p className="text-xs text-muted-foreground font-dm mt-2">CA additionnel estimé/an</p>
+              </div>
+              <div className="rounded-xl p-5 text-center" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+                <div className="text-3xl font-bold" style={{ color: "#1DB954" }}><SpringNumber value={results.mois_remboursement} suffix=" mois" /></div>
+                <p className="text-xs text-muted-foreground font-dm mt-2">Site remboursé en</p>
+              </div>
             </div>
 
-            <p className="text-[12px] text-muted-foreground font-dm text-center mb-6">*Estimations basées sur des moyennes sectorielles françaises. Les résultats varient.</p>
+            <p className="text-xs text-white/40 font-dm text-center mb-6">Estimation indicative basée sur des moyennes sectorielles.</p>
+
             <div className="text-center">
-              <Link to="/contact" className="btn-primary">Obtenir mon site maintenant <ArrowRight className="ml-2 inline" size={16} /></Link>
+              <button onClick={() => navigate("/contact?service=vitrine")} className="btn-primary">Obtenir mon site maintenant →</button>
             </div>
           </div>
         </motion.div>
@@ -158,7 +203,6 @@ const ROISimulator = () => {
 
 const PourquoiPage = () => (
   <Layout>
-    {/* Hero */}
     <section className="relative py-24 md:py-32 overflow-hidden">
       <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-25"><source src={heroPourquoiVideo} type="video/mp4" /></video>
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
@@ -174,7 +218,6 @@ const PourquoiPage = () => (
       </div>
     </section>
 
-    {/* Stats */}
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
@@ -221,61 +264,81 @@ const PourquoiPage = () => (
       </div>
     </section>
 
-    {/* ROI Simulator */}
     <ROISimulator />
 
-    {/* Témoignages ROI */}
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container">
-        <BlurReveal className="text-center mb-14">
-          <h2 className="heading-display text-2xl md:text-3xl">
-            <span className="inline">ILS L'ONT FAIT. VOICI </span><span className="text-[#1DB954] whitespace-nowrap inline">LEURS RÉSULTATS.</span>
-          </h2>
-        </BlurReveal>
-        <ScaleSection>
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.12}>
-            {roiTestimonials.map((t, i) => (
-              <motion.div key={i} variants={itemVariants} className="relative rounded-xl">
-                <GlowingEffect spread={30} glow proximity={50} inactiveZone={0.01} borderWidth={2} disabled={false} />
-                <div className="relative z-10 rounded-xl p-6 h-full" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
-                  <span className="text-3xl block mb-4">{t.emoji}</span>
-                  <span className="inline-block text-[12px] font-semibold px-3 py-1 rounded-full text-primary mb-4" style={{ background: "rgba(29,185,84,0.15)", border: "1px solid rgba(29,185,84,0.3)" }}>
-                    {t.badge}
-                  </span>
-                  <p className="font-dm text-[15px] text-white italic leading-relaxed mb-4">"{t.text}"</p>
-                  <p className="font-dm font-semibold text-sm text-white">{t.name}</p>
-                  <p className="text-[11px] text-muted-foreground italic mt-2">*Résultat fictif illustratif</p>
-                </div>
-              </motion.div>
-            ))}
-          </StaggerContainer>
-        </ScaleSection>
+        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+          <h2 className="heading-display text-2xl md:text-3xl">6 raisons d'avoir un site web</h2>
+          <p className="font-dm text-muted-foreground mt-3">Les bénéfices concrets pour votre activité</p>
+        </motion.div>
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {raisonsSite.map((item) => (
+            <motion.div key={item.title} variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }} className="rounded-xl p-6" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+              <div className="w-11 h-11 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: "rgba(29,185,84,0.1)" }}>
+                <item.icon className="text-[#1DB954]" size={20} />
+              </div>
+              <h3 className="font-dm font-bold text-white mb-2">{item.title}</h3>
+              <p className="font-dm text-sm text-white/70">{item.description}</p>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
 
-    {/* Avantages concrets */}
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
-        <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">LES AVANTAGES </span><span className="text-[#1DB954] whitespace-nowrap inline">CONCRETS</span></h2>
-        </BlurReveal>
-        <ScaleSection>
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto" staggerDelay={0.12}>
-            {advantages.map((feature, i) => (
-              <motion.div key={i} variants={itemVariants}><FeatureCard feature={feature} /></motion.div>
-            ))}
-          </StaggerContainer>
-        </ScaleSection>
+        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+          <span className="inline-block rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide text-[#1DB954] mb-4" style={{ backgroundColor: "rgba(29,185,84,0.12)", border: "1px solid rgba(29,185,84,0.25)" }}>SECTEURS</span>
+          <h2 className="heading-display text-2xl md:text-3xl">Adapté à votre métier</h2>
+          <p className="font-dm text-muted-foreground mt-3">Chaque secteur a ses besoins spécifiques</p>
+        </motion.div>
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.06 } } }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {metierCards.map((card) => (
+            <motion.div key={card.title} variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }} className="rounded-xl p-6 transition-colors hover:border-[#1DB954]/30" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: "rgba(29,185,84,0.12)" }}><card.icon className="text-[#1DB954]" size={20} /></div>
+                <h3 className="font-dm font-bold text-white">{card.title}</h3>
+              </div>
+              <ul className="space-y-2">
+                {card.bullets.map((bullet) => (
+                  <li key={bullet} className="font-dm text-sm text-white/75 flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#1DB954]" />{bullet}</li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
 
-    <CtaSection
-      title="Ne laissez plus vos clients partir"
-      description="Chaque jour sans site, c'est du chiffre d'affaires perdu. Passez à l'action maintenant."
-      buttonText="Obtenir mon site web"
-      buttonUrl="/contact"
-      items={["Livraison en 14 jours", "À partir de 497€", "Devis gratuit", "Sans engagement"]}
-    />
+    <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
+      <div className="section-container max-w-5xl">
+        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
+          <span className="inline-block rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide text-[#1DB954] mb-4" style={{ backgroundColor: "rgba(29,185,84,0.12)", border: "1px solid rgba(29,185,84,0.25)" }}>COMPRENDRE</span>
+          <h2 className="heading-display text-2xl md:text-3xl">Le parcours client moderne</h2>
+          <p className="font-dm text-muted-foreground mt-3">Comment vos clients vous trouvent aujourd'hui</p>
+        </motion.div>
+        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-5 gap-4 items-center mb-8">
+          {[
+            ["Besoin", "Le client a un besoin"],
+            ["Recherche Google", "Il tape sa recherche"],
+            ["Comparaison", "Il compare les options"],
+            ["Votre site", "Il visite votre site"],
+            ["Contact", "Il vous contacte"],
+          ].map(([title, desc], idx) => (
+            <div key={title} className="relative text-center">
+              <div className={`mx-auto mb-3 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold ${idx === 3 ? "bg-[#1DB954] text-white animate-pulse" : "bg-white/10 text-white/80"}`}>●</div>
+              <h3 className={`font-dm font-semibold text-sm ${idx === 3 ? "text-white" : "text-white/80"}`}>{title}</h3>
+              <p className="font-dm text-xs text-white/60 mt-1">{desc}</p>
+              {idx < 4 && <span className="hidden md:block absolute -right-3 top-4 text-white/35">→</span>}
+            </div>
+          ))}
+        </motion.div>
+        <motion.p initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="font-dm text-center text-white/70 italic p-4" style={{ backgroundColor: "#111811", borderLeft: "3px solid #1DB954" }}>
+          Sans site web, votre client s'arrête à l'étape 3. Il part chez un concurrent qui, lui, a un site.
+        </motion.p>
+      </div>
+    </section>
   </Layout>
 );
 
