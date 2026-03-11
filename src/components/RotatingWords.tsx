@@ -19,14 +19,14 @@ const RotatingWords = ({ words, interval = 2800, className = "" }: RotatingWords
 
   return (
     <span
-      className={`relative inline-flex items-baseline overflow-hidden whitespace-nowrap align-baseline leading-none ${className}`}
-      style={{ height: "1.15em" }}
+      className={`relative inline-flex items-baseline whitespace-nowrap align-baseline leading-none w-full overflow-visible justify-center ${className}`}
+      style={{ height: "1.15em", minWidth: "100%" }}
     >
       <span className="invisible whitespace-nowrap">{longest}</span>
       {words.map((word, i) => (
         <motion.span
           key={word}
-          className="absolute inset-0 flex items-baseline justify-start text-[#1DB954] whitespace-nowrap leading-none"
+          className="absolute inset-0 flex justify-center items-center w-full overflow-visible"
           initial={false}
           animate={{
             y: i === index ? "0%" : i > index || (index === words.length - 1 && i === 0) ? "110%" : "-110%",
@@ -35,7 +35,7 @@ const RotatingWords = ({ words, interval = 2800, className = "" }: RotatingWords
           }}
           transition={{ duration: 0.45, ease: [0.25, 0.4, 0.25, 1] }}
         >
-          {word}
+          <span className="block text-center whitespace-nowrap text-[#1DB954] w-full">{word}</span>
         </motion.span>
       ))}
     </span>

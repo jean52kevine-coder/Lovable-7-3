@@ -167,7 +167,6 @@ const SiteEcommercePage = () => (
                   <span className="text-3xl block mb-4">{p.emoji}</span>
                   <h3 className="font-display font-black text-white mb-3">{p.name}</h3>
                   <p className="font-dm text-sm leading-relaxed mb-4" style={{ color: "rgba(255,255,255,0.6)" }}>{p.text}</p>
-                  <span className="inline-block text-[11px] text-muted-foreground italic">*Résultat fictif illustratif</span>
                 </div>
               </motion.div>
             ))}
