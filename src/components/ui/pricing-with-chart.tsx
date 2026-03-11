@@ -198,7 +198,6 @@ function ROIChart() {
             />
           </LineChart>
         </ChartContainer>
-        <p className="text-[10px] text-muted-foreground mt-1 font-dm opacity-60">*Résultat fictif illustratif</p>
       </CardContent>
     </Card>
   );

@@ -72,7 +72,7 @@ const HeroHome = () => (
       <BlurReveal delay={0.1}>
         <h1 className="heading-display leading-[1.05] mb-4" style={{ fontSize: "clamp(36px, 5.5vw, 64px)" }}>
           LE SITE WEB<br />
-          DES <RotatingWords words={heroWords} />
+          <span className="flex justify-center items-center w-full overflow-visible">DES <RotatingWords words={heroWords} /></span>
         </h1>
       </BlurReveal>
 

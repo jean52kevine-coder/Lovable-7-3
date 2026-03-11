@@ -117,7 +117,7 @@ const SiteVitrinePage = () => (
           </BlurReveal>
           <BlurReveal delay={0.1}>
             <h1 className="heading-display text-4xl md:text-6xl mb-4">
-              SITE <RotatingWords words={["VITRINE", "MODERNE", "PERFORMANT", "SUR-MESURE"]} />
+              SITE <RotatingWords words={["VITRINE", "MODERNE", "EFFICACE", "SUR-MESURE"]} />
             </h1>
           </BlurReveal>
           <BlurReveal delay={0.3}><p className="text-primary heading-display text-3xl mb-4">497 €</p></BlurReveal>
@@ -189,7 +189,6 @@ const SiteVitrinePage = () => (
                   <span className="text-3xl block mb-4">{p.emoji}</span>
                   <h3 className="font-display font-black text-white mb-3">{p.name}</h3>
                   <p className="font-dm text-sm leading-relaxed mb-4" style={{ color: "rgba(255,255,255,0.6)" }}>{p.text}</p>
-                  <span className="inline-block text-[11px] text-muted-foreground italic">*Résultat fictif illustratif</span>
                 </div>
               </motion.div>
             ))}

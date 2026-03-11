@@ -66,7 +66,6 @@ const TrustBanner = () => (
                 <p className="font-dm font-semibold text-sm text-white">{t.name}</p>
                 <p className="font-dm text-[13px] text-muted-foreground">{t.role}</p>
               </div>
-              <p className="font-dm text-[10px] text-muted-foreground mt-3 opacity-60">*Résultat fictif illustratif</p>
             </div>
           </motion.div>
         ))}

@@ -51,9 +51,6 @@ export const TestimonialsColumn = (props: {
                     <p className="font-dm text-[13px] text-muted-foreground">{role}</p>
                   </div>
                 </div>
-                <p className="font-dm text-[10px] text-muted-foreground mt-3 opacity-60">
-                  *Résultat fictif illustratif
-                </p>
               </div>
             ))}
           </React.Fragment>
