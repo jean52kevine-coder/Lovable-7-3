@@ -1,7 +1,7 @@
 import { Star } from "lucide-react";
 import BlurReveal from "@/components/animations/BlurReveal";
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns";
-import testimonialsBg from "@/assets/videos/testimonials-background.mp4";
+import testimonialsBg from "@/assets/videos/hero-background.mp4";
 
 const testimonials = [
   { text: "Mon agenda est plein 3 semaines à l'avance depuis la mise en ligne.", name: "Thomas B.", role: "Plombier · Lyon", image: "https://randomuser.me/api/portraits/men/32.jpg" },
