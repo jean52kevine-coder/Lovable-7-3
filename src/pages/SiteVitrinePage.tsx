@@ -6,14 +6,13 @@ import Layout from "@/components/Layout";
 import { Globe, Check, Users, Briefcase, Store, ChefHat, Dumbbell } from "lucide-react";
 import { CtaSection } from "@/components/ui/cta-section";
 import { BorderBeam } from "@/components/ui/border-beam";
-import { VitrineHeroIllustration } from "@/components/illustrations/SvgIllustrations";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
-import heroVitrineVideo from "@/assets/videos/hero-vitrine.mp4";
+import AnimatedHeroBg from "@/components/AnimatedHeroBg";
 
 const inclus = [
   "Design moderne et personnalisé", "Jusqu'à 5 pages", "Responsive mobile & tablette", "Optimisation SEO de base",
@@ -104,11 +103,47 @@ const FAQItem = ({ faq, index }: { faq: { q: string; a: string }; index: number 
   );
 };
 
+
+function MockupVitrine() {
+  return (
+    <div className="relative w-full max-w-sm mx-auto" style={{ animation: "float 6s ease-in-out infinite" }}>
+      <svg viewBox="0 0 320 220" className="w-full drop-shadow-2xl">
+        <rect x="0" y="0" width="320" height="220" rx="12" fill="#111811" stroke="#1a2e1a" strokeWidth="1.5"/>
+        <rect x="0" y="0" width="320" height="32" rx="12" fill="#0d130d"/>
+        <rect x="2" y="16" width="316" height="16" fill="#0d130d"/>
+        <circle cx="20" cy="16" r="5" fill="#ef4444" opacity="0.7"/>
+        <circle cx="36" cy="16" r="5" fill="#f59e0b" opacity="0.7"/>
+        <circle cx="52" cy="16" r="5" fill="#1DB954" opacity="0.7"/>
+        <rect x="70" y="8" width="180" height="16" rx="4" fill="#1a2e1a"/>
+        <rect x="12" y="44" width="296" height="80" rx="6" fill="#0d130d"/>
+        <rect x="24" y="56" width="120" height="8" rx="4" fill="#1DB954" opacity="0.8"/>
+        <rect x="24" y="70" width="80" height="5" rx="3" fill="white" opacity="0.3"/>
+        <rect x="24" y="80" width="90" height="5" rx="3" fill="white" opacity="0.2"/>
+        <rect x="24" y="96" width="64" height="24" rx="6" fill="#1DB954"/>
+        <rect x="180" y="48" width="116" height="70" rx="6" fill="#1a2e1a"/>
+        <circle cx="238" cy="75" r="18" fill="#1DB954" opacity="0.15"/>
+        <rect x="12" y="136" width="90" height="60" rx="6" fill="#0d130d" stroke="#1a2e1a" strokeWidth="1"/>
+        <rect x="114" y="136" width="90" height="60" rx="6" fill="#0d130d" stroke="#1a2e1a" strokeWidth="1"/>
+        <rect x="216" y="136" width="90" height="60" rx="6" fill="#0d130d" stroke="#1a2e1a" strokeWidth="1"/>
+        <rect x="24" y="148" width="40" height="4" rx="2" fill="#1DB954" opacity="0.6"/>
+        <rect x="126" y="148" width="40" height="4" rx="2" fill="#1DB954" opacity="0.6"/>
+        <rect x="228" y="148" width="40" height="4" rx="2" fill="#1DB954" opacity="0.6"/>
+      </svg>
+      <div className="absolute -top-3 -right-3 bg-[#1DB954] text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg shadow-[#1DB954]/30" style={{ animation: "float 4s ease-in-out infinite 1s" }}>
+        ✓ 14 jours
+      </div>
+      <div className="absolute -bottom-2 -left-3 bg-[#111811] border border-[#1a2e1a] text-white text-xs font-medium px-3 py-1 rounded-full" style={{ animation: "float 5s ease-in-out infinite 0.5s" }}>
+        497€ tout inclus
+      </div>
+    </div>
+  );
+}
+
 const SiteVitrinePage = () => (
   <Layout>
     {/* Hero */}
-    <section className="relative py-24 md:py-32 overflow-hidden">
-      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-25"><source src={heroVitrineVideo} type="video/mp4" /></video>
+    <section className="relative min-h-[60vh] py-24 md:py-32 flex items-center overflow-hidden">
+      <AnimatedHeroBg />
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
       <div className="section-container flex flex-col lg:flex-row items-center gap-10 relative z-10">
         <div className="text-center lg:text-left flex-1">
@@ -117,14 +152,14 @@ const SiteVitrinePage = () => (
           </BlurReveal>
           <BlurReveal delay={0.1}>
             <h1 className="heading-display text-4xl md:text-6xl mb-4">
-              SITE <RotatingWords words={["VITRINE", "MODERNE", "PERFORMANT", "SUR-MESURE"]} />
+              SITE <RotatingWords words={["VITRINE", "MODERNE", "EFFICACE", "SUR-MESURE"]} />
             </h1>
           </BlurReveal>
           <BlurReveal delay={0.3}><p className="text-primary heading-display text-3xl mb-4">497 €</p></BlurReveal>
           <BlurReveal delay={0.4}><p className="font-dm text-lg max-w-xl mx-auto lg:mx-0 text-muted-foreground">Présentez votre activité avec un site moderne qui inspire confiance et attire de nouveaux clients.</p></BlurReveal>
         </div>
         <BlurReveal delay={0.3} className="hidden md:block flex-1">
-          <VitrineHeroIllustration />
+          <MockupVitrine />
         </BlurReveal>
       </div>
     </section>
@@ -189,7 +224,6 @@ const SiteVitrinePage = () => (
                   <span className="text-3xl block mb-4">{p.emoji}</span>
                   <h3 className="font-display font-black text-white mb-3">{p.name}</h3>
                   <p className="font-dm text-sm leading-relaxed mb-4" style={{ color: "rgba(255,255,255,0.6)" }}>{p.text}</p>
-                  <span className="inline-block text-[11px] text-muted-foreground italic">*Résultat fictif illustratif</span>
                 </div>
               </motion.div>
             ))}
@@ -223,7 +257,7 @@ const SiteVitrinePage = () => (
       </div>
     </section>
 
-    <CtaSection title="Lancez votre site vitrine" description="14 jours, 497€, tout inclus. On s'occupe de tout." buttonText="Demander un devis gratuit" buttonUrl="/contact" />
+    <CtaSection title="Lancez votre site vitrine" description="14 jours, 497€, tout inclus. On s'occupe de tout." buttonText="Demander un devis gratuit" buttonUrl="/contact?service=vitrine" />
   </Layout>
 );
 

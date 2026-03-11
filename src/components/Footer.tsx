@@ -15,6 +15,7 @@ const about = [
   { text: "Pourquoi un site", to: "/pourquoi-un-site" },
   { text: "Tarifs", to: "/tarifs" },
   { text: "Contact", to: "/contact" },
+  { text: "CGV", to: "/cgv" },
 ];
 
 const contactInfo = [

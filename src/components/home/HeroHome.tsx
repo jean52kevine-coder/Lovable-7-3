@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
@@ -7,21 +8,47 @@ import heroVideo from "@/assets/videos/hero-promo.mp4";
 
 const heroWords = ["PME LOCALES", "ARTISANS", "COMMERÇANTS", "INDÉPENDANTS"];
 
+function LazyVideo({ src, className, style }: { src: string; className?: string; style?: CSSProperties }) {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [shouldLoad, setShouldLoad] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setShouldLoad(true);
+        observer.disconnect();
+      }
+    }, { threshold: 0.1 });
+
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <video
+      ref={ref}
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="none"
+      className={className}
+      style={style}
+    >
+      {shouldLoad && <source src={src} type="video/mp4" />}
+    </video>
+  );
+}
+
 const HeroHome = () => (
   <section className="relative min-h-[90vh] flex items-center overflow-hidden" style={{ backgroundColor: "hsl(var(--hero-bg))" }}>
     {/* Background video */}
     <div className="absolute inset-0 z-0">
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
+      <LazyVideo
+        src={heroVideo}
         className="absolute inset-0 w-full h-full object-cover"
         style={{ opacity: 0.35 }}
-      >
-        <source src={heroVideo} type="video/mp4" />
-      </video>
+      />
 
       {/* Dark overlay gradient for readability */}
       <div
@@ -72,7 +99,7 @@ const HeroHome = () => (
       <BlurReveal delay={0.1}>
         <h1 className="heading-display leading-[1.05] mb-4" style={{ fontSize: "clamp(36px, 5.5vw, 64px)" }}>
           LE SITE WEB<br />
-          DES <RotatingWords words={heroWords} />
+          <span className="flex justify-center items-center w-full overflow-visible">DES <RotatingWords words={heroWords} /></span>
         </h1>
       </BlurReveal>
 

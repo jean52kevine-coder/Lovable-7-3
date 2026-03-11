@@ -7,12 +7,11 @@ import { CtaSection } from "@/components/ui/cta-section";
 import { FeaturesBento } from "@/components/ui/features-bento";
 import { BorderBeam } from "@/components/ui/border-beam";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
-import { EcommerceHeroIllustration } from "@/components/illustrations/SvgIllustrations";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
-import heroEcommerceVideo from "@/assets/videos/hero-ecommerce.mp4";
+import AnimatedHeroBg from "@/components/AnimatedHeroBg";
 
 const inclus = [
   "Boutique en ligne complète", "Jusqu'à 50 produits", "Paiement sécurisé (CB, PayPal)", "Gestion des stocks intégrée",
@@ -72,11 +71,50 @@ const FAQItem = ({ faq, index }: { faq: { q: string; a: string }; index: number 
   );
 };
 
+
+function MockupEcommerce() {
+  return (
+    <div className="relative w-full max-w-sm mx-auto" style={{ animation: "float 6s ease-in-out infinite" }}>
+      <svg viewBox="0 0 320 230" className="w-full drop-shadow-2xl">
+        <rect x="0" y="0" width="320" height="230" rx="12" fill="#111811" stroke="#1a2e1a" strokeWidth="1.5"/>
+        <rect x="16" y="20" width="288" height="28" rx="6" fill="#0d130d"/>
+        <rect x="28" y="30" width="100" height="8" rx="4" fill="#1DB954" opacity="0.8"/>
+        <rect x="16" y="60" width="138" height="72" rx="8" fill="#0d130d" stroke="#1a2e1a"/>
+        <rect x="166" y="60" width="138" height="72" rx="8" fill="#0d130d" stroke="#1a2e1a"/>
+        <rect x="16" y="142" width="138" height="72" rx="8" fill="#0d130d" stroke="#1a2e1a"/>
+        <rect x="166" y="142" width="138" height="72" rx="8" fill="#0d130d" stroke="#1a2e1a"/>
+        <rect x="26" y="70" width="50" height="28" rx="4" fill="#1a2e1a"/>
+        <rect x="176" y="70" width="50" height="28" rx="4" fill="#1a2e1a"/>
+        <rect x="26" y="152" width="50" height="28" rx="4" fill="#1a2e1a"/>
+        <rect x="176" y="152" width="50" height="28" rx="4" fill="#1a2e1a"/>
+        <rect x="82" y="74" width="58" height="6" rx="3" fill="white" opacity="0.35"/>
+        <rect x="232" y="74" width="58" height="6" rx="3" fill="white" opacity="0.35"/>
+        <rect x="82" y="156" width="58" height="6" rx="3" fill="white" opacity="0.35"/>
+        <rect x="232" y="156" width="58" height="6" rx="3" fill="white" opacity="0.35"/>
+        <rect x="82" y="86" width="36" height="6" rx="3" fill="#1DB954" opacity="0.8"/>
+        <rect x="232" y="86" width="36" height="6" rx="3" fill="#1DB954" opacity="0.8"/>
+        <rect x="82" y="168" width="36" height="6" rx="3" fill="#1DB954" opacity="0.8"/>
+        <rect x="232" y="168" width="36" height="6" rx="3" fill="#1DB954" opacity="0.8"/>
+        <rect x="82" y="102" width="54" height="16" rx="4" fill="#1DB954"/>
+        <rect x="232" y="102" width="54" height="16" rx="4" fill="#1DB954"/>
+        <rect x="82" y="184" width="54" height="16" rx="4" fill="#1DB954"/>
+        <rect x="232" y="184" width="54" height="16" rx="4" fill="#1DB954"/>
+      </svg>
+      <div className="absolute -top-3 -right-3 bg-[#1DB954] text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg shadow-[#1DB954]/30" style={{ animation: "float 4s ease-in-out infinite 1s" }}>
+        ✓ Stripe inclus
+      </div>
+      <div className="absolute -bottom-2 -left-3 bg-[#111811] border border-[#1a2e1a] text-white text-xs font-medium px-3 py-1 rounded-full" style={{ animation: "float 5s ease-in-out infinite 0.5s" }}>
+        747€ tout inclus
+      </div>
+    </div>
+  );
+}
+
 const SiteEcommercePage = () => (
   <Layout>
     {/* Hero */}
-    <section className="relative py-24 md:py-32 overflow-hidden">
-      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-25"><source src={heroEcommerceVideo} type="video/mp4" /></video>
+    <section className="relative min-h-[60vh] py-24 md:py-32 flex items-center overflow-hidden">
+      <AnimatedHeroBg />
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
       <div className="section-container flex flex-col lg:flex-row items-center gap-10 relative z-10">
         <div className="text-center lg:text-left flex-1">
@@ -92,7 +130,7 @@ const SiteEcommercePage = () => (
           <BlurReveal delay={0.4}><p className="font-dm text-lg max-w-xl mx-auto lg:mx-0 text-muted-foreground">Vendez vos produits en ligne avec une boutique performante, sécurisée et facile à gérer.</p></BlurReveal>
         </div>
         <BlurReveal delay={0.3} className="hidden md:block flex-1">
-          <EcommerceHeroIllustration />
+          <MockupEcommerce />
         </BlurReveal>
       </div>
     </section>
@@ -167,7 +205,6 @@ const SiteEcommercePage = () => (
                   <span className="text-3xl block mb-4">{p.emoji}</span>
                   <h3 className="font-display font-black text-white mb-3">{p.name}</h3>
                   <p className="font-dm text-sm leading-relaxed mb-4" style={{ color: "rgba(255,255,255,0.6)" }}>{p.text}</p>
-                  <span className="inline-block text-[11px] text-muted-foreground italic">*Résultat fictif illustratif</span>
                 </div>
               </motion.div>
             ))}
@@ -209,7 +246,7 @@ const SiteEcommercePage = () => (
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             <Link to="/services/site-vitrine" className="btn-outline text-center">Choisir Vitrine →</Link>
-            <Link to="/contact" className="btn-primary text-center">Choisir E-commerce →</Link>
+            <Link to="/contact?service=ecommerce" className="btn-primary text-center">Choisir E-commerce →</Link>
           </div>
         </ScaleSection>
       </div>
@@ -237,7 +274,7 @@ const SiteEcommercePage = () => (
       </div>
     </section>
 
-    <CtaSection title="Lancez votre boutique en ligne" description="14 jours, 747€, tout inclus. Formation et support compris." buttonText="Demander un devis gratuit" buttonUrl="/contact" />
+    <CtaSection title="Lancez votre boutique en ligne" description="14 jours, 747€, tout inclus. Formation et support compris." buttonText="Demander un devis gratuit" buttonUrl="/contact?service=ecommerce" />
   </Layout>
 );
 

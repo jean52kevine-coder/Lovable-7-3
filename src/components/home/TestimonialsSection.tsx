@@ -1,7 +1,6 @@
 import { Star } from "lucide-react";
 import BlurReveal from "@/components/animations/BlurReveal";
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns";
-import testimonialsBg from "@/assets/videos/hero-background.mp4";
 
 const testimonials = [
   { text: "Mon agenda est plein 3 semaines à l'avance depuis la mise en ligne.", name: "Thomas B.", role: "Plombier · Lyon", image: "https://randomuser.me/api/portraits/men/32.jpg" },
@@ -21,18 +20,7 @@ const col3 = testimonials.slice(6, 9);
 
 const TestimonialsSection = () => (
   <section className="py-24 relative overflow-hidden">
-    {/* Video background */}
-    <div className="absolute inset-0 z-0">
-      <video
-        autoPlay muted loop playsInline
-        className="w-full h-full object-cover opacity-20"
-        src={testimonialsBg}
-      />
-      <div
-        className="absolute inset-0"
-        style={{ background: "linear-gradient(180deg, hsl(var(--background)) 0%, transparent 20%, transparent 80%, hsl(var(--background)) 100%)" }}
-      />
-    </div>
+    <div className="absolute inset-0 z-0" style={{ background: "radial-gradient(circle at 20% 20%, hsl(var(--primary) / 0.08), transparent 40%), linear-gradient(180deg, hsl(var(--background)) 0%, transparent 20%, transparent 80%, hsl(var(--background)) 100%)" }} />
 
     <div className="section-container relative z-10">
       <BlurReveal className="text-center mb-14">

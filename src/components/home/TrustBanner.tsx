@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import BlurReveal from "@/components/animations/BlurReveal";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
-import testimonialsBg from "@/assets/videos/testimonials-background.mp4";
 
 const testimonials = [
   { text: "Mon agenda est plein 3 semaines à l'avance.", name: "Thomas B.", role: "Plombier · Lyon", badge: "+8 demandes/mois" },
@@ -13,18 +12,7 @@ const testimonials = [
 
 const TrustBanner = () => (
   <section className="py-24 relative overflow-hidden">
-    {/* Video background */}
-    <div className="absolute inset-0 z-0">
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="w-full h-full object-cover opacity-20"
-        src={testimonialsBg}
-      />
-      <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, hsl(var(--background)) 0%, transparent 20%, transparent 80%, hsl(var(--background)) 100%)" }} />
-    </div>
+    <div className="absolute inset-0 z-0" style={{ background: "radial-gradient(circle at 80% 20%, hsl(var(--primary) / 0.08), transparent 40%), linear-gradient(180deg, hsl(var(--background)) 0%, transparent 20%, transparent 80%, hsl(var(--background)) 100%)" }} />
 
     <div className="section-container relative z-10">
       <BlurReveal className="text-center mb-16">
@@ -66,7 +54,6 @@ const TrustBanner = () => (
                 <p className="font-dm font-semibold text-sm text-white">{t.name}</p>
                 <p className="font-dm text-[13px] text-muted-foreground">{t.role}</p>
               </div>
-              <p className="font-dm text-[10px] text-muted-foreground mt-3 opacity-60">*Résultat fictif illustratif</p>
             </div>
           </motion.div>
         ))}
