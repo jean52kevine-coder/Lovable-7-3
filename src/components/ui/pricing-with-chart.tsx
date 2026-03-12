@@ -42,7 +42,7 @@ export function PricingWithChart() {
               <p className="text-muted-foreground text-sm font-dm mb-6">Paiement unique · Idéal pour artisans et indépendants</p>
 
               <Link
-                to="/services/site-vitrine"
+                to="/contact?service=vitrine"
                 className="btn-primary text-center text-sm font-bold w-full block mb-6"
               >
                 Choisir Vitrine <ArrowRight className="inline ml-1" size={14} />
@@ -128,7 +128,7 @@ export function PricingWithChart() {
               {/* CTA */}
               <div className="flex flex-col sm:flex-row items-center gap-3">
                 <Link
-                  to="/services/site-ecommerce"
+                  to="/contact?service=ecommerce"
                   className="btn-primary text-center text-sm font-bold w-full sm:w-auto px-8"
                 >
                   Choisir E-commerce <ArrowRight className="inline ml-1" size={14} />

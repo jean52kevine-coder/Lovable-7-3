@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
-import { motion, useMotionValueEvent, useSpring } from "framer-motion";
+import { useMemo, useState } from "react";
+import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Layout from "@/components/Layout";
 import {
@@ -9,8 +9,6 @@ import {
   Users,
   Search,
   Clock,
-  Zap,
-  Shield,
   Globe,
   Award,
   UtensilsCrossed,
@@ -20,7 +18,6 @@ import {
   ShoppingBag,
   Building2,
 } from "lucide-react";
-import { FeatureCard } from "@/components/ui/grid-feature-cards";
 import { CtaSection } from "@/components/ui/cta-section";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { NumberTicker } from "@/components/ui/number-ticker";
@@ -28,7 +25,6 @@ import { StatMobileSearch, StatScreenBrowse, StatBarsGrowing, StatClock } from "
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
-import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
 import heroPourquoiVideo from "@/assets/videos/hero-pourquoi.mp4";
 
 const statIllustrations = [StatMobileSearch, StatScreenBrowse, StatBarsGrowing, StatClock];
@@ -48,28 +44,6 @@ const sansAvec = [
   { sans: "Concurrents en première page", avec: "Vous aussi, en première page" },
 ];
 
-const advantages = [
-  { title: "Visibilité locale", icon: Search, description: "Apparaissez sur Google quand vos clients cherchent un professionnel dans votre ville." },
-  { title: "Crédibilité immédiate", icon: Shield, description: "Un site pro rassure vos prospects et vous démarque de la concurrence." },
-  { title: "Génération de leads", icon: Zap, description: "Transformez les visiteurs en clients grâce à des formulaires et appels à l'action efficaces." },
-  { title: "Croissance mesurable", icon: TrendingUp, description: "Suivez vos résultats et ajustez votre stratégie pour maximiser votre retour sur investissement." },
-];
-
-const roiTestimonials = [
-  {
-    emoji: "🔧", name: "Thomas B., Plombier Lyon", badge: "+8 demandes/mois",
-    text: "Avant mon site, je n'avais quasiment aucun contact via internet. Maintenant j'en reçois presque tous les jours. Mon agenda est plein 3 semaines à l'avance.",
-  },
-  {
-    emoji: "🌸", name: "Sophie M., Fleuriste Bordeaux", badge: "ROI en 3 semaines",
-    text: "Je n'aurais jamais pensé qu'un site de 497€ pouvait transformer mon business. En 3 semaines j'avais déjà rentabilisé l'investissement.",
-  },
-  {
-    emoji: "🍕", name: "Ahmed T., Restaurateur Nantes", badge: "+55% réservations",
-    text: "Les gens cherchaient mon restaurant et ne trouvaient rien. Maintenant j'ai le menu, les photos, les horaires. Les réservations ont explosé dès le premier mois.",
-  },
-];
-
 const raisonsSite = [
   { icon: Globe, title: "Visibilité 24/7", description: "Votre entreprise est visible en permanence, même quand vous dormez. Les clients peuvent vous trouver à tout moment." },
   { icon: Users, title: "Crédibilité Professionnelle", description: "Un site web professionnel inspire confiance. Les clients préfèrent les entreprises avec une présence en ligne soignée." },
@@ -80,22 +54,18 @@ const raisonsSite = [
 ];
 
 const secteurs = [
-  { label: "Artisan / BTP", multiplicateur: 2.8, clients_mois: 18 },
-  { label: "Restaurant / Café", multiplicateur: 3.2, clients_mois: 45 },
-  { label: "Commerce local", multiplicateur: 2.5, clients_mois: 30 },
-  { label: "Professions médicales", multiplicateur: 4.1, clients_mois: 12 },
-  { label: "Consultant / Coach", multiplicateur: 3.8, clients_mois: 8 },
-  { label: "Immobilier", multiplicateur: 5.2, clients_mois: 4 },
-  { label: "Auto-entrepreneur", multiplicateur: 2.2, clients_mois: 15 },
-  { label: "Association / ONG", multiplicateur: 1.8, clients_mois: 20 },
+  { label: "Artisan / BTP", taux: 0.038, clients_base: 14 },
+  { label: "Restaurant / Café", taux: 0.041, clients_base: 38 },
+  { label: "Commerce de proximité", taux: 0.033, clients_base: 25 },
+  { label: "Professions médicales", taux: 0.045, clients_base: 10 },
+  { label: "Consultant / Coach", taux: 0.042, clients_base: 7 },
+  { label: "Autre / PME", taux: 0.035, clients_base: 18 },
 ];
 
-const budgets = [
-  { label: "Aucun budget marketing", facteur: 0.6 },
-  { label: "Moins de 100€/mois", facteur: 0.9 },
-  { label: "100€ - 300€/mois", facteur: 1.2 },
-  { label: "300€ - 500€/mois", facteur: 1.6 },
-  { label: "Plus de 500€/mois", facteur: 2.1 },
+const zones = [
+  { label: "Ville < 20 000 hab.", facteur: 0.7 },
+  { label: "Ville 20k – 100k hab.", facteur: 1 },
+  { label: "Grande ville / Agglo", facteur: 1.5 },
 ];
 
 const metierCards = [
@@ -123,39 +93,27 @@ const AnimatedStat = ({ stat, index }: { stat: typeof stats[0]; index: number })
   );
 };
 
-const SpringNumber = ({ value, suffix = "" }: { value: number; suffix?: string }) => {
-  const spring = useSpring(value, { stiffness: 120, damping: 20 });
-  const [display, setDisplay] = useState(value);
-
-  useEffect(() => {
-    spring.set(value);
-  }, [spring, value]);
-
-  useMotionValueEvent(spring, "change", (latest) => {
-    setDisplay(Math.round(latest));
-  });
-
-  return <span>{display.toLocaleString("fr-FR")}{suffix}</span>;
-};
 
 const ROISimulator = () => {
   const navigate = useNavigate();
   const [secteur, setSecteur] = useState(secteurs[0].label);
-  const [budget, setBudget] = useState(budgets[2].label);
-  const [valeurClient, setValeurClient] = useState(250);
+  const [zone, setZone] = useState(zones[1].label);
+  const [valeurClient, setValeurClient] = useState(120);
 
   const results = useMemo(() => {
     const secteurData = secteurs.find((s) => s.label === secteur) ?? secteurs[0];
-    const budgetData = budgets.find((b) => b.label === budget) ?? budgets[2];
+    const zoneData = zones.find((z) => z.label === zone) ?? zones[1];
 
-    const visiteurs_mois = Math.round(secteurData.clients_mois * budgetData.facteur * 15);
-    const nouveaux_clients = Math.round(visiteurs_mois * 0.042);
-    const ca_mensuel = Math.round(nouveaux_clients * valeurClient * secteurData.multiplicateur);
-    const ca_annuel = ca_mensuel * 12;
-    const roi_percent = Math.round(((ca_annuel - 497) / 497) * 100);
+    const visiteurs_mois = Math.round(secteurData.clients_base * zoneData.facteur * 12);
+    const nouveaux_clients = Math.round(visiteurs_mois * secteurData.taux);
+    const ca_mensuel_additionnel = nouveaux_clients * valeurClient;
+    const ca_annuel = ca_mensuel_additionnel * 12;
+    const mois_remboursement = ca_mensuel_additionnel > 0 ? Math.ceil(497 / ca_mensuel_additionnel) : 0;
 
-    return { visiteurs_mois, nouveaux_clients, ca_annuel, roi_percent };
-  }, [budget, secteur, valeurClient]);
+    return { visiteurs_mois, nouveaux_clients, ca_annuel, mois_remboursement };
+  }, [secteur, zone, valeurClient]);
+
+  const sliderProgress = ((valeurClient - 15) / (500 - 15)) * 100;
 
   return (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
@@ -164,7 +122,7 @@ const ROISimulator = () => {
           <h2 className="heading-display text-2xl md:text-3xl">
             <span className="inline">ESTIMEZ CE QUE VOUS PERDEZ </span><span className="text-[#1DB954] whitespace-nowrap inline">SANS SITE</span>
           </h2>
-          <p className="font-dm text-muted-foreground mt-3">Entrez votre activité pour une estimation personnalisée.</p>
+          <p className="font-dm text-muted-foreground mt-3">Estimation réaliste basée sur votre secteur et votre zone.</p>
         </BlurReveal>
 
         <motion.div
@@ -182,35 +140,51 @@ const ROISimulator = () => {
                   {secteurs.map((s) => <option key={s.label} value={s.label}>{s.label}</option>)}
                 </select>
               </div>
+
               <div>
-                <label className="font-dm font-medium text-white text-sm block mb-2">Budget marketing actuel</label>
-                <select value={budget} onChange={(e) => setBudget(e.target.value)} className="w-full rounded-lg px-4 py-3 text-sm font-dm bg-background border border-border text-foreground focus:border-primary focus:outline-none">
-                  {budgets.map((b) => <option key={b.label} value={b.label}>{b.label}</option>)}
-                </select>
+                <label className="font-dm font-medium text-white text-sm block mb-3">Taille de votre zone</label>
+                <div className="flex flex-wrap gap-2">
+                  {zones.map((z) => (
+                    <button
+                      key={z.label}
+                      onClick={() => setZone(z.label)}
+                      className="px-4 py-2 rounded-full text-sm font-dm transition-colors"
+                      style={{
+                        backgroundColor: zone === z.label ? "rgba(29,185,84,0.15)" : "#0d130d",
+                        border: zone === z.label ? "1px solid #1DB954" : "1px solid #1a2e1a",
+                        color: zone === z.label ? "#1DB954" : "rgba(255,255,255,0.7)",
+                      }}
+                    >
+                      {z.label}
+                    </button>
+                  ))}
+                </div>
               </div>
+
               <div>
                 <div className="flex justify-between items-center mb-2">
                   <label className="font-dm font-medium text-white text-sm">Valeur moyenne d'un client (€)</label>
-                  <span className="text-primary font-bold text-lg">{valeurClient}€</span>
+                  <span className="text-primary font-bold text-lg">{valeurClient}€ par client</span>
                 </div>
-                <input type="range" min="50" max="1000" step="10" value={valeurClient} onChange={(e) => setValeurClient(Number(e.target.value))} className="w-full h-2 rounded-full appearance-none cursor-pointer" style={{ background: `linear-gradient(to right, #1DB954 0%, #1DB954 ${((valeurClient - 50) / 950) * 100}%, rgba(255,255,255,0.12) ${((valeurClient - 50) / 950) * 100}%, rgba(255,255,255,0.12) 100%)` }} />
-                <div className="flex justify-between text-xs text-muted-foreground mt-1"><span>50€</span><span>1000€</span></div>
+                <input type="range" min="15" max="500" step="5" value={valeurClient} onChange={(e) => setValeurClient(Number(e.target.value))} className="w-full h-2 rounded-full appearance-none cursor-pointer" style={{ background: `linear-gradient(to right, #1DB954 0%, #1DB954 ${sliderProgress}%, rgba(255,255,255,0.12) ${sliderProgress}%, rgba(255,255,255,0.12) 100%)` }} />
+                <div className="flex justify-between text-xs text-muted-foreground mt-1"><span>15€</span><span>500€</span></div>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-3">
               {[
-                { label: "Visiteurs/mois estimés", value: results.visiteurs_mois, suffix: "" },
-                { label: "Nouveaux clients/mois", value: results.nouveaux_clients, suffix: "" },
-                { label: "CA additionnel/an", value: results.ca_annuel, suffix: "€" },
-                { label: "ROI estimé 1ère année", value: results.roi_percent, suffix: "%" },
+                { label: "Visiteurs estimés/mois", value: results.visiteurs_mois.toString() },
+                { label: "Nouveaux clients/mois", value: results.nouveaux_clients > 15 ? "15+" : results.nouveaux_clients.toString() },
+                { label: "CA additionnel estimé/an", value: `${results.ca_annuel}€` },
+                { label: "Site remboursé en", value: `${results.mois_remboursement} mois` },
               ].map((r) => (
                 <div key={r.label} className="rounded-xl p-5 text-center" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
-                  <div className="text-3xl font-bold" style={{ color: "#1DB954" }}><SpringNumber value={r.value} suffix={r.suffix} /></div>
+                  <div className="text-3xl font-bold" style={{ color: "#1DB954" }}>{r.value}</div>
                   <p className="text-xs text-muted-foreground font-dm mt-2">{r.label}</p>
                 </div>
               ))}
             </div>
+            <p className="text-white/40 text-xs font-dm text-center mb-8">Estimation indicative basée sur des moyennes sectorielles.</p>
 
             <div className="text-center">
               <button onClick={() => navigate("/contact?service=vitrine")} className="btn-primary">Obtenir mon site maintenant →</button>
@@ -361,47 +335,6 @@ const PourquoiPage = () => (
       </div>
     </section>
 
-    <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
-      <div className="section-container">
-        <BlurReveal className="text-center mb-14">
-          <h2 className="heading-display text-2xl md:text-3xl">
-            <span className="inline">ILS L'ONT FAIT. VOICI </span><span className="text-[#1DB954] whitespace-nowrap inline">LEURS RÉSULTATS.</span>
-          </h2>
-        </BlurReveal>
-        <ScaleSection>
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.12}>
-            {roiTestimonials.map((t, i) => (
-              <motion.div key={i} variants={itemVariants} className="relative rounded-xl">
-                <GlowingEffect spread={30} glow proximity={50} inactiveZone={0.01} borderWidth={2} disabled={false} />
-                <div className="relative z-10 rounded-xl p-6 h-full" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
-                  <span className="text-3xl block mb-4">{t.emoji}</span>
-                  <span className="inline-block text-[12px] font-semibold px-3 py-1 rounded-full text-primary mb-4" style={{ background: "rgba(29,185,84,0.15)", border: "1px solid rgba(29,185,84,0.3)" }}>
-                    {t.badge}
-                  </span>
-                  <p className="font-dm text-[15px] text-white italic leading-relaxed mb-4">"{t.text}"</p>
-                  <p className="font-dm font-semibold text-sm text-white">{t.name}</p>
-                </div>
-              </motion.div>
-            ))}
-          </StaggerContainer>
-        </ScaleSection>
-      </div>
-    </section>
-
-    <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
-      <div className="section-container">
-        <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">LES AVANTAGES </span><span className="text-[#1DB954] whitespace-nowrap inline">CONCRETS</span></h2>
-        </BlurReveal>
-        <ScaleSection>
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto" staggerDelay={0.12}>
-            {advantages.map((feature, i) => (
-              <motion.div key={i} variants={itemVariants}><FeatureCard feature={feature} /></motion.div>
-            ))}
-          </StaggerContainer>
-        </ScaleSection>
-      </div>
-    </section>
 
     <CtaSection
       title="Ne laissez plus vos clients partir"

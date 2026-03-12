@@ -222,7 +222,7 @@ const SiteVitrinePage = () => (
       </div>
     </section>
 
-    <CtaSection title="Lancez votre site vitrine" description="14 jours, 497€, tout inclus. On s'occupe de tout." buttonText="Demander un devis gratuit" buttonUrl="/contact" />
+    <CtaSection title="Lancez votre site vitrine" description="14 jours, 497€, tout inclus. On s'occupe de tout." buttonText="Demander un devis gratuit" buttonUrl="/contact?service=vitrine" />
   </Layout>
 );
 
