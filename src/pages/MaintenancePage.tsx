@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
-import { Wrench, Check, AlertTriangle } from "lucide-react";
+import { Wrench, Check, AlertTriangle, Shield, RefreshCw, HeadphonesIcon, GraduationCap } from "lucide-react";
 import { BorderBeam } from "@/components/ui/border-beam";
 import { MaintenanceHeroIllustration } from "@/components/illustrations/SvgIllustrations";
 import { CtaSection } from "@/components/ui/cta-section";
@@ -21,9 +21,9 @@ const dangers = [
 ];
 
 const formules = [
-  { name: "Essentielle", price: "39", features: ["Mises à jour mensuelles", "Sauvegarde hebdomadaire", "Support par email", "Monitoring de base", "Rapport trimestriel"], highlighted: false },
-  { name: "Professionnelle", price: "49", features: ["Mises à jour bi-mensuelles", "Sauvegarde quotidienne", "Support email & téléphone", "Monitoring avancé", "Rapport mensuel", "Modifications mineures incluses"], highlighted: true },
-  { name: "Premium", price: "59", features: ["Mises à jour hebdomadaires", "Sauvegarde en temps réel", "Support prioritaire 7j/7", "Monitoring 24/7", "Rapport mensuel détaillé", "Modifications illimitées", "Optimisation performance"], highlighted: false },
+  { name: "Essentielle", price: "29", features: ["Mises à jour de sécurité", "Sauvegarde hebdomadaire", "Support par email", "Monitoring de base", "Rapport trimestriel"], highlighted: false, cta: "/contact?service=maintenance-essentielle" },
+  { name: "Professionnelle", price: "39", features: ["Mises à jour bi-mensuelles", "Sauvegarde quotidienne", "Support email & téléphone", "Monitoring avancé", "Rapport mensuel", "Modifications mineures illimitées"], highlighted: true, cta: "/contact?service=maintenance-professionnelle" },
+  { name: "Premium", price: "49", features: ["Mises à jour hebdomadaires", "Sauvegarde en temps réel", "Support prioritaire 7j/7", "Monitoring 24/7", "Rapport mensuel détaillé", "Toutes modifications incluses", "Optimisation SEO mensuelle"], highlighted: false, cta: "/contact?service=maintenance-premium" },
 ];
 
 const faqs = [
@@ -52,7 +52,10 @@ const FAQItem = ({ faq, index }: { faq: { q: string; a: string }; index: number 
   );
 };
 
-const MaintenancePage = () => (
+const MaintenancePage = () => {
+  const navigate = useNavigate();
+
+  return (
   <Layout>
     {/* Hero */}
     <section className="relative py-24 md:py-32 overflow-hidden">
@@ -104,12 +107,55 @@ const MaintenancePage = () => (
       </div>
     </section>
 
+
+
+    <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
+      <div className="section-container max-w-5xl">
+        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+          <h2 className="heading-display text-2xl md:text-3xl">Vous ne gérez plus rien</h2>
+          <p className="font-dm text-muted-foreground mt-3">On s'occupe de tout pendant que vous vous concentrez sur votre métier.</p>
+        </motion.div>
+        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            { icon: Shield, title: "Sécurité gérée", text: "Mises à jour, pare-feu, surveillance. Votre site est protégé en permanence." },
+            { icon: RefreshCw, title: "Zéro intervention", text: "Aucune manipulation technique de votre côté. On intervient avant que vous ne voyez le moindre problème." },
+            { icon: HeadphonesIcon, title: "On est là", text: "Une question ? Un changement ? Un email suffit. Réponse sous 24h, en français, par une vraie personne." },
+          ].map((item) => (
+            <div key={item.title} className="rounded-xl p-6" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+              <div className="w-11 h-11 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: "rgba(29,185,84,0.12)" }}>
+                <item.icon className="text-[#1DB954]" size={20} />
+              </div>
+              <h3 className="font-display font-bold text-white mb-2">{item.title}</h3>
+              <p className="font-dm text-sm text-white/70">{item.text}</p>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+
     {/* Formules */}
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
           <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">NOS </span><span className="text-[#1DB954] whitespace-nowrap inline">FORMULES</span></h2>
         </BlurReveal>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex items-start gap-4 bg-[#111811] border border-[#1a2e1a] rounded-xl p-6 max-w-2xl mx-auto mb-12"
+        >
+          <div className="text-[#1DB954] mt-1">
+            <GraduationCap size={28} />
+          </div>
+          <div>
+            <h3 className="text-white font-semibold text-lg mb-1">Formation offerte à la livraison</h3>
+            <p className="text-white/60 text-sm leading-relaxed">
+              À la livraison de votre site, on vous montre comment tout fonctionne en 30 minutes. Besoin de changer un texte,
+              une photo ou un prix ? Vous serez autonome. Et si vous préférez qu'on s'en occupe — c'est inclus dans la maintenance.
+            </p>
+          </div>
+        </motion.div>
         <ScaleSection>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.15}>
             {formules.map((f, i) => (
@@ -117,7 +163,7 @@ const MaintenancePage = () => (
                 <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
                 <div className={`relative z-10 rounded-2xl p-7 flex flex-col overflow-hidden h-full ${f.highlighted ? "ring-2 ring-primary" : ""}`} style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}>
                   <BorderBeam colorFrom="#1DB954" colorTo="#06B6D4" duration={f.highlighted ? 4 : 6} size={200} />
-                  {f.highlighted && <span className="absolute -top-0 left-1/2 -translate-x-1/2 translate-y-0 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-b-lg">Populaire</span>}
+                  {f.highlighted && <span className="absolute -top-0 left-1/2 -translate-x-1/2 translate-y-0 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-b-lg">POPULAIRE</span>}
                   <h3 className="font-display font-bold text-xl mb-2 mt-4">{f.name}</h3>
                   <div className="mb-6"><span className="text-primary heading-display text-3xl">{f.price}€</span><span className="text-muted-foreground text-sm">/mois</span></div>
                   <ul className="space-y-3 flex-1 mb-8">
@@ -125,7 +171,7 @@ const MaintenancePage = () => (
                       <li key={j} className="flex items-center gap-2 text-sm text-muted-foreground"><Check className="text-primary flex-shrink-0" size={16} />{feat}</li>
                     ))}
                   </ul>
-                  <Link to={`/contact?service=maintenance-${f.name.toLowerCase()}`} className={f.highlighted ? "btn-primary text-center text-sm" : "btn-outline text-center text-sm"}>Choisir cette formule</Link>
+                  <button onClick={() => navigate(f.cta)} className={f.highlighted ? "btn-primary text-center text-sm" : "btn-outline text-center text-sm"}>Choisir cette formule</button>
                 </div>
               </motion.div>
             ))}
@@ -154,6 +200,7 @@ const MaintenancePage = () => (
       items={["Sans engagement", "Résiliation à tout moment", "Support réactif", "Rapport de suivi"]}
     />
   </Layout>
-);
+  );
+};
 
 export default MaintenancePage;

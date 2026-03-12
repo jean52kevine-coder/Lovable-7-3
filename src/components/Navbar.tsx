@@ -38,11 +38,21 @@ const Navbar = () => {
             <AlteraLogo size="md" className="max-h-[3.5rem] md:max-h-[4.5rem]" />
           </Link>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:block">
-            <Link to="/contact" className="btn-primary text-sm">
-              Devis Gratuit
+          <div className="flex items-center gap-2">
+            {/* Visible uniquement sur mobile */}
+            <Link
+              to="/contact"
+              className="md:hidden bg-[#1DB954] hover:bg-[#17a349] text-black font-semibold text-sm px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap"
+            >
+              Devis
             </Link>
+
+            {/* Desktop CTA */}
+            <div className="hidden md:block">
+              <Link to="/contact" className="btn-primary text-sm">
+                Devis Gratuit
+              </Link>
+            </div>
           </div>
         </div>
       </nav>

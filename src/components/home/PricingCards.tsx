@@ -6,9 +6,9 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
 
 const plans = [
-  { Icon: Globe, title: "Site Vitrine", price: "497", features: ["Design sur-mesure", "Jusqu'à 5 pages", "Responsive", "SEO optimisé", "Livraison 14j"], link: "/services/site-vitrine", best: false },
-  { Icon: ShoppingCart, title: "Site E-commerce", price: "747", features: ["Boutique complète", "Paiement sécurisé", "Gestion stocks", "SEO avancé", "Formation incluse"], link: "/services/site-ecommerce", best: true },
-  { Icon: Shield, title: "Maintenance", price: "39", suffix: "/mois", features: ["Mises à jour", "Sauvegardes auto", "Support réactif", "Monitoring 24/7", "Rapport mensuel"], link: "/services/maintenance", best: false },
+  { Icon: Globe, title: "Site Vitrine", price: "497", features: ["Design sur-mesure", "Jusqu'à 5 pages", "Responsive", "SEO optimisé", "Livraison 14j"], link: "/contact?service=vitrine", best: false },
+  { Icon: ShoppingCart, title: "Site E-commerce", price: "747", features: ["Boutique complète", "Paiement sécurisé", "Gestion stocks", "SEO avancé", "Formation incluse"], link: "/contact?service=ecommerce", best: true },
+  { Icon: Shield, title: "Maintenance", price: "29", suffix: "/mois", features: ["Mises à jour de sécurité", "Sauvegarde hebdomadaire", "Support par email", "Monitoring de base", "Rapport trimestriel"], link: "/contact?service=maintenance", best: false },
 ];
 
 const PricingCards = () => (

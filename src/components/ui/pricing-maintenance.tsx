@@ -25,51 +25,50 @@ interface MaintenancePlan {
 const maintenancePlans: MaintenancePlan[] = [
   {
     name: "ESSENTIELLE",
-    price: 39,
+    price: 29,
     features: [
       "Mises à jour de sécurité",
-      "Sauvegardes hebdomadaires",
-      "Support email",
-      "Temps de réponse 48h",
+      "Sauvegarde hebdomadaire",
+      "Support par email",
+      "Monitoring de base",
+      "Rapport trimestriel",
     ],
-    description: "Maintenance de base pour garder votre site fonctionnel",
+    description: "L'essentiel pour garder votre site protégé et stable",
     buttonText: "Souscrire",
-    href: "/contact?service=maintenance-essentielle",
+    href: "/contact?service=maintenance",
     isPopular: false,
   },
   {
     name: "PROFESSIONNELLE",
-    price: 49,
+    price: 39,
     features: [
-      "Mises à jour de sécurité",
+      "Mises à jour bi-mensuelles",
       "Sauvegardes quotidiennes",
       "Support email & téléphone",
-      "2 modifications/mois",
-      "Monitoring 24/7",
+      "Monitoring avancé",
       "Rapport mensuel",
-      "Temps de réponse 24h",
+      "Modifications mineures illimitées",
     ],
-    description: "Notre recommandation pour la tranquillité d'esprit",
+    description: "La formule la plus choisie pour déléguer sereinement",
     buttonText: "Souscrire",
-    href: "/contact?service=maintenance-professionnelle",
+    href: "/contact?service=maintenance",
     isPopular: true,
   },
   {
     name: "PREMIUM",
-    price: 59,
+    price: 49,
     features: [
-      "Mises à jour de sécurité",
+      "Mises à jour hebdomadaires",
       "Sauvegardes temps réel",
       "Support prioritaire 7j/7",
-      "Modifications illimitées",
+      "Toutes modifications incluses",
       "Monitoring 24/7",
-      "Rapport hebdomadaire",
-      "Optimisation SEO",
-      "Temps de réponse 4h",
+      "Rapport mensuel détaillé",
+      "Optimisation SEO mensuelle",
     ],
-    description: "Tranquillité totale, performances maximales",
+    description: "Une prise en charge complète, sans compromis",
     buttonText: "Souscrire",
-    href: "/contact?service=maintenance-premium",
+    href: "/contact?service=maintenance",
     isPopular: false,
   },
 ];
@@ -91,7 +90,7 @@ export function PricingMaintenance() {
             <div className="w-full relative">
             {plan.isPopular && (
               <span className="absolute -top-3 left-1/2 -translate-x-1/2 z-20 text-xs font-bold px-3 py-1 rounded-full text-primary-foreground flex items-center gap-1" style={{ background: "hsl(var(--primary))" }}>
-                <Star className="h-3 w-3 fill-current" /> RECOMMANDÉ
+                <Star className="h-3 w-3 fill-current" /> POPULAIRE
               </span>
             )}
 

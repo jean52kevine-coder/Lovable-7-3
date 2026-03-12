@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useSearchParams } from "react-router-dom";
 import Layout from "@/components/Layout";
 import {
   Send, User, Briefcase, MessageSquare, Check, ArrowRight, ArrowLeft,
@@ -17,12 +18,42 @@ const steps = [
 const projectTypes = [
   { id: "vitrine", icon: Globe, label: "Site Vitrine", price: "497€" },
   { id: "ecommerce", icon: ShoppingCart, label: "Site E-commerce", price: "747€" },
-  { id: "maintenance", icon: Wrench, label: "Maintenance", price: "dès 39€/m" },
+  { id: "maintenance", icon: Wrench, label: "Maintenance", price: "dès 29€/m" },
   { id: "refonte", icon: PenTool, label: "Refonte", price: "Sur devis" },
 ];
 
 const budgetOptions = ["< 500€", "500–800€", "800–1500€", "1500€+", "À définir"];
 const delayOptions = ["Le plus tôt", "1 mois", "2–3 mois", "Flexible"];
+
+const serviceToDisplayLabel: Record<string, string> = {
+  vitrine: "Site Vitrine — 497€",
+  ecommerce: "Site E-commerce — 747€",
+  maintenance: "Maintenance Web",
+  "maintenance-essentielle": "Maintenance Essentielle — 29€/mois",
+  "maintenance-professionnelle": "Maintenance Professionnelle — 39€/mois",
+  "maintenance-premium": "Maintenance Premium — 49€/mois",
+};
+
+const serviceToProjectType: Record<string, string> = {
+  vitrine: "vitrine",
+  ecommerce: "ecommerce",
+  maintenance: "maintenance",
+  "maintenance-essentielle": "maintenance",
+  "maintenance-professionnelle": "maintenance",
+  "maintenance-premium": "maintenance",
+};
+
+const defaultMessageByService: Record<string, string> = {
+  vitrine: "Bonjour, je suis intéressé(e) par la création d'un site vitrine à 497€. Je souhaite en savoir plus et obtenir un devis personnalisé.",
+  ecommerce: "Bonjour, je souhaite créer une boutique en ligne. Je suis intéressé(e) par votre offre site e-commerce à 747€.",
+  maintenance: "Bonjour, je suis intéressé(e) par votre formule de maintenance web. Pouvez-vous me contacter pour en discuter ?",
+  "maintenance-essentielle": "Bonjour, je suis intéressé(e) par votre formule de maintenance web. Pouvez-vous me contacter pour en discuter ?",
+  "maintenance-professionnelle": "Bonjour, je suis intéressé(e) par votre formule de maintenance web. Pouvez-vous me contacter pour en discuter ?",
+  "maintenance-premium": "Bonjour, je suis intéressé(e) par votre formule de maintenance web. Pouvez-vous me contacter pour en discuter ?",
+};
+
+const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
 
 const fadeSlide = {
   initial: { opacity: 0, x: 30 },
@@ -31,6 +62,11 @@ const fadeSlide = {
 };
 
 const ContactPage = () => {
+  const [searchParams] = useSearchParams();
+  const serviceParam = searchParams.get("service");
+  const planParam = searchParams.get("plan");
+  void planParam;
+
   const [step, setStep] = useState(0);
   const [form, setForm] = useState({
     prenom: "", nom: "", email: "", telephone: "",
@@ -38,10 +74,59 @@ const ContactPage = () => {
   });
   const [submitted, setSubmitted] = useState(false);
   const [charCount, setCharCount] = useState(0);
+  const [preselectedService, setPreselectedService] = useState<string | null>(null);
+  const [touched, setTouched] = useState({ prenom: false, nom: false, email: false });
+  const [messageEditedByUser, setMessageEditedByUser] = useState(false);
 
   const update = (field: string, value: string) => setForm((p) => ({ ...p, [field]: value }));
 
   const projectLabel = projectTypes.find((p) => p.id === form.projectType)?.label || "";
+
+  useEffect(() => {
+    if (!serviceParam) return;
+    const mappedProjectType = serviceToProjectType[serviceParam];
+    if (!mappedProjectType) return;
+
+    const defaultMessage = defaultMessageByService[serviceParam] ?? "";
+    setForm((prev) => ({
+      ...prev,
+      projectType: mappedProjectType,
+      message: prev.message || defaultMessage,
+    }));
+    setCharCount((prev) => (prev > 0 ? prev : defaultMessage.length));
+    setPreselectedService(serviceParam);
+  }, [serviceParam]);
+
+  const isPrenomValid = form.prenom.trim().length > 0;
+  const isNomValid = form.nom.trim().length > 0;
+  const isEmailValid = isValidEmail(form.email.trim());
+  const canGoNext = isPrenomValid && isNomValid && isEmailValid;
+
+  const inputState = useMemo(() => ({
+    prenom: touched.prenom ? (isPrenomValid ? "valid" : "invalid") : "default",
+    nom: touched.nom ? (isNomValid ? "valid" : "invalid") : "default",
+    email: touched.email ? (isEmailValid ? "valid" : "invalid") : "default",
+  }), [isEmailValid, isNomValid, isPrenomValid, touched]);
+
+  const preselectedLabel = preselectedService ? serviceToDisplayLabel[preselectedService] : null;
+
+  useEffect(() => {
+    if (!preselectedService || messageEditedByUser) return;
+    const defaultMessage = defaultMessageByService[preselectedService] ?? "";
+    setForm((prev) => ({ ...prev, message: defaultMessage }));
+    setCharCount(defaultMessage.length);
+  }, [messageEditedByUser, preselectedService]);
+
+  const resetPreselection = () => {
+    setPreselectedService(null);
+    setMessageEditedByUser(false);
+    setCharCount(0);
+    setTouched({ prenom: false, nom: false, email: false });
+    setForm({
+      prenom: "", nom: "", email: "", telephone: "",
+      projectType: "", budget: "", delay: "", message: "", source: "",
+    });
+  };
 
   const handleSubmit = () => setSubmitted(true);
 
@@ -86,6 +171,12 @@ const ContactPage = () => {
           <p className="font-dm text-base md:text-lg text-muted-foreground max-w-xl mx-auto">
             Réponse garantie sous 24h · Consultation 30 min offerte · Devis gratuit
           </p>
+          {preselectedLabel && (
+            <div className="mt-5 inline-flex items-center gap-3 px-4 py-2 rounded-full border text-sm" style={{ borderColor: "rgba(29,185,84,0.35)", color: "#1DB954", backgroundColor: "rgba(29,185,84,0.1)" }}>
+              <span>✓ Formule présélectionnée : {preselectedLabel}</span>
+              <button onClick={resetPreselection} className="text-white/70 hover:text-white" aria-label="Réinitialiser la présélection">×</button>
+            </div>
+          )}
         </motion.div>
       </section>
 
@@ -180,11 +271,11 @@ const ContactPage = () => {
                     {step === 0 && (
                       <motion.div key="s0" {...fadeSlide} className="space-y-5">
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                          <InputField label="PRÉNOM *" placeholder="Jean" value={form.prenom} onChange={(v) => update("prenom", v)} />
-                          <InputField label="NOM *" placeholder="Dupont" value={form.nom} onChange={(v) => update("nom", v)} />
+                          <InputField label="PRÉNOM *" placeholder="Jean" value={form.prenom} onChange={(v) => update("prenom", v)} state={inputState.prenom} errorMessage="Prénom requis" onTouched={() => setTouched((prev) => ({ ...prev, prenom: true }))} />
+                          <InputField label="NOM *" placeholder="Dupont" value={form.nom} onChange={(v) => update("nom", v)} state={inputState.nom} errorMessage="Nom requis" onTouched={() => setTouched((prev) => ({ ...prev, nom: true }))} />
                         </div>
-                        <InputField label="EMAIL *" placeholder="jean.dupont@email.fr" value={form.email} onChange={(v) => update("email", v)} type="email" />
-                        <InputField label="TÉLÉPHONE — optionnel" placeholder="06 12 34 56 78" value={form.telephone} onChange={(v) => update("telephone", v)} type="tel" />
+                        <InputField label="EMAIL *" placeholder="jean.dupont@email.fr" value={form.email} onChange={(v) => update("email", v)} type="email" state={inputState.email} errorMessage="Email valide requis" onTouched={() => setTouched((prev) => ({ ...prev, email: true }))} />
+                        <InputField label="TÉLÉPHONE — Optionnel (recommandé)" placeholder="06 XX XX XX XX" value={form.telephone} onChange={(v) => update("telephone", v)} type="tel" />
 
                         <div>
                           <label className="block text-[11px] font-display font-bold tracking-[0.15em] uppercase text-muted-foreground mb-3">TYPE DE PROJET *</label>
@@ -216,8 +307,9 @@ const ContactPage = () => {
                         </div>
 
                         <button
-                          onClick={() => setStep(1)}
-                          className="w-full inline-flex items-center justify-center font-bold px-7 py-3.5 rounded-xl text-primary-foreground transition-all duration-200 hover:-translate-y-0.5 gap-2 font-display text-sm"
+                          onClick={() => canGoNext && setStep(1)}
+                          disabled={!canGoNext}
+                          className={`w-full inline-flex items-center justify-center font-bold px-7 py-3.5 rounded-xl text-primary-foreground transition-all duration-200 gap-2 font-display text-sm ${canGoNext ? "hover:-translate-y-0.5" : "opacity-50 cursor-not-allowed"}`}
                           style={{ background: "linear-gradient(135deg, hsl(145,63%,42%), hsl(160,60%,45%))" }}
                         >
                           Suivant <ArrowRight size={18} />
@@ -256,7 +348,7 @@ const ContactPage = () => {
                             maxLength={500}
                             placeholder="Parlez-nous de votre activité et de vos objectifs…"
                             value={form.message}
-                            onChange={(e) => { update("message", e.target.value); setCharCount(e.target.value.length); }}
+                            onChange={(e) => { update("message", e.target.value); setCharCount(e.target.value.length); setMessageEditedByUser(true); }}
                             className="w-full px-4 py-3.5 rounded-xl bg-background/50 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all font-dm resize-none"
                           />
                         </div>
@@ -314,16 +406,23 @@ const ContactPage = () => {
 
 /* ---- Sub-components ---- */
 
-const InputField = ({ label, placeholder, value, onChange, type = "text" }: { label: string; placeholder: string; value: string; onChange: (v: string) => void; type?: string }) => (
+const InputField = ({ label, placeholder, value, onChange, type = "text", state = "default", errorMessage, onTouched }: { label: string; placeholder: string; value: string; onChange: (v: string) => void; type?: string; state?: "default" | "valid" | "invalid"; errorMessage?: string; onTouched?: () => void; }) => (
   <div>
     <label className="block text-[11px] font-display font-bold tracking-[0.15em] uppercase text-muted-foreground mb-2">{label}</label>
     <input
       type={type}
       placeholder={placeholder}
       value={value}
-      onChange={(e) => onChange(e.target.value)}
-      className="w-full px-4 py-3.5 rounded-xl bg-background/50 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all font-dm"
+      onChange={(e) => {
+        onChange(e.target.value);
+        onTouched?.();
+      }}
+      className="w-full px-4 py-3.5 rounded-xl bg-background/50 border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all font-dm"
+      style={{
+        borderColor: state === "invalid" ? "#ef4444" : state === "valid" ? "#1DB954" : "",
+      }}
     />
+    {state === "invalid" && errorMessage && <p className="text-xs mt-1" style={{ color: "#ef4444" }}>{errorMessage}</p>}
   </div>
 );
 
