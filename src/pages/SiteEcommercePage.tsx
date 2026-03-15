@@ -13,6 +13,7 @@ import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
 import heroEcommerceVideo from "@/assets/videos/hero-ecommerce.mp4";
+import HeroBackground from "@/components/HeroBackground";
 
 const inclus = [
   "Boutique en ligne complète", "Jusqu'à 50 produits", "Paiement sécurisé (CB, PayPal)", "Gestion des stocks intégrée",
@@ -29,9 +30,9 @@ const bentoItems = [
 const cibles = ["Boutiques et commerces de détail", "Artisans créateurs", "Producteurs locaux", "Marques indépendantes", "Associations vendant des produits"];
 
 const profils = [
-  { emoji: "🧶", name: "Camille, créatrice de bijoux", text: "Avant : vente uniquement sur les marchés le weekend. Après : sa boutique tourne 24h/24. Elle reçoit des commandes même quand elle crée, même la nuit." },
-  { emoji: "🍯", name: "Antoine, apiculteur en Dordogne", text: "Son miel se vend maintenant dans toute la France. Livraison Colissimo configurée, paiement automatique. Il se concentre sur la production, sa boutique gère le reste." },
-  { emoji: "👗", name: "Léa, boutique prêt-à-porter à Lille", text: "Elle voulait compléter son magasin physique. Aujourd'hui 30% de son chiffre d'affaires vient de sa boutique en ligne. Elle l'a rentabilisée en 6 semaines." },
+  { emoji: "🛍️", name: "Laura M. — Boutique, Épinal (88)", text: "Je vends maintenant dans toute la France depuis mon atelier d'Épinal. Le site e-commerce a ouvert un marché que je n'imaginais pas possible." },
+  { emoji: "🍽️", name: "Karim B. — Restaurateur, Metz (57)", text: "Les gens cherchaient mon restaurant et ne me trouvaient pas. Depuis le site, je suis premier sur Google Maps dans mon quartier." },
+  { emoji: "🪚", name: "Thomas R. — Menuisier, Charleville-Mézières (08)", text: "En 14 jours comme promis, mon site était en ligne. Mes prospects voient mes réalisations avant même de m'appeler." },
 ];
 
 const comparisonRows = [
@@ -76,6 +77,7 @@ const SiteEcommercePage = () => (
   <Layout>
     {/* Hero */}
     <section className="relative py-24 md:py-32 overflow-hidden">
+      <HeroBackground variant="grid" />
       <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-25"><source src={heroEcommerceVideo} type="video/mp4" /></video>
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
       <div className="section-container flex flex-col lg:flex-row items-center gap-10 relative z-10">
