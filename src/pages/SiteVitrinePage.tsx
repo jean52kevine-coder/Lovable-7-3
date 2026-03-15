@@ -14,6 +14,7 @@ import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
 import heroVitrineVideo from "@/assets/videos/hero-vitrine.mp4";
+import HeroBackground from "@/components/HeroBackground";
 
 const inclus = [
   "Design moderne et personnalisé", "Jusqu'à 5 pages", "Responsive mobile & tablette", "Optimisation SEO de base",
@@ -29,9 +30,9 @@ const cibles = [
 ];
 
 const profils = [
-  { emoji: "🔧", name: "Mohammed, plombier à Lyon", text: "Avant son site : 100% de ses clients venaient du bouche-à-oreille. Après : il reçoit entre 6 et 10 demandes de devis en ligne chaque mois. Son site travaille pendant qu'il est sur chantier." },
-  { emoji: "🌸", name: "Sophie, fleuriste à Bordeaux", text: "Ses clientes trouvent maintenant ses horaires, ses créations et son adresse en quelques secondes sur Google. Plus besoin d'expliquer où elle est à chaque appel." },
-  { emoji: "🧘", name: "Claire, ostéopathe à Nantes", text: "Un site professionnel rassure ses nouveaux patients avant même le premier rendez-vous. Elle reçoit ses demandes de RDV directement par email via son formulaire." },
+  { emoji: "🔧", name: "Marc D. — Plombier, Reims (51)", text: "Avant j'avais aucune présence en ligne. Maintenant j'ai 4 à 5 demandes de devis par semaine via mon site. Ça a transformé mon activité en 3 mois." },
+  { emoji: "🌸", name: "Isabelle K. — Fleuriste, Troyes (10)", text: "Mes clientes trouvent maintenant ma boutique sur Google. Les commandes pour Noël et la Saint-Valentin ont explosé depuis la mise en ligne." },
+  { emoji: "🧘", name: "Sophie L. — Ostéopathe, Nancy (54)", text: "J'ai arrêté de payer des plateformes de RDV hors de prix. Mon site gère tout ça maintenant. Rentabilisé en moins de 2 mois." },
 ];
 
 const timelineSteps = [
@@ -108,6 +109,7 @@ const SiteVitrinePage = () => (
   <Layout>
     {/* Hero */}
     <section className="relative py-24 md:py-32 overflow-hidden">
+      <HeroBackground variant="particles" />
       <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-25"><source src={heroVitrineVideo} type="video/mp4" /></video>
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
       <div className="section-container flex flex-col lg:flex-row items-center gap-10 relative z-10">

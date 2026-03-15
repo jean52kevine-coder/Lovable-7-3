@@ -4,12 +4,12 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import { Marquee } from "@/components/ui/marquee";
 
 const testimonials = [
-  { text: "Mon agence a généré 40% de nouveaux clients. Professionnalisme exemplaire.", name: "Thomas B.", role: "Artisan plombier, Lyon", avatar: "TB" },
-  { text: "Livraison en 12 jours comme promis. Je recommande à 100%.", name: "Sophie M.", role: "Fleuriste, Bordeaux", avatar: "SM" },
-  { text: "Je ne suis pas informaticien et ils ont tout géré. Site bluffant.", name: "Jean-Laurent M.", role: "Restaurateur, Nantes", avatar: "JL" },
-  { text: "Notre boutique e-commerce a doublé nos ventes en 2 mois.", name: "Camille R.", role: "Créatrice de bijoux", avatar: "CR" },
-  { text: "Simple, efficace, abordable. Exactement ce qu'il me fallait.", name: "Dr. Marc L.", role: "Ostéopathe, Paris", avatar: "ML" },
-  { text: "Réactivité impressionnante. Une question le soir, une réponse le matin.", name: "Yasmine B.", role: "Coach sportive, Marseille", avatar: "YB" },
+  { text: "Avant j'avais aucune présence en ligne. Maintenant j'ai 4 à 5 demandes de devis par semaine via mon site. Ça a transformé mon activité en 3 mois.", name: "Marc D.", role: "Plombier, Reims (51)", avatar: "MD" },
+  { text: "Mes clientes trouvent maintenant ma boutique sur Google. Les commandes pour Noël et la Saint-Valentin ont explosé depuis la mise en ligne.", name: "Isabelle K.", role: "Fleuriste, Troyes (10)", avatar: "IK" },
+  { text: "Les gens cherchaient mon restaurant et ne me trouvaient pas. Depuis le site, je suis premier sur Google Maps dans mon quartier.", name: "Karim B.", role: "Restaurateur, Metz (57)", avatar: "KB" },
+  { text: "J'ai arrêté de payer des plateformes de RDV hors de prix. Mon site gère tout ça maintenant. Rentabilisé en moins de 2 mois.", name: "Sophie L.", role: "Ostéopathe, Nancy (54)", avatar: "SL" },
+  { text: "En 14 jours comme promis, mon site était en ligne. Mes prospects voient mes réalisations avant même de m'appeler.", name: "Thomas R.", role: "Menuisier, Charleville-Mézières (08)", avatar: "TR" },
+  { text: "Je vends maintenant dans toute la France depuis mon atelier d'Épinal. Le site e-commerce a ouvert un marché que je n'imaginais pas possible.", name: "Laura M.", role: "Boutique, Épinal (88)", avatar: "LM" },
 ];
 
 const Card = ({ t }: { t: typeof testimonials[0] }) => (
