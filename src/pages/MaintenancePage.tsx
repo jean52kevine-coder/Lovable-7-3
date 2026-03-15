@@ -11,7 +11,7 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
-import heroMaintenanceVideo from "@/assets/videos/hero-maintenance.mp4";
+import HeroBackground from "@/components/HeroBackground";
 
 const dangers = [
   { title: "Failles de sécurité", desc: "Un plugin non mis à jour, c'est une porte ouverte pour les hackers. Vos données et celles de vos clients sont en danger." },
@@ -58,10 +58,10 @@ const MaintenancePage = () => {
   return (
   <Layout>
     {/* Hero */}
-    <section className="relative py-24 md:py-32 overflow-hidden">
-      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-25"><source src={heroMaintenanceVideo} type="video/mp4" /></video>
+    <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-[#0a0f0a]">
+      <HeroBackground variant="circuit" />
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
-      <div className="section-container flex flex-col lg:flex-row items-center gap-10 relative z-10">
+      <div className="relative z-10 container mx-auto px-6 flex flex-col lg:flex-row items-center gap-10">
         <div className="text-center lg:text-left flex-1">
           <BlurReveal>
             <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto lg:mx-0 mb-6"><Wrench className="text-primary" size={32} /></div>
@@ -159,7 +159,7 @@ const MaintenancePage = () => {
         <ScaleSection>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.15}>
             {formules.map((f, i) => (
-              <motion.div key={i} variants={itemVariants} className="relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5">
+              <motion.div key={i} variants={itemVariants} className="relative rounded-2xl transition-all duration-300 md:hover:-translate-y-1.5">
                 <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
                 <div className={`relative z-10 rounded-2xl p-7 flex flex-col overflow-hidden h-full ${f.highlighted ? "ring-2 ring-primary" : ""}`} style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}>
                   <BorderBeam colorFrom="#1DB954" colorTo="#06B6D4" duration={f.highlighted ? 4 : 6} size={200} />

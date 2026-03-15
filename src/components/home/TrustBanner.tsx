@@ -3,29 +3,33 @@ import { motion } from "framer-motion";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import BlurReveal from "@/components/animations/BlurReveal";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
-import testimonialsBg from "@/assets/videos/testimonials-background.mp4";
 
 const testimonials = [
-  { text: "Mon agenda est plein 3 semaines à l'avance.", name: "Thomas B.", role: "Plombier · Lyon", badge: "+8 demandes/mois" },
-  { text: "En 3 semaines, j'avais rentabilisé mon investissement.", name: "Sophie M.", role: "Fleuriste · Bordeaux", badge: "ROI en 3 semaines" },
-  { text: "Les réservations ont augmenté dès le premier mois.", name: "Ahmed T.", role: "Restaurateur · Nantes", badge: "+55% réservations" },
-];
+{
+  emoji: "🔧",
+  text: "Avant j'avais aucune présence en ligne. Maintenant j'ai 4 à 5 demandes de devis par semaine via mon site. Ça a transformé mon activité en 3 mois.",
+  name: "Marc D.",
+  role: "Plombier · Reims (51)",
+  badge: "Site Vitrine"
+},
+{
+  emoji: "🌸",
+  text: "Mes clientes trouvent maintenant ma boutique sur Google. Les commandes pour Noël et la Saint-Valentin ont explosé depuis la mise en ligne.",
+  name: "Isabelle K.",
+  role: "Fleuriste · Troyes (10)",
+  badge: "Site Vitrine"
+},
+{
+  emoji: "🛍️",
+  text: "Je vends maintenant dans toute la France depuis mon atelier d'Épinal. Le site e-commerce a ouvert un marché que je n'imaginais pas possible.",
+  name: "Laura M.",
+  role: "Boutique · Épinal (88)",
+  badge: "Site E-commerce"
+}];
 
 const TrustBanner = () => (
-  <section className="py-24 relative overflow-hidden">
+  <section className="py-12 md:py-24 relative overflow-hidden">
     {/* Video background */}
-    <div className="absolute inset-0 z-0">
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="w-full h-full object-cover opacity-20"
-        src={testimonialsBg}
-      />
-      <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, hsl(var(--background)) 0%, transparent 20%, transparent 80%, hsl(var(--background)) 100%)" }} />
-    </div>
-
     <div className="section-container relative z-10">
       <BlurReveal className="text-center mb-16">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style={{ background: "hsl(var(--primary) / 0.1)", border: "1px solid hsl(var(--primary) / 0.2)" }}>

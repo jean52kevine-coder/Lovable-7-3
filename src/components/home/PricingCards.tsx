@@ -12,7 +12,7 @@ const plans = [
 ];
 
 const PricingCards = () => (
-  <section className="py-24" style={{ backgroundColor: "hsl(var(--section-alt-bg))" }}>
+  <section className="py-12 md:py-24" style={{ backgroundColor: "hsl(var(--section-alt-bg))" }}>
     <div className="section-container">
       <BlurReveal className="text-center mb-16">
         <h2 className="heading-display mb-3" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>

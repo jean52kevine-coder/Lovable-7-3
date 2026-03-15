@@ -28,7 +28,7 @@ const cards = [
     popular: true,
   },
   {
-    badge: "dès 39€/mois",
+    badge: "dès 29€/mois",
     title: "MAINTENANCE",
     desc: "Gardez votre site rapide et sécurisé.",
     bullets: ["Mises à jour", "Sauvegardes auto", "Monitoring 24/7", "Rapport mensuel"],
@@ -40,7 +40,7 @@ const cards = [
 ];
 
 const ServicesShowcase = () => (
-  <section className="py-24 relative" style={{ background: "linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--section-alt-bg)) 50%, hsl(var(--background)) 100%)" }}>
+  <section className="py-12 md:py-24 relative" style={{ background: "linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--section-alt-bg)) 50%, hsl(var(--background)) 100%)" }}>
     <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.25), transparent)" }} />
 
     <div className="section-container">
@@ -106,7 +106,7 @@ const ServicesShowcase = () => (
                   ))}
                 </ul>
 
-                <Link to={c.link} className="inline-flex items-center gap-2 text-primary text-sm font-semibold group-hover:gap-3 transition-all">
+                <Link to={c.link} className="inline-flex items-center gap-2 text-primary text-sm font-semibold md:group-hover:gap-3 transition-all">
                   En savoir plus <ArrowRight size={16} />
                 </Link>
               </div>

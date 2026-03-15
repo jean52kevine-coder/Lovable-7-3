@@ -12,7 +12,7 @@ const articles = [
     list: [
       "Création de site vitrine à partir de 497€ TTC",
       "Création de site e-commerce à partir de 747€ TTC",
-      "Maintenance mensuelle à partir de 39€/mois",
+      "Maintenance mensuelle à partir de 29€/mois",
       "Tout devis accepté vaut commande ferme.",
     ],
   },

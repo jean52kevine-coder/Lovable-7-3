@@ -25,7 +25,7 @@ const cards = [
     Mockup: EcommerceMockup,
   },
   {
-    icon: Shield, badge: "dès 39€/mois", title: "MAINTENANCE & SEO",
+    icon: Shield, badge: "dès 29€/mois", title: "MAINTENANCE & SEO",
     desc: "Gardez votre site rapide, sécurisé et visible sur Google en permanence.",
     bullets: ["Mises à jour", "Sauvegardes auto", "Monitoring 24/7", "Rapport mensuel"],
     link: "/services/maintenance", popular: false,
@@ -99,7 +99,7 @@ const ServicesGrid = () => (
                   {c.badge}
                 </span>
 
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 md:group-hover:bg-primary/20 transition-colors">
                   <c.icon className="text-primary" size={24} />
                 </div>
 
@@ -119,10 +119,10 @@ const ServicesGrid = () => (
 
                 <Link
                   to={c.link}
-                  className="inline-flex items-center gap-2 text-primary text-sm font-semibold group-hover:gap-3 transition-all"
+                  className="inline-flex items-center gap-2 text-primary text-sm font-semibold md:group-hover:gap-3 transition-all"
                 >
                   En savoir plus 
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight size={16} className="md:group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </motion.div>

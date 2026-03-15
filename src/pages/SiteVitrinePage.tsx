@@ -13,7 +13,7 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
-import heroVitrineVideo from "@/assets/videos/hero-vitrine.mp4";
+import HeroBackground from "@/components/HeroBackground";
 
 const inclus = [
   "Design moderne et personnalisé", "Jusqu'à 5 pages", "Responsive mobile & tablette", "Optimisation SEO de base",
@@ -29,9 +29,9 @@ const cibles = [
 ];
 
 const profils = [
-  { emoji: "🔧", name: "Mohammed, plombier à Lyon", text: "Avant son site : 100% de ses clients venaient du bouche-à-oreille. Après : il reçoit entre 6 et 10 demandes de devis en ligne chaque mois. Son site travaille pendant qu'il est sur chantier." },
-  { emoji: "🌸", name: "Sophie, fleuriste à Bordeaux", text: "Ses clientes trouvent maintenant ses horaires, ses créations et son adresse en quelques secondes sur Google. Plus besoin d'expliquer où elle est à chaque appel." },
-  { emoji: "🧘", name: "Claire, ostéopathe à Nantes", text: "Un site professionnel rassure ses nouveaux patients avant même le premier rendez-vous. Elle reçoit ses demandes de RDV directement par email via son formulaire." },
+  { emoji: "🔧", name: "Marc D. — Plombier, Reims (51)", text: "Avant j'avais aucune présence en ligne. Maintenant j'ai 4 à 5 demandes de devis par semaine via mon site. Ça a transformé mon activité en 3 mois." },
+  { emoji: "🌸", name: "Isabelle K. — Fleuriste, Troyes (10)", text: "Mes clientes trouvent maintenant ma boutique sur Google. Les commandes pour Noël et la Saint-Valentin ont explosé depuis la mise en ligne." },
+  { emoji: "🧘", name: "Sophie L. — Ostéopathe, Nancy (54)", text: "J'ai arrêté de payer des plateformes de RDV hors de prix. Mon site gère tout ça maintenant. Rentabilisé en moins de 2 mois." },
 ];
 
 const timelineSteps = [
@@ -107,10 +107,10 @@ const FAQItem = ({ faq, index }: { faq: { q: string; a: string }; index: number 
 const SiteVitrinePage = () => (
   <Layout>
     {/* Hero */}
-    <section className="relative py-24 md:py-32 overflow-hidden">
-      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-25"><source src={heroVitrineVideo} type="video/mp4" /></video>
+    <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-[#0a0f0a]">
+      <HeroBackground variant="particles" />
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
-      <div className="section-container flex flex-col lg:flex-row items-center gap-10 relative z-10">
+      <div className="relative z-10 container mx-auto px-6 flex flex-col lg:flex-row items-center gap-10">
         <div className="text-center lg:text-left flex-1">
           <BlurReveal>
             <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto lg:mx-0 mb-6"><Globe className="text-primary" size={32} /></div>
@@ -140,7 +140,7 @@ const SiteVitrinePage = () => (
             <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
             <div className="relative z-10 rounded-2xl p-8 md:p-10 overflow-hidden" style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}>
               <BorderBeam size={300} duration={20} />
-              <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-4" staggerDelay={0.08}>
+              <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-4" staggerDelay={0.08}>
                 {inclus.map((item, i) => (
                   <motion.div key={i} className="flex items-center gap-3" variants={itemVariants}>
                     <Check className="text-primary flex-shrink-0" size={20} /><span className="text-foreground text-sm">{item}</span>

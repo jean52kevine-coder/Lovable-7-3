@@ -56,7 +56,7 @@ const Footer = () => (
                   border: "1px solid hsl(var(--primary) / 0.15)",
                 }}
               >
-                <Icon size={16} className="text-muted-foreground group-hover:text-primary transition-colors" />
+                <Icon size={16} className="text-muted-foreground md:group-hover:text-primary transition-colors" />
               </a>
             ))}
           </div>
@@ -119,7 +119,7 @@ const Footer = () => (
 
       {/* Bottom bar */}
       <div
-        className="mt-14 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4"
+        className="mt-14 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center"
         style={{ borderTop: "1px solid hsl(var(--border-green))" }}
       >
         <p className="font-dm text-xs text-muted-foreground">
