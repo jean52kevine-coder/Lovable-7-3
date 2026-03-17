@@ -25,7 +25,6 @@ import { StatMobileSearch, StatScreenBrowse, StatBarsGrowing, StatClock } from "
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
-import heroPourquoiVideo from "@/assets/videos/hero-pourquoi.mp4";
 import HeroBackground from "@/components/HeroBackground";
 
 const statIllustrations = [StatMobileSearch, StatScreenBrowse, StatBarsGrowing, StatClock];
@@ -133,7 +132,7 @@ const ROISimulator = () => {
           className="relative max-w-[760px] mx-auto rounded-2xl"
         >
           <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
-          <div className="relative z-10 rounded-2xl p-8 md:p-10" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+          <div className="relative z-10 rounded-2xl p-4 md:p-10" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
             <div className="space-y-6 mb-8">
               <div>
                 <label className="font-dm font-medium text-white text-sm block mb-2">Votre secteur</label>
@@ -199,11 +198,10 @@ const ROISimulator = () => {
 
 const PourquoiPage = () => (
   <Layout>
-    <section className="relative py-24 md:py-32 overflow-hidden">
-      <HeroBackground variant="particles" />
-      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-25"><source src={heroPourquoiVideo} type="video/mp4" /></video>
+    <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-[#0a0f0a]">
+      <HeroBackground variant="radar" />
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
-      <div className="section-container text-center relative z-10">
+      <div className="relative z-10 container mx-auto px-6 text-center">
         <BlurReveal>
           <h1 className="heading-display text-4xl md:text-6xl mb-6">
             POURQUOI AVOIR UN <RotatingWords words={["SITE WEB", "SITE PRO", "SITE MODERNE", "SITE QUI CONVERTIT"]} />

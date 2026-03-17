@@ -12,7 +12,7 @@ const plans = [
 ];
 
 const PricingCards = () => (
-  <section className="py-24" style={{ backgroundColor: "hsl(var(--section-alt-bg))" }}>
+  <section className="py-12 md:py-24" style={{ backgroundColor: "hsl(var(--section-alt-bg))" }}>
     <div className="section-container">
       <BlurReveal className="text-center mb-16">
         <h2 className="heading-display mb-3" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>
@@ -28,14 +28,14 @@ const PricingCards = () => (
           <motion.div
             key={i}
             variants={itemVariants}
-            whileHover={{ y: -6, scale: 1.02 }}
+            whileHover={undefined}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
             className="relative rounded-2xl"
             style={p.best ? { transform: "scale(1.04)", zIndex: 10 } : undefined}
           >
             <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
             <div
-              className="relative z-10 rounded-2xl p-7 flex flex-col h-full"
+              className="relative z-10 rounded-2xl p-4 md:p-7 flex flex-col h-full"
               style={{
                 backgroundColor: "hsl(var(--card-dark))",
                 border: p.best ? "1px solid hsl(var(--primary))" : "1px solid hsl(var(--border-green))",

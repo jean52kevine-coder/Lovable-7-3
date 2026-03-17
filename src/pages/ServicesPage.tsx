@@ -10,7 +10,6 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
-import heroServicesVideo from "@/assets/videos/hero-services.mp4";
 import HeroBackground from "@/components/HeroBackground";
 
 const services = [
@@ -27,7 +26,7 @@ const services = [
     link: "/services/site-ecommerce", popular: true,
   },
   {
-    icon: Wrench, title: "Maintenance & SEO", price: "dès 39 €/mois",
+    icon: Wrench, title: "Maintenance & SEO", price: "dès 29€/mois",
     desc: "Gardez votre site rapide, sécurisé et visible sur Google en permanence.",
     features: ["Mises à jour régulières", "Sauvegardes automatiques", "Support technique", "Monitoring 24/7", "Rapport mensuel"],
     link: "/services/maintenance", popular: false,
@@ -45,11 +44,10 @@ const features = [
 
 const ServicesPage = () => (
   <Layout>
-    <section className="relative py-24 md:py-32 overflow-hidden">
-      <HeroBackground variant="orbs" />
-      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-25"><source src={heroServicesVideo} type="video/mp4" /></video>
+    <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-[#0a0f0a]">
+      <HeroBackground variant="radar" />
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
-      <div className="section-container text-center relative z-10">
+      <div className="relative z-10 container mx-auto px-6 text-center">
         <BlurReveal>
           <h1 className="heading-display text-4xl md:text-6xl mb-6">
             NOS <RotatingWords words={["SERVICES", "SOLUTIONS", "OFFRES", "FORMULES"]} />

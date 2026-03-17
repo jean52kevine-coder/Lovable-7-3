@@ -12,7 +12,6 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
-import heroEcommerceVideo from "@/assets/videos/hero-ecommerce.mp4";
 import HeroBackground from "@/components/HeroBackground";
 
 const inclus = [
@@ -76,9 +75,8 @@ const FAQItem = ({ faq, index }: { faq: { q: string; a: string }; index: number 
 const SiteEcommercePage = () => (
   <Layout>
     {/* Hero */}
-    <section className="relative py-24 md:py-32 overflow-hidden">
+    <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-[#0a0f0a]">
       <HeroBackground variant="grid" />
-      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-25"><source src={heroEcommerceVideo} type="video/mp4" /></video>
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
       <div className="section-container flex flex-col lg:flex-row items-center gap-10 relative z-10">
         <div className="text-center lg:text-left flex-1">
@@ -108,7 +106,7 @@ const SiteEcommercePage = () => (
         <ScaleSection>
           <div className="relative max-w-2xl mx-auto rounded-2xl">
             <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
-            <div className="relative z-10 rounded-2xl p-8 md:p-10 overflow-hidden" style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}>
+            <div className="relative z-10 rounded-2xl p-4 md:p-10 overflow-hidden" style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}>
               <BorderBeam size={300} duration={20} />
               <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-4" staggerDelay={0.08}>
                 {inclus.map((item, i) => (
@@ -187,8 +185,9 @@ const SiteEcommercePage = () => (
         <ScaleSection>
           <div className="relative max-w-3xl mx-auto rounded-xl overflow-hidden">
             <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
-            <div className="relative z-10" style={{ border: "1px solid #1a2e1a" }}>
-              <table className="w-full text-sm">
+            <div className="relative z-10 p-4 md:p-6" style={{ border: "1px solid #1a2e1a" }}>
+              <div className="overflow-x-auto">
+              <table className="w-full text-sm min-w-[640px]">
                 <thead>
                   <tr style={{ backgroundColor: "#0d130d" }}>
                     <th className="text-left p-4 font-dm font-semibold text-muted-foreground">Fonctionnalité</th>
@@ -206,6 +205,8 @@ const SiteEcommercePage = () => (
                   ))}
                 </tbody>
               </table>
+              </div>
+              </div>
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">

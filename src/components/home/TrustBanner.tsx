@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import BlurReveal from "@/components/animations/BlurReveal";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
-import testimonialsBg from "@/assets/videos/testimonials-background.mp4";
+import HeroBackground from "@/components/HeroBackground";
 
 const testimonials = [
 {
@@ -29,19 +29,9 @@ const testimonials = [
 }];
 
 const TrustBanner = () => (
-  <section className="py-24 relative overflow-hidden">
-    {/* Video background */}
-    <div className="absolute inset-0 z-0">
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="w-full h-full object-cover opacity-20"
-        src={testimonialsBg}
-      />
-      <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, hsl(var(--background)) 0%, transparent 20%, transparent 80%, hsl(var(--background)) 100%)" }} />
-    </div>
+  <section className="py-12 md:py-24 relative overflow-hidden">
+    <HeroBackground variant="orbs" />
+    <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, hsl(var(--background)) 0%, transparent 20%, transparent 80%, hsl(var(--background)) 100%)" }} />
 
     <div className="section-container relative z-10">
       <BlurReveal className="text-center mb-16">
@@ -59,12 +49,12 @@ const TrustBanner = () => (
           <motion.div
             key={i}
             variants={itemVariants}
-            whileHover={{ y: -6, scale: 1.01 }}
+            whileHover={undefined}
             className="relative rounded-2xl"
           >
             <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
             <div
-              className="relative z-10 rounded-2xl p-7 flex flex-col h-full"
+              className="relative z-10 rounded-2xl p-4 md:p-7 flex flex-col h-full"
               style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}
             >
               <div className="flex gap-1 mb-4">

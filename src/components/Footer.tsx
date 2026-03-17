@@ -6,7 +6,7 @@ import BlurReveal from "@/components/animations/BlurReveal";
 const services = [
   { text: "Site Vitrine", to: "/services/site-vitrine" },
   { text: "Site E-commerce", to: "/services/site-ecommerce" },
-  { text: "Maintenance", to: "/services/maintenance" },
+  { text: "Maintenance dès 29€/mois", to: "/services/maintenance" },
   { text: "Tous nos services", to: "/services" },
 ];
 
@@ -33,7 +33,7 @@ const Footer = () => (
   <footer className="relative border-t" style={{ borderColor: "hsl(var(--border-green))", backgroundColor: "hsl(var(--card-dark))" }}>
     <div className="section-container py-14 md:py-20">
       <BlurReveal>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-8">
         {/* Brand */}
         <div className="lg:col-span-4">
           <div className="flex items-center gap-2 mb-4">
@@ -119,7 +119,7 @@ const Footer = () => (
 
       {/* Bottom bar */}
       <div
-        className="mt-14 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4"
+        className="mt-14 pt-6 flex flex-col items-center justify-between gap-4 text-center"
         style={{ borderTop: "1px solid hsl(var(--border-green))" }}
       >
         <p className="font-dm text-xs text-muted-foreground">

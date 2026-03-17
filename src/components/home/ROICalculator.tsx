@@ -77,7 +77,7 @@ const ROICalculator = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="space-y-8 p-8 rounded-2xl"
+            className="space-y-8 p-4 md:p-8 rounded-2xl"
             style={{ 
               backgroundColor: "rgba(17, 24, 17, 0.8)",
               border: "1px solid rgba(29,185,84,0.2)",
@@ -182,8 +182,8 @@ const ROICalculator = () => {
             ].map((stat, i) => (
               <motion.div
                 key={stat.label}
-                whileHover={{ scale: 1.02, y: -4 }}
-                className={`p-6 rounded-xl transition-all duration-300 ${
+                whileHover={undefined}
+                className={`p-4 md:p-6 rounded-xl transition-all duration-300 ${
                   stat.highlight 
                     ? "bg-gradient-to-br from-primary/20 to-primary/5 border-primary/30" 
                     : "bg-white/5 border-white/10"

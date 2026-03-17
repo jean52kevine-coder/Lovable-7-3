@@ -8,7 +8,7 @@ import heroVideo from "@/assets/videos/hero-promo.mp4";
 const heroWords = ["PME LOCALES", "ARTISANS", "COMMERÇANTS", "INDÉPENDANTS"];
 
 const HeroHome = () => (
-  <section className="relative min-h-[90vh] flex items-center overflow-hidden" style={{ backgroundColor: "hsl(var(--hero-bg))" }}>
+  <section className="relative min-h-[90vh] md:min-h-[90vh] flex items-center overflow-hidden" style={{ backgroundColor: "hsl(var(--hero-bg))" }}>
     {/* Background video */}
     <div className="absolute inset-0 z-0">
       <video
@@ -59,7 +59,7 @@ const HeroHome = () => (
     {/* Vignette */}
     <div className="absolute inset-0 pointer-events-none z-[2]" style={{ background: "radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%)" }} />
 
-    <div className="section-container relative z-10 py-20 flex flex-col items-center text-center">
+    <div className="section-container relative z-10 py-14 md:py-20 flex flex-col items-center text-center">
       <BlurReveal delay={0}>
         <span
           className="inline-block font-dm text-[13px] font-semibold px-4 py-1.5 rounded-full text-primary mb-6"
@@ -70,27 +70,27 @@ const HeroHome = () => (
       </BlurReveal>
 
       <BlurReveal delay={0.1}>
-        <h1 className="heading-display leading-[1.05] mb-4" style={{ fontSize: "clamp(36px, 5.5vw, 64px)" }}>
+        <h1 className="heading-display leading-[1.05] mb-4 text-4xl md:text-6xl">
           LE SITE WEB<br />
           <span className="flex justify-center items-center w-full overflow-visible">DES <RotatingWords words={heroWords} /></span>
         </h1>
       </BlurReveal>
 
       <BlurReveal delay={0.2}>
-        <p className="font-dm text-lg max-w-[480px] mx-auto mb-8" style={{ color: "hsl(var(--muted-foreground))" }}>
+        <p className="font-dm text-base md:text-lg max-w-[480px] mx-auto mb-8" style={{ color: "hsl(var(--muted-foreground))" }}>
           Design sur-mesure, livré en 14 jours.<br className="hidden sm:block" />
           Artisans, commerçants, PME — on s'occupe de tout.
         </p>
       </BlurReveal>
 
       <BlurReveal delay={0.3}>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-          <Link to="/contact" className="btn-primary text-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8 w-full sm:w-auto">
+          <Link to="/contact" className="btn-primary text-center w-full sm:w-auto">
             Demander un devis <ArrowRight className="ml-2" size={18} />
           </Link>
           <Link
             to="/tarifs"
-            className="inline-flex items-center justify-center font-bold px-7 py-3.5 rounded-lg text-white hover:text-primary transition-colors"
+            className="inline-flex items-center justify-center font-bold px-7 py-3.5 rounded-lg text-white hover:text-primary transition-colors w-full sm:w-auto"
             style={{ border: "1px solid hsl(var(--border))", background: "hsl(var(--card) / 0.5)", backdropFilter: "blur(8px)" }}
           >
             Voir les tarifs
@@ -99,10 +99,11 @@ const HeroHome = () => (
       </BlurReveal>
 
       <BlurReveal delay={0.4}>
-        <div className="flex flex-wrap justify-center gap-6 font-dm text-sm" style={{ color: "hsl(var(--muted-foreground))" }}>
+        <div className="grid grid-cols-2 gap-3 md:flex md:flex-wrap md:justify-center md:gap-6 font-dm text-sm w-full max-w-md" style={{ color: "hsl(var(--muted-foreground))" }}>
           <span><strong className="text-white">50+</strong> sites livrés</span>
           <span><strong className="text-white">14j</strong> délai moyen</span>
           <span><strong className="text-white">98%</strong> satisfaits</span>
+          <span><strong className="text-white">24h</strong> réponse moyenne</span>
         </div>
       </BlurReveal>
 
