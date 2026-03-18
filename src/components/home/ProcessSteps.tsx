@@ -4,6 +4,7 @@ import { MessageSquare, Palette, Code2, Rocket } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
+import SectionBackground from "@/components/SectionBackground";
 
 const steps = [
   { num: "01", Icon: MessageSquare, title: "Échange découverte", desc: "Appel 30min offert. On étudie votre activité, vos clients cibles et vos objectifs. Zéro engagement, zéro pression." },
@@ -16,8 +17,9 @@ const ProcessSteps = () => {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="py-24" style={{ backgroundColor: "hsl(var(--background))" }}>
-      <div className="section-container">
+    <section className="relative overflow-hidden py-12 md:py-24" style={{ backgroundColor: "hsl(var(--background))" }}>
+      <SectionBackground variant="wavegrid" intensity={0.55} />
+      <div className="section-container relative z-10">
         <BlurReveal className="text-center mb-16">
           <h2 className="heading-display" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>
             VOTRE SITE EN{" "}<span className="text-primary whitespace-nowrap">4 ÉTAPES</span>

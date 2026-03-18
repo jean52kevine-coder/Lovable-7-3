@@ -1,12 +1,20 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
+    const params = new URLSearchParams(search);
+    const redirectPath = params.get("redirect");
+    if (redirectPath) {
+      navigate(redirectPath, { replace: true });
+      return;
+    }
+
     window.scrollTo({ top: 0, behavior: "instant" });
-  }, [pathname]);
+  }, [pathname, search, navigate]);
 
   return null;
 };

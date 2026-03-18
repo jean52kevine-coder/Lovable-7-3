@@ -71,7 +71,7 @@ const maintenancePlans: MaintenancePlan[] = [
 export function PricingMaintenance() {
   return (
     <div className="w-full max-w-5xl mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {maintenancePlans.map((plan, index) => (
           <motion.div
             key={index}
@@ -79,13 +79,9 @@ export function PricingMaintenance() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.12, duration: 0.5 }}
-            className="relative flex flex-col items-center"
+            className="relative flex flex-col items-center pt-6"
           >
-            {plan.isPopular && (
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
-                <PopularBadge />
-              </div>
-            )}
+            {plan.isPopular && <PopularBadge />}
             <div
               className={cn(
                 "relative w-full rounded-2xl p-8 flex flex-col gap-6 transition-all duration-300 group",
@@ -105,10 +101,10 @@ export function PricingMaintenance() {
                     value={plan.price}
                     format={{ style: "decimal" }}
                     transformTiming={{ duration: 500, easing: "ease-out" }}
-                    className="text-white text-5xl font-black tabular-nums"
+                    className="text-gradient-green-subtle whitespace-nowrap text-5xl font-black tabular-nums"
                     style={{ fontFamily: "'Barlow', sans-serif" }}
                   />
-                  <span className="text-white text-5xl font-black" style={{ fontFamily: "'Barlow', sans-serif" }}>€</span>
+                  <span className="text-gradient-green-subtle whitespace-nowrap text-5xl font-black" style={{ fontFamily: "'Barlow', sans-serif" }}>€</span>
                   <span className="text-white/40 text-base mb-2">/mois</span>
                 </div>
                 <p className="text-white/35 text-xs mt-1">{plan.description}</p>

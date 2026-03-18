@@ -9,7 +9,7 @@ const BackgroundPaths = lazy(() =>
 );
 
 const Layout = ({ children }: { children: ReactNode }) => (
-  <div className="flex flex-col min-h-screen relative">
+  <div className="relative flex min-h-screen w-full max-w-[100vw] flex-col overflow-x-hidden">
     <PageBackground />
     <Suspense fallback={null}>
       <BackgroundPaths />
