@@ -2,8 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
-import { Wrench, Check, AlertTriangle, Shield, RefreshCw, HeadphonesIcon, GraduationCap } from "lucide-react";
-import { BorderBeam } from "@/components/ui/border-beam";
+import { Wrench, Check, AlertTriangle, Shield, RefreshCw, HeadphonesIcon, GraduationCap, ArrowRight } from "lucide-react";
 import { MaintenanceHeroIllustration } from "@/components/illustrations/SvgIllustrations";
 import { CtaSection } from "@/components/ui/cta-section";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
@@ -11,8 +10,8 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
-import heroMaintenanceVideo from "@/assets/videos/hero-maintenance.mp4";
 import HeroBackground from "@/components/HeroBackground";
+import PopularBadge from "@/components/PopularBadge";
 
 const dangers = [
   { title: "Failles de sécurité", desc: "Un plugin non mis à jour, c'est une porte ouverte pour les hackers. Vos données et celles de vos clients sont en danger." },
@@ -59,11 +58,10 @@ const MaintenancePage = () => {
   return (
   <Layout>
     {/* Hero */}
-    <section className="relative py-24 md:py-32 overflow-hidden">
-      <HeroBackground variant="orbs" />
-      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-25"><source src={heroMaintenanceVideo} type="video/mp4" /></video>
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
-      <div className="section-container flex flex-col lg:flex-row items-center gap-10 relative z-10">
+    <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-[#0a0f0a]">
+      <HeroBackground variant="circuit" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f0a]/20 via-transparent to-[#0a0f0a]/80 pointer-events-none z-[1]" />
+      <div className="relative z-10 container mx-auto px-6 py-24 flex flex-col lg:flex-row items-center gap-10">
         <div className="text-center lg:text-left flex-1">
           <BlurReveal>
             <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto lg:mx-0 mb-6"><Wrench className="text-primary" size={32} /></div>
@@ -117,7 +115,7 @@ const MaintenancePage = () => {
           <h2 className="heading-display text-2xl md:text-3xl">Vous ne gérez plus rien</h2>
           <p className="font-dm text-muted-foreground mt-3">On s'occupe de tout pendant que vous vous concentrez sur votre métier.</p>
         </motion.div>
-        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           {[
             { icon: Shield, title: "Sécurité gérée", text: "Mises à jour, pare-feu, surveillance. Votre site est protégé en permanence." },
             { icon: RefreshCw, title: "Zéro intervention", text: "Aucune manipulation technique de votre côté. On intervient avant que vous ne voyez le moindre problème." },
@@ -161,19 +159,33 @@ const MaintenancePage = () => {
         <ScaleSection>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.15}>
             {formules.map((f, i) => (
-              <motion.div key={i} variants={itemVariants} className="relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5">
-                <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
-                <div className={`relative z-10 rounded-2xl p-7 flex flex-col overflow-hidden h-full ${f.highlighted ? "ring-2 ring-primary" : ""}`} style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}>
-                  <BorderBeam colorFrom="#1DB954" colorTo="#06B6D4" duration={f.highlighted ? 4 : 6} size={200} />
-                  {f.highlighted && <span className="absolute -top-0 left-1/2 -translate-x-1/2 translate-y-0 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-b-lg">POPULAIRE</span>}
-                  <h3 className="font-display font-bold text-xl mb-2 mt-4">{f.name}</h3>
-                  <div className="mb-6"><span className="text-primary heading-display text-3xl">{f.price}€</span><span className="text-muted-foreground text-sm">/mois</span></div>
-                  <ul className="space-y-3 flex-1 mb-8">
+              <motion.div key={i} variants={itemVariants} className="relative flex flex-col items-center">
+                {f.highlighted && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
+                    <PopularBadge />
+                  </div>
+                )}
+                <div className={`relative w-full rounded-2xl p-8 flex flex-col gap-6 transition-all duration-300 group ${f.highlighted ? "bg-[#0f1f0f] border border-[#1DB954]/50 shadow-[0_0_60px_rgba(29,185,84,0.12)] pt-10" : "bg-[#0d130d] border border-[#1a2e1a] hover:border-[#1DB954]/30 hover:shadow-[0_0_40px_rgba(29,185,84,0.08)]"}`}>
+                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#1DB954]/4 via-transparent to-transparent pointer-events-none" />
+                  <div className="relative">
+                    <p className="text-white/50 text-sm font-medium uppercase tracking-widest mb-2" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                      {f.name}
+                    </p>
+                    <div className="flex items-end gap-1">
+                      <span className="text-white text-5xl font-black" style={{ fontFamily: "'Barlow', sans-serif" }}>{f.price}€</span>
+                      <span className="text-white/40 text-base mb-2">/mois</span>
+                    </div>
+                  </div>
+                  <div className="h-px bg-gradient-to-r from-transparent via-[#1DB954]/20 to-transparent" />
+                  <ul className="flex flex-col gap-3 flex-1">
                     {f.features.map((feat, j) => (
-                      <li key={j} className="flex items-center gap-2 text-sm text-muted-foreground"><Check className="text-primary flex-shrink-0" size={16} />{feat}</li>
+                      <li key={j} className="flex items-start gap-3 text-sm text-white/65" style={{ fontFamily: "'DM Sans', sans-serif" }}><Check size={14} className="text-[#1DB954] mt-0.5 shrink-0" strokeWidth={2.5} />{feat}</li>
                     ))}
                   </ul>
-                  <button onClick={() => navigate(f.cta)} className={f.highlighted ? "btn-primary text-center text-sm" : "btn-outline text-center text-sm"}>Choisir cette formule</button>
+                  <button onClick={() => navigate(f.cta)} className={`group relative inline-flex items-center justify-center gap-2.5 w-full py-3.5 rounded-xl font-semibold text-sm transition-all duration-200 active:scale-[0.98] overflow-hidden ${f.highlighted ? "bg-[#1DB954] text-black border border-[#1DB954] hover:shadow-[0_0_20px_rgba(29,185,84,0.3)]" : "border border-[#1DB954]/40 text-[#1DB954] hover:bg-[#1DB954] hover:text-black hover:border-[#1DB954]"}`} style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                    <span className="relative">Choisir cette formule</span>
+                    <ArrowRight size={16} className="relative transition-transform duration-200 group-hover:translate-x-1" strokeWidth={2.5} />
+                  </button>
                 </div>
               </motion.div>
             ))}

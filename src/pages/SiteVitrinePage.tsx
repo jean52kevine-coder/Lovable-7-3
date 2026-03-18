@@ -13,7 +13,6 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
-import heroVitrineVideo from "@/assets/videos/hero-vitrine.mp4";
 import HeroBackground from "@/components/HeroBackground";
 
 const inclus = [
@@ -108,11 +107,10 @@ const FAQItem = ({ faq, index }: { faq: { q: string; a: string }; index: number 
 const SiteVitrinePage = () => (
   <Layout>
     {/* Hero */}
-    <section className="relative py-24 md:py-32 overflow-hidden">
-      <HeroBackground variant="particles" />
-      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-25"><source src={heroVitrineVideo} type="video/mp4" /></video>
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
-      <div className="section-container flex flex-col lg:flex-row items-center gap-10 relative z-10">
+    <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-[#0a0f0a]">
+      <HeroBackground variant="constellation" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f0a]/20 via-transparent to-[#0a0f0a]/80 pointer-events-none z-[1]" />
+      <div className="relative z-10 container mx-auto px-6 py-24 flex flex-col lg:flex-row items-center gap-10">
         <div className="text-center lg:text-left flex-1">
           <BlurReveal>
             <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto lg:mx-0 mb-6"><Globe className="text-primary" size={32} /></div>

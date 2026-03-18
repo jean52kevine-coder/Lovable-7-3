@@ -4,6 +4,7 @@ import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { VitrineMockup, EcommerceMockup, MaintenanceMockup, VitrineOfferStrip, EcommerceOfferStrip, MaintenanceOfferStrip } from "@/components/illustrations/SvgIllustrations";
 import BlurReveal from "@/components/animations/BlurReveal";
 import { motion } from "framer-motion";
+import PopularBadge from "@/components/PopularBadge";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
 
 const cards = [
@@ -70,12 +71,7 @@ const ServicesShowcase = () => (
               }}
             >
               {c.popular && (
-                <span
-                  className="absolute top-4 right-4 z-20 text-[11px] font-bold px-2.5 py-1 rounded-full text-primary-foreground"
-                  style={{ background: "hsl(var(--primary))" }}
-                >
-                  ⭐ POPULAIRE
-                </span>
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20"><PopularBadge /></div>
               )}
 
               {/* Mockup illustration */}

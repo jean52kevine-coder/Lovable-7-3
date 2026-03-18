@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { Check, Star } from "lucide-react";
 import { Link } from "react-router-dom";
+import PopularBadge from "@/components/PopularBadge";
 import { useState, useRef } from "react";
 import confetti from "canvas-confetti";
 import NumberFlow from "@number-flow/react";
@@ -113,10 +114,7 @@ export function Pricing({
           >
             {plan.isPopular && (
               <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                <span className="bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
-                  <Star className="h-3 w-3 fill-current" />
-                  Populaire
-                </span>
+                <PopularBadge />
               </div>
             )}
 

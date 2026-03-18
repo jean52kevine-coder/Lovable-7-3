@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import BlurReveal from "@/components/animations/BlurReveal";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
-import testimonialsBg from "@/assets/videos/testimonials-background.mp4";
 
 const testimonials = [
 {
@@ -30,16 +29,9 @@ const testimonials = [
 
 const TrustBanner = () => (
   <section className="py-24 relative overflow-hidden">
-    {/* Video background */}
+    {/* Background glow */}
     <div className="absolute inset-0 z-0">
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="w-full h-full object-cover opacity-20"
-        src={testimonialsBg}
-      />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f0a] via-[#0d130d]/70 to-[#0a0f0a]" />
       <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, hsl(var(--background)) 0%, transparent 20%, transparent 80%, hsl(var(--background)) 100%)" }} />
     </div>
 

@@ -12,7 +12,6 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
-import heroEcommerceVideo from "@/assets/videos/hero-ecommerce.mp4";
 import HeroBackground from "@/components/HeroBackground";
 
 const inclus = [
@@ -76,11 +75,10 @@ const FAQItem = ({ faq, index }: { faq: { q: string; a: string }; index: number 
 const SiteEcommercePage = () => (
   <Layout>
     {/* Hero */}
-    <section className="relative py-24 md:py-32 overflow-hidden">
-      <HeroBackground variant="grid" />
-      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-25"><source src={heroEcommerceVideo} type="video/mp4" /></video>
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
-      <div className="section-container flex flex-col lg:flex-row items-center gap-10 relative z-10">
+    <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-[#0a0f0a]">
+      <HeroBackground variant="dataflow" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f0a]/20 via-transparent to-[#0a0f0a]/80 pointer-events-none z-[1]" />
+      <div className="relative z-10 container mx-auto px-6 py-24 flex flex-col lg:flex-row items-center gap-10">
         <div className="text-center lg:text-left flex-1">
           <BlurReveal>
             <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto lg:mx-0 mb-6"><ShoppingCart className="text-primary" size={32} /></div>
@@ -209,8 +207,15 @@ const SiteEcommercePage = () => (
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-            <Link to="/services/site-vitrine" className="btn-outline text-center">Choisir Vitrine →</Link>
-            <Link to="/contact?service=ecommerce" className="btn-primary text-center">Choisir E-commerce →</Link>
+            <Link to="/services/site-vitrine" className="group inline-flex items-center justify-center gap-2.5 border border-white/15 hover:border-[#1DB954]/40 text-white/70 hover:text-white font-medium px-7 py-4 rounded-xl transition-all duration-200 hover:bg-white/[0.03] text-sm backdrop-blur-sm" style={{fontFamily:"'DM Sans', sans-serif"}}>
+              <span>Choisir Vitrine</span>
+              <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-1 opacity-50 group-hover:opacity-100" />
+            </Link>
+            <Link to="/contact?service=ecommerce" className="group relative inline-flex items-center justify-center gap-2.5 bg-[#1DB954] hover:bg-[#17a349] text-black font-bold px-7 py-4 rounded-xl transition-all duration-200 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(29,185,84,0.4)] active:scale-[0.98] overflow-hidden text-sm" style={{fontFamily:"'DM Sans', sans-serif"}}>
+              <div className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />
+              <span className="relative">Choisir E-commerce</span>
+              <ArrowRight size={16} className="relative transition-transform duration-200 group-hover:translate-x-1" strokeWidth={2.5} />
+            </Link>
           </div>
         </ScaleSection>
       </div>
