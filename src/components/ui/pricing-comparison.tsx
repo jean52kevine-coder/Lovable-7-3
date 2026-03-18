@@ -3,6 +3,7 @@
 import { Check, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
+import PopularBadge from "@/components/PopularBadge";
 
 interface Feature {
   name: string;
@@ -69,9 +70,7 @@ export function PricingComparison({
                   )}
                 >
                   {plan.isPopular && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] font-bold px-3 py-1 rounded-full bg-primary text-primary-foreground uppercase tracking-wider">
-                      Populaire
-                    </span>
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2"><PopularBadge /></div>
                   )}
                   <div className="font-display font-black text-lg mb-2">{plan.name}</div>
                   <div className="mb-2">

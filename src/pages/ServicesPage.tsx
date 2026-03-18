@@ -10,8 +10,8 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
-import heroServicesVideo from "@/assets/videos/hero-services.mp4";
 import HeroBackground from "@/components/HeroBackground";
+import PopularBadge from "@/components/PopularBadge";
 
 const services = [
   {
@@ -45,11 +45,10 @@ const features = [
 
 const ServicesPage = () => (
   <Layout>
-    <section className="relative py-24 md:py-32 overflow-hidden">
-      <HeroBackground variant="orbs" />
-      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-25"><source src={heroServicesVideo} type="video/mp4" /></video>
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
-      <div className="section-container text-center relative z-10">
+    <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-[#0a0f0a]">
+      <HeroBackground variant="matrix" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f0a]/20 via-transparent to-[#0a0f0a]/80 pointer-events-none z-[1]" />
+      <div className="relative z-10 container mx-auto px-6 py-24 text-center">
         <BlurReveal>
           <h1 className="heading-display text-4xl md:text-6xl mb-6">
             NOS <RotatingWords words={["SERVICES", "SOLUTIONS", "OFFRES", "FORMULES"]} />
@@ -75,7 +74,7 @@ const ServicesPage = () => (
                 <div className="relative z-10 rounded-2xl p-7 overflow-hidden h-full" style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}>
                   {s.popular && (
                     <>
-                      <span className="absolute top-4 right-4 text-[11px] font-bold px-2.5 py-1 rounded-full bg-primary text-primary-foreground z-10">⭐ POPULAIRE</span>
+                      <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10"><PopularBadge /></div>
                       <BorderBeam size={250} duration={12} delay={0} />
                     </>
                   )}

@@ -5,6 +5,7 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
 import { motion } from "framer-motion";
+import PopularBadge from "@/components/PopularBadge";
 import { VitrineMockup, EcommerceMockup, MaintenanceMockup } from "@/components/illustrations/SvgIllustrations";
 
 const cards = [
@@ -82,14 +83,7 @@ const ServicesGrid = () => (
                   <c.Mockup />
                 </div>
                 {c.popular && (
-                  <motion.span
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    className="absolute top-4 right-4 text-[11px] font-bold px-2.5 py-1 rounded-full text-primary-foreground"
-                    style={{ background: "hsl(145, 63%, 42%)" }}
-                  >
-                    ⭐ POPULAIRE
-                  </motion.span>
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10"><PopularBadge /></div>
                 )}
 
                 <span
