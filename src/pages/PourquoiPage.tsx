@@ -121,7 +121,7 @@ const ROISimulator = () => {
       <div className="section-container">
         <BlurReveal className="text-center mb-10">
           <h2 className="heading-display text-2xl md:text-3xl">
-            <span className="inline">ESTIMEZ CE QUE VOUS PERDEZ </span><span className="text-[#1DB954] whitespace-nowrap inline">SANS SITE</span>
+            <span className="inline">ESTIMEZ CE QUE VOUS PERDEZ </span><span className="text-gradient-green-subtle whitespace-nowrap inline">SANS SITE</span>
           </h2>
           <p className="font-dm text-muted-foreground mt-3">Estimation réaliste basée sur votre secteur et votre zone.</p>
         </BlurReveal>
@@ -188,7 +188,7 @@ const ROISimulator = () => {
             <p className="text-white/40 text-xs font-dm text-center mb-8">Estimation indicative basée sur des moyennes sectorielles.</p>
 
             <div className="text-center">
-              <button onClick={() => navigate("/contact?service=vitrine")} className="group relative inline-flex items-center gap-2.5 bg-[#1DB954] hover:bg-[#17a349] text-black font-bold px-7 py-4 rounded-xl transition-all duration-200 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(29,185,84,0.4)] active:scale-[0.98] overflow-hidden text-sm" style={{fontFamily:"'DM Sans', sans-serif"}}><div className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" /><span className="relative">Obtenir mon site maintenant</span><ArrowRight size={16} className="relative transition-transform duration-200 group-hover:translate-x-1" strokeWidth={2.5} /></button>
+              <button onClick={() => navigate("/contact?service=vitrine")} className="group relative inline-flex items-center gap-2.5 bg-[#1DB954] hover:bg-[#17a349] text-black font-bold px-7 py-4 rounded-xl transition-all duration-200 md:hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(29,185,84,0.4)] active:scale-[0.98] overflow-hidden text-sm" style={{fontFamily:"'DM Sans', sans-serif"}}><div className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" /><span className="relative">Obtenir mon site maintenant</span><ArrowRight size={16} className="relative transition-transform duration-200 group-hover:translate-x-1" strokeWidth={2.5} /></button>
             </div>
           </div>
         </motion.div>
@@ -204,7 +204,7 @@ const PourquoiPage = () => (
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f0a]/20 via-transparent to-[#0a0f0a]/80 pointer-events-none z-[1]" />
       <div className="relative z-10 container mx-auto px-6 py-24 text-center">
         <BlurReveal>
-          <h1 className="heading-display text-4xl md:text-6xl mb-6">
+          <h1 className="hero-title text-4xl md:text-6xl mb-6">
             POURQUOI AVOIR UN <RotatingWords words={["SITE WEB", "SITE PRO", "SITE MODERNE", "SITE QUI CONVERTIT"]} />
           </h1>
         </BlurReveal>
@@ -217,7 +217,7 @@ const PourquoiPage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">LES CHIFFRES PARLENT </span><span className="text-[#1DB954] whitespace-nowrap inline">D'EUX-MÊMES</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">LES CHIFFRES PARLENT </span><span className="text-gradient-green-subtle whitespace-nowrap inline">D'EUX-MÊMES</span></h2>
         </BlurReveal>
         <ScaleSection>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

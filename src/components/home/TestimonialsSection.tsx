@@ -1,6 +1,7 @@
 import { Star } from "lucide-react";
 import BlurReveal from "@/components/animations/BlurReveal";
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns";
+import SectionBackground from "@/components/SectionBackground";
 
 const testimonials = [
   { text: "Avant j'avais aucune présence en ligne. Maintenant j'ai 4 à 5 demandes de devis par semaine via mon site. Ça a transformé mon activité en 3 mois.", name: "Marc D.", role: "Plombier · Reims (51)", image: "https://randomuser.me/api/portraits/men/32.jpg" },
@@ -19,7 +20,8 @@ const col2 = testimonials.slice(3, 6);
 const col3 = testimonials.slice(6, 9);
 
 const TestimonialsSection = () => (
-  <section className="py-24 relative overflow-hidden">
+  <section className="relative overflow-hidden py-12 md:py-24">
+    <SectionBackground variant="hexflow" intensity={0.45} />
     {/* Background glow */}
     <div className="absolute inset-0 z-0">
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f0a] via-[#0d130d]/70 to-[#0a0f0a]" />

@@ -27,7 +27,7 @@ const services = [
     link: "/services/site-ecommerce", popular: true,
   },
   {
-    icon: Wrench, title: "Maintenance & SEO", price: "dès 39 €/mois",
+    icon: Wrench, title: "Maintenance & SEO", price: "dès 29€/mois",
     desc: "Gardez votre site rapide, sécurisé et visible sur Google en permanence.",
     features: ["Mises à jour régulières", "Sauvegardes automatiques", "Support technique", "Monitoring 24/7", "Rapport mensuel"],
     link: "/services/maintenance", popular: false,
@@ -50,7 +50,7 @@ const ServicesPage = () => (
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f0a]/20 via-transparent to-[#0a0f0a]/80 pointer-events-none z-[1]" />
       <div className="relative z-10 container mx-auto px-6 py-24 text-center">
         <BlurReveal>
-          <h1 className="heading-display text-4xl md:text-6xl mb-6">
+          <h1 className="hero-title text-4xl md:text-6xl mb-6">
             NOS <RotatingWords words={["SERVICES", "SOLUTIONS", "OFFRES", "FORMULES"]} />
           </h1>
         </BlurReveal>
@@ -60,24 +60,20 @@ const ServicesPage = () => (
       </div>
     </section>
 
-    <section style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }} className="py-[100px]">
-      <div className="section-container">
+    <section style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }} className="relative overflow-hidden py-12 md:py-24">
+      <div className="section-container relative z-10">
         <BlurReveal className="text-center mb-14">
-          <h2 className="heading-display mb-4 leading-tight" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}><span className="inline">CHOISISSEZ VOTRE </span><span className="text-[#1DB954] whitespace-nowrap inline">FORMULE</span></h2>
+          <h2 className="heading-display mb-4 leading-tight" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}><span className="inline">CHOISISSEZ VOTRE </span><span className="text-gradient-green-subtle whitespace-nowrap inline">FORMULE</span></h2>
         </BlurReveal>
 
         <ScaleSection>
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.15}>
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={0.15}>
             {services.map((s, i) => (
-              <motion.div key={i} variants={itemVariants} className="relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5 group">
+              <motion.div key={i} variants={itemVariants} className="relative rounded-2xl pt-6 transition-all duration-300 md:hover:-translate-y-1.5 group">
                 <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
                 <div className="relative z-10 rounded-2xl p-7 overflow-hidden h-full" style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}>
-                  {s.popular && (
-                    <>
-                      <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10"><PopularBadge /></div>
-                      <BorderBeam size={250} duration={12} delay={0} />
-                    </>
-                  )}
+                  {s.popular && <PopularBadge />}
+                  {s.popular && <BorderBeam size={250} duration={12} delay={0} />}
                   <span className="inline-block text-[13px] font-semibold px-3 py-1 rounded-full text-primary mb-4" style={{ background: "rgba(29,185,84,0.12)" }}>{s.price}</span>
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4"><s.icon className="text-primary" size={20} /></div>
                   <h3 className="font-display font-black text-xl text-foreground mb-2">{s.title}</h3>
@@ -97,10 +93,10 @@ const ServicesPage = () => (
     </section>
 
 
-    <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
-      <div className="section-container">
+    <section className="relative overflow-hidden py-12 md:py-24" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
+      <div className="section-container relative z-10">
         <BlurReveal className="text-center mb-14">
-          <h2 className="heading-display mb-4 leading-tight" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}><span className="inline">POURQUOI NOUS </span><span className="text-[#1DB954] whitespace-nowrap inline">CHOISIR</span></h2>
+          <h2 className="heading-display mb-4 leading-tight" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}><span className="inline">POURQUOI NOUS </span><span className="text-gradient-green-subtle whitespace-nowrap inline">CHOISIR</span></h2>
           <p className="font-dm text-base text-muted-foreground">Tout ce qu'il faut pour réussir en ligne, sans compromis.</p>
         </BlurReveal>
         <ScaleSection>
