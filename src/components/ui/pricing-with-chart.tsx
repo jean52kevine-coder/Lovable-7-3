@@ -19,7 +19,7 @@ import {
 import PopularBadge from "@/components/PopularBadge";
 
 const ctaPrimary =
-  "group relative inline-flex items-center justify-center gap-2.5 bg-[#1DB954] hover:bg-[#17a349] text-black font-bold px-7 py-4 rounded-xl transition-all duration-200 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(29,185,84,0.4)] active:scale-[0.98] overflow-hidden text-sm";
+  "group relative inline-flex items-center justify-center gap-2.5 bg-[#1DB954] hover:bg-[#17a349] text-black font-bold px-7 py-4 rounded-xl transition-all duration-200 md:hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(29,185,84,0.4)] active:scale-[0.98] overflow-hidden text-sm";
 
 const ctaSecondary =
   "group inline-flex items-center justify-center gap-2.5 border border-white/15 hover:border-[#1DB954]/40 text-white/70 hover:text-white font-medium px-7 py-4 rounded-xl transition-all duration-200 hover:bg-white/[0.03] text-sm backdrop-blur-sm";
@@ -65,11 +65,9 @@ export function PricingWithChart() {
           </Link>
         </div>
 
-        <div className="relative lg:col-span-3 flex flex-col items-center">
-          <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
-            <PopularBadge />
-          </div>
-          <div className="relative w-full bg-[#0f1f0f] border border-[#1DB954]/50 shadow-[0_0_60px_rgba(29,185,84,0.12)] rounded-2xl pt-8 p-8 flex flex-col gap-6 group">
+        <div className="relative flex flex-col items-center pt-6 lg:col-span-3">
+          <PopularBadge />
+          <div className="relative w-full rounded-2xl border-2 border-[#1DB954]/50 bg-[#0d1a0d] p-5 pt-8 md:p-8 shadow-[0_0_50px_rgba(29,185,84,0.1)] flex flex-col gap-6 group">
             <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#1DB954]/6 via-transparent to-transparent pointer-events-none" />
             <div className="relative flex flex-col md:flex-row gap-6">
               <div className="flex-1">

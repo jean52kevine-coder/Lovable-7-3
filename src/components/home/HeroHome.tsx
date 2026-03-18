@@ -70,9 +70,9 @@ const HeroHome = () => (
       </BlurReveal>
 
       <BlurReveal delay={0.1}>
-        <h1 className="heading-display leading-[1.05] mb-4" style={{ fontSize: "clamp(36px, 5.5vw, 64px)" }}>
+        <h1 className="hero-title text-[2.4rem] md:text-6xl leading-[1.05] mb-4">
           LE SITE WEB<br />
-          <span className="flex justify-center items-center w-full overflow-visible">DES <RotatingWords words={heroWords} /></span>
+          <span className="flex w-full items-center justify-center overflow-visible">DES <RotatingWords words={heroWords} /></span>
         </h1>
       </BlurReveal>
 
@@ -84,7 +84,7 @@ const HeroHome = () => (
       </BlurReveal>
 
       <BlurReveal delay={0.3}>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+        <div className="mb-8 flex w-full max-w-xs flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center">
           <Link to="/contact" className="btn-primary text-center">
             Demander un devis <ArrowRight className="ml-2" size={18} />
           </Link>
@@ -99,7 +99,7 @@ const HeroHome = () => (
       </BlurReveal>
 
       <BlurReveal delay={0.4}>
-        <div className="flex flex-wrap justify-center gap-6 font-dm text-sm" style={{ color: "hsl(var(--muted-foreground))" }}>
+        <div className="grid grid-cols-2 gap-4 font-dm text-sm sm:flex sm:flex-wrap sm:justify-center sm:gap-6" style={{ color: "hsl(var(--muted-foreground))" }}>
           <span><strong className="text-white">50+</strong> sites livrés</span>
           <span><strong className="text-white">14j</strong> délai moyen</span>
           <span><strong className="text-white">98%</strong> satisfaits</span>
