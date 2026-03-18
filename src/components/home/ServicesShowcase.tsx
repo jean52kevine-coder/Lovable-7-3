@@ -4,6 +4,7 @@ import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { VitrineMockup, EcommerceMockup, MaintenanceMockup, VitrineOfferStrip, EcommerceOfferStrip, MaintenanceOfferStrip } from "@/components/illustrations/SvgIllustrations";
 import BlurReveal from "@/components/animations/BlurReveal";
 import { motion } from "framer-motion";
+import PopularBadge from "@/components/PopularBadge";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
 
 const cards = [
@@ -28,7 +29,7 @@ const cards = [
     popular: true,
   },
   {
-    badge: "dès 39€/mois",
+    badge: "dès 29€/mois",
     title: "MAINTENANCE",
     desc: "Gardez votre site rapide et sécurisé.",
     bullets: ["Mises à jour", "Sauvegardes auto", "Monitoring 24/7", "Rapport mensuel"],
@@ -59,7 +60,7 @@ const ServicesShowcase = () => (
             key={i}
             variants={itemVariants}
             whileHover={{ y: -6, scale: 1.01 }}
-            className="relative rounded-2xl overflow-hidden group"
+            className="relative rounded-2xl pt-6 overflow-hidden group"
           >
             <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
             <div
@@ -70,12 +71,7 @@ const ServicesShowcase = () => (
               }}
             >
               {c.popular && (
-                <span
-                  className="absolute top-4 right-4 z-20 text-[11px] font-bold px-2.5 py-1 rounded-full text-primary-foreground"
-                  style={{ background: "hsl(var(--primary))" }}
-                >
-                  ⭐ POPULAIRE
-                </span>
+                <div className="flex justify-center mb-4"><PopularBadge /></div>
               )}
 
               {/* Mockup illustration */}

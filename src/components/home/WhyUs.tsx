@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import BlurReveal from "@/components/animations/BlurReveal";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
+import SectionBackground from "@/components/SectionBackground";
 
 const items = [
   { Icon: Zap, title: "14 jours", desc: "Votre site est en ligne pendant que d'autres attendent encore leur devis." },
@@ -12,8 +13,9 @@ const items = [
 ];
 
 const WhyUs = () => (
-  <section className="py-24" style={{ backgroundColor: "hsl(var(--section-alt-bg))" }}>
-    <div className="section-container">
+  <section className="relative py-12 md:py-24 overflow-hidden" style={{ backgroundColor: "hsl(var(--section-alt-bg))" }}>
+    <SectionBackground variant="dots" intensity={0.6} />
+    <div className="section-container relative z-10">
       <BlurReveal className="text-center mb-16">
         <h2 className="heading-display" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>
           POURQUOI{" "}<span className="text-primary whitespace-nowrap">ALTÉRA</span>

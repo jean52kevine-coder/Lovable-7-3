@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import BlurReveal from "@/components/animations/BlurReveal";
+import SectionBackground from "@/components/SectionBackground";
 
 const FinalCTA = () => {
   const ref = useRef<HTMLElement>(null);
@@ -15,12 +16,14 @@ const FinalCTA = () => {
   return (
     <section
       ref={ref}
-      className="relative py-[120px] px-6 overflow-hidden"
+      className="relative py-12 md:py-[120px] px-4 md:px-6 overflow-hidden"
       style={{
         background: "linear-gradient(160deg, #0d1f13 0%, #0a0f0a 60%)",
         borderTop: "1px solid #1a2e1a",
       }}
     >
+      <SectionBackground variant="hexflow" intensity={0.4} />
+
       {/* Parallax glow */}
       <motion.div
         className="absolute inset-0 pointer-events-none"
@@ -45,7 +48,7 @@ const FinalCTA = () => {
           >
             PRÊT À LANCER
             <br />
-            <span className="text-[#1DB954] whitespace-nowrap inline">VOTRE PROJET ?</span>
+            <span className="text-gradient-green-subtle whitespace-nowrap inline">VOTRE PROJET ?</span>
           </h2>
         </BlurReveal>
 

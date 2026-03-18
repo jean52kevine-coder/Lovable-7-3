@@ -10,8 +10,8 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
-import heroServicesVideo from "@/assets/videos/hero-services.mp4";
 import HeroBackground from "@/components/HeroBackground";
+import PopularBadge from "@/components/PopularBadge";
 
 const services = [
   {
@@ -27,7 +27,7 @@ const services = [
     link: "/services/site-ecommerce", popular: true,
   },
   {
-    icon: Wrench, title: "Maintenance & SEO", price: "dès 39 €/mois",
+    icon: Wrench, title: "Maintenance & SEO", price: "dès 29€/mois",
     desc: "Gardez votre site rapide, sécurisé et visible sur Google en permanence.",
     features: ["Mises à jour régulières", "Sauvegardes automatiques", "Support technique", "Monitoring 24/7", "Rapport mensuel"],
     link: "/services/maintenance", popular: false,
@@ -45,13 +45,12 @@ const features = [
 
 const ServicesPage = () => (
   <Layout>
-    <section className="relative py-24 md:py-32 overflow-hidden">
-      <HeroBackground variant="orbs" />
-      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-25"><source src={heroServicesVideo} type="video/mp4" /></video>
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
-      <div className="section-container text-center relative z-10">
+    <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-[#0a0f0a]">
+      <HeroBackground variant="matrix" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f0a]/20 via-transparent to-[#0a0f0a]/80 pointer-events-none z-[1]" />
+      <div className="relative z-10 container mx-auto px-6 py-24 text-center">
         <BlurReveal>
-          <h1 className="heading-display text-4xl md:text-6xl mb-6">
+          <h1 className="heading-display font-clash text-4xl md:text-6xl mb-6">
             NOS <RotatingWords words={["SERVICES", "SOLUTIONS", "OFFRES", "FORMULES"]} />
           </h1>
         </BlurReveal>
@@ -64,18 +63,18 @@ const ServicesPage = () => (
     <section style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }} className="py-[100px]">
       <div className="section-container">
         <BlurReveal className="text-center mb-14">
-          <h2 className="heading-display mb-4 leading-tight" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}><span className="inline">CHOISISSEZ VOTRE </span><span className="text-[#1DB954] whitespace-nowrap inline">FORMULE</span></h2>
+          <h2 className="heading-display mb-4 leading-tight" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}><span className="inline">CHOISISSEZ VOTRE </span><span className="text-gradient-green-subtle whitespace-nowrap inline">FORMULE</span></h2>
         </BlurReveal>
 
         <ScaleSection>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.15}>
             {services.map((s, i) => (
-              <motion.div key={i} variants={itemVariants} className="relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5 group">
+              <motion.div key={i} variants={itemVariants} className="relative rounded-2xl pt-6 transition-all duration-300 hover:-translate-y-1.5 group">
                 <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
                 <div className="relative z-10 rounded-2xl p-7 overflow-hidden h-full" style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}>
                   {s.popular && (
                     <>
-                      <span className="absolute top-4 right-4 text-[11px] font-bold px-2.5 py-1 rounded-full bg-primary text-primary-foreground z-10">⭐ POPULAIRE</span>
+                      <div className="flex justify-center mb-4"><PopularBadge /></div>
                       <BorderBeam size={250} duration={12} delay={0} />
                     </>
                   )}
@@ -101,7 +100,7 @@ const ServicesPage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-14">
-          <h2 className="heading-display mb-4 leading-tight" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}><span className="inline">POURQUOI NOUS </span><span className="text-[#1DB954] whitespace-nowrap inline">CHOISIR</span></h2>
+          <h2 className="heading-display mb-4 leading-tight" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}><span className="inline">POURQUOI NOUS </span><span className="text-gradient-green-subtle whitespace-nowrap inline">CHOISIR</span></h2>
           <p className="font-dm text-base text-muted-foreground">Tout ce qu'il faut pour réussir en ligne, sans compromis.</p>
         </BlurReveal>
         <ScaleSection>

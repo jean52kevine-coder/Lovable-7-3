@@ -17,6 +17,7 @@ import {
   Briefcase,
   ShoppingBag,
   Building2,
+  ArrowRight,
 } from "lucide-react";
 import { CtaSection } from "@/components/ui/cta-section";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
@@ -25,7 +26,6 @@ import { StatMobileSearch, StatScreenBrowse, StatBarsGrowing, StatClock } from "
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
-import heroPourquoiVideo from "@/assets/videos/hero-pourquoi.mp4";
 import HeroBackground from "@/components/HeroBackground";
 
 const statIllustrations = [StatMobileSearch, StatScreenBrowse, StatBarsGrowing, StatClock];
@@ -172,7 +172,7 @@ const ROISimulator = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-3">
+            <div className="grid grid-cols-2 gap-4 mb-3">
               {[
                 { label: "Visiteurs estimés/mois", value: results.visiteurs_mois.toString() },
                 { label: "Nouveaux clients/mois", value: results.nouveaux_clients > 15 ? "15+" : results.nouveaux_clients.toString() },
@@ -188,7 +188,7 @@ const ROISimulator = () => {
             <p className="text-white/40 text-xs font-dm text-center mb-8">Estimation indicative basée sur des moyennes sectorielles.</p>
 
             <div className="text-center">
-              <button onClick={() => navigate("/contact?service=vitrine")} className="btn-primary">Obtenir mon site maintenant →</button>
+              <button onClick={() => navigate("/contact?service=vitrine")} className="group relative inline-flex items-center gap-2.5 bg-[#1DB954] hover:bg-[#17a349] text-black font-bold px-7 py-4 rounded-xl transition-all duration-200 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(29,185,84,0.4)] active:scale-[0.98] overflow-hidden text-sm" style={{fontFamily:"'DM Sans', sans-serif"}}><div className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" /><span className="relative">Obtenir mon site maintenant</span><ArrowRight size={16} className="relative transition-transform duration-200 group-hover:translate-x-1" strokeWidth={2.5} /></button>
             </div>
           </div>
         </motion.div>
@@ -199,11 +199,10 @@ const ROISimulator = () => {
 
 const PourquoiPage = () => (
   <Layout>
-    <section className="relative py-24 md:py-32 overflow-hidden">
-      <HeroBackground variant="particles" />
-      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-25"><source src={heroPourquoiVideo} type="video/mp4" /></video>
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
-      <div className="section-container text-center relative z-10">
+    <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-[#0a0f0a]">
+      <HeroBackground variant="dataflow" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f0a]/20 via-transparent to-[#0a0f0a]/80 pointer-events-none z-[1]" />
+      <div className="relative z-10 container mx-auto px-6 py-24 text-center">
         <BlurReveal>
           <h1 className="heading-display text-4xl md:text-6xl mb-6">
             POURQUOI AVOIR UN <RotatingWords words={["SITE WEB", "SITE PRO", "SITE MODERNE", "SITE QUI CONVERTIT"]} />

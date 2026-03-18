@@ -1,16 +1,11 @@
 "use client";
 
 import { Link } from "react-router-dom";
-import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { Check, Star } from "lucide-react";
-import { useRef } from "react";
-import confetti from "canvas-confetti";
+import { Check, ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 import NumberFlow from "@number-flow/react";
-import { GlowingEffect } from "@/components/ui/glowing-effect";
-import { BorderBeam } from "@/components/ui/border-beam";
-import BlurReveal from "@/components/animations/BlurReveal";
-import { GlowingShadow } from "@/components/ui/glowing-shadow";
+import PopularBadge from "@/components/PopularBadge";
 
 interface MaintenancePlan {
   name: string;
@@ -76,7 +71,7 @@ const maintenancePlans: MaintenancePlan[] = [
 export function PricingMaintenance() {
   return (
     <div className="w-full max-w-5xl mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {maintenancePlans.map((plan, index) => (
           <motion.div
             key={index}
@@ -84,48 +79,48 @@ export function PricingMaintenance() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.12, duration: 0.5 }}
-            className="relative rounded-2xl"
+            className="relative w-full pt-6"
           >
-            <GlowingShadow className={cn("glow-flex", plan.isPopular && "md:-mt-4 md:mb-4")}>
-            <div className="w-full relative">
             {plan.isPopular && (
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 z-20 text-xs font-bold px-3 py-1 rounded-full text-primary-foreground flex items-center gap-1" style={{ background: "hsl(var(--primary))" }}>
-                <Star className="h-3 w-3 fill-current" /> POPULAIRE
-              </span>
+              <div className="flex justify-center mb-4">
+                <PopularBadge />
+              </div>
             )}
-
             <div
               className={cn(
-                "relative z-10 rounded-2xl p-7 flex flex-col h-full overflow-hidden",
-                plan.isPopular && "ring-2 ring-primary"
+                "relative w-full rounded-2xl p-8 flex flex-col gap-6 transition-all duration-300 group",
+                plan.isPopular
+                  ? "bg-[#0d1a0d] border-2 border-[#1DB954]/50 shadow-[0_0_50px_rgba(29,185,84,0.1)]"
+                  : "bg-[#0d130d] border border-[#1a2e1a] hover:border-[#1DB954]/30 hover:shadow-[0_0_40px_rgba(29,185,84,0.08)]"
               )}
-              style={{
-                backgroundColor: "hsl(var(--card-dark))",
-                border: plan.isPopular ? "1px solid hsl(145, 63%, 42%)" : "1px solid hsl(var(--border-green))",
-              }}
             >
-              {plan.isPopular && <BorderBeam colorFrom="#1DB954" colorTo="#06B6D4" duration={4} size={200} />}
+              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#1DB954]/4 via-transparent to-transparent pointer-events-none" />
 
-              <h3 className="heading-display text-lg text-foreground mb-4 mt-1">{plan.name}</h3>
-
-              <div className="flex items-baseline gap-1 mb-1">
-                <NumberFlow
-                  value={plan.price}
-                  format={{ style: "currency", currency: "EUR", minimumFractionDigits: 0 }}
-                  transformTiming={{ duration: 500, easing: "ease-out" }}
-                  willChange
-                  className="heading-display text-4xl text-primary tabular-nums"
-                />
-                <span className="text-muted-foreground text-sm font-dm">/ mois</span>
+              <div className="relative">
+                <p className="text-white/50 text-sm font-medium uppercase tracking-widest mb-2" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                  {plan.name}
+                </p>
+                <div className="flex items-end gap-1">
+                  <NumberFlow
+                    value={plan.price}
+                    format={{ style: "decimal" }}
+                    transformTiming={{ duration: 500, easing: "ease-out" }}
+                    className="text-white text-5xl font-black tabular-nums"
+                    style={{ fontFamily: "'Barlow', sans-serif" }}
+                  />
+                  <span className="text-white text-5xl font-black" style={{ fontFamily: "'Barlow', sans-serif" }}>€</span>
+                  <span className="text-white/40 text-base mb-2">/mois</span>
+                </div>
+                <p className="text-white/35 text-xs mt-1">{plan.description}</p>
               </div>
 
-              <p className="text-muted-foreground text-xs font-dm mb-6">Sans engagement</p>
+              <div className="h-px bg-gradient-to-r from-transparent via-[#1DB954]/20 to-transparent" />
 
-              <ul className="space-y-3 flex-1 mb-6">
+              <ul className="flex flex-col gap-3 flex-1">
                 {plan.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center gap-2.5">
-                    <Check className="text-primary flex-shrink-0" size={16} />
-                    <span className="text-sm text-muted-foreground font-dm">{feature}</span>
+                  <li key={idx} className="flex items-start gap-3 text-sm text-white/65" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                    <Check size={14} className="text-[#1DB954] mt-0.5 shrink-0" strokeWidth={2.5} />
+                    {feature}
                   </li>
                 ))}
               </ul>
@@ -133,19 +128,17 @@ export function PricingMaintenance() {
               <Link
                 to={plan.href}
                 className={cn(
-                  "text-center text-sm font-bold block",
-                  plan.isPopular ? "btn-primary" : "btn-outline"
+                  "group relative inline-flex items-center justify-center gap-2.5 w-full py-3.5 rounded-xl font-semibold text-sm transition-all duration-200 active:scale-[0.98] overflow-hidden",
+                  plan.isPopular
+                    ? "bg-[#1DB954] text-black border border-[#1DB954] hover:shadow-[0_0_20px_rgba(29,185,84,0.3)]"
+                    : "border border-[#1DB954]/40 text-[#1DB954] hover:bg-[#1DB954] hover:text-black hover:border-[#1DB954]"
                 )}
+                style={{ fontFamily: "'DM Sans', sans-serif" }}
               >
-                {plan.buttonText}
+                <span className="relative">{plan.buttonText}</span>
+                <ArrowRight size={16} className="relative transition-transform duration-200 group-hover:translate-x-1" strokeWidth={2.5} />
               </Link>
-
-              <p className="text-xs text-center text-muted-foreground mt-3 font-dm">
-                {plan.description}
-              </p>
             </div>
-            </div>
-            </GlowingShadow>
           </motion.div>
         ))}
       </div>

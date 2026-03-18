@@ -5,6 +5,7 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
 import { motion } from "framer-motion";
+import PopularBadge from "@/components/PopularBadge";
 import { VitrineMockup, EcommerceMockup, MaintenanceMockup } from "@/components/illustrations/SvgIllustrations";
 
 const cards = [
@@ -25,7 +26,7 @@ const cards = [
     Mockup: EcommerceMockup,
   },
   {
-    icon: Shield, badge: "dès 39€/mois", title: "MAINTENANCE & SEO",
+    icon: Shield, badge: "dès 29€/mois", title: "MAINTENANCE & SEO",
     desc: "Gardez votre site rapide, sécurisé et visible sur Google en permanence.",
     bullets: ["Mises à jour", "Sauvegardes auto", "Monitoring 24/7", "Rapport mensuel"],
     link: "/services/maintenance", popular: false,
@@ -65,7 +66,7 @@ const ServicesGrid = () => (
               variants={itemVariants}
               whileHover={{ y: -8, scale: 1.02, rotateX: 2, rotateY: -2 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="relative rounded-2xl transition-all duration-300 group card-shimmer"
+              className="relative rounded-2xl pt-6 transition-all duration-300 group card-shimmer"
               style={{ perspective: 800, transformStyle: "preserve-3d" }}
             >
               <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
@@ -82,14 +83,7 @@ const ServicesGrid = () => (
                   <c.Mockup />
                 </div>
                 {c.popular && (
-                  <motion.span
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    className="absolute top-4 right-4 text-[11px] font-bold px-2.5 py-1 rounded-full text-primary-foreground"
-                    style={{ background: "hsl(145, 63%, 42%)" }}
-                  >
-                    ⭐ POPULAIRE
-                  </motion.span>
+                  <div className="flex justify-center mb-4"><PopularBadge /></div>
                 )}
 
                 <span

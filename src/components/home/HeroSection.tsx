@@ -77,7 +77,7 @@ const HeroSection = () => {
     <div ref={containerRef} style={{ height: scrollHeight, position: "relative" }}>
       <motion.div
         ref={stickyRef}
-        className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden"
+        className="sticky top-0 h-screen w-full max-w-full flex items-center justify-center overflow-hidden"
         style={{ backgroundColor: bgColor }}
       >
         {/* Dot grid */}
@@ -119,9 +119,9 @@ const HeroSection = () => {
         <div className="absolute inset-0 pointer-events-none z-[1]" style={{ background: "radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%)" }} />
 
         {/* Hero content */}
-        <motion.div className="relative z-[2] section-container py-20 flex flex-col lg:flex-row items-center gap-10" style={{ opacity: textOpacity, y: textY }}>
+        <motion.div className="relative z-[2] section-container py-12 md:py-20 flex flex-col items-center gap-6 md:gap-10" style={{ opacity: textOpacity, y: textY }}>
           {/* Left: text content */}
-          <div className="text-center lg:text-left flex-1">
+          <div className="text-center flex-1 w-full">
           {/* Badge */}
           <BlurReveal className="flex justify-center mb-8" delay={0}>
             <span
@@ -134,8 +134,8 @@ const HeroSection = () => {
 
           {/* Headline */}
           <BlurReveal delay={0.1}>
-            <h1 className="heading-display leading-tight mb-2" style={{ fontSize: "clamp(32px, 5vw, 56px)", letterSpacing: "0.02em" }}>
-              LE SITE WEB DES<br /><span className="text-primary">PME LOCALES</span>
+            <h1 className="heading-display font-clash leading-tight mb-2 text-[2.4rem] md:text-6xl" style={{ letterSpacing: "0.02em" }}>
+              LE SITE WEB DES<br /><span className="text-gradient-green whitespace-nowrap">PME LOCALES</span>
             </h1>
           </BlurReveal>
 
@@ -147,7 +147,7 @@ const HeroSection = () => {
 
           {/* Rotating word */}
           <BlurReveal delay={0.2}>
-            <p className="heading-display mb-6 flex items-center justify-center gap-[0.3em] flex-wrap" style={{ fontSize: "clamp(24px, 3.5vw, 40px)" }}>
+            <p className="heading-display font-clash mb-6 flex items-center justify-center gap-[0.3em] flex-wrap" style={{ fontSize: "clamp(24px, 3.5vw, 40px)" }}>
               <span>Votre meilleur</span>
               <RotatingWord />
             </p>
@@ -155,7 +155,7 @@ const HeroSection = () => {
 
           {/* Subtitle */}
           <BlurReveal delay={0.3}>
-            <p className="font-dm text-[18px] mx-auto mb-10 max-w-[560px]" style={{ color: "rgba(255,255,255,0.75)" }}>
+            <p className="font-dm text-base md:text-[18px] mx-auto mb-8 md:mb-10 max-w-[560px] px-2" style={{ color: "rgba(255,255,255,0.75)" }}>
               Design sur-mesure, livraison en 14 jours, résultats concrets.
               Artisans, commerçants, PME — on s'occupe de tout.
             </p>
@@ -163,7 +163,7 @@ const HeroSection = () => {
 
           {/* CTAs */}
           <BlurReveal delay={0.4}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+            <div className="flex flex-col gap-3 w-full max-w-xs mx-auto sm:max-w-none sm:flex-row sm:justify-center mb-10">
               <Link to="/contact" className="btn-primary text-center">Demander un devis →</Link>
               <Link to="/tarifs" className="inline-flex items-center justify-center font-bold px-7 py-3.5 rounded-lg transition-all duration-200 text-white hover:text-primary backdrop-blur-sm" style={{ border: "1px solid rgba(255,255,255,0.3)", background: "rgba(255,255,255,0.05)" }}>
                 Voir les tarifs
@@ -173,10 +173,10 @@ const HeroSection = () => {
 
           {/* Stats bar with NumberTicker */}
           <BlurReveal delay={0.5}>
-            <div className="flex flex-wrap justify-center gap-x-0 gap-y-2 font-dm text-[13px]" style={{ color: "rgba(255,255,255,0.5)" }}>
+            <div className="grid grid-cols-2 gap-4 max-w-xs mx-auto md:flex md:flex-wrap md:justify-center md:gap-x-0 md:gap-y-2 font-dm text-[13px]" style={{ color: "rgba(255,255,255,0.5)" }}>
               {stats.map((s, i) => (
                 <span key={i} className="flex items-center">
-                  {i > 0 && <span className="mx-3" style={{ color: "rgba(255,255,255,0.2)" }}>|</span>}
+                  {!isMobile && i > 0 && <span className="mx-3" style={{ color: "rgba(255,255,255,0.2)" }}>|</span>}
                   <span className="font-semibold text-white mr-1">
                     {s.label === "dès" ? s.label + " " : ""}
                     <NumberTicker value={s.value} />{s.suffix}

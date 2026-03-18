@@ -13,7 +13,6 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
-import heroVitrineVideo from "@/assets/videos/hero-vitrine.mp4";
 import HeroBackground from "@/components/HeroBackground";
 
 const inclus = [
@@ -59,7 +58,7 @@ const TimelineSection = () => {
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-14">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">COMMENT ÇA </span><span className="text-[#1DB954] whitespace-nowrap inline">SE PASSE ?</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">COMMENT ÇA </span><span className="text-gradient-green-subtle whitespace-nowrap inline">SE PASSE ?</span></h2>
         </BlurReveal>
         <div ref={ref} className="relative max-w-3xl mx-auto">
           <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-[2px] bg-[#1a2e1a] -translate-x-1/2" />
@@ -108,21 +107,20 @@ const FAQItem = ({ faq, index }: { faq: { q: string; a: string }; index: number 
 const SiteVitrinePage = () => (
   <Layout>
     {/* Hero */}
-    <section className="relative py-24 md:py-32 overflow-hidden">
-      <HeroBackground variant="particles" />
-      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-25"><source src={heroVitrineVideo} type="video/mp4" /></video>
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
-      <div className="section-container flex flex-col lg:flex-row items-center gap-10 relative z-10">
+    <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-[#0a0f0a]">
+      <HeroBackground variant="constellation" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f0a]/20 via-transparent to-[#0a0f0a]/80 pointer-events-none z-[1]" />
+      <div className="relative z-10 container mx-auto px-6 py-24 flex flex-col lg:flex-row items-center gap-10">
         <div className="text-center lg:text-left flex-1">
           <BlurReveal>
             <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto lg:mx-0 mb-6"><Globe className="text-primary" size={32} /></div>
           </BlurReveal>
           <BlurReveal delay={0.1}>
-            <h1 className="heading-display text-4xl md:text-6xl mb-4">
+            <h1 className="heading-display font-clash text-4xl md:text-6xl mb-4">
               SITE <RotatingWords words={["VITRINE", "MODERNE", "EFFICACE", "SUR-MESURE"]} />
             </h1>
           </BlurReveal>
-          <BlurReveal delay={0.3}><p className="text-primary heading-display text-3xl mb-4">497 €</p></BlurReveal>
+          <BlurReveal delay={0.3}><p className="text-gradient-green-subtle heading-display text-3xl mb-4">497 €</p></BlurReveal>
           <BlurReveal delay={0.4}><p className="font-dm text-lg max-w-xl mx-auto lg:mx-0 text-muted-foreground">Présentez votre activité avec un site moderne qui inspire confiance et attire de nouveaux clients.</p></BlurReveal>
         </div>
         <BlurReveal delay={0.3} className="hidden md:block flex-1">
@@ -135,7 +133,7 @@ const SiteVitrinePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">CE QUI EST </span><span className="text-[#1DB954] whitespace-nowrap inline">INCLUS</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">CE QUI EST </span><span className="text-gradient-green-subtle whitespace-nowrap inline">INCLUS</span></h2>
         </BlurReveal>
         <ScaleSection>
           <div className="relative max-w-2xl mx-auto rounded-2xl overflow-hidden">
@@ -159,7 +157,7 @@ const SiteVitrinePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">À QUI ÇA </span><span className="text-[#1DB954] whitespace-nowrap inline">S'ADRESSE</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">À QUI ÇA </span><span className="text-gradient-green-subtle whitespace-nowrap inline">S'ADRESSE</span></h2>
         </BlurReveal>
         <ScaleSection>
           <StaggerContainer className="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto" staggerDelay={0.1}>
@@ -180,7 +178,7 @@ const SiteVitrinePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-14">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">FAITS POUR DES GENS </span><span className="text-[#1DB954] whitespace-nowrap inline">COMME VOUS</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">FAITS POUR DES GENS </span><span className="text-gradient-green-subtle whitespace-nowrap inline">COMME VOUS</span></h2>
         </BlurReveal>
         <ScaleSection>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.12}>
@@ -205,7 +203,7 @@ const SiteVitrinePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container text-center max-w-2xl mx-auto">
         <BlurReveal>
-          <h2 className="heading-display text-2xl md:text-3xl mb-6"><span className="inline">POURQUOI </span><span className="text-[#1DB954] whitespace-nowrap inline">MAINTENANT</span><span className="inline"> ?</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl mb-6"><span className="inline">POURQUOI </span><span className="text-gradient-green-subtle whitespace-nowrap inline">MAINTENANT</span><span className="inline"> ?</span></h2>
           <p className="font-dm text-muted-foreground text-base leading-relaxed mb-4">Chaque jour sans site web, <AnimatedGradientText className="heading-display text-base md:text-lg">C'EST DES CLIENTS PERDUS.</AnimatedGradientText></p>
           <p className="font-dm text-muted-foreground text-base leading-relaxed"><span className="text-primary font-semibold">80%</span> des consommateurs recherchent un professionnel en ligne avant de le contacter. Ne laissez plus cette opportunité à d'autres.</p>
         </BlurReveal>
@@ -216,7 +214,7 @@ const SiteVitrinePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">QUESTIONS </span><span className="text-[#1DB954] whitespace-nowrap inline">FRÉQUENTES</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">QUESTIONS </span><span className="text-gradient-green-subtle whitespace-nowrap inline">FRÉQUENTES</span></h2>
         </BlurReveal>
         <div className="max-w-2xl mx-auto space-y-4">
           {faqs.map((faq, i) => <FAQItem key={i} faq={faq} index={i} />)}

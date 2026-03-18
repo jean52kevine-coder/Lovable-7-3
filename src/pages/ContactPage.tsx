@@ -183,13 +183,13 @@ const ContactPage = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="pt-24 pb-12 md:pt-32 md:pb-16 relative overflow-hidden" style={{ backgroundColor: "#0a0f0a" }}>
-        <HeroBackground variant="grid" />
+      <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-[#0a0f0a]">
+        <HeroBackground variant="constellation" />
         {/* Gradient orbs */}
         <div className="absolute top-0 left-1/4 w-[500px] h-[300px] rounded-full opacity-20 blur-[120px]" style={{ background: "linear-gradient(135deg, hsl(145,63%,42%), hsl(200,80%,50%))" }} />
         <div className="absolute top-10 right-1/4 w-[400px] h-[250px] rounded-full opacity-15 blur-[100px]" style={{ background: "linear-gradient(135deg, hsl(260,70%,50%), hsl(145,63%,42%))" }} />
 
-        <motion.div className="section-container text-center relative z-10" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+        <motion.div className="relative z-10 container mx-auto px-6 py-24 text-center" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold font-display tracking-[0.15em] uppercase mb-6 border" style={{ borderColor: "rgba(29,185,84,0.3)", color: "hsl(145,63%,42%)", backgroundColor: "rgba(29,185,84,0.08)" }}>
             <span className="w-2 h-2 rounded-full bg-primary" /> Contact
           </span>
@@ -262,7 +262,7 @@ const ContactPage = () => {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }}>
               <div className="relative rounded-2xl">
                 <GlowingEffect spread={50} glow proximity={80} inactiveZone={0.01} borderWidth={2} disabled={false} />
-                <div className="relative z-10 rounded-2xl p-6 md:p-8" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+                <div className="relative z-10 rounded-2xl p-4 md:p-8" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
                   {/* Stepper */}
                   <div className="flex items-center justify-between mb-8">
                     {steps.map((s, i) => (
@@ -299,7 +299,7 @@ const ContactPage = () => {
                     {/* Step 1: Votre projet */}
                     {step === 0 && (
                       <motion.div key="s0" {...fadeSlide} className="space-y-5">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="flex flex-col md:flex-row gap-4">
                           <InputField label="PRÉNOM *" placeholder="Jean" value={form.prenom} onChange={(v) => update("prenom", v)} state={inputState.prenom} errorMessage="Prénom requis" onTouched={() => setTouched((prev) => ({ ...prev, prenom: true }))} />
                           <InputField label="NOM *" placeholder="Dupont" value={form.nom} onChange={(v) => update("nom", v)} state={inputState.nom} errorMessage="Nom requis" onTouched={() => setTouched((prev) => ({ ...prev, nom: true }))} />
                         </div>
@@ -308,7 +308,7 @@ const ContactPage = () => {
 
                         <div>
                           <label className="block text-[11px] font-display font-bold tracking-[0.15em] uppercase text-muted-foreground mb-3">TYPE DE PROJET *</label>
-                          <div className="grid grid-cols-2 gap-3">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                             {projectTypes.map((p) => (
                               <button
                                 key={p.id}
