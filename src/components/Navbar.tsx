@@ -34,7 +34,7 @@ const Navbar = () => {
       {/* Top bar with logo only */}
       <nav className="fixed top-0 left-0 right-0 z-40">
         <div className="section-container flex items-center justify-between h-16 md:h-20">
-          <Link to="/" className="flex items-center h-full py-1 transition-transform duration-300 hover:scale-105">
+          <Link to="/" className="flex items-center h-full py-1 transition-transform duration-300 md:hover:scale-105">
             <AlteraLogo size="md" className="max-h-[3.5rem] md:max-h-[4.5rem]" />
           </Link>
 
@@ -42,7 +42,7 @@ const Navbar = () => {
             {/* Visible uniquement sur mobile */}
             <Link
               to="/contact"
-              className="md:hidden bg-[#1DB954] hover:bg-[#17a349] text-black font-semibold text-sm px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap"
+              className="md:hidden shrink-0 whitespace-nowrap rounded-lg bg-[#1DB954] px-3 py-2 text-xs font-bold text-black transition-colors hover:bg-[#17a349]"
             >
               Devis
             </Link>

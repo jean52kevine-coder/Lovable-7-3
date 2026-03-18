@@ -48,7 +48,7 @@ export const CtaSection = ({
                 <BlurReveal delay={0.3}>
                   <Link
                     to={buttonUrl}
-                    className="group relative inline-flex items-center gap-2.5 bg-[#1DB954] hover:bg-[#17a349] text-black font-bold px-7 py-4 rounded-xl transition-all duration-200 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(29,185,84,0.4)] active:scale-[0.98] overflow-hidden text-sm"
+                    className="group relative inline-flex items-center gap-2.5 bg-[#1DB954] hover:bg-[#17a349] text-black font-bold px-7 py-4 rounded-xl transition-all duration-200 md:hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(29,185,84,0.4)] active:scale-[0.98] overflow-hidden text-sm"
                     style={{ fontFamily: "'DM Sans', sans-serif" }}
                   >
                     <div className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />

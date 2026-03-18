@@ -35,7 +35,7 @@ const RotatingWords = ({ words, interval = 2800, className = "" }: RotatingWords
           }}
           transition={{ duration: 0.45, ease: [0.25, 0.4, 0.25, 1] }}
         >
-          <span className="block text-center whitespace-nowrap text-[#1DB954] w-full">{word}</span>
+          <span className="block w-full whitespace-nowrap text-center text-gradient-green">{word}</span>
         </motion.span>
       ))}
     </span>

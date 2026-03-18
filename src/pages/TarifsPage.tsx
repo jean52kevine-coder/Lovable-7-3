@@ -11,6 +11,7 @@ import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
 import HeroBackground from "@/components/HeroBackground";
+import SectionBackground from "@/components/SectionBackground";
 
 const faqs = [
   { q: "Y a-t-il des frais récurrents après livraison ?", a: "L'hébergement est offert la première année. À partir de la 2e année : environ 80-120€/an. Notre maintenance l'inclut." },
@@ -62,7 +63,7 @@ const TarifsPage = () => (
           </span>
         </BlurReveal>
         <BlurReveal delay={0.1}>
-          <h1 className="heading-display text-4xl md:text-6xl mb-4">
+          <h1 className="hero-title text-4xl md:text-6xl mb-4">
             DES PRIX <RotatingWords words={["CLAIRS", "FIXES", "JUSTES", "TRANSPARENTS"]} />
           </h1>
         </BlurReveal>
@@ -91,10 +92,11 @@ const TarifsPage = () => (
     </section>
 
     {/* Paiement en plusieurs fois */}
-    <section className="py-[80px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
-      <div className="section-container">
+    <section className="relative overflow-hidden py-10 md:py-20" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
+      <SectionBackground variant="dots" intensity={0.6} />
+      <div className="section-container relative z-10">
         <BlurReveal className="text-center mb-10">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">FACILITEZ VOTRE </span><span className="text-[#1DB954] whitespace-nowrap inline">INVESTISSEMENT</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">FACILITEZ VOTRE </span><span className="text-gradient-green-subtle whitespace-nowrap inline">INVESTISSEMENT</span></h2>
         </BlurReveal>
         <ScaleSection>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
@@ -130,7 +132,7 @@ const TarifsPage = () => (
     <section className="py-[80px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-10">
-          <h2 className="heading-display text-3xl md:text-4xl"><span className="inline">Formules </span><span className="text-[#1DB954] whitespace-nowrap inline">Maintenance</span></h2>
+          <h2 className="heading-display text-3xl md:text-4xl"><span className="inline">Formules </span><span className="text-gradient-green-subtle whitespace-nowrap inline">Maintenance</span></h2>
           <p className="text-muted-foreground text-base max-w-xl mx-auto font-dm mt-3">Gardez votre site à jour, sécurisé et performant. Sans engagement.</p>
         </BlurReveal>
         <ScaleSection>
@@ -140,10 +142,11 @@ const TarifsPage = () => (
     </section>
 
     {/* FAQ */}
-    <section className="py-[80px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
+    <section className="relative overflow-hidden py-10 md:py-20" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
+      <SectionBackground variant="dots" intensity={0.6} />
       <div className="section-container max-w-2xl mx-auto">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">VOS QUESTIONS </span><span className="text-[#1DB954] whitespace-nowrap inline">NOS RÉPONSES</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">VOS QUESTIONS </span><span className="text-gradient-green-subtle whitespace-nowrap inline">NOS RÉPONSES</span></h2>
         </BlurReveal>
         <div className="space-y-4">
           {faqs.map((faq, i) => <FAQItem key={i} faq={faq} index={i} />)}

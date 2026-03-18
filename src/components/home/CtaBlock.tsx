@@ -2,12 +2,14 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import BlurReveal from "@/components/animations/BlurReveal";
+import SectionBackground from "@/components/SectionBackground";
 
 const CtaBlock = () => (
   <section
-    className="relative py-28 overflow-hidden"
+    className="relative overflow-hidden py-12 md:py-24"
     style={{ background: "linear-gradient(160deg, hsl(145 28% 8%) 0%, hsl(var(--background)) 60%)", borderTop: "1px solid hsl(var(--border-green))" }}
   >
+    <SectionBackground variant="hexflow" intensity={0.4} />
     {/* Glow */}
     <div
       className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[350px] pointer-events-none"

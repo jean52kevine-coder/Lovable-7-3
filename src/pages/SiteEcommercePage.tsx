@@ -84,7 +84,7 @@ const SiteEcommercePage = () => (
             <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto lg:mx-0 mb-6"><ShoppingCart className="text-primary" size={32} /></div>
           </BlurReveal>
           <BlurReveal delay={0.1}>
-            <h1 className="heading-display text-4xl md:text-6xl mb-4">
+            <h1 className="hero-title text-4xl md:text-6xl mb-4">
               SITE <RotatingWords words={["E-COMMERCE", "BOUTIQUE", "SHOP", "MARCHAND"]} />
             </h1>
           </BlurReveal>
@@ -101,7 +101,7 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">CE QUI EST </span><span className="text-[#1DB954] whitespace-nowrap inline">INCLUS</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">CE QUI EST </span><span className="text-gradient-green-subtle whitespace-nowrap inline">INCLUS</span></h2>
         </BlurReveal>
         <ScaleSection>
           <div className="relative max-w-2xl mx-auto rounded-2xl">
@@ -125,7 +125,7 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">FONCTIONNALITÉS </span><span className="text-[#1DB954] whitespace-nowrap inline">CLÉS</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">FONCTIONNALITÉS </span><span className="text-gradient-green-subtle whitespace-nowrap inline">CLÉS</span></h2>
         </BlurReveal>
         <ScaleSection>
           <FeaturesBento items={bentoItems} className="max-w-4xl mx-auto grid-cols-1 md:grid-cols-2" />
@@ -137,7 +137,7 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">À QUI ÇA </span><span className="text-[#1DB954] whitespace-nowrap inline">S'ADRESSE</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">À QUI ÇA </span><span className="text-gradient-green-subtle whitespace-nowrap inline">S'ADRESSE</span></h2>
         </BlurReveal>
         <ScaleSection>
           <StaggerContainer className="flex flex-wrap justify-center gap-4" staggerDelay={0.1}>
@@ -156,7 +156,7 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-14">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">FAITS POUR DES GENS </span><span className="text-[#1DB954] whitespace-nowrap inline">COMME VOUS</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">FAITS POUR DES GENS </span><span className="text-gradient-green-subtle whitespace-nowrap inline">COMME VOUS</span></h2>
         </BlurReveal>
         <ScaleSection>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.12}>
@@ -179,14 +179,15 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-14">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">VITRINE OU </span><span className="text-[#1DB954] whitespace-nowrap inline">E-COMMERCE ?</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">VITRINE OU </span><span className="text-gradient-green-subtle whitespace-nowrap inline">E-COMMERCE ?</span></h2>
           <p className="font-dm text-muted-foreground mt-3">Choisissez selon votre besoin.</p>
         </BlurReveal>
         <ScaleSection>
-          <div className="relative max-w-3xl mx-auto rounded-xl overflow-hidden">
+          <div className="relative mx-auto max-w-3xl overflow-hidden rounded-xl">
+            <div className="overflow-x-auto -mx-4 px-4">
             <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
             <div className="relative z-10" style={{ border: "1px solid #1a2e1a" }}>
-              <table className="w-full text-sm">
+              <table className="min-w-[600px] w-full text-sm">
                 <thead>
                   <tr style={{ backgroundColor: "#0d130d" }}>
                     <th className="text-left p-4 font-dm font-semibold text-muted-foreground">Fonctionnalité</th>
@@ -211,7 +212,7 @@ const SiteEcommercePage = () => (
               <span>Choisir Vitrine</span>
               <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-1 opacity-50 group-hover:opacity-100" />
             </Link>
-            <Link to="/contact?service=ecommerce" className="group relative inline-flex items-center justify-center gap-2.5 bg-[#1DB954] hover:bg-[#17a349] text-black font-bold px-7 py-4 rounded-xl transition-all duration-200 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(29,185,84,0.4)] active:scale-[0.98] overflow-hidden text-sm" style={{fontFamily:"'DM Sans', sans-serif"}}>
+            <Link to="/contact?service=ecommerce" className="group relative inline-flex items-center justify-center gap-2.5 bg-[#1DB954] hover:bg-[#17a349] text-black font-bold px-7 py-4 rounded-xl transition-all duration-200 md:hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(29,185,84,0.4)] active:scale-[0.98] overflow-hidden text-sm" style={{fontFamily:"'DM Sans', sans-serif"}}>
               <div className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />
               <span className="relative">Choisir E-commerce</span>
               <ArrowRight size={16} className="relative transition-transform duration-200 group-hover:translate-x-1" strokeWidth={2.5} />
@@ -225,7 +226,7 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container text-center max-w-2xl mx-auto">
         <BlurReveal>
-          <h2 className="heading-display text-2xl md:text-3xl mb-6"><span className="inline">POURQUOI </span><span className="text-[#1DB954] whitespace-nowrap inline">MAINTENANT</span><span className="inline"> ?</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl mb-6"><span className="inline">POURQUOI </span><span className="text-gradient-green-subtle whitespace-nowrap inline">MAINTENANT</span><span className="inline"> ?</span></h2>
           <p className="font-dm text-muted-foreground text-base leading-relaxed">Le e-commerce en France croît de <span className="text-primary font-semibold">15% par an</span>. Vos clients achètent en ligne — soyez là où ils cherchent.</p>
         </BlurReveal>
       </div>
@@ -235,7 +236,7 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container max-w-2xl mx-auto">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">QUESTIONS </span><span className="text-[#1DB954] whitespace-nowrap inline">FRÉQUENTES</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">QUESTIONS </span><span className="text-gradient-green-subtle whitespace-nowrap inline">FRÉQUENTES</span></h2>
         </BlurReveal>
         <div className="space-y-4">
           {faqs.map((faq, i) => <FAQItem key={i} faq={faq} index={i} />)}
