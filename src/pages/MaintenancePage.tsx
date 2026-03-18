@@ -67,7 +67,7 @@ const MaintenancePage = () => {
             <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto lg:mx-0 mb-6"><Wrench className="text-primary" size={32} /></div>
           </BlurReveal>
           <BlurReveal delay={0.1}>
-            <h1 className="heading-display text-4xl md:text-6xl mb-4">
+            <h1 className="hero-title text-4xl md:text-6xl mb-4">
               MAINTENANCE <RotatingWords words={["WEB", "CONTINUE", "PROACTIVE", "COMPLÈTE"]} />
             </h1>
           </BlurReveal>
@@ -82,7 +82,7 @@ const MaintenancePage = () => {
     </section>
 
     {/* Dangers */}
-    <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
+    <section className="py-12 md:py-24" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-14">
           <h2 className="heading-display text-2xl md:text-3xl">
@@ -109,13 +109,13 @@ const MaintenancePage = () => {
 
 
 
-    <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
+    <section className="py-12 md:py-24" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container max-w-5xl">
         <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
           <h2 className="heading-display text-2xl md:text-3xl">Vous ne gérez plus rien</h2>
           <p className="font-dm text-muted-foreground mt-3">On s'occupe de tout pendant que vous vous concentrez sur votre métier.</p>
         </motion.div>
-        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {[
             { icon: Shield, title: "Sécurité gérée", text: "Mises à jour, pare-feu, surveillance. Votre site est protégé en permanence." },
             { icon: RefreshCw, title: "Zéro intervention", text: "Aucune manipulation technique de votre côté. On intervient avant que vous ne voyez le moindre problème." },
@@ -134,10 +134,10 @@ const MaintenancePage = () => {
     </section>
 
     {/* Formules */}
-    <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
+    <section className="py-12 md:py-24" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">NOS </span><span className="text-[#1DB954] whitespace-nowrap inline">FORMULES</span></h2>
+          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">NOS </span><span className="text-gradient-green-subtle whitespace-nowrap inline">FORMULES</span></h2>
         </BlurReveal>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -157,14 +157,10 @@ const MaintenancePage = () => {
           </div>
         </motion.div>
         <ScaleSection>
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.15}>
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={0.15}>
             {formules.map((f, i) => (
-              <motion.div key={i} variants={itemVariants} className="relative flex flex-col items-center">
-                {f.highlighted && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
-                    <PopularBadge />
-                  </div>
-                )}
+              <motion.div key={i} variants={itemVariants} className="relative flex flex-col items-center pt-6">
+                {f.highlighted && <PopularBadge />}
                 <div className={`relative w-full rounded-2xl p-8 flex flex-col gap-6 transition-all duration-300 group ${f.highlighted ? "bg-[#0f1f0f] border border-[#1DB954]/50 shadow-[0_0_60px_rgba(29,185,84,0.12)] pt-10" : "bg-[#0d130d] border border-[#1a2e1a] hover:border-[#1DB954]/30 hover:shadow-[0_0_40px_rgba(29,185,84,0.08)]"}`}>
                   <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#1DB954]/4 via-transparent to-transparent pointer-events-none" />
                   <div className="relative">
@@ -172,7 +168,7 @@ const MaintenancePage = () => {
                       {f.name}
                     </p>
                     <div className="flex items-end gap-1">
-                      <span className="text-white text-5xl font-black" style={{ fontFamily: "'Barlow', sans-serif" }}>{f.price}€</span>
+                      <span className="text-gradient-green-subtle whitespace-nowrap text-5xl font-black" style={{ fontFamily: "'Barlow', sans-serif" }}>{f.price}€</span>
                       <span className="text-white/40 text-base mb-2">/mois</span>
                     </div>
                   </div>
@@ -195,7 +191,7 @@ const MaintenancePage = () => {
     </section>
 
     {/* FAQ */}
-    <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
+    <section className="py-12 md:py-24" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container max-w-2xl mx-auto">
         <BlurReveal className="text-center mb-12">
           <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">VOS QUESTIONS </span><span className="text-[#1DB954] whitespace-nowrap inline">NOS RÉPONSES</span></h2>

@@ -193,7 +193,7 @@ const ContactPage = () => {
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold font-display tracking-[0.15em] uppercase mb-6 border" style={{ borderColor: "rgba(29,185,84,0.3)", color: "hsl(145,63%,42%)", backgroundColor: "rgba(29,185,84,0.08)" }}>
             <span className="w-2 h-2 rounded-full bg-primary" /> Contact
           </span>
-          <h1 className="heading-display text-4xl md:text-6xl lg:text-7xl mb-4">
+          <h1 className="hero-title text-4xl md:text-6xl lg:text-7xl mb-4">
             Parlons de votre{" "}
             <span className="bg-gradient-to-r from-primary via-emerald-400 to-primary bg-clip-text text-transparent">projet</span>
           </h1>
@@ -262,7 +262,7 @@ const ContactPage = () => {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }}>
               <div className="relative rounded-2xl">
                 <GlowingEffect spread={50} glow proximity={80} inactiveZone={0.01} borderWidth={2} disabled={false} />
-                <div className="relative z-10 rounded-2xl p-6 md:p-8" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+                <div className="relative z-10 rounded-2xl p-4 md:p-8" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
                   {/* Stepper */}
                   <div className="flex items-center justify-between mb-8">
                     {steps.map((s, i) => (
@@ -299,7 +299,7 @@ const ContactPage = () => {
                     {/* Step 1: Votre projet */}
                     {step === 0 && (
                       <motion.div key="s0" {...fadeSlide} className="space-y-5">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <InputField label="PRÉNOM *" placeholder="Jean" value={form.prenom} onChange={(v) => update("prenom", v)} state={inputState.prenom} errorMessage="Prénom requis" onTouched={() => setTouched((prev) => ({ ...prev, prenom: true }))} />
                           <InputField label="NOM *" placeholder="Dupont" value={form.nom} onChange={(v) => update("nom", v)} state={inputState.nom} errorMessage="Nom requis" onTouched={() => setTouched((prev) => ({ ...prev, nom: true }))} />
                         </div>
@@ -308,7 +308,7 @@ const ContactPage = () => {
 
                         <div>
                           <label className="block text-[11px] font-display font-bold tracking-[0.15em] uppercase text-muted-foreground mb-3">TYPE DE PROJET *</label>
-                          <div className="grid grid-cols-2 gap-3">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                             {projectTypes.map((p) => (
                               <button
                                 key={p.id}
