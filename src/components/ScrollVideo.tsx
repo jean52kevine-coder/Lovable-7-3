@@ -6,6 +6,7 @@ interface ScrollVideoProps {
   scrollHeight?: string;
   overlayContent?: ReactNode;
   poster?: string;
+  scrubIntensity?: number;
 }
 
 export default function ScrollVideo({
@@ -13,6 +14,7 @@ export default function ScrollVideo({
   scrollHeight = '500vh',
   overlayContent,
   poster,
+  scrubIntensity = 2.4,
 }: ScrollVideoProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -41,7 +43,8 @@ export default function ScrollVideo({
         const rect = container.getBoundingClientRect();
         const scrollable = container.offsetHeight - window.innerHeight;
         const scrolled = Math.max(0, -rect.top);
-        const progress = scrollable > 0 ? Math.min(1, scrolled / scrollable) : 0;
+        const rawProgress = scrollable > 0 ? scrolled / scrollable : 0;
+        const progress = Math.min(1, Math.max(0, rawProgress * scrubIntensity));
 
         if (video.duration && Number.isFinite(video.duration)) {
           video.currentTime = video.duration * progress;

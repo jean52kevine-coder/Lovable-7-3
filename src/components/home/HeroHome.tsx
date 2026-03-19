@@ -85,9 +85,10 @@ const HeroHome = () => {
     <section className="relative overflow-hidden" style={{ backgroundColor: 'hsl(var(--hero-bg))' }}>
       <ScrollVideo
         src={heroVideo}
-        scrollHeight="500vh"
+        scrollHeight="180vh"
         overlayContent={heroContent}
         poster={heroPoster}
+        scrubIntensity={2.4}
       />
     </section>
   );
