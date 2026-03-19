@@ -1,3 +1,18 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -500,4 +515,13 @@
 @keyframes database-animation-path {
   0% { offset-distance: 0%; }
   100% { offset-distance: 100%; }
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+img, video, canvas, svg {
+  max-width: 100%;
 }

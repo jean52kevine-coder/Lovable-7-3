@@ -13,8 +13,8 @@ export default function HeroBackground({ variant = 'matrix' }:
     if (!ctx) return;
 
     const resize = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
+      canvas.width = canvas.clientWidth;
+      canvas.height = canvas.clientHeight;
     };
     resize();
     window.addEventListener('resize', resize);
@@ -23,6 +23,7 @@ export default function HeroBackground({ variant = 'matrix' }:
     if (variant === 'matrix') {
       const chars = '01アイウエオカキクケコ</>{}[]#@$%&ABCDEF';
       const fontSize = 11;
+      const isMobile = window.innerWidth < 768;
       const cols = Math.floor(canvas.width / (fontSize * 1.4));
       const drops: number[] = Array(cols).fill(0).map(
         () => Math.random() * -50
@@ -31,7 +32,7 @@ export default function HeroBackground({ variant = 'matrix' }:
         () => Math.random() * 0.5 + 0.1
       );
 
-      const nodes = Array.from({ length: 40 }, () => ({
+      const nodes = Array.from({ length: isMobile ? 25 : 70 }, () => ({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         vx: (Math.random() - 0.5) * 0.3,
@@ -96,7 +97,8 @@ export default function HeroBackground({ variant = 'matrix' }:
     }
 
     if (variant === 'constellation') {
-      const stars = Array.from({ length: 120 }, () => ({
+      const isMobile = window.innerWidth < 768;
+      const stars = Array.from({ length: isMobile ? 70 : 120 }, () => ({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         r: Math.random() * 1.5 + 0.3,
@@ -213,9 +215,10 @@ export default function HeroBackground({ variant = 'matrix' }:
         }
       });
 
+      const isMobile = window.innerWidth < 768;
       const signals: Array<{
         line: number; t: number; speed: number
-      }> = Array.from({ length: 15 }, () => ({
+      }> = Array.from({ length: isMobile ? 8 : 15 }, () => ({
         line: Math.floor(Math.random() * lines.length),
         t: Math.random(),
         speed: 0.003 + Math.random() * 0.005,
@@ -309,7 +312,8 @@ export default function HeroBackground({ variant = 'matrix' }:
         }
       }
 
-      const particles = Array.from({ length: 60 }, () => ({
+      const isMobile = window.innerWidth < 768;
+      const particles = Array.from({ length: isMobile ? 25 : 70 }, () => ({
         x: Math.random() * W,
         y: Math.random() * H,
         vy: 0.4 + Math.random() * 0.8,

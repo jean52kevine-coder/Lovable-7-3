@@ -29,7 +29,7 @@ const cards = [
     popular: true,
   },
   {
-    badge: "dès 39€/mois",
+    badge: "dès 29€/mois",
     title: "MAINTENANCE",
     desc: "Gardez votre site rapide et sécurisé.",
     bullets: ["Mises à jour", "Sauvegardes auto", "Monitoring 24/7", "Rapport mensuel"],
