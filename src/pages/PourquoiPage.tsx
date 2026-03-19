@@ -25,7 +25,6 @@ import { NumberTicker } from "@/components/ui/number-ticker";
 import { StatMobileSearch, StatScreenBrowse, StatBarsGrowing, StatClock } from "@/components/illustrations/SvgIllustrations";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
-import RotatingWords from "@/components/RotatingWords";
 import HeroBackground from "@/components/HeroBackground";
 
 const statIllustrations = [StatMobileSearch, StatScreenBrowse, StatBarsGrowing, StatClock];
@@ -204,12 +203,23 @@ const PourquoiPage = () => (
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f0a]/20 via-transparent to-[#0a0f0a]/80 pointer-events-none z-[1]" />
       <div className="relative z-10 container mx-auto px-6 py-12 md:py-24 text-center">
         <BlurReveal>
-          <h1 className="heading-display text-2xl sm:text-xl sm:text-2xl md:text-3xl md:text-4xl md:text-xl sm:text-2xl md:text-3xl sm:text-4xl md:text-6xl mb-6">
-            POURQUOI AVOIR UN <RotatingWords words={["SITE WEB", "SITE PRO", "SITE MODERNE", "SITE QUI CONVERTIT"]} />
+          <h1
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black italic leading-[0.95] tracking-tight text-white"
+            style={{ fontFamily: "'Barlow', sans-serif" }}
+          >
+            POURQUOI AVOIR UN{" "}
+            <span className="text-gradient-green whitespace-nowrap">
+              SITE PRO ?
+            </span>
           </h1>
         </BlurReveal>
         <BlurReveal delay={0.3}>
-          <p className="font-dm text-lg max-w-2xl mx-auto text-muted-foreground">En 2026, ne pas avoir de site internet c'est comme ne pas exister. Vos clients vous cherchent en ligne — soyez là.</p>
+          <p
+            className="text-base sm:text-lg md:text-xl text-white/55 mt-6 max-w-xl leading-relaxed mx-auto"
+            style={{ fontFamily: "'DM Sans', sans-serif" }}
+          >
+            En 2026, ne pas avoir de site internet c'est comme ne pas exister. Vos clients vous cherchent en ligne — soyez là.
+          </p>
         </BlurReveal>
       </div>
     </section>
