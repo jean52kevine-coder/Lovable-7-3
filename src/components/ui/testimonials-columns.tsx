@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 interface Testimonial {
   text: string;
@@ -31,24 +32,27 @@ export const TestimonialsColumn = (props: {
             {props.testimonials.map(({ text, image, name, role }, i) => (
               <div
                 key={`${index}-${i}`}
-                className="rounded-2xl p-6"
+                className="relative rounded-2xl p-6"
                 style={{
                   backgroundColor: "hsl(var(--card-dark))",
                   border: "1px solid hsl(var(--border-green))",
                 }}
               >
-                <p className="font-dm text-[15px] text-white/80 leading-relaxed italic">
-                  "{text}"
-                </p>
-                <div className="flex items-center gap-3 mt-5">
-                  <img
-                    src={image}
-                    alt={name}
-                    className="h-10 w-10 rounded-full object-cover"
-                  />
-                  <div>
-                    <p className="font-dm font-semibold text-sm text-white">{name}</p>
-                    <p className="font-dm text-[13px] text-muted-foreground">{role}</p>
+                <GlowingEffect spread={35} glow={false} disabled={false} proximity={60} inactiveZone={0.1} borderWidth={1} variant="green" />
+                <div className="relative z-10">
+                  <p className="font-dm text-[15px] text-white/80 leading-relaxed italic">
+                    "{text}"
+                  </p>
+                  <div className="flex items-center gap-3 mt-5">
+                    <img
+                      src={image}
+                      alt={name}
+                      className="h-10 w-10 rounded-full object-cover"
+                    />
+                    <div>
+                      <p className="font-dm font-semibold text-sm text-white">{name}</p>
+                      <p className="font-dm text-[13px] text-muted-foreground">{role}</p>
+                    </div>
                   </div>
                 </div>
               </div>

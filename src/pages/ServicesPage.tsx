@@ -11,7 +11,6 @@ import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
 import HeroBackground from "@/components/HeroBackground";
-import PopularBadge from "@/components/PopularBadge";
 
 const services = [
   {
@@ -67,17 +66,43 @@ const ServicesPage = () => (
         </BlurReveal>
 
         <ScaleSection>
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={0.15}>
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 overflow-visible" staggerDelay={0.15}>
             {services.map((s, i) => (
-              <motion.div key={i} variants={itemVariants} className="relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5 group">
-                <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
-                <div className="relative z-10 rounded-2xl p-7 overflow-hidden h-full" style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}>
-                  {s.popular && (
-                    <>
-                      <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10"><PopularBadge /></div>
+              <motion.div key={i} variants={itemVariants} className="relative transition-all duration-300 hover:-translate-y-1.5">
+                {s.popular ? (
+                  <div className="relative flex flex-col">
+                    <div className="flex justify-center mb-[-1px]">
+                      <div className="inline-flex items-center gap-2 bg-[#0a0f0a] border border-[#1DB954]/60 rounded-t-xl px-5 py-2 shadow-[0_0_20px_rgba(29,185,84,0.25)]">
+                        <span className="relative flex h-2 w-2 shrink-0">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1DB954] opacity-70" />
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-[#1DB954]" />
+                        </span>
+                        <span className="text-[#1DB954] text-xs font-bold tracking-[0.18em] uppercase whitespace-nowrap" style={{fontFamily:"'DM Sans', sans-serif"}}>
+                          LE PLUS CHOISI
+                        </span>
+                      </div>
+                    </div>
+                    <div className="relative z-10 rounded-2xl rounded-tl-none p-7 h-full bg-[#0d1a0d] border-2 border-[#1DB954]/50 shadow-[0_0_60px_rgba(29,185,84,0.12)] hover:shadow-[0_0_80px_rgba(29,185,84,0.18)] transition-shadow duration-300">
+                      <GlowingEffect spread={35} glow={false} disabled={false} proximity={60} inactiveZone={0.1} borderWidth={1} variant="green" />
                       <BorderBeam size={250} duration={12} delay={0} />
-                    </>
-                  )}
+                      <div className="relative z-10">
+                        <span className="inline-block text-[13px] font-semibold px-3 py-1 rounded-full text-primary mb-4" style={{ background: "rgba(29,185,84,0.12)" }}>{s.price}</span>
+                        <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4"><s.icon className="text-primary" size={20} /></div>
+                        <h3 className="font-display font-black text-xl text-foreground mb-2">{s.title}</h3>
+                        <p className="font-dm text-sm mb-5 text-muted-foreground">{s.desc}</p>
+                        <ul className="space-y-2 mb-6">
+                          {s.features.map((f, j) => (
+                            <li key={j} className="flex items-center gap-2 text-sm text-muted-foreground"><span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />{f}</li>
+                          ))}
+                        </ul>
+                        <Link to={s.link} className="inline-flex items-center gap-2 text-primary text-sm font-semibold hover:underline">En savoir plus →</Link>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                <div className="relative rounded-2xl p-7 h-full" style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}>
+                  <GlowingEffect spread={35} glow={false} disabled={false} proximity={60} inactiveZone={0.1} borderWidth={1} variant="green" />
+                  <div className="relative z-10">
                   <span className="inline-block text-[13px] font-semibold px-3 py-1 rounded-full text-primary mb-4" style={{ background: "rgba(29,185,84,0.12)" }}>{s.price}</span>
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4"><s.icon className="text-primary" size={20} /></div>
                   <h3 className="font-display font-black text-xl text-foreground mb-2">{s.title}</h3>
@@ -89,6 +114,8 @@ const ServicesPage = () => (
                   </ul>
                   <Link to={s.link} className="text-primary text-sm font-semibold hover:underline">En savoir plus →</Link>
                 </div>
+                </div>
+                )}
               </motion.div>
             ))}
           </StaggerContainer>

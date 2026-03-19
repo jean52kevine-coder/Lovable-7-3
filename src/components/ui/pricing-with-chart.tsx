@@ -16,7 +16,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import PopularBadge from "@/components/PopularBadge";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 const ctaPrimary =
   "group relative inline-flex items-center justify-center gap-2.5 bg-[#1DB954] hover:bg-[#17a349] text-black font-bold px-7 py-4 rounded-xl transition-all duration-200 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(29,185,84,0.4)] active:scale-[0.98] overflow-hidden text-sm";
@@ -29,8 +29,9 @@ export function PricingWithChart() {
     <div className="w-full max-w-6xl mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 items-stretch">
         <div className="relative lg:col-span-2 bg-[#0d130d] border border-[#1a2e1a] rounded-2xl p-8 flex flex-col gap-6 transition-all duration-300 hover:border-[#1DB954]/30 hover:shadow-[0_0_40px_rgba(29,185,84,0.08)] group">
+          <GlowingEffect spread={35} glow={false} disabled={false} proximity={60} inactiveZone={0.1} borderWidth={1} variant="green" />
           <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#1DB954]/4 via-transparent to-transparent pointer-events-none" />
-          <div className="relative">
+          <div className="relative z-10">
             <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4 bg-[#1DB954]/10">
               <Globe className="text-[#1DB954]" size={20} />
             </div>
@@ -43,7 +44,7 @@ export function PricingWithChart() {
             <p className="text-white/35 text-xs mt-1">Paiement unique · Idéal pour artisans et indépendants</p>
           </div>
           <div className="h-px bg-gradient-to-r from-transparent via-[#1DB954]/20 to-transparent" />
-          <ul className="flex flex-col gap-3 flex-1">
+          <ul className="relative z-10 flex flex-col gap-3 flex-1">
             {[
               "Design 100% sur-mesure",
               "Jusqu'à 5 pages",
@@ -65,11 +66,20 @@ export function PricingWithChart() {
           </Link>
         </div>
 
-        <div className="relative lg:col-span-3 flex flex-col items-center">
-          <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
-            <PopularBadge />
+        <div className="relative lg:col-span-3 flex flex-col">
+          <div className="flex justify-center mb-[-1px]">
+            <div className="inline-flex items-center gap-2 bg-[#0a0f0a] border border-[#1DB954]/60 rounded-t-xl px-5 py-2 shadow-[0_0_20px_rgba(29,185,84,0.25)]">
+              <span className="relative flex h-2 w-2 shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1DB954] opacity-70" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#1DB954]" />
+              </span>
+              <span className="text-[#1DB954] text-xs font-bold tracking-[0.18em] uppercase whitespace-nowrap" style={{fontFamily:"'DM Sans', sans-serif"}}>
+                LE PLUS CHOISI
+              </span>
+            </div>
           </div>
-          <div className="relative w-full bg-[#0f1f0f] border border-[#1DB954]/50 shadow-[0_0_60px_rgba(29,185,84,0.12)] rounded-2xl pt-8 p-8 flex flex-col gap-6 group">
+          <div className="relative w-full bg-[#0d1a0d] border-2 border-[#1DB954]/50 shadow-[0_0_60px_rgba(29,185,84,0.12)] rounded-2xl rounded-tl-none p-8 flex flex-col gap-6 group">
+            <GlowingEffect spread={35} glow={false} disabled={false} proximity={60} inactiveZone={0.1} borderWidth={1} variant="green" />
             <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#1DB954]/6 via-transparent to-transparent pointer-events-none" />
             <div className="relative flex flex-col md:flex-row gap-6">
               <div className="flex-1">

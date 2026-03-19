@@ -8,10 +8,8 @@ import { CtaSection } from "@/components/ui/cta-section";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
-import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
 import HeroBackground from "@/components/HeroBackground";
-import PopularBadge from "@/components/PopularBadge";
 
 const dangers = [
   { title: "Failles de sécurité", desc: "Un plugin non mis à jour, c'est une porte ouverte pour les hackers. Vos données et celles de vos clients sont en danger." },
@@ -67,12 +65,15 @@ const MaintenancePage = () => {
             <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto lg:mx-0 mb-6"><Wrench className="text-primary" size={32} /></div>
           </BlurReveal>
           <BlurReveal delay={0.1}>
-            <h1 className="heading-display text-2xl sm:text-xl sm:text-2xl md:text-3xl md:text-4xl md:text-xl sm:text-2xl md:text-3xl sm:text-4xl md:text-6xl mb-4">
-              MAINTENANCE <RotatingWords words={["WEB", "CONTINUE", "PROACTIVE", "COMPLÈTE"]} />
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black italic leading-[0.95] tracking-tight text-white" style={{fontFamily:"'Barlow', sans-serif"}}>
+              MAINTENANCE{" "}
+              <span className="text-gradient-green whitespace-nowrap">
+                WEB
+              </span>
             </h1>
           </BlurReveal>
           <BlurReveal delay={0.3}>
-            <p className="font-dm text-lg max-w-xl mx-auto lg:mx-0 text-muted-foreground">Gardez votre site à jour, sécurisé et performant. On s'en occupe pour vous.</p>
+            <p className="text-base sm:text-lg md:text-xl text-white/55 mt-6 max-w-xl leading-relaxed mx-auto lg:mx-0" style={{fontFamily:"'DM Sans', sans-serif"}}>Gardez votre site à jour, sécurisé et performant. On s'en occupe pour vous.</p>
           </BlurReveal>
         </div>
         <BlurReveal delay={0.3} className="hidden md:block flex-1">
@@ -121,12 +122,15 @@ const MaintenancePage = () => {
             { icon: RefreshCw, title: "Zéro intervention", text: "Aucune manipulation technique de votre côté. On intervient avant que vous ne voyez le moindre problème." },
             { icon: HeadphonesIcon, title: "On est là", text: "Une question ? Un changement ? Un email suffit. Réponse sous 24h, en français, par une vraie personne." },
           ].map((item) => (
-            <div key={item.title} className="rounded-xl p-4 md:p-6" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
-              <div className="w-11 h-11 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: "rgba(29,185,84,0.12)" }}>
-                <item.icon className="text-[#1DB954]" size={20} />
+            <div key={item.title} className="relative rounded-xl p-4 md:p-6" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+              <GlowingEffect spread={35} glow={false} disabled={false} proximity={60} inactiveZone={0.1} borderWidth={1} variant="green" />
+              <div className="relative z-10">
+                <div className="w-11 h-11 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: "rgba(29,185,84,0.12)" }}>
+                  <item.icon className="text-[#1DB954]" size={20} />
+                </div>
+                <h3 className="font-display font-bold text-white mb-2">{item.title}</h3>
+                <p className="font-dm text-sm text-white/70">{item.text}</p>
               </div>
-              <h3 className="font-display font-bold text-white mb-2">{item.title}</h3>
-              <p className="font-dm text-sm text-white/70">{item.text}</p>
             </div>
           ))}
         </motion.div>
@@ -157,17 +161,50 @@ const MaintenancePage = () => {
           </div>
         </motion.div>
         <ScaleSection>
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={0.15}>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 overflow-visible" staggerDelay={0.15}>
             {formules.map((f, i) => (
-              <motion.div key={i} variants={itemVariants} className="relative flex flex-col items-center">
-                {f.highlighted && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
-                    <PopularBadge />
-                  </div>
-                )}
-                <div className={`relative w-full rounded-2xl p-5 md:p-8 flex flex-col gap-6 transition-all duration-300 group ${f.highlighted ? "bg-[#0f1f0f] border border-[#1DB954]/50 shadow-[0_0_60px_rgba(29,185,84,0.12)] pt-10" : "bg-[#0d130d] border border-[#1a2e1a] hover:border-[#1DB954]/30 hover:shadow-[0_0_40px_rgba(29,185,84,0.08)]"}`}>
+              <motion.div key={i} variants={itemVariants} className="relative flex flex-col">
+                {f.highlighted ? (
+                  <>
+                    <div className="flex justify-center mb-[-1px]">
+                      <div className="inline-flex items-center gap-2 bg-[#0a0f0a] border border-[#1DB954]/60 rounded-t-xl px-5 py-2 shadow-[0_0_20px_rgba(29,185,84,0.25)]">
+                        <span className="relative flex h-2 w-2 shrink-0">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1DB954] opacity-70" />
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-[#1DB954]" />
+                        </span>
+                        <span className="text-[#1DB954] text-xs font-bold tracking-[0.18em] uppercase whitespace-nowrap" style={{fontFamily:"'DM Sans', sans-serif"}}>
+                          LE PLUS CHOISI
+                        </span>
+                      </div>
+                    </div>
+                    <div className="relative w-full rounded-2xl rounded-tl-none bg-[#0d1a0d] p-5 md:p-8 flex flex-col gap-6 border-2 border-[#1DB954]/50 shadow-[0_0_60px_rgba(29,185,84,0.12)] hover:shadow-[0_0_80px_rgba(29,185,84,0.18)] transition-shadow duration-300">
+                      <GlowingEffect spread={35} glow={false} disabled={false} proximity={60} inactiveZone={0.1} borderWidth={1} variant="green" />
+                      <div className="relative z-10">
+                        <p className="text-white/50 text-sm font-medium uppercase tracking-widest mb-2" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                          {f.name}
+                        </p>
+                        <div className="flex items-end gap-1">
+                          <span className="text-white text-2xl sm:text-xl sm:text-2xl md:text-3xl md:text-5xl font-black" style={{ fontFamily: "'Barlow', sans-serif" }}>{f.price}€</span>
+                          <span className="text-white/40 text-base mb-2">/mois</span>
+                        </div>
+                      </div>
+                      <div className="h-px bg-gradient-to-r from-transparent via-[#1DB954]/20 to-transparent" />
+                      <ul className="relative z-10 flex flex-col gap-3 flex-1">
+                        {f.features.map((feat, j) => (
+                          <li key={j} className="flex items-start gap-3 text-sm text-white/65" style={{ fontFamily: "'DM Sans', sans-serif" }}><Check size={14} className="text-[#1DB954] mt-0.5 shrink-0" strokeWidth={2.5} />{feat}</li>
+                        ))}
+                      </ul>
+                      <button onClick={() => navigate(f.cta)} className="group relative inline-flex items-center justify-center gap-2.5 w-full py-3.5 rounded-xl font-semibold text-sm transition-all duration-200 active:scale-[0.98] overflow-hidden bg-[#1DB954] text-black border border-[#1DB954] hover:shadow-[0_0_20px_rgba(29,185,84,0.3)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                        <span className="relative">Choisir cette formule</span>
+                        <ArrowRight size={16} className="relative transition-transform duration-200 group-hover:translate-x-1" strokeWidth={2.5} />
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                <div className="relative w-full rounded-2xl p-5 md:p-8 flex flex-col gap-6 transition-all duration-300 group bg-[#0d130d] border border-[#1a2e1a] hover:border-[#1DB954]/30 hover:shadow-[0_0_40px_rgba(29,185,84,0.08)]">
+                  <GlowingEffect spread={35} glow={false} disabled={false} proximity={60} inactiveZone={0.1} borderWidth={1} variant="green" />
                   <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#1DB954]/4 via-transparent to-transparent pointer-events-none" />
-                  <div className="relative">
+                  <div className="relative z-10">
                     <p className="text-white/50 text-sm font-medium uppercase tracking-widest mb-2" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                       {f.name}
                     </p>
@@ -177,16 +214,17 @@ const MaintenancePage = () => {
                     </div>
                   </div>
                   <div className="h-px bg-gradient-to-r from-transparent via-[#1DB954]/20 to-transparent" />
-                  <ul className="flex flex-col gap-3 flex-1">
+                  <ul className="relative z-10 flex flex-col gap-3 flex-1">
                     {f.features.map((feat, j) => (
                       <li key={j} className="flex items-start gap-3 text-sm text-white/65" style={{ fontFamily: "'DM Sans', sans-serif" }}><Check size={14} className="text-[#1DB954] mt-0.5 shrink-0" strokeWidth={2.5} />{feat}</li>
                     ))}
                   </ul>
-                  <button onClick={() => navigate(f.cta)} className={`group relative inline-flex items-center justify-center gap-2.5 w-full py-3.5 rounded-xl font-semibold text-sm transition-all duration-200 active:scale-[0.98] overflow-hidden ${f.highlighted ? "bg-[#1DB954] text-black border border-[#1DB954] hover:shadow-[0_0_20px_rgba(29,185,84,0.3)]" : "border border-[#1DB954]/40 text-[#1DB954] hover:bg-[#1DB954] hover:text-black hover:border-[#1DB954]"}`} style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                  <button onClick={() => navigate(f.cta)} className="group relative inline-flex items-center justify-center gap-2.5 w-full py-3.5 rounded-xl font-semibold text-sm transition-all duration-200 active:scale-[0.98] overflow-hidden border border-[#1DB954]/40 text-[#1DB954] hover:bg-[#1DB954] hover:text-black hover:border-[#1DB954]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                     <span className="relative">Choisir cette formule</span>
                     <ArrowRight size={16} className="relative transition-transform duration-200 group-hover:translate-x-1" strokeWidth={2.5} />
                   </button>
                 </div>
+                )}
               </motion.div>
             ))}
           </StaggerContainer>

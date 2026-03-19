@@ -25,7 +25,6 @@ import { NumberTicker } from "@/components/ui/number-ticker";
 import { StatMobileSearch, StatScreenBrowse, StatBarsGrowing, StatClock } from "@/components/illustrations/SvgIllustrations";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
-import RotatingWords from "@/components/RotatingWords";
 import HeroBackground from "@/components/HeroBackground";
 
 const statIllustrations = [StatMobileSearch, StatScreenBrowse, StatBarsGrowing, StatClock];
@@ -204,12 +203,15 @@ const PourquoiPage = () => (
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f0a]/20 via-transparent to-[#0a0f0a]/80 pointer-events-none z-[1]" />
       <div className="relative z-10 container mx-auto px-6 py-12 md:py-24 text-center">
         <BlurReveal>
-          <h1 className="heading-display text-2xl sm:text-xl sm:text-2xl md:text-3xl md:text-4xl md:text-xl sm:text-2xl md:text-3xl sm:text-4xl md:text-6xl mb-6">
-            POURQUOI AVOIR UN <RotatingWords words={["SITE WEB", "SITE PRO", "SITE MODERNE", "SITE QUI CONVERTIT"]} />
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black italic leading-[0.95] tracking-tight text-white" style={{fontFamily:"'Barlow', sans-serif"}}>
+            POURQUOI AVOIR UN{" "}
+            <span className="text-gradient-green whitespace-nowrap">
+              SITE PRO ?
+            </span>
           </h1>
         </BlurReveal>
         <BlurReveal delay={0.3}>
-          <p className="font-dm text-lg max-w-2xl mx-auto text-muted-foreground">En 2026, ne pas avoir de site internet c'est comme ne pas exister. Vos clients vous cherchent en ligne — soyez là.</p>
+          <p className="text-base sm:text-lg md:text-xl text-white/55 mt-6 max-w-xl leading-relaxed mx-auto" style={{fontFamily:"'DM Sans', sans-serif"}}>En 2026, ne pas avoir de site internet c'est comme ne pas exister. Vos clients vous cherchent en ligne — soyez là.</p>
         </BlurReveal>
       </div>
     </section>
@@ -270,12 +272,15 @@ const PourquoiPage = () => (
         </motion.div>
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }} className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {raisonsSite.map((item) => (
-            <motion.div key={item.title} variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }} className="rounded-xl p-4 md:p-6" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
-              <div className="w-11 h-11 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: "rgba(29,185,84,0.1)" }}>
-                <item.icon className="text-[#1DB954]" size={20} />
+            <motion.div key={item.title} variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }} className="relative rounded-xl p-4 md:p-6" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+              <GlowingEffect spread={35} glow={false} disabled={false} proximity={60} inactiveZone={0.1} borderWidth={1} variant="green" />
+              <div className="relative z-10">
+                <div className="w-11 h-11 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: "rgba(29,185,84,0.1)" }}>
+                  <item.icon className="text-[#1DB954]" size={20} />
+                </div>
+                <h3 className="font-dm font-bold text-white mb-2">{item.title}</h3>
+                <p className="font-dm text-sm text-white/70">{item.description}</p>
               </div>
-              <h3 className="font-dm font-bold text-white mb-2">{item.title}</h3>
-              <p className="font-dm text-sm text-white/70">{item.description}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -291,16 +296,19 @@ const PourquoiPage = () => (
         </motion.div>
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.06 } } }} className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {metierCards.map((card) => (
-            <motion.div key={card.title} variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }} className="rounded-xl p-4 md:p-6 transition-colors" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: "rgba(29,185,84,0.12)" }}><card.icon className="text-[#1DB954]" size={20} /></div>
-                <h3 className="font-dm font-bold text-white">{card.title}</h3>
+            <motion.div key={card.title} variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }} className="relative rounded-xl p-4 md:p-6 transition-colors" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+              <GlowingEffect spread={35} glow={false} disabled={false} proximity={60} inactiveZone={0.1} borderWidth={1} variant="green" />
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: "rgba(29,185,84,0.12)" }}><card.icon className="text-[#1DB954]" size={20} /></div>
+                  <h3 className="font-dm font-bold text-white">{card.title}</h3>
+                </div>
+                <ul className="space-y-2">
+                  {card.bullets.map((bullet) => (
+                    <li key={bullet} className="font-dm text-sm text-white/75 flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#1DB954]" />{bullet}</li>
+                  ))}
+                </ul>
               </div>
-              <ul className="space-y-2">
-                {card.bullets.map((bullet) => (
-                  <li key={bullet} className="font-dm text-sm text-white/75 flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#1DB954]" />{bullet}</li>
-                ))}
-              </ul>
             </motion.div>
           ))}
         </motion.div>
