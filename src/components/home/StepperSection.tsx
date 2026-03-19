@@ -7,10 +7,10 @@ import { StepChatIcon, StepDesignIcon, StepCodeIcon, StepRocketIcon } from "@/co
 const stepIcons = [StepChatIcon, StepDesignIcon, StepCodeIcon, StepRocketIcon];
 
 const steps = [
-  { num: "01", title: "Échange découverte", detail: "Appel 30min offert. On étudie votre activité, vos clients cibles et vos objectifs. Zéro engagement." },
+  { num: "01", title: "Premier échange", detail: "On apprend à vous connaître — par email ou par appel, comme vous préférez. On cerne votre activité, vos objectifs, votre cible. Aucun engagement." },
   { num: "02", title: "Maquette validée", detail: "Une maquette sur-mesure créée en 48h. Vous validez avant qu'on code une seule ligne." },
   { num: "03", title: "Développement", detail: "Code propre, rapide, SEO-ready. Vous suivez l'avancement en temps réel." },
-  { num: "04", title: "Livraison & formation", detail: "Mise en ligne, formation, remise des accès. Votre site est en ligne en 14 jours." },
+  { num: "04", title: "Livraison", detail: "Mise en ligne, tests finaux, remise des accès. Votre site est en ligne en 14 jours." },
 ];
 
 const StepperSection = () => {

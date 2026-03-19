@@ -16,7 +16,7 @@ const plans = [
   },
   {
     icon: ShoppingCart, title: "Site E-commerce", price: "747",
-    features: ["Boutique complète", "Paiement sécurisé", "Gestion des stocks", "SEO avancé", "Formation incluse"],
+    features: ["Boutique complète", "Paiement sécurisé", "Gestion des stocks", "SEO avancé", "Support inclus"],
     link: "/services/site-ecommerce", best: true,
   },
   {

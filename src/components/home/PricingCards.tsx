@@ -6,7 +6,7 @@ import { StaggerContainer, itemVariants } from "@/components/animations/StaggerC
 
 const plans = [
   { Icon: Globe, title: "Site Vitrine", price: "497", features: ["Design sur-mesure", "Jusqu'à 5 pages", "Responsive", "SEO optimisé", "Livraison 14j"], link: "/contact?service=vitrine", best: false },
-  { Icon: ShoppingCart, title: "Site E-commerce", price: "747", features: ["Boutique complète", "Paiement sécurisé", "Gestion stocks", "SEO avancé", "Formation incluse"], link: "/contact?service=ecommerce", best: true },
+  { Icon: ShoppingCart, title: "Site E-commerce", price: "747", features: ["Boutique complète", "Paiement sécurisé", "Gestion stocks", "SEO avancé", "Support inclus"], link: "/contact?service=ecommerce", best: true },
   { Icon: Shield, title: "Maintenance", price: "29", suffix: "/mois", features: ["Mises à jour de sécurité", "Sauvegarde hebdomadaire", "Support par email", "Monitoring de base", "Rapport trimestriel"], link: "/contact?service=maintenance", best: false },
 ];
 

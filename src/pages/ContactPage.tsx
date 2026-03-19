@@ -5,7 +5,7 @@ import Layout from "@/components/Layout";
 import {
   Send, User, Briefcase, MessageSquare, Check, ArrowRight, ArrowLeft,
   Globe, ShoppingCart, Wrench, Sparkles, Phone, Mail, MapPin, Clock,
-  Calendar, PenTool
+  MessageCircle, PenTool
 } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import HeroBackground from "@/components/HeroBackground";
@@ -209,12 +209,12 @@ const ContactPage = () => {
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold font-display tracking-[0.15em] uppercase mb-6 border" style={{ borderColor: "rgba(29,185,84,0.3)", color: "hsl(145,63%,42%)", backgroundColor: "rgba(29,185,84,0.08)" }}>
             <span className="w-2 h-2 rounded-full bg-primary" /> Contact
           </span>
-          <h1 className="heading-display text-2xl sm:text-xl sm:text-2xl md:text-3xl md:text-4xl md:text-xl sm:text-2xl md:text-3xl sm:text-4xl md:text-6xl lg:text-7xl mb-4">
+          <h1 className="heading-display text-2xl sm:text-4xl md:text-6xl lg:text-7xl mb-4">
             Parlons de votre{" "}
             <span className="bg-gradient-to-r from-primary via-emerald-400 to-primary bg-clip-text text-transparent">projet</span>
           </h1>
           <p className="font-dm text-base md:text-lg text-muted-foreground max-w-xl mx-auto">
-            Réponse garantie sous 24h · Consultation 30 min offerte · Devis gratuit
+            Réponse garantie sous 24h · Échange par email ou par appel · Devis gratuit
           </p>
           {preselectedLabel && (
             <div className="mt-5 inline-flex items-center gap-3 px-4 py-2 rounded-full border text-sm" style={{ borderColor: "rgba(29,185,84,0.35)", color: "#1DB954", backgroundColor: "rgba(29,185,84,0.1)" }}>
@@ -236,10 +236,10 @@ const ContactPage = () => {
                 <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
                 <div className="relative z-10 rounded-2xl p-4 md:p-6" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
                   <div className="w-10 h-10 rounded-xl bg-primary/15 flex items-center justify-center mb-4">
-                    <Calendar className="text-primary" size={20} />
+                    <MessageCircle className="text-primary" size={20} />
                   </div>
-                  <h3 className="font-display font-bold text-white text-lg mb-2">Consultation offerte</h3>
-                  <p className="font-dm text-sm text-muted-foreground leading-relaxed">30 minutes pour définir ensemble votre projet, vos objectifs et le meilleur chemin pour y arriver.</p>
+                  <h3 className="font-display font-bold text-white text-lg mb-2">Échange découverte</h3>
+                  <p className="font-dm text-sm text-muted-foreground leading-relaxed">Par email ou par appel — comme vous préférez. On définit ensemble votre projet, vos objectifs et le meilleur chemin pour y arriver. Aucun engagement, aucune pression.</p>
                 </div>
               </div>
 
@@ -248,8 +248,9 @@ const ContactPage = () => {
                 <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
                 <div className="relative z-10 rounded-2xl p-4 md:p-6 space-y-4" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
                   {[
-                    { icon: Mail, text: "contact@altera.fr" },
-                    { icon: MapPin, text: "Saint-Dizier, France (remote)" },
+                    { icon: Mail, text: "contact@altéra.fr" },
+                    { icon: Phone, text: "06 52 55 42 83" },
+                    { icon: MapPin, text: "Reims, Grand Est" },
                     { icon: Clock, text: "Réponse sous 24h" },
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-3">

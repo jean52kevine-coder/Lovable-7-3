@@ -49,12 +49,12 @@ const articles = [
   {
     title: "Article 9 — Données personnelles",
     content:
-      "Les données collectées via le formulaire de contact sont utilisées uniquement pour répondre aux demandes des clients. Elles ne sont pas transmises à des tiers. Conformément au RGPD, tout client peut demander la suppression de ses données à contact@altera.fr.",
+      "Les données collectées via le formulaire de contact sont utilisées uniquement pour répondre aux demandes des clients. Elles ne sont pas transmises à des tiers. Conformément au RGPD, tout client peut demander la suppression de ses données à contact@altéra.fr.",
   },
   {
     title: "Article 10 — Droit applicable",
     content:
-      "Les présentes CGV sont soumises au droit français. Tout litige sera soumis aux tribunaux compétents de Saint-Dizier (Haute-Marne), France.",
+      "Les présentes CGV sont soumises au droit français. Tout litige sera soumis aux tribunaux compétents de Reims (Marne), Grand Est.",
   },
 ];
 
@@ -86,7 +86,7 @@ const CGVPage = () => (
           ))}
         </div>
 
-        <p className="font-dm mt-10" style={{ color: "rgba(255,255,255,0.8)" }}><strong>Contact :</strong> contact@altera.fr</p>
+        <p className="font-dm mt-10" style={{ color: "rgba(255,255,255,0.8)" }}><strong>Contact :</strong> contact@altéra.fr</p>
       </div>
     </section>
   </Layout>

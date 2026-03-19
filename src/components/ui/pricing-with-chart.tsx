@@ -105,7 +105,7 @@ export function PricingWithChart() {
                 "Gestion des stocks",
                 "Responsive mobile",
                 "SEO avancé",
-                "Formation incluse",
+                "Support inclus",
                 "Hébergement 1 an inclus",
                 "Livraison en 14 jours",
                 "Support dédié",

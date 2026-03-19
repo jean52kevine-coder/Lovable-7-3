@@ -25,7 +25,7 @@ const CtaBlock = () => (
             </h2>
 
             <p className="font-dm text-lg mb-10 mx-auto max-w-lg" style={{ color: "hsl(var(--muted-foreground))" }}>
-              Consultation 30min offerte, devis gratuit et sans engagement.
+              Échange découverte offert — par email ou par appel.
             </p>
 
             <Link to="/contact" className="btn-primary text-lg px-10 py-4 rounded-[10px] font-bold">
