@@ -9,7 +9,6 @@ import { CtaSection } from "@/components/ui/cta-section";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
-import RotatingWords from "@/components/RotatingWords";
 import HeroBackground from "@/components/HeroBackground";
 
 const faqs = [
@@ -62,15 +61,26 @@ const TarifsPage = () => (
           </span>
         </BlurReveal>
         <BlurReveal delay={0.1}>
-          <h1 className="heading-display text-2xl sm:text-xl sm:text-2xl md:text-3xl md:text-4xl md:text-xl sm:text-2xl md:text-3xl sm:text-4xl md:text-6xl mb-4">
-            DES PRIX <RotatingWords words={["CLAIRS", "FIXES", "JUSTES", "TRANSPARENTS"]} />
+          <h1
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black italic leading-[0.95] tracking-tight text-white"
+            style={{ fontFamily: "'Barlow', sans-serif" }}
+          >
+            DES PRIX{" "}
+            <span className="text-gradient-green whitespace-nowrap">
+              CLAIRS.
+            </span>
           </h1>
         </BlurReveal>
         <BlurReveal delay={0.2}>
-          <h2 className="heading-display text-xl sm:text-2xl md:text-3xl md:text-2xl sm:text-xl sm:text-2xl md:text-3xl md:text-5xl mb-6 text-primary">ZÉRO SURPRISE.</h2>
+          <p className="text-3xl sm:text-4xl md:text-5xl font-black italic text-gradient-green mt-1" style={{ fontFamily: "'Barlow', sans-serif" }}>
+            ZÉRO SURPRISE.
+          </p>
         </BlurReveal>
         <BlurReveal delay={0.3}>
-          <p className="font-dm text-lg max-w-xl mx-auto text-muted-foreground">
+          <p
+            className="text-base sm:text-lg md:text-xl text-white/55 mt-6 max-w-xl leading-relaxed mx-auto"
+            style={{ fontFamily: "'DM Sans', sans-serif" }}
+          >
             Tout est inclus dans le prix affiché. Hébergement, SSL, formation, support. Aucun frais caché.
           </p>
         </BlurReveal>

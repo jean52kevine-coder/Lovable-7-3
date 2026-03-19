@@ -11,7 +11,6 @@ import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
-import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
 import HeroBackground from "@/components/HeroBackground";
 
@@ -116,12 +115,25 @@ const SiteVitrinePage = () => (
             <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto lg:mx-0 mb-6"><Globe className="text-primary" size={32} /></div>
           </BlurReveal>
           <BlurReveal delay={0.1}>
-            <h1 className="heading-display text-2xl sm:text-xl sm:text-2xl md:text-3xl md:text-4xl md:text-xl sm:text-2xl md:text-3xl sm:text-4xl md:text-6xl mb-4">
-              SITE <RotatingWords words={["VITRINE", "MODERNE", "EFFICACE", "SUR-MESURE"]} />
+            <h1
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black italic leading-[0.95] tracking-tight text-white"
+              style={{ fontFamily: "'Barlow', sans-serif" }}
+            >
+              SITE{" "}
+              <span className="text-gradient-green whitespace-nowrap">
+                VITRINE
+              </span>
             </h1>
           </BlurReveal>
           <BlurReveal delay={0.3}><p className="text-primary heading-display text-xl sm:text-2xl md:text-3xl mb-4">497 €</p></BlurReveal>
-          <BlurReveal delay={0.4}><p className="font-dm text-lg max-w-xl mx-auto lg:mx-0 text-muted-foreground">Présentez votre activité avec un site moderne qui inspire confiance et attire de nouveaux clients.</p></BlurReveal>
+          <BlurReveal delay={0.4}>
+            <p
+              className="text-base sm:text-lg md:text-xl text-white/55 mt-6 max-w-xl leading-relaxed mx-auto lg:mx-0"
+              style={{ fontFamily: "'DM Sans', sans-serif" }}
+            >
+              Présentez votre activité avec un site moderne qui inspire confiance et attire de nouveaux clients.
+            </p>
+          </BlurReveal>
         </div>
         <BlurReveal delay={0.3} className="hidden md:block flex-1">
           <VitrineHeroIllustration />
