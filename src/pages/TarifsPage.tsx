@@ -85,7 +85,7 @@ const TarifsPage = () => (
             className="text-base sm:text-lg md:text-xl text-white/55 mt-6 max-w-xl leading-relaxed mx-auto"
             style={{ fontFamily: "'DM Sans', sans-serif" }}
           >
-            Tout est inclus dans le prix affiché. Hébergement, SSL, formation, support. Aucun frais caché.
+            Tout est inclus dans le prix affiché. Hébergement, SSL, support. Aucun frais caché.
           </p>
         </BlurReveal>
       </div>

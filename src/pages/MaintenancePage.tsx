@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
-import { Wrench, Check, AlertTriangle, Shield, RefreshCw, HeadphonesIcon, GraduationCap, ArrowRight } from "lucide-react";
+import { Wrench, Check, AlertTriangle, Shield, RefreshCw, HeadphonesIcon, Gift, ArrowRight } from "lucide-react";
 import { MaintenanceHeroIllustration } from "@/components/illustrations/SvgIllustrations";
 import { CtaSection } from "@/components/ui/cta-section";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
@@ -152,16 +152,16 @@ const MaintenancePage = () => {
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex items-start gap-4 bg-[#111811] border border-[#1a2e1a] rounded-xl p-4 md:p-6 max-w-2xl mx-auto mb-12"
+          className="flex items-start gap-4 bg-[#111811] border border-[#1a2e1a] rounded-xl p-6 max-w-2xl mx-auto mb-12"
         >
           <div className="text-[#1DB954] mt-1">
-            <GraduationCap size={28} />
+            <Gift size={28} />
           </div>
           <div>
-            <h3 className="text-white font-semibold text-lg mb-1">Formation offerte à la livraison</h3>
+            <h3 className="text-white font-semibold text-lg mb-1">Nom de domaine offert la 1ère année</h3>
             <p className="text-white/60 text-sm leading-relaxed">
-              À la livraison de votre site, on vous montre comment tout fonctionne en 30 minutes. Besoin de changer un texte,
-              une photo ou un prix ? Vous serez autonome. Et si vous préférez qu'on s'en occupe — c'est inclus dans la maintenance.
+              Pour tout abonnement maintenance souscrit en même temps que votre site, on inclut votre nom de domaine
+              (altera.fr, .com, .fr) offert la première année. Une valeur de 15€ à 20€ sans effort de votre côté.
             </p>
           </div>
         </motion.div>

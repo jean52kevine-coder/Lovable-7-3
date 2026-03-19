@@ -54,7 +54,7 @@ const FinalCTA = () => {
             className="font-dm text-lg mb-10 mx-auto max-w-lg"
             style={{ color: "rgba(255,255,255,0.6)" }}
           >
-            Consultation 30min offerte, devis gratuit et sans engagement.
+            Échange découverte offert — par email ou par appel.
           </p>
         </BlurReveal>
 

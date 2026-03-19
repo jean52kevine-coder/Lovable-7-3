@@ -18,7 +18,7 @@ const altera = [
   { icon: Shield, label: "Un humain dédié", sub: "Réponse dans la journée, toujours." },
   { icon: BadgeEuro, label: "Prix fixe dès 497€", sub: "Zéro surprise, tout est inclus dans le tarif." },
   { icon: BadgeCheck, label: "Satisfaction garantie", sub: "Révisions illimitées jusqu'à validation." },
-  { icon: BookOpen, label: "Formation offerte", sub: "Vous êtes autonome dès le premier jour." },
+  { icon: BookOpen, label: "Accès complets remis", sub: "Votre site est à vous, clé en main." },
 ];
 
 const DistinguishSection = () => (

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
-import { ShoppingCart, Check, Package, CreditCard, BarChart3, GraduationCap, ArrowRight } from "lucide-react";
+import { ShoppingCart, Check, Package, CreditCard, BarChart3, Headset, ArrowRight } from "lucide-react";
 import { CtaSection } from "@/components/ui/cta-section";
 import { FeaturesBento } from "@/components/ui/features-bento";
 import { BorderBeam } from "@/components/ui/border-beam";
@@ -22,7 +22,7 @@ const bentoItems = [
   { title: "Catalogue produits", description: "Gérez vos produits, variantes, photos et descriptions facilement depuis votre tableau de bord.", icon: <Package className="h-5 w-5" /> },
   { title: "Paiement sécurisé", description: "Acceptez CB, PayPal et autres moyens de paiement en toute sécurité pour vos clients.", icon: <CreditCard className="h-5 w-5" /> },
   { title: "Analytics intégrés", description: "Suivez vos ventes, panier moyen et taux de conversion en temps réel.", icon: <BarChart3 className="h-5 w-5" /> },
-  { title: "Formation incluse", description: "On vous forme à la gestion de votre boutique. Vous êtes autonome dès le jour 1.", icon: <GraduationCap className="h-5 w-5" /> },
+  { title: "Support inclus", description: "On reste disponible pour répondre à vos questions et vous accompagner après la mise en ligne.", icon: <Headset className="h-5 w-5" /> },
 ];
 
 const cibles = ["Boutiques et commerces de détail", "Artisans créateurs", "Producteurs locaux", "Marques indépendantes", "Associations vendant des produits"];
@@ -43,7 +43,7 @@ const comparisonRows = [
   { feature: "Gestion des stocks", vitrine: false, ecommerce: true },
   { feature: "Dashboard commandes", vitrine: false, ecommerce: true },
   { feature: "Facturation automatique", vitrine: false, ecommerce: true },
-  { feature: "Formation 2h incluse", vitrine: false, ecommerce: true },
+  { feature: "Support post-livraison", vitrine: false, ecommerce: true },
 ];
 
 const faqs = [
@@ -257,7 +257,7 @@ const SiteEcommercePage = () => (
       </div>
     </section>
 
-    <CtaSection title="Lancez votre boutique en ligne" description="14 jours, 747€, tout inclus. Formation et support compris." buttonText="Demander un devis gratuit" buttonUrl="/contact?service=ecommerce" />
+    <CtaSection title="Lancez votre boutique en ligne" description="14 jours, 747€, tout inclus. Support compris." buttonText="Demander un devis gratuit" buttonUrl="/contact?service=ecommerce" />
   </Layout>
 );
 

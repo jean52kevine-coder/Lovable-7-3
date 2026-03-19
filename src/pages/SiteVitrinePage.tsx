@@ -34,17 +34,17 @@ const profils = [
 ];
 
 const timelineSteps = [
-  { day: "Jour 1", title: "Premier échange", text: "Appel découverte 30min offert. On apprend à connaître votre activité, vos clients, vos objectifs. Aucun engagement." },
+  { day: "Jour 1", title: "Premier échange", text: "On apprend à vous connaître — par email ou par appel, comme vous préférez. On cerne votre activité, vos objectifs, votre cible. Aucun engagement." },
   { day: "Jour 2-3", title: "Maquette", text: "On crée une maquette sur-mesure. Vous la recevez, vous donnez vos retours, on ajuste. Rien n'est codé avant votre validation." },
   { day: "Jour 4-11", title: "Développement", text: "Votre site prend vie. Code propre, rapide, SEO optimisé. Vous suivez l'avancement." },
   { day: "Jour 12-13", title: "Révisions", text: "Vous testez sur tous vos appareils. On ajuste jusqu'à ce que tout soit parfait." },
-  { day: "Jour 14", title: "Livraison", text: "Mise en ligne, formation à l'utilisation, remise de tous les accès. Votre site est en ligne." },
+  { day: "Jour 14", title: "Livraison", text: "Mise en ligne, tests finaux, remise des accès. Votre site est en ligne. On s'assure que tout fonctionne parfaitement avant de vous livrer les clés." },
 ];
 
 const faqs = [
   { q: "Combien de temps pour avoir mon site ?", a: "Votre site est livré en 14 jours ouvrés après validation du contenu." },
   { q: "Dois-je fournir le contenu ?", a: "Nous pouvons rédiger le contenu pour vous. Vous n'avez qu'à valider." },
-  { q: "Le site est-il modifiable ensuite ?", a: "Oui, vous pouvez demander des modifications ou souscrire à notre offre maintenance." },
+  { q: "Que se passe-t-il après la livraison ?", a: "On vous remet tous les accès à votre site. Si vous souhaitez qu'on continue à le gérer pour vous — mises à jour, sécurité, modifications — nos formules de maintenance sont là pour ça. Sinon, votre site est à vous, clé en main." },
   { q: "Y a-t-il des frais cachés ?", a: "Aucun. Le prix affiché est le prix final. L'hébergement est inclus la première année." },
 ];
 

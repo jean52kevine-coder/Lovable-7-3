@@ -14,8 +14,8 @@ export default function ChatWidget() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
-      <AnimatePresence>
+    <div className="fixed bottom-6 right-6 z-[9999] flex flex-col items-end gap-3">
+      <AnimatePresence mode="wait">
         {open && (
           <motion.div
             initial={{ opacity: 0, y: 16, scale: 0.95 }}
@@ -44,7 +44,7 @@ export default function ChatWidget() {
                   </div>
                 </div>
               </div>
-              <button onClick={() => setOpen(false)} className="text-white/30 hover:text-white/70 transition-colors p-1">
+              <button type="button" onClick={() => setOpen(false)} className="text-white/30 hover:text-white/70 transition-colors p-1">
                 <X size={16} />
               </button>
             </div>
@@ -78,13 +78,13 @@ export default function ChatWidget() {
                   style={{ fontFamily: "'DM Sans', sans-serif" }}
                 >
                   <Mail size={14} className="text-[#1DB954]" />
-                  contact@altera.fr
+                  contact@altéra.fr
                 </a>
               </div>
 
               <div className="flex items-center gap-2 mt-3 text-white/25 text-xs" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                 <Clock size={11} />
-                <span>Disponible — Grand Est, France</span>
+                <span>Disponible — Reims, Grand Est</span>
               </div>
             </div>
           </motion.div>
@@ -100,6 +100,7 @@ export default function ChatWidget() {
         )}
         <button
           onClick={handleOpen}
+          type="button"
           className="relative w-14 h-14 bg-[#1DB954] hover:bg-[#17a349] rounded-full shadow-lg shadow-[#1DB954]/20 flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95"
           aria-label="Ouvrir le chat"
         >

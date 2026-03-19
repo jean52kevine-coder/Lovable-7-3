@@ -1,9 +1,8 @@
 import { useRef, useEffect, useState, useMemo } from "react";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Spotlight } from "@/components/ui/spotlight";
-import { NumberTicker } from "@/components/ui/number-ticker";
 import { HeroLaptopIllustration } from "@/components/illustrations/SvgIllustrations";
 import BlurReveal from "@/components/animations/BlurReveal";
 
@@ -65,10 +64,10 @@ const HeroSection = () => {
   const revealY = useTransform(scrollYProgress, [0.65, 0.85], [40, 0]);
 
   const stats = useMemo(() => [
-    { value: 50, suffix: "+", label: "sites livrés" },
-    { value: 14, suffix: "j", label: "délai moyen" },
-    { value: 98, suffix: "%", label: "clients satisfaits" },
-    { value: 497, suffix: "€", label: "dès" },
+    { value: "50+", label: "Sites livrés" },
+    { value: "14j", label: "Délai moyen" },
+    { value: "90%", label: "Clients satisfaits" },
+    { value: "497€", label: "À partir de" },
   ], []);
 
   const scrollHeight = isMobile ? "200vh" : "300vh";
@@ -134,7 +133,7 @@ const HeroSection = () => {
 
           {/* Headline */}
           <BlurReveal delay={0.1}>
-            <h1 className="heading-display leading-tight mb-2" style={{ fontSize: "clamp(32px, 5vw, 56px)", letterSpacing: "0.02em" }}>
+            <h1 className="heading-display text-[2.4rem] leading-[1.05] text-center lg:text-left mb-2 md:leading-tight" style={{ letterSpacing: "0.02em" }}>
               LE SITE WEB DES<br /><span className="text-primary">PME LOCALES</span>
             </h1>
           </BlurReveal>
@@ -171,18 +170,18 @@ const HeroSection = () => {
             </div>
           </BlurReveal>
 
-          {/* Stats bar with NumberTicker */}
+          {/* Stats bar */}
           <BlurReveal delay={0.5}>
-            <div className="flex flex-wrap justify-center gap-x-0 gap-y-2 font-dm text-[13px]" style={{ color: "rgba(255,255,255,0.5)" }}>
-              {stats.map((s, i) => (
-                <span key={i} className="flex items-center">
-                  {i > 0 && <span className="mx-3" style={{ color: "rgba(255,255,255,0.2)" }}>|</span>}
-                  <span className="font-semibold text-white mr-1">
-                    {s.label === "dès" ? s.label + " " : ""}
-                    <NumberTicker value={s.value} />{s.suffix}
+            <div className="grid grid-cols-2 gap-6 sm:flex sm:flex-row flex-wrap justify-center items-center md:gap-16 py-8">
+              {stats.map((s) => (
+                <div key={s.label} className="flex flex-col items-center text-center min-w-[120px]">
+                  <span className="text-[#1DB954] font-black text-3xl md:text-4xl" style={{ fontFamily: "'Barlow', sans-serif" }}>
+                    {s.value}
                   </span>
-                  {s.label !== "dès" && <span>{s.label}</span>}
-                </span>
+                  <span className="text-white/50 text-sm mt-1" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                    {s.label}
+                  </span>
+                </div>
               ))}
             </div>
           </BlurReveal>

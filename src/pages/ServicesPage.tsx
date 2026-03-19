@@ -23,7 +23,7 @@ const services = [
   {
     icon: ShoppingCart, title: "Site E-commerce", price: "747 €",
     desc: "Vendez en ligne avec une boutique performante, sécurisée et facile à gérer.",
-    features: ["Boutique complète", "Paiement sécurisé", "Gestion des stocks", "Tableau de bord", "Formation incluse"],
+    features: ["Boutique complète", "Paiement sécurisé", "Gestion des stocks", "Tableau de bord", "Support inclus"],
     link: "/services/site-ecommerce", popular: true,
   },
   {
@@ -147,10 +147,10 @@ const ServicesPage = () => (
 
     <CtaSection
       title="Prêt à lancer votre projet ?"
-      description="Consultation 30min offerte, devis gratuit et sans engagement."
+      description="Échange découverte offert — par email ou par appel."
       buttonText="Demander un devis gratuit"
       buttonUrl="/contact"
-      items={["Réponse sous 24h", "Sans engagement", "Devis personnalisé", "Prix fixe garanti", "Formation incluse"]}
+      items={["Réponse sous 24h", "Sans engagement", "Devis personnalisé", "Prix fixe garanti", "Support inclus"]}
     />
   </Layout>
 );

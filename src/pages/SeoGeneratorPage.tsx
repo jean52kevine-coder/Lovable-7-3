@@ -12,7 +12,7 @@ const PAGES = [
   { name: "Maintenance", content: "Forfaits maintenance web dès 29€/mois sans engagement : mises à jour, sauvegardes, monitoring, support. 3 formules : Essentielle, Pro, Premium." },
   { name: "Tarifs", content: "Grille tarifaire ALTÉRA : site vitrine 497€, e-commerce 747€, maintenance dès 29€/mois. Paiement en plusieurs fois sans frais. Tout inclus, zéro surprise." },
   { name: "Pourquoi un site", content: "Pourquoi avoir un site web professionnel en 2025 : 97% des consommateurs recherchent en ligne, visibilité Google, crédibilité, génération de leads 24/7." },
-  { name: "Contact", content: "Page contact ALTÉRA : formulaire de demande de devis gratuit, appel découverte 30min offert, réponse sous 24h." },
+  { name: "Contact", content: "Page contact ALTÉRA : formulaire de demande de devis gratuit, échange découverte offert, réponse sous 24h." },
 ];
 
 type SeoResult = { title: string; description: string; keywords: string };
