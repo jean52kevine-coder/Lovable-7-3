@@ -1,152 +1,96 @@
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-import RotatingWords from "@/components/RotatingWords";
-import BlurReveal from "@/components/animations/BlurReveal";
-import heroVideo from "@/assets/videos/hero-promo.mp4";
+import { Link } from 'react-router-dom';
+import RotatingWords from '@/components/RotatingWords';
+import ScrollVideo from '@/components/ScrollVideo';
+import heroVideo from '@/assets/videos/hero-promo.mp4';
+import heroPoster from '@/assets/hero-home.jpg';
 
-const heroWords = ["PME LOCALES", "ARTISANS", "COMMERÇANTS", "INDÉPENDANTS"];
+const heroWords = ['PME LOCALES', 'ARTISANS', 'COMMERÇANTS', 'INDÉPENDANTS'];
 
-const HeroHome = () => (
-  <section className="relative min-h-[90vh] flex items-center overflow-hidden" style={{ backgroundColor: "hsl(var(--hero-bg))" }}>
-    {/* Background video */}
-    <div className="absolute inset-0 z-0">
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        className="absolute inset-0 w-full h-full object-cover"
-        style={{ opacity: 0.35 }}
-      >
-        <source src={heroVideo} type="video/mp4" />
-      </video>
-
-      {/* Dark overlay gradient for readability */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: `linear-gradient(
-            180deg,
-            hsl(var(--hero-bg) / 0.7) 0%,
-            hsl(var(--hero-bg) / 0.4) 40%,
-            hsl(var(--hero-bg) / 0.6) 70%,
-            hsl(var(--hero-bg) / 0.95) 100%
-          )`,
-        }}
-      />
-
-      {/* Green accent overlay */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: "radial-gradient(ellipse at 30% 20%, hsl(var(--primary) / 0.08) 0%, transparent 60%)",
-        }}
-      />
-    </div>
-
-    {/* Glow orbs */}
-    <div
-      className="absolute top-[-200px] left-[-100px] w-[600px] h-[600px] rounded-full pointer-events-none z-[1]"
-      style={{ background: "hsl(var(--primary) / 0.06)", filter: "blur(120px)" }}
-    />
-    <div
-      className="absolute bottom-[-150px] right-[-80px] w-[500px] h-[500px] rounded-full pointer-events-none z-[1]"
-      style={{ background: "hsl(var(--primary) / 0.04)", filter: "blur(100px)" }}
-    />
-
-    {/* Vignette */}
-    <div className="absolute inset-0 pointer-events-none z-[2]" style={{ background: "radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%)" }} />
-
+const HeroHome = () => {
+  const heroContent = (
     <div className="section-container relative z-10 py-20 flex flex-col items-center text-center">
-      <BlurReveal delay={0}>
-        <span
-          className="inline-block font-dm text-[13px] font-semibold px-4 py-1.5 rounded-full text-primary mb-6"
-          style={{ background: "hsl(var(--primary) / 0.12)", border: "1px solid hsl(var(--primary) / 0.25)", backdropFilter: "blur(8px)" }}
-        >
-          ⚡ Livraison en 14 jours
+      <span
+        className="inline-flex items-center gap-2 mb-8 bg-white/5 border border-white/10 backdrop-blur-sm rounded-full px-4 py-2"
+      >
+        <span className="flex h-2 w-2 relative">
+          <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-[#1DB954] opacity-75" />
+          <span className="relative inline-flex h-2 w-2 rounded-full bg-[#1DB954]" />
         </span>
-      </BlurReveal>
+        <span
+          className="text-white/70 text-xs tracking-[0.2em] uppercase"
+          style={{ fontFamily: "'DM Sans', sans-serif" }}
+        >
+          Livraison en 14 jours
+        </span>
+      </span>
 
-      <BlurReveal delay={0.1}>
-        <h1 className="heading-display leading-[1.05] mb-4" style={{ fontSize: "clamp(36px, 5.5vw, 64px)" }}>
-          LE SITE WEB<br />
-          <span className="flex justify-center items-center w-full overflow-visible">DES <RotatingWords words={heroWords} /></span>
-        </h1>
-      </BlurReveal>
+      <h1 className="heading-display leading-[1.05] mb-4" style={{ fontSize: 'clamp(36px, 5.5vw, 64px)' }}>
+        LE SITE WEB
+        <br />
+        <span className="flex justify-center items-center w-full overflow-visible whitespace-nowrap">
+          DES <RotatingWords words={heroWords} />
+        </span>
+      </h1>
 
-      <BlurReveal delay={0.2}>
-        <p className="font-dm text-lg max-w-[480px] mx-auto mb-8" style={{ color: "hsl(var(--muted-foreground))" }}>
-          Design sur-mesure, livré en 14 jours.<br className="hidden sm:block" />
-          Artisans, commerçants, PME — on s'occupe de tout.
-        </p>
-      </BlurReveal>
+      <p className="font-dm text-lg max-w-[480px] mx-auto mb-8 text-white/70">
+        Design sur-mesure, livré en 14 jours.
+        <br className="hidden sm:block" />
+        Artisans, commerçants, PME — on s'occupe de tout.
+      </p>
 
-      <BlurReveal delay={0.3}>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-          <Link to="/contact" className="btn-primary text-center">
-            Demander un devis <ArrowRight className="ml-2" size={18} />
-          </Link>
-          <Link
-            to="/tarifs"
-            className="inline-flex items-center justify-center font-bold px-7 py-3.5 rounded-lg text-white hover:text-primary transition-colors"
-            style={{ border: "1px solid hsl(var(--border))", background: "hsl(var(--card) / 0.5)", backdropFilter: "blur(8px)" }}
-          >
-            Voir les tarifs
-          </Link>
-        </div>
-      </BlurReveal>
+      <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+        <Link
+          to="/contact"
+          className="group relative inline-flex items-center gap-2.5 bg-[#1DB954] hover:bg-[#17a349] text-black font-bold px-8 py-4 rounded-xl transition-all duration-200 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(29,185,84,0.4)] active:scale-[0.98] overflow-hidden text-sm"
+        >
+          <div className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />
+          <span className="relative">Demander un devis gratuit</span>
+          <span className="relative text-lg">→</span>
+        </Link>
+        <Link
+          to="/tarifs"
+          className="inline-flex items-center gap-2 border border-white/15 hover:border-[#1DB954]/40 text-white/70 hover:text-white px-8 py-4 rounded-xl transition-all duration-200 hover:bg-white/[0.03] backdrop-blur-sm text-sm font-medium"
+        >
+          Voir les tarifs →
+        </Link>
+      </div>
 
-      <BlurReveal delay={0.4}>
-        <div className="flex flex-wrap justify-center gap-6 font-dm text-sm" style={{ color: "hsl(var(--muted-foreground))" }}>
-          <span><strong className="text-white">50+</strong> sites livrés</span>
-          <span><strong className="text-white">14j</strong> délai moyen</span>
-          <span><strong className="text-white">98%</strong> satisfaits</span>
-        </div>
-      </BlurReveal>
-
-      {/* Floating badges */}
-      <div className="hidden md:block absolute bottom-8 left-4 lg:left-[8%] z-20 space-y-4">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-14 pt-10 border-t border-white/8 max-w-lg mx-auto sm:max-w-none w-full">
         {[
-          { text: "✓ 14 jours", delay: "0s" },
-          { text: "✓ 497€", delay: "1.5s" },
-        ].map((badge, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.8 + i * 0.2, duration: 0.5 }}
-            className="animate-float font-dm text-xs font-semibold px-3 py-2 rounded-lg text-primary"
-            style={{
-              background: "hsl(var(--primary) / 0.12)",
-              border: "1px solid hsl(var(--primary) / 0.25)",
-              backdropFilter: "blur(8px)",
-              animationDelay: badge.delay,
-            }}
-          >
-            {badge.text}
-          </motion.div>
+          { val: '14j', label: 'Livraison' },
+          { val: '497€', label: 'À partir de' },
+          { val: '100%', label: 'Sur-mesure' },
+          { val: '24h', label: 'Réponse' },
+        ].map((s) => (
+          <div key={s.label} className="text-center">
+            <div
+              className="text-[#1DB954] font-black text-2xl leading-none"
+              style={{ fontFamily: "'Barlow', sans-serif" }}
+            >
+              {s.val}
+            </div>
+            <div
+              className="text-white/35 text-xs mt-1.5"
+              style={{ fontFamily: "'DM Sans', sans-serif" }}
+            >
+              {s.label}
+            </div>
+          </div>
         ))}
       </div>
-      <div className="hidden md:block absolute bottom-10 right-4 lg:right-[8%] z-20">
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 1.2, duration: 0.5 }}
-          className="animate-float font-dm text-xs font-semibold px-3 py-2 rounded-lg text-primary"
-          style={{
-            background: "hsl(var(--primary) / 0.12)",
-            border: "1px solid hsl(var(--primary) / 0.25)",
-            backdropFilter: "blur(8px)",
-            animationDelay: "3s",
-          }}
-        >
-          ✓ SEO
-        </motion.div>
-      </div>
     </div>
-  </section>
-);
+  );
+
+  return (
+    <section className="relative overflow-hidden" style={{ backgroundColor: 'hsl(var(--hero-bg))' }}>
+      <ScrollVideo
+        src={heroVideo}
+        scrollHeight="500vh"
+        overlayContent={heroContent}
+        poster={heroPoster}
+      />
+    </section>
+  );
+};
 
 export default HeroHome;
