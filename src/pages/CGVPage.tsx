@@ -12,7 +12,7 @@ const articles = [
     list: [
       "Création de site vitrine à partir de 497€ TTC",
       "Création de site e-commerce à partir de 747€ TTC",
-      "Maintenance mensuelle à partir de 39€/mois",
+      "Maintenance mensuelle à partir de 29€/mois",
       "Tout devis accepté vaut commande ferme.",
     ],
   },
@@ -60,19 +60,19 @@ const articles = [
 
 const CGVPage = () => (
   <Layout>
-    <section className="py-20" style={{ backgroundColor: "#0a0f0a" }}>
+    <section className="py-10 md:py-20" style={{ backgroundColor: "#0a0f0a" }}>
       <div className="section-container max-w-4xl mx-auto">
         <Link to="/" className="inline-block mb-8 text-sm transition-colors" style={{ color: "rgba(255,255,255,0.6)" }}>
           ← Retour à l'accueil
         </Link>
-        <h1 className="heading-display text-3xl md:text-5xl mb-3">Conditions Générales de Vente</h1>
+        <h1 className="heading-display text-xl sm:text-2xl md:text-3xl md:text-2xl sm:text-xl sm:text-2xl md:text-3xl md:text-5xl mb-3">Conditions Générales de Vente</h1>
         <p className="font-dm mb-10" style={{ color: "rgba(255,255,255,0.75)" }}>
           ALTÉRA Digital Studio — En vigueur au 1er janvier 2026
         </p>
 
         <div className="space-y-8">
           {articles.map((article) => (
-            <article key={article.title} className="rounded-xl p-6" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+            <article key={article.title} className="rounded-xl p-4 md:p-6" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
               <h2 className="font-dm font-semibold text-lg mb-3" style={{ color: "#1DB954" }}>{article.title}</h2>
               {article.content && <p className="font-dm leading-relaxed" style={{ color: "rgba(255,255,255,0.8)" }}>{article.content}</p>}
               {article.list && (

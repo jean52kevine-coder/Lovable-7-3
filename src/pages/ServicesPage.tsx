@@ -27,7 +27,7 @@ const services = [
     link: "/services/site-ecommerce", popular: true,
   },
   {
-    icon: Wrench, title: "Maintenance & SEO", price: "dès 39 €/mois",
+    icon: Wrench, title: "Maintenance & SEO", price: "dès 29 €/mois",
     desc: "Gardez votre site rapide, sécurisé et visible sur Google en permanence.",
     features: ["Mises à jour régulières", "Sauvegardes automatiques", "Support technique", "Monitoring 24/7", "Rapport mensuel"],
     link: "/services/maintenance", popular: false,
@@ -48,9 +48,9 @@ const ServicesPage = () => (
     <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-[#0a0f0a]">
       <HeroBackground variant="matrix" />
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f0a]/20 via-transparent to-[#0a0f0a]/80 pointer-events-none z-[1]" />
-      <div className="relative z-10 container mx-auto px-6 py-24 text-center">
+      <div className="relative z-10 container mx-auto px-6 py-12 md:py-24 text-center">
         <BlurReveal>
-          <h1 className="heading-display text-4xl md:text-6xl mb-6">
+          <h1 className="heading-display text-3xl sm:text-4xl md:text-6xl mb-6">
             NOS <RotatingWords words={["SERVICES", "SOLUTIONS", "OFFRES", "FORMULES"]} />
           </h1>
         </BlurReveal>
@@ -67,7 +67,7 @@ const ServicesPage = () => (
         </BlurReveal>
 
         <ScaleSection>
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.15}>
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={0.15}>
             {services.map((s, i) => (
               <motion.div key={i} variants={itemVariants} className="relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5 group">
                 <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />

@@ -52,7 +52,7 @@ const TarifsPage = () => (
     <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-[#0a0f0a]">
       <HeroBackground variant="circuit" />
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f0a]/20 via-transparent to-[#0a0f0a]/80 pointer-events-none z-[1]" />
-      <div className="relative z-10 container mx-auto px-6 py-24 text-center">
+      <div className="relative z-10 container mx-auto px-6 py-12 md:py-24 text-center">
         <BlurReveal>
           <span
             className="inline-block font-dm text-[13px] font-semibold px-4 py-1.5 rounded-full text-primary mb-6"
@@ -62,12 +62,12 @@ const TarifsPage = () => (
           </span>
         </BlurReveal>
         <BlurReveal delay={0.1}>
-          <h1 className="heading-display text-4xl md:text-6xl mb-4">
+          <h1 className="heading-display text-2xl sm:text-xl sm:text-2xl md:text-3xl md:text-4xl md:text-xl sm:text-2xl md:text-3xl sm:text-4xl md:text-6xl mb-4">
             DES PRIX <RotatingWords words={["CLAIRS", "FIXES", "JUSTES", "TRANSPARENTS"]} />
           </h1>
         </BlurReveal>
         <BlurReveal delay={0.2}>
-          <h2 className="heading-display text-3xl md:text-5xl mb-6 text-primary">ZÉRO SURPRISE.</h2>
+          <h2 className="heading-display text-xl sm:text-2xl md:text-3xl md:text-2xl sm:text-xl sm:text-2xl md:text-3xl md:text-5xl mb-6 text-primary">ZÉRO SURPRISE.</h2>
         </BlurReveal>
         <BlurReveal delay={0.3}>
           <p className="font-dm text-lg max-w-xl mx-auto text-muted-foreground">
@@ -81,7 +81,7 @@ const TarifsPage = () => (
     <section className="py-[80px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-10">
-          <h2 className="heading-display text-3xl md:text-4xl">Création de Site Web</h2>
+          <h2 className="heading-display text-xl sm:text-2xl md:text-3xl md:text-2xl sm:text-xl sm:text-2xl md:text-3xl md:text-4xl">Création de Site Web</h2>
           <p className="text-muted-foreground text-base max-w-xl mx-auto font-dm mt-3">Choisissez la formule adaptée à votre projet. Prix unique, sans abonnement caché.</p>
         </BlurReveal>
         <ScaleSection>
@@ -94,10 +94,10 @@ const TarifsPage = () => (
     <section className="py-[80px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-10">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">FACILITEZ VOTRE </span><span className="text-[#1DB954] whitespace-nowrap inline">INVESTISSEMENT</span></h2>
+          <h2 className="heading-display text-2xl md:text-xl sm:text-2xl md:text-3xl"><span className="inline">FACILITEZ VOTRE </span><span className="text-[#1DB954] whitespace-nowrap inline">INVESTISSEMENT</span></h2>
         </BlurReveal>
         <ScaleSection>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {[
               { title: "Vitrine en 2x", lines: ["248,50€ à la commande", "248,50€ à la livraison"] },
               { title: "E-commerce en 3x", lines: ["249€ à la commande", "249€ à J+10", "249€ à la livraison"] },
@@ -130,7 +130,7 @@ const TarifsPage = () => (
     <section className="py-[80px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-10">
-          <h2 className="heading-display text-3xl md:text-4xl"><span className="inline">Formules </span><span className="text-[#1DB954] whitespace-nowrap inline">Maintenance</span></h2>
+          <h2 className="heading-display text-xl sm:text-2xl md:text-3xl md:text-2xl sm:text-xl sm:text-2xl md:text-3xl md:text-4xl"><span className="inline">Formules </span><span className="text-[#1DB954] whitespace-nowrap inline">Maintenance</span></h2>
           <p className="text-muted-foreground text-base max-w-xl mx-auto font-dm mt-3">Gardez votre site à jour, sécurisé et performant. Sans engagement.</p>
         </BlurReveal>
         <ScaleSection>
@@ -143,7 +143,7 @@ const TarifsPage = () => (
     <section className="py-[80px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container max-w-2xl mx-auto">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">VOS QUESTIONS </span><span className="text-[#1DB954] whitespace-nowrap inline">NOS RÉPONSES</span></h2>
+          <h2 className="heading-display text-2xl md:text-xl sm:text-2xl md:text-3xl"><span className="inline">VOS QUESTIONS </span><span className="text-[#1DB954] whitespace-nowrap inline">NOS RÉPONSES</span></h2>
         </BlurReveal>
         <div className="space-y-4">
           {faqs.map((faq, i) => <FAQItem key={i} faq={faq} index={i} />)}

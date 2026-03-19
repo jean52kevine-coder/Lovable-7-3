@@ -78,17 +78,17 @@ const SiteEcommercePage = () => (
     <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-[#0a0f0a]">
       <HeroBackground variant="dataflow" />
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f0a]/20 via-transparent to-[#0a0f0a]/80 pointer-events-none z-[1]" />
-      <div className="relative z-10 container mx-auto px-6 py-24 flex flex-col lg:flex-row items-center gap-10">
+      <div className="relative z-10 container mx-auto px-6 py-12 md:py-24 flex flex-col md:flex-row items-center gap-10">
         <div className="text-center lg:text-left flex-1">
           <BlurReveal>
             <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto lg:mx-0 mb-6"><ShoppingCart className="text-primary" size={32} /></div>
           </BlurReveal>
           <BlurReveal delay={0.1}>
-            <h1 className="heading-display text-4xl md:text-6xl mb-4">
+            <h1 className="heading-display text-2xl sm:text-xl sm:text-2xl md:text-3xl md:text-4xl md:text-xl sm:text-2xl md:text-3xl sm:text-4xl md:text-6xl mb-4">
               SITE <RotatingWords words={["E-COMMERCE", "BOUTIQUE", "SHOP", "MARCHAND"]} />
             </h1>
           </BlurReveal>
-          <BlurReveal delay={0.3}><p className="text-primary heading-display text-3xl mb-4">747 €</p></BlurReveal>
+          <BlurReveal delay={0.3}><p className="text-primary heading-display text-xl sm:text-2xl md:text-3xl mb-4">747 €</p></BlurReveal>
           <BlurReveal delay={0.4}><p className="font-dm text-lg max-w-xl mx-auto lg:mx-0 text-muted-foreground">Vendez vos produits en ligne avec une boutique performante, sécurisée et facile à gérer.</p></BlurReveal>
         </div>
         <BlurReveal delay={0.3} className="hidden md:block flex-1">
@@ -101,14 +101,14 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">CE QUI EST </span><span className="text-[#1DB954] whitespace-nowrap inline">INCLUS</span></h2>
+          <h2 className="heading-display text-xl sm:text-2xl md:text-3xl"><span className="inline">CE QUI EST </span><span className="text-[#1DB954] whitespace-nowrap inline">INCLUS</span></h2>
         </BlurReveal>
         <ScaleSection>
           <div className="relative max-w-2xl mx-auto rounded-2xl">
             <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
-            <div className="relative z-10 rounded-2xl p-8 md:p-10 overflow-hidden" style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}>
+            <div className="relative z-10 rounded-2xl p-5 md:p-8 md:p-10 overflow-hidden" style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}>
               <BorderBeam size={300} duration={20} />
-              <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-4" staggerDelay={0.08}>
+              <StaggerContainer className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-4" staggerDelay={0.08}>
                 {inclus.map((item, i) => (
                   <motion.div key={i} className="flex items-center gap-3" variants={itemVariants}>
                     <Check className="text-primary flex-shrink-0" size={20} /><span className="text-foreground text-sm">{item}</span>
@@ -125,10 +125,10 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">FONCTIONNALITÉS </span><span className="text-[#1DB954] whitespace-nowrap inline">CLÉS</span></h2>
+          <h2 className="heading-display text-xl sm:text-2xl md:text-3xl"><span className="inline">FONCTIONNALITÉS </span><span className="text-[#1DB954] whitespace-nowrap inline">CLÉS</span></h2>
         </BlurReveal>
         <ScaleSection>
-          <FeaturesBento items={bentoItems} className="max-w-4xl mx-auto grid-cols-1 md:grid-cols-2" />
+          <FeaturesBento items={bentoItems} className="max-w-4xl mx-auto grid-cols-1 md:grid-cols-1 sm:grid-cols-2" />
         </ScaleSection>
       </div>
     </section>
@@ -137,7 +137,7 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">À QUI ÇA </span><span className="text-[#1DB954] whitespace-nowrap inline">S'ADRESSE</span></h2>
+          <h2 className="heading-display text-xl sm:text-2xl md:text-3xl"><span className="inline">À QUI ÇA </span><span className="text-[#1DB954] whitespace-nowrap inline">S'ADRESSE</span></h2>
         </BlurReveal>
         <ScaleSection>
           <StaggerContainer className="flex flex-wrap justify-center gap-4" staggerDelay={0.1}>
@@ -156,15 +156,15 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-14">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">FAITS POUR DES GENS </span><span className="text-[#1DB954] whitespace-nowrap inline">COMME VOUS</span></h2>
+          <h2 className="heading-display text-xl sm:text-2xl md:text-3xl"><span className="inline">FAITS POUR DES GENS </span><span className="text-[#1DB954] whitespace-nowrap inline">COMME VOUS</span></h2>
         </BlurReveal>
         <ScaleSection>
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.12}>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={0.12}>
             {profils.map((p, i) => (
               <motion.div key={i} variants={itemVariants} className="relative rounded-xl">
                 <GlowingEffect spread={30} glow proximity={50} inactiveZone={0.01} borderWidth={2} disabled={false} />
-                <div className="relative z-10 rounded-xl p-6 h-full" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
-                  <span className="text-3xl block mb-4">{p.emoji}</span>
+                <div className="relative z-10 rounded-xl p-4 md:p-6 h-full" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+                  <span className="text-xl sm:text-2xl md:text-3xl block mb-4">{p.emoji}</span>
                   <h3 className="font-display font-black text-white mb-3">{p.name}</h3>
                   <p className="font-dm text-sm leading-relaxed mb-4" style={{ color: "rgba(255,255,255,0.6)" }}>{p.text}</p>
                 </div>
@@ -179,14 +179,15 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-14">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">VITRINE OU </span><span className="text-[#1DB954] whitespace-nowrap inline">E-COMMERCE ?</span></h2>
+          <h2 className="heading-display text-xl sm:text-2xl md:text-3xl"><span className="inline">VITRINE OU </span><span className="text-[#1DB954] whitespace-nowrap inline">E-COMMERCE ?</span></h2>
           <p className="font-dm text-muted-foreground mt-3">Choisissez selon votre besoin.</p>
         </BlurReveal>
         <ScaleSection>
-          <div className="relative max-w-3xl mx-auto rounded-xl overflow-hidden">
-            <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
-            <div className="relative z-10" style={{ border: "1px solid #1a2e1a" }}>
-              <table className="w-full text-sm">
+          <div className="overflow-x-auto rounded-xl -mx-4 px-4 md:mx-0 md:px-0">
+            <div className="relative max-w-3xl mx-auto rounded-xl overflow-hidden min-w-[600px]">
+              <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
+              <div className="relative z-10" style={{ border: "1px solid #1a2e1a" }}>
+                <table className="w-full text-sm">
                 <thead>
                   <tr style={{ backgroundColor: "#0d130d" }}>
                     <th className="text-left p-4 font-dm font-semibold text-muted-foreground">Fonctionnalité</th>
@@ -203,7 +204,8 @@ const SiteEcommercePage = () => (
                     </tr>
                   ))}
                 </tbody>
-              </table>
+                </table>
+              </div>
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
@@ -225,7 +227,7 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container text-center max-w-2xl mx-auto">
         <BlurReveal>
-          <h2 className="heading-display text-2xl md:text-3xl mb-6"><span className="inline">POURQUOI </span><span className="text-[#1DB954] whitespace-nowrap inline">MAINTENANT</span><span className="inline"> ?</span></h2>
+          <h2 className="heading-display text-xl sm:text-2xl md:text-3xl mb-6"><span className="inline">POURQUOI </span><span className="text-[#1DB954] whitespace-nowrap inline">MAINTENANT</span><span className="inline"> ?</span></h2>
           <p className="font-dm text-muted-foreground text-base leading-relaxed">Le e-commerce en France croît de <span className="text-primary font-semibold">15% par an</span>. Vos clients achètent en ligne — soyez là où ils cherchent.</p>
         </BlurReveal>
       </div>
@@ -235,7 +237,7 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container max-w-2xl mx-auto">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">QUESTIONS </span><span className="text-[#1DB954] whitespace-nowrap inline">FRÉQUENTES</span></h2>
+          <h2 className="heading-display text-xl sm:text-2xl md:text-3xl"><span className="inline">QUESTIONS </span><span className="text-[#1DB954] whitespace-nowrap inline">FRÉQUENTES</span></h2>
         </BlurReveal>
         <div className="space-y-4">
           {faqs.map((faq, i) => <FAQItem key={i} faq={faq} index={i} />)}

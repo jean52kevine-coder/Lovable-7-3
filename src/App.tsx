@@ -30,6 +30,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <div className="w-full max-w-full overflow-x-hidden">
         <ScrollToTop />
         <BackToTop />
         <AnimatePresence mode="wait">
@@ -49,6 +50,7 @@ const App = () => (
             </Routes>
           </Suspense>
         </AnimatePresence>
+        </div>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
