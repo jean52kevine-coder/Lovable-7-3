@@ -33,9 +33,9 @@ const Footer = () => (
   <footer className="relative border-t" style={{ borderColor: "hsl(var(--border-green))", backgroundColor: "hsl(var(--card-dark))" }}>
     <div className="section-container py-14 md:py-20">
       <BlurReveal>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
         {/* Brand */}
-        <div className="lg:col-span-4">
+        <div className="">
           <div className="flex items-center gap-2 mb-4">
             <AlteraLogo size="sm" />
           </div>
@@ -63,7 +63,7 @@ const Footer = () => (
         </div>
 
         {/* Services */}
-        <div className="lg:col-span-2">
+        <div className="">
           <h4 className="font-display font-bold text-foreground text-sm uppercase tracking-wider mb-5">Nos Services</h4>
           <ul className="space-y-3">
             {services.map(({ text, to }) => (
@@ -77,7 +77,7 @@ const Footer = () => (
         </div>
 
         {/* Navigation */}
-        <div className="lg:col-span-2">
+        <div className="">
           <h4 className="font-display font-bold text-foreground text-sm uppercase tracking-wider mb-5">Navigation</h4>
           <ul className="space-y-3">
             {about.map(({ text, to }) => (
@@ -91,7 +91,7 @@ const Footer = () => (
         </div>
 
         {/* Contact */}
-        <div className="lg:col-span-4">
+        <div className="">
           <h4 className="font-display font-bold text-foreground text-sm uppercase tracking-wider mb-5">Contact</h4>
           <ul className="space-y-4">
             {contactInfo.map(({ icon: Icon, text, href }) => (
@@ -119,7 +119,7 @@ const Footer = () => (
 
       {/* Bottom bar */}
       <div
-        className="mt-14 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4"
+        className="mt-14 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left"
         style={{ borderTop: "1px solid hsl(var(--border-green))" }}
       >
         <p className="font-dm text-xs text-muted-foreground">

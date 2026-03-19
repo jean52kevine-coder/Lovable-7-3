@@ -26,7 +26,7 @@ const cards = [
     Mockup: EcommerceMockup,
   },
   {
-    icon: Shield, badge: "dès 39€/mois", title: "MAINTENANCE & SEO",
+    icon: Shield, badge: "dès 29€/mois", title: "MAINTENANCE & SEO",
     desc: "Gardez votre site rapide, sécurisé et visible sur Google en permanence.",
     bullets: ["Mises à jour", "Sauvegardes auto", "Monitoring 24/7", "Rapport mensuel"],
     link: "/services/maintenance", popular: false,

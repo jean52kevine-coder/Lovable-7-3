@@ -83,7 +83,7 @@ const AnimatedStat = ({ stat, index }: { stat: typeof stats[0]; index: number })
   return (
     <div className="relative rounded-2xl">
       <GlowingEffect spread={30} glow proximity={50} inactiveZone={0.01} borderWidth={2} disabled={false} />
-      <div className="relative z-10 rounded-2xl p-6 text-center" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+      <div className="relative z-10 rounded-2xl p-4 md:p-6 text-center" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
         <Illustration />
         <div className="text-primary font-display font-black mb-2" style={{ fontSize: "clamp(48px, 6vw, 80px)" }}>
           <NumberTicker value={stat.numValue} />{stat.suffix}
@@ -120,7 +120,7 @@ const ROISimulator = () => {
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-10">
-          <h2 className="heading-display text-2xl md:text-3xl">
+          <h2 className="heading-display text-2xl md:text-xl sm:text-2xl md:text-3xl">
             <span className="inline">ESTIMEZ CE QUE VOUS PERDEZ </span><span className="text-[#1DB954] whitespace-nowrap inline">SANS SITE</span>
           </h2>
           <p className="font-dm text-muted-foreground mt-3">Estimation réaliste basée sur votre secteur et votre zone.</p>
@@ -133,7 +133,7 @@ const ROISimulator = () => {
           className="relative max-w-[760px] mx-auto rounded-2xl"
         >
           <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
-          <div className="relative z-10 rounded-2xl p-8 md:p-10" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+          <div className="relative z-10 rounded-2xl p-5 md:p-8 md:p-10" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
             <div className="space-y-6 mb-8">
               <div>
                 <label className="font-dm font-medium text-white text-sm block mb-2">Votre secteur</label>
@@ -172,7 +172,7 @@ const ROISimulator = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-3">
+            <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-4 mb-3">
               {[
                 { label: "Visiteurs estimés/mois", value: results.visiteurs_mois.toString() },
                 { label: "Nouveaux clients/mois", value: results.nouveaux_clients > 15 ? "15+" : results.nouveaux_clients.toString() },
@@ -180,7 +180,7 @@ const ROISimulator = () => {
                 { label: "Site remboursé en", value: `${results.mois_remboursement} mois` },
               ].map((r) => (
                 <div key={r.label} className="rounded-xl p-5 text-center" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
-                  <div className="text-3xl font-bold" style={{ color: "#1DB954" }}>{r.value}</div>
+                  <div className="text-xl sm:text-2xl md:text-3xl font-bold" style={{ color: "#1DB954" }}>{r.value}</div>
                   <p className="text-xs text-muted-foreground font-dm mt-2">{r.label}</p>
                 </div>
               ))}
@@ -202,9 +202,9 @@ const PourquoiPage = () => (
     <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-[#0a0f0a]">
       <HeroBackground variant="dataflow" />
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f0a]/20 via-transparent to-[#0a0f0a]/80 pointer-events-none z-[1]" />
-      <div className="relative z-10 container mx-auto px-6 py-24 text-center">
+      <div className="relative z-10 container mx-auto px-6 py-12 md:py-24 text-center">
         <BlurReveal>
-          <h1 className="heading-display text-4xl md:text-6xl mb-6">
+          <h1 className="heading-display text-2xl sm:text-xl sm:text-2xl md:text-3xl md:text-4xl md:text-xl sm:text-2xl md:text-3xl sm:text-4xl md:text-6xl mb-6">
             POURQUOI AVOIR UN <RotatingWords words={["SITE WEB", "SITE PRO", "SITE MODERNE", "SITE QUI CONVERTIT"]} />
           </h1>
         </BlurReveal>
@@ -217,10 +217,10 @@ const PourquoiPage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">LES CHIFFRES PARLENT </span><span className="text-[#1DB954] whitespace-nowrap inline">D'EUX-MÊMES</span></h2>
+          <h2 className="heading-display text-2xl md:text-xl sm:text-2xl md:text-3xl"><span className="inline">LES CHIFFRES PARLENT </span><span className="text-[#1DB954] whitespace-nowrap inline">D'EUX-MÊMES</span></h2>
         </BlurReveal>
         <ScaleSection>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {stats.map((s, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.5, delay: i * 0.1 }}>
                 <AnimatedStat stat={s} index={i} />
@@ -235,12 +235,12 @@ const PourquoiPage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container max-w-3xl mx-auto">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="text-destructive">SANS SITE</span> VS <span className="text-primary">AVEC SITE</span></h2>
+          <h2 className="heading-display text-2xl md:text-xl sm:text-2xl md:text-3xl"><span className="text-destructive">SANS SITE</span> VS <span className="text-primary">AVEC SITE</span></h2>
         </BlurReveal>
         <div className="space-y-4">
           {sansAvec.map((row, i) => (
             <BlurReveal key={i} delay={i * 0.1} direction="left">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="relative rounded-xl">
                   <GlowingEffect spread={30} glow proximity={50} inactiveZone={0.01} borderWidth={2} variant="white" disabled={false} />
                   <div className="relative z-10 flex items-center gap-3 bg-destructive/10 rounded-xl p-4">
@@ -265,12 +265,12 @@ const PourquoiPage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container">
         <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl">6 raisons d'avoir un site web</h2>
+          <h2 className="heading-display text-2xl md:text-xl sm:text-2xl md:text-3xl">6 raisons d'avoir un site web</h2>
           <p className="font-dm text-muted-foreground mt-3">Les bénéfices concrets pour votre activité</p>
         </motion.div>
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }} className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {raisonsSite.map((item) => (
-            <motion.div key={item.title} variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }} className="rounded-xl p-6" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+            <motion.div key={item.title} variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }} className="rounded-xl p-4 md:p-6" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
               <div className="w-11 h-11 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: "rgba(29,185,84,0.1)" }}>
                 <item.icon className="text-[#1DB954]" size={20} />
               </div>
@@ -286,12 +286,12 @@ const PourquoiPage = () => (
       <div className="section-container">
         <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
           <span className="inline-block rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide text-[#1DB954] mb-4" style={{ backgroundColor: "rgba(29,185,84,0.12)", border: "1px solid rgba(29,185,84,0.25)" }}>SECTEURS</span>
-          <h2 className="heading-display text-2xl md:text-3xl">Adapté à votre métier</h2>
+          <h2 className="heading-display text-2xl md:text-xl sm:text-2xl md:text-3xl">Adapté à votre métier</h2>
           <p className="font-dm text-muted-foreground mt-3">Chaque secteur a ses besoins spécifiques</p>
         </motion.div>
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.06 } } }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.06 } } }} className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {metierCards.map((card) => (
-            <motion.div key={card.title} variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }} className="rounded-xl p-6 transition-colors" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+            <motion.div key={card.title} variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }} className="rounded-xl p-4 md:p-6 transition-colors" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: "rgba(29,185,84,0.12)" }}><card.icon className="text-[#1DB954]" size={20} /></div>
                 <h3 className="font-dm font-bold text-white">{card.title}</h3>
@@ -311,7 +311,7 @@ const PourquoiPage = () => (
       <div className="section-container max-w-5xl">
         <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
           <span className="inline-block rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide text-[#1DB954] mb-4" style={{ backgroundColor: "rgba(29,185,84,0.12)", border: "1px solid rgba(29,185,84,0.25)" }}>COMPRENDRE</span>
-          <h2 className="heading-display text-2xl md:text-3xl">Le parcours client moderne</h2>
+          <h2 className="heading-display text-2xl md:text-xl sm:text-2xl md:text-3xl">Le parcours client moderne</h2>
           <p className="font-dm text-muted-foreground mt-3">Comment vos clients vous trouvent aujourd'hui</p>
         </motion.div>
         <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-5 gap-4 items-center mb-8">
