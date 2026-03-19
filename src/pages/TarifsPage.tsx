@@ -10,6 +10,7 @@ import { GlowingEffect } from "@/components/ui/glowing-effect";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
 import HeroBackground from "@/components/HeroBackground";
+import ShaderBackground from "@/components/ui/shader-background";
 
 const faqs = [
   { q: "Y a-t-il des frais récurrents après livraison ?", a: "L'hébergement est offert la première année. À partir de la 2e année : environ 80-120€/an. Notre maintenance l'inclut." },
@@ -50,6 +51,9 @@ const TarifsPage = () => (
     {/* Hero */}
     <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-[#0a0f0a]">
       <HeroBackground variant="circuit" />
+      <div className="absolute inset-0 opacity-30 pointer-events-none">
+        <ShaderBackground />
+      </div>
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f0a]/20 via-transparent to-[#0a0f0a]/80 pointer-events-none z-[1]" />
       <div className="relative z-10 container mx-auto px-6 py-12 md:py-24 text-center">
         <BlurReveal>
@@ -88,8 +92,11 @@ const TarifsPage = () => (
     </section>
 
     {/* Pricing cards - Site Vitrine / E-commerce */}
-    <section className="py-[80px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
-      <div className="section-container">
+    <section className="py-[80px] relative overflow-hidden" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
+      <div className="absolute inset-0 opacity-25 pointer-events-none">
+        <ShaderBackground />
+      </div>
+      <div className="section-container relative z-10">
         <BlurReveal className="text-center mb-10">
           <h2 className="heading-display text-xl sm:text-2xl md:text-3xl md:text-2xl sm:text-xl sm:text-2xl md:text-3xl md:text-4xl">Création de Site Web</h2>
           <p className="text-muted-foreground text-base max-w-xl mx-auto font-dm mt-3">Choisissez la formule adaptée à votre projet. Prix unique, sans abonnement caché.</p>

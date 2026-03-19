@@ -11,6 +11,7 @@ import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
 import HeroBackground from "@/components/HeroBackground";
+import ShaderBackground from "@/components/ui/shader-background";
 
 const services = [
   {
@@ -46,6 +47,9 @@ const ServicesPage = () => (
   <Layout>
     <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-[#0a0f0a]">
       <HeroBackground variant="matrix" />
+      <div className="absolute inset-0 opacity-35 pointer-events-none">
+        <ShaderBackground />
+      </div>
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f0a]/20 via-transparent to-[#0a0f0a]/80 pointer-events-none z-[1]" />
       <div className="relative z-10 container mx-auto px-6 py-12 md:py-24 text-center">
         <BlurReveal>
@@ -59,8 +63,11 @@ const ServicesPage = () => (
       </div>
     </section>
 
-    <section style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }} className="py-[100px]">
-      <div className="section-container">
+    <section style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }} className="py-[100px] relative overflow-hidden">
+      <div className="absolute inset-0 opacity-25 pointer-events-none">
+        <ShaderBackground />
+      </div>
+      <div className="section-container relative z-10">
         <BlurReveal className="text-center mb-14">
           <h2 className="heading-display mb-4 leading-tight" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}><span className="inline">CHOISISSEZ VOTRE </span><span className="text-[#1DB954] whitespace-nowrap inline">FORMULE</span></h2>
         </BlurReveal>
