@@ -69,7 +69,7 @@ const ServicesPage = () => (
       </div>
       <div className="section-container relative z-10">
         <BlurReveal className="text-center mb-14">
-          <h2 className="heading-display mb-4 leading-tight" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}><span className="inline">CHOISISSEZ VOTRE </span><span className="text-[#1DB954] whitespace-nowrap inline">FORMULE</span></h2>
+          <h2 className="heading-display mb-4 leading-tight" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}><span className="inline">CHOISISSEZ VOTRE </span><span className="text-gradient-green-subtle whitespace-nowrap inline">FORMULE</span></h2>
         </BlurReveal>
 
         <ScaleSection>
@@ -131,10 +131,10 @@ const ServicesPage = () => (
     </section>
 
 
-    <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
-      <div className="section-container">
+    <section className="relative overflow-hidden py-12 md:py-24" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
+      <div className="section-container relative z-10">
         <BlurReveal className="text-center mb-14">
-          <h2 className="heading-display mb-4 leading-tight" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}><span className="inline">POURQUOI NOUS </span><span className="text-[#1DB954] whitespace-nowrap inline">CHOISIR</span></h2>
+          <h2 className="heading-display mb-4 leading-tight" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}><span className="inline">POURQUOI NOUS </span><span className="text-gradient-green-subtle whitespace-nowrap inline">CHOISIR</span></h2>
           <p className="font-dm text-base text-muted-foreground">Tout ce qu'il faut pour réussir en ligne, sans compromis.</p>
         </BlurReveal>
         <ScaleSection>

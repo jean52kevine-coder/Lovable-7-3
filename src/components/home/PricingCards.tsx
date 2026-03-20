@@ -11,11 +11,12 @@ const plans = [
 ];
 
 const PricingCards = () => (
-  <section className="py-24" style={{ backgroundColor: "hsl(var(--section-alt-bg))" }}>
-    <div className="section-container">
+  <section className="relative overflow-hidden py-12 md:py-24" style={{ backgroundColor: "hsl(var(--section-alt-bg))" }}>
+    <SectionBackground variant="wavegrid" intensity={0.55} />
+    <div className="section-container relative z-10">
       <BlurReveal className="text-center mb-16">
         <h2 className="heading-display mb-3" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>
-          DES PRIX CLAIRS. <span className="text-primary whitespace-nowrap">ZÉRO SURPRISE.</span>
+          DES PRIX CLAIRS. <span className="text-gradient-green-subtle whitespace-nowrap">ZÉRO SURPRISE.</span>
         </h2>
         <p className="font-dm text-base" style={{ color: "hsl(var(--muted-foreground))" }}>
           Tout est inclus. Pas de frais cachés.
@@ -88,7 +89,7 @@ const PricingCards = () => (
                   {p.title}
                 </p>
                 <div className="flex items-end gap-1">
-                  <span className="text-white text-5xl font-black" style={{ fontFamily: "'Barlow', sans-serif" }}>
+                  <span className="text-gradient-green-subtle whitespace-nowrap text-5xl font-black" style={{ fontFamily: "'Barlow', sans-serif" }}>
                     {p.price}€
                   </span>
                   {p.suffix && <span className="text-white/40 text-base mb-2">{p.suffix}</span>}
