@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Layout from "@/components/Layout";
+import { Helmet } from "react-helmet-async";
 import {
   XCircle,
   CheckCircle,
@@ -198,6 +199,12 @@ const ROISimulator = () => {
 
 const PourquoiPage = () => (
   <Layout>
+    <Helmet>
+      <title>Pourquoi Créer un Site Web ? Les Chiffres 2025 | ALTÉRA</title>
+      <meta name="description" content="97% des consommateurs cherchent en ligne avant d'acheter. Sans site web, vous perdez des clients chaque jour. Découvrez pourquoi une présence en ligne est indispensable en 2025." />
+      <meta name="keywords" content="pourquoi avoir un site web, importance site internet artisan, site web indispensable 2025, visibilité en ligne PME" />
+      <link rel="canonical" href="https://altera.fr/pourquoi-un-site" />
+    </Helmet>
     <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-[#0a0f0a]">
       <HeroBackground variant="dataflow" />
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f0a]/20 via-transparent to-[#0a0f0a]/80 pointer-events-none z-[1]" />
