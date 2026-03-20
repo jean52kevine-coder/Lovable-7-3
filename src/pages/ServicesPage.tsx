@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
+import { Helmet } from "react-helmet-async";
 import { Globe, ShoppingCart, Wrench, Zap, Shield, Palette, Clock, HeadphonesIcon, TrendingUp } from "lucide-react";
 import { FeatureCard } from "@/components/ui/grid-feature-cards";
 import { CtaSection } from "@/components/ui/cta-section";
@@ -45,6 +46,11 @@ const features = [
 
 const ServicesPage = () => (
   <Layout>
+    <Helmet>
+      <title>Nos Services Web — Vitrine, E-commerce, Maintenance | ALTÉRA</title>
+      <meta name="description" content="Création de sites web sur-mesure pour artisans et PME du Grand Est. Site vitrine, boutique e-commerce ou maintenance : des solutions adaptées à votre activité." />
+      <link rel="canonical" href="https://altera.fr/services" />
+    </Helmet>
     <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-[#0a0f0a]">
       <HeroBackground variant="matrix" />
       <div className="absolute inset-0 opacity-35 pointer-events-none">

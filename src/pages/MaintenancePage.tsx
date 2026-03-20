@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
+import { Helmet } from "react-helmet-async";
 import { Wrench, Check, AlertTriangle, Shield, RefreshCw, HeadphonesIcon, Gift, ArrowRight } from "lucide-react";
 import { MaintenanceHeroIllustration } from "@/components/illustrations/SvgIllustrations";
 import { CtaSection } from "@/components/ui/cta-section";
@@ -55,6 +56,12 @@ const MaintenancePage = () => {
 
   return (
   <Layout>
+    <Helmet>
+      <title>Maintenance Site Web dès 29€/mois — Sans Engagement | ALTÉRA</title>
+      <meta name="description" content="Maintenance de site web à partir de 29€/mois. Mises à jour, sauvegardes, monitoring 24/7, support réactif. Sans engagement. Pour sites artisans et PME Grand Est." />
+      <meta name="keywords" content="maintenance site web Grand Est, mise à jour site web, sécurité site web, monitoring site web, maintenance pas cher" />
+      <link rel="canonical" href="https://altera.fr/services/maintenance" />
+    </Helmet>
     {/* Hero */}
     <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-[#0a0f0a]">
       <HeroBackground variant="circuit" />

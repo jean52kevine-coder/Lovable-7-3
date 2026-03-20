@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
+import { Helmet } from "react-helmet-async";
 import { CreditCard } from "lucide-react";
 import { PricingWithChart } from "@/components/ui/pricing-with-chart";
 import { PricingMaintenance } from "@/components/ui/pricing-maintenance";
@@ -48,6 +49,12 @@ const FAQItem = ({ faq, index }: { faq: { q: string; a: string }; index: number 
 
 const TarifsPage = () => (
   <Layout>
+    <Helmet>
+      <title>Tarifs Création Site Web — Prix Clairs Sans Surprise | ALTÉRA</title>
+      <meta name="description" content="Tarifs transparents pour la création de site web. Site vitrine 497€, e-commerce 747€, maintenance dès 29€/mois. Prix fixes, tout inclus, zéro frais caché." />
+      <meta name="keywords" content="tarif site web, prix création site internet, combien coûte un site web, devis site web Grand Est" />
+      <link rel="canonical" href="https://altera.fr/tarifs" />
+    </Helmet>
     {/* Hero */}
     <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-[#0a0f0a]">
       <HeroBackground variant="circuit" />
