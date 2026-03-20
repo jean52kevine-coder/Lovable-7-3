@@ -10,7 +10,6 @@ import {
 } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import HeroBackground from "@/components/HeroBackground";
-import emailjs from "@emailjs/browser";
 import { EMAILJS_CONFIG } from "../config/emailjs";
 
 const steps = [
@@ -142,28 +141,38 @@ const ContactPage = () => {
 
     try {
       setError("");
-      await emailjs.send(
-        EMAILJS_CONFIG.SERVICE_ID,
-        EMAILJS_CONFIG.TEMPLATE_ID,
-        {
-          from_name: `${form.prenom} ${form.nom}`,
-          from_email: form.email,
-          reply_to: form.email,
-          phone: form.telephone || "Non renseigné",
-          service: form.projectType || preselectedService || "Non précisé",
-          budget: form.budget || "Non précisé",
-          message: form.message || "Aucun message",
-          date: new Date().toLocaleDateString("fr-FR", {
-            day: "2-digit", month: "long", year: "numeric",
-            hour: "2-digit", minute: "2-digit",
-          }),
+      const emailResponse = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        EMAILJS_CONFIG.PUBLIC_KEY
-      );
+        body: JSON.stringify({
+          service_id: EMAILJS_CONFIG.SERVICE_ID,
+          template_id: EMAILJS_CONFIG.TEMPLATE_ID,
+          user_id: EMAILJS_CONFIG.PUBLIC_KEY,
+          template_params: {
+            from_name: `${form.prenom} ${form.nom}`,
+            from_email: form.email,
+            reply_to: form.email,
+            phone: form.telephone || "Non renseigné",
+            service: form.projectType || preselectedService || "Non précisé",
+            budget: form.budget || "Non précisé",
+            message: form.message || "Aucun message",
+            date: new Date().toLocaleDateString("fr-FR", {
+              day: "2-digit", month: "long", year: "numeric",
+              hour: "2-digit", minute: "2-digit",
+            }),
+          },
+        }),
+      });
+
+      if (!emailResponse.ok) {
+        throw new Error(`EmailJS API error: ${emailResponse.status}`);
+      }
       setSendSuccess(true);
       setSubmitted(true);
     } catch (submitError) {
-      console.error("EmailJS error:", submitError);
+      console.error("EmailJS API error:", submitError);
       setSendError("Erreur lors de l'envoi. Veuillez réessayer ou écrire directement à contact@altera.fr");
       setError("Erreur lors de l'envoi. Veuillez réessayer ou écrire directement à contact@altera.fr");
     } finally {

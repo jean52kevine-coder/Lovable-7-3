@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/chart";
 
 const ctaPrimary =
-  "group relative inline-flex items-center justify-center gap-2.5 bg-[#1DB954] hover:bg-[#17a349] text-black font-bold px-7 py-4 rounded-xl transition-all duration-200 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(29,185,84,0.4)] active:scale-[0.98] overflow-hidden text-sm";
+  "group relative inline-flex items-center justify-center gap-2.5 bg-[#1DB954] hover:bg-[#17a349] text-black font-bold px-7 py-4 rounded-xl transition-all duration-200 md:hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(29,185,84,0.4)] active:scale-[0.98] overflow-hidden text-sm";
 
 const ctaSecondary =
   "group inline-flex items-center justify-center gap-2.5 border border-white/15 hover:border-[#1DB954]/40 text-white/70 hover:text-white font-medium px-7 py-4 rounded-xl transition-all duration-200 hover:bg-white/[0.03] text-sm backdrop-blur-sm";

@@ -115,8 +115,9 @@ const TarifsPage = () => (
     </section>
 
     {/* Paiement en plusieurs fois */}
-    <section className="py-[80px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
-      <div className="section-container">
+    <section className="relative overflow-hidden py-10 md:py-20" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
+      <SectionBackground variant="dots" intensity={0.6} />
+      <div className="section-container relative z-10">
         <BlurReveal className="text-center mb-10">
           <h2 className="heading-display text-2xl md:text-xl sm:text-2xl md:text-3xl"><span className="inline">FACILITEZ VOTRE </span><span className="text-[#1DB954] whitespace-nowrap inline">INVESTISSEMENT</span></h2>
         </BlurReveal>
@@ -164,7 +165,8 @@ const TarifsPage = () => (
     </section>
 
     {/* FAQ */}
-    <section className="py-[80px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
+    <section className="relative overflow-hidden py-10 md:py-20" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
+      <SectionBackground variant="dots" intensity={0.6} />
       <div className="section-container max-w-2xl mx-auto">
         <BlurReveal className="text-center mb-12">
           <h2 className="heading-display text-2xl md:text-xl sm:text-2xl md:text-3xl"><span className="inline">VOS QUESTIONS </span><span className="text-[#1DB954] whitespace-nowrap inline">NOS RÉPONSES</span></h2>
