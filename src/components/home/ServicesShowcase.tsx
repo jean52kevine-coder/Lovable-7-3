@@ -41,7 +41,7 @@ const cards = [
 ];
 
 const ServicesShowcase = () => (
-  <section className="py-24 relative" style={{ background: "linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--section-alt-bg)) 50%, hsl(var(--background)) 100%)" }}>
+  <section className="relative overflow-hidden py-12 md:py-24" style={{ background: "linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--section-alt-bg)) 50%, hsl(var(--background)) 100%)" }}>
     <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.25), transparent)" }} />
 
     <div className="section-container">
@@ -54,13 +54,13 @@ const ServicesShowcase = () => (
         </p>
       </BlurReveal>
 
-      <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.12}>
+      <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={0.12}>
         {cards.map((c, i) => (
           <motion.div
             key={i}
             variants={itemVariants}
             whileHover={{ y: -6, scale: 1.01 }}
-            className="relative rounded-2xl overflow-hidden group"
+            className="group relative overflow-hidden rounded-2xl pt-6"
           >
             <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
             <div
@@ -70,9 +70,7 @@ const ServicesShowcase = () => (
                 border: c.popular ? "1px solid hsl(var(--primary) / 0.4)" : "1px solid hsl(var(--border-green))",
               }}
             >
-              {c.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20"><PopularBadge /></div>
-              )}
+              {c.popular && <PopularBadge />}
 
               {/* Mockup illustration */}
               <div style={{ backgroundColor: "hsl(var(--hero-bg))" }}>

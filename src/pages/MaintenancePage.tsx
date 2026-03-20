@@ -91,7 +91,7 @@ const MaintenancePage = () => {
     </section>
 
     {/* Dangers */}
-    <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
+    <section className="py-12 md:py-24" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-14">
           <h2 className="heading-display text-2xl md:text-xl sm:text-2xl md:text-3xl">
@@ -118,7 +118,7 @@ const MaintenancePage = () => {
 
 
 
-    <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
+    <section className="py-12 md:py-24" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container max-w-5xl">
         <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
           <h2 className="heading-display text-2xl md:text-xl sm:text-2xl md:text-3xl">Vous ne gérez plus rien</h2>
@@ -143,7 +143,7 @@ const MaintenancePage = () => {
     </section>
 
     {/* Formules */}
-    <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
+    <section className="py-12 md:py-24" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
           <h2 className="heading-display text-2xl md:text-xl sm:text-2xl md:text-3xl"><span className="inline">NOS </span><span className="text-[#1DB954] whitespace-nowrap inline">FORMULES</span></h2>
@@ -237,7 +237,7 @@ const MaintenancePage = () => {
     </section>
 
     {/* FAQ */}
-    <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
+    <section className="py-12 md:py-24" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container max-w-2xl mx-auto">
         <BlurReveal className="text-center mb-12">
           <h2 className="heading-display text-2xl md:text-xl sm:text-2xl md:text-3xl"><span className="inline">VOS QUESTIONS </span><span className="text-[#1DB954] whitespace-nowrap inline">NOS RÉPONSES</span></h2>

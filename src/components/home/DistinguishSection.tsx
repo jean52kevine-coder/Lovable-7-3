@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Palette, Clock, HeadphonesIcon, Ban, Sparkles, Shield, BadgeEuro, AlertTriangle, FileWarning, RefreshCw, BookOpen, BadgeCheck } from "lucide-react";
 import BlurReveal from "@/components/animations/BlurReveal";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
+import SectionBackground from "@/components/SectionBackground";
 
 const others = [
   { icon: Ban, label: "Templates génériques", sub: "Le même site que tout le monde." },
@@ -22,10 +23,11 @@ const altera = [
 ];
 
 const DistinguishSection = () => (
-  <section className="py-24 relative overflow-hidden" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
+  <section className="relative overflow-hidden py-12 md:py-24" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
+    <SectionBackground variant="dots" intensity={0.5} />
     <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.2), transparent)" }} />
 
-    <div className="section-container">
+    <div className="section-container relative z-10">
       <BlurReveal className="text-center mb-16">
         <h2 className="heading-display mb-3" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>
           LES AUTRES VS{" "}<span className="text-primary whitespace-nowrap">ALTÉRA</span>
