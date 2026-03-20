@@ -107,7 +107,7 @@ const HeroHome = () => (
       </BlurReveal>
 
       {/* Floating badges */}
-      <div className="hidden md:block absolute bottom-8 left-4 lg:left-[8%] z-20 space-y-4">
+      <div className="hidden md:block absolute top-[62%] -translate-y-1/2 left-4 lg:left-[8%] z-20 space-y-4">
         {[
           { text: "✓ 14 jours", delay: "0s" },
           { text: "✓ 497€", delay: "1.5s" },
@@ -129,7 +129,7 @@ const HeroHome = () => (
           </motion.div>
         ))}
       </div>
-      <div className="hidden md:block absolute bottom-10 right-4 lg:right-[8%] z-20">
+      <div className="hidden md:block absolute top-[62%] -translate-y-1/2 right-4 lg:right-[8%] z-20">
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
