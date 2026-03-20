@@ -34,6 +34,9 @@ npm i
 
 # Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
+
+# (Alternative) Start with a generic command used by some hosts/CI.
+npm start
 ```
 
 **Edit a file directly in GitHub**
