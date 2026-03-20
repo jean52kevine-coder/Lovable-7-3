@@ -4,7 +4,6 @@ import Layout from "@/components/Layout";
 import { Globe, ShoppingCart, Wrench, Zap, Shield, Palette, Clock, HeadphonesIcon, TrendingUp } from "lucide-react";
 import { FeatureCard } from "@/components/ui/grid-feature-cards";
 import { CtaSection } from "@/components/ui/cta-section";
-import { BorderBeam } from "@/components/ui/border-beam";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
@@ -75,52 +74,40 @@ const ServicesPage = () => (
         <ScaleSection>
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 overflow-visible" staggerDelay={0.15}>
             {services.map((s, i) => (
-              <motion.div key={i} variants={itemVariants} className="relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5 group">
-                {s.popular ? (
-                  <div className="relative flex flex-col">
-                    <div className="flex justify-center mb-[-1px]">
-                      <div className="inline-flex items-center gap-2 bg-[#0a0f0a] border border-[#1DB954]/60 rounded-t-xl px-5 py-2 shadow-[0_0_20px_rgba(29,185,84,0.25)]">
-                        <span className="relative flex h-2 w-2 shrink-0">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1DB954] opacity-70" />
-                          <span className="relative inline-flex rounded-full h-2 w-2 bg-[#1DB954]" />
+              <motion.div key={i} variants={itemVariants} className="relative rounded-[1.25rem] border border-border/60 bg-[#0d130f]/85 p-2 md:p-3 transition-all duration-300 hover:-translate-y-1.5">
+                <GlowingEffect spread={40} glow={s.popular} proximity={64} inactiveZone={0.01} borderWidth={3} disabled={false} />
+                <div className="relative z-10 flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border border-border/60 bg-[#091109] p-6 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)]">
+                  <div className="relative flex flex-1 flex-col gap-5">
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="inline-flex w-fit rounded-full border border-primary/35 bg-primary/10 px-3 py-1 text-[13px] font-semibold text-primary">
+                        {s.price}
+                      </span>
+                      {s.popular && (
+                        <span className="inline-flex items-center rounded-full border border-primary/45 bg-primary/15 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-primary">
+                          Plus choisi
                         </span>
-                        <span className="text-[#1DB954] text-xs font-bold tracking-[0.18em] uppercase whitespace-nowrap" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                          LE PLUS CHOISI
-                        </span>
-                      </div>
+                      )}
                     </div>
-                    <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
-                    <div className="relative z-10 border-2 border-[#1DB954]/50 rounded-2xl rounded-tl-none bg-[#0d1a0d] p-7 flex flex-col gap-6 shadow-[0_0_60px_rgba(29,185,84,0.12)] hover:shadow-[0_0_80px_rgba(29,185,84,0.18)] transition-shadow duration-300 h-full">
-                      <BorderBeam size={250} duration={12} delay={0} />
-                      <span className="inline-block text-[13px] font-semibold px-3 py-1 rounded-full text-primary mb-1" style={{ background: "rgba(29,185,84,0.12)" }}>{s.price}</span>
-                      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center"><s.icon className="text-primary" size={20} /></div>
-                      <h3 className="font-display font-black text-xl text-foreground">{s.title}</h3>
-                      <p className="font-dm text-sm text-muted-foreground">{s.desc}</p>
-                      <ul className="space-y-2 mb-2">
-                        {s.features.map((f, j) => (
-                          <li key={j} className="flex items-center gap-2 text-sm text-muted-foreground"><span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />{f}</li>
-                        ))}
-                      </ul>
-                      <Link to={s.link} className="text-primary text-sm font-semibold hover:underline mt-auto">En savoir plus →</Link>
+                    <div className="w-fit rounded-lg border border-border/70 bg-muted/40 p-2">
+                      <s.icon className="text-primary" size={18} />
                     </div>
+                    <div className="space-y-3">
+                      <h3 className="text-2xl leading-[1.875rem] font-semibold tracking-[-0.04em] text-foreground">{s.title}</h3>
+                      <p className="font-dm text-sm leading-[1.35rem] text-muted-foreground">{s.desc}</p>
+                    </div>
+                    <ul className="space-y-2.5">
+                      {s.features.map((f, j) => (
+                        <li key={j} className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                ) : (
-                  <>
-                    <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
-                    <div className="relative z-10 rounded-2xl p-7 overflow-hidden h-full" style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}>
-                      <span className="inline-block text-[13px] font-semibold px-3 py-1 rounded-full text-primary mb-4" style={{ background: "rgba(29,185,84,0.12)" }}>{s.price}</span>
-                      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4"><s.icon className="text-primary" size={20} /></div>
-                      <h3 className="font-display font-black text-xl text-foreground mb-2">{s.title}</h3>
-                      <p className="font-dm text-sm mb-5 text-muted-foreground">{s.desc}</p>
-                      <ul className="space-y-2 mb-6">
-                        {s.features.map((f, j) => (
-                          <li key={j} className="flex items-center gap-2 text-sm text-muted-foreground"><span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />{f}</li>
-                        ))}
-                      </ul>
-                      <Link to={s.link} className="text-primary text-sm font-semibold hover:underline">En savoir plus →</Link>
-                    </div>
-                  </>
-                )}
+                  <Link to={s.link} className="text-primary text-sm font-semibold hover:underline">
+                    En savoir plus →
+                  </Link>
+                </div>
               </motion.div>
             ))}
           </StaggerContainer>

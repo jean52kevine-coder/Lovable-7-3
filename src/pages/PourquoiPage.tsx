@@ -278,14 +278,17 @@ const PourquoiPage = () => (
           <h2 className="heading-display text-2xl md:text-xl sm:text-2xl md:text-3xl">6 raisons d'avoir un site web</h2>
           <p className="font-dm text-muted-foreground mt-3">Les bénéfices concrets pour votre activité</p>
         </motion.div>
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }} className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {raisonsSite.map((item) => (
-            <motion.div key={item.title} variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }} className="rounded-xl p-4 md:p-6" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
-              <div className="w-11 h-11 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: "rgba(29,185,84,0.1)" }}>
-                <item.icon className="text-[#1DB954]" size={20} />
+            <motion.div key={item.title} variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }} className="relative rounded-[1.25rem] border border-border/60 bg-[#0d130f]/85 p-2 md:p-3">
+              <GlowingEffect spread={36} glow proximity={60} inactiveZone={0.01} borderWidth={2} disabled={false} />
+              <div className="relative flex h-full flex-col rounded-xl border border-border/60 bg-[#091109] p-5 md:p-6">
+                <div className="w-fit rounded-lg border border-border/70 bg-muted/40 p-2 mb-4">
+                  <item.icon className="text-[#1DB954]" size={18} />
+                </div>
+                <h3 className="font-dm font-bold text-white mb-2">{item.title}</h3>
+                <p className="font-dm text-sm text-white/70">{item.description}</p>
               </div>
-              <h3 className="font-dm font-bold text-white mb-2">{item.title}</h3>
-              <p className="font-dm text-sm text-white/70">{item.description}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -299,18 +302,21 @@ const PourquoiPage = () => (
           <h2 className="heading-display text-2xl md:text-xl sm:text-2xl md:text-3xl">Adapté à votre métier</h2>
           <p className="font-dm text-muted-foreground mt-3">Chaque secteur a ses besoins spécifiques</p>
         </motion.div>
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.06 } } }} className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.06 } } }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {metierCards.map((card) => (
-            <motion.div key={card.title} variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }} className="rounded-xl p-4 md:p-6 transition-colors" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: "rgba(29,185,84,0.12)" }}><card.icon className="text-[#1DB954]" size={20} /></div>
-                <h3 className="font-dm font-bold text-white">{card.title}</h3>
+            <motion.div key={card.title} variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }} className="relative rounded-[1.25rem] border border-border/60 bg-[#0d130f]/85 p-2 md:p-3">
+              <GlowingEffect spread={36} glow proximity={60} inactiveZone={0.01} borderWidth={2} disabled={false} />
+              <div className="relative h-full rounded-xl border border-border/60 bg-[#091109] p-5 md:p-6 transition-colors">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center border border-border/70 bg-muted/40"><card.icon className="text-[#1DB954]" size={18} /></div>
+                  <h3 className="font-dm font-bold text-white">{card.title}</h3>
+                </div>
+                <ul className="space-y-2">
+                  {card.bullets.map((bullet) => (
+                    <li key={bullet} className="font-dm text-sm text-white/75 flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#1DB954]" />{bullet}</li>
+                  ))}
+                </ul>
               </div>
-              <ul className="space-y-2">
-                {card.bullets.map((bullet) => (
-                  <li key={bullet} className="font-dm text-sm text-white/75 flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#1DB954]" />{bullet}</li>
-                ))}
-              </ul>
             </motion.div>
           ))}
         </motion.div>
