@@ -22,7 +22,7 @@ const cards = [
     badge: "747€",
     title: "SITE E-COMMERCE",
     desc: "Vendez en ligne avec une boutique performante.",
-    bullets: ["Catalogue illimité", "Paiement sécurisé", "Dashboard admin", "Formation incluse"],
+    bullets: ["Catalogue illimité", "Paiement sécurisé", "Dashboard admin", "Support inclus"],
     link: "/services/site-ecommerce",
     Mockup: EcommerceMockup,
     OfferStrip: EcommerceOfferStrip,

@@ -9,10 +9,10 @@ const PAGES = [
   { name: "Accueil", content: "Agence web ALTÉRA - Création de sites vitrines à 497€ et e-commerce à 747€, livraison en 14 jours, pour artisans et commerçants français." },
   { name: "Site Vitrine", content: "Service de création de site vitrine professionnel à 497€ tout inclus : responsive, SEO, formulaire contact, hébergement 1 an. Pour artisans, commerçants, professions libérales." },
   { name: "Site E-commerce", content: "Création de boutique en ligne e-commerce à 747€ : panier, paiement sécurisé, gestion stocks, dashboard commandes, facturation automatique. Pour créateurs, commerçants, producteurs." },
-  { name: "Maintenance", content: "Forfaits maintenance web dès 39€/mois sans engagement : mises à jour, sauvegardes, monitoring, support. 3 formules : Essentielle, Pro, Premium." },
-  { name: "Tarifs", content: "Grille tarifaire ALTÉRA : site vitrine 497€, e-commerce 747€, maintenance dès 39€/mois. Paiement en plusieurs fois sans frais. Tout inclus, zéro surprise." },
+  { name: "Maintenance", content: "Forfaits maintenance web dès 29€/mois sans engagement : mises à jour, sauvegardes, monitoring, support. 3 formules : Essentielle, Pro, Premium." },
+  { name: "Tarifs", content: "Grille tarifaire ALTÉRA : site vitrine 497€, e-commerce 747€, maintenance dès 29€/mois. Paiement en plusieurs fois sans frais. Tout inclus, zéro surprise." },
   { name: "Pourquoi un site", content: "Pourquoi avoir un site web professionnel en 2025 : 97% des consommateurs recherchent en ligne, visibilité Google, crédibilité, génération de leads 24/7." },
-  { name: "Contact", content: "Page contact ALTÉRA : formulaire de demande de devis gratuit, appel découverte 30min offert, réponse sous 24h." },
+  { name: "Contact", content: "Page contact ALTÉRA : formulaire de demande de devis gratuit, échange découverte offert, réponse sous 24h." },
 ];
 
 type SeoResult = { title: string; description: string; keywords: string };
@@ -89,7 +89,7 @@ const SeoGeneratorPage = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.05 }}
-                  className="rounded-xl p-6"
+                  className="rounded-xl p-4 md:p-6"
                   style={{
                     backgroundColor: "hsl(var(--card-dark))",
                     border: "1px solid hsl(var(--border-green))",

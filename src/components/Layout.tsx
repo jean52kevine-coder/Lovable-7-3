@@ -3,13 +3,13 @@ import Navbar from "./Navbar";
 import PageBackground from "./PageBackground";
 
 const Footer = lazy(() => import("./Footer"));
-const ChatBot = lazy(() => import("./ChatBot"));
+const ChatWidget = lazy(() => import("./ChatWidget"));
 const BackgroundPaths = lazy(() =>
   import("./ui/background-paths").then((m) => ({ default: m.BackgroundPaths }))
 );
 
 const Layout = ({ children }: { children: ReactNode }) => (
-  <div className="relative flex min-h-screen w-full max-w-[100vw] flex-col overflow-x-hidden">
+  <div className="flex flex-col min-h-screen relative w-full max-w-full overflow-x-hidden">
     <PageBackground />
     <Suspense fallback={null}>
       <BackgroundPaths />
@@ -20,7 +20,7 @@ const Layout = ({ children }: { children: ReactNode }) => (
       <Footer />
     </Suspense>
     <Suspense fallback={null}>
-      <ChatBot />
+      <ChatWidget />
     </Suspense>
   </div>
 );

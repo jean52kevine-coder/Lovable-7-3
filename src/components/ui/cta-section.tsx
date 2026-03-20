@@ -15,7 +15,7 @@ interface CtaSectionProps {
 
 export const CtaSection = ({
   title = "Prêt à passer à l'action ?",
-  description = "Consultation 30min offerte, devis gratuit et sans engagement.",
+  description = "Échange découverte offert — par email ou par appel.",
   buttonText = "Démarrer mon projet",
   buttonUrl = "/contact",
   items = [
@@ -23,7 +23,7 @@ export const CtaSection = ({
     "Support dédié",
     "Prix fixe, sans surprise",
     "Satisfaction garantie",
-    "Formation incluse",
+    "Support inclus",
   ],
   className,
 }: CtaSectionProps) => {

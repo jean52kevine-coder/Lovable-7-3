@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, MapPin, Phone, Instagram, Facebook } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import AlteraLogo from "@/components/AlteraLogo";
 import BlurReveal from "@/components/animations/BlurReveal";
 
@@ -19,21 +19,16 @@ const about = [
 ];
 
 const contactInfo = [
-  { icon: Mail, text: "contact@altera.fr", href: "mailto:contact@altera.fr" },
-  { icon: Phone, text: "Sur demande", href: undefined },
-  { icon: MapPin, text: "Saint-Dizier, France (remote)", href: undefined },
-];
-
-const socialLinks = [
-  { icon: Instagram, label: "Instagram", href: "https://instagram.com/altera.fr" },
-  { icon: Facebook, label: "Facebook", href: "https://facebook.com/altera.fr" },
+  { icon: Mail, text: "contact@altéra.fr", href: "mailto:contact@altera.fr" },
+  { icon: Phone, text: "06 52 55 42 83", href: "tel:+33652554283" },
+  { icon: MapPin, text: "Reims, Grand Est", href: undefined },
 ];
 
 const Footer = () => (
   <footer className="relative border-t" style={{ borderColor: "hsl(var(--border-green))", backgroundColor: "hsl(var(--card-dark))" }}>
     <div className="section-container py-14 md:py-20">
       <BlurReveal>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
         {/* Brand */}
         <div className="">
           <div className="flex items-center gap-2 mb-4">
@@ -42,24 +37,6 @@ const Footer = () => (
           <p className="font-dm text-sm text-muted-foreground leading-relaxed max-w-xs mb-6">
             Agence web française spécialisée dans la création de sites modernes pour artisans, commerçants et PME. Livraison en 14 jours, prix fixes, design sur-mesure.
           </p>
-          <div className="flex gap-3">
-            {socialLinks.map(({ icon: Icon, label, href }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                className="group flex h-9 w-9 items-center justify-center rounded-lg transition-all duration-300"
-                style={{
-                  backgroundColor: "hsl(var(--primary) / 0.1)",
-                  border: "1px solid hsl(var(--primary) / 0.15)",
-                }}
-              >
-                <Icon size={16} className="text-muted-foreground group-hover:text-primary transition-colors" />
-              </a>
-            ))}
-          </div>
         </div>
 
         {/* Services */}
@@ -119,7 +96,7 @@ const Footer = () => (
 
       {/* Bottom bar */}
       <div
-        className="mt-14 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4"
+        className="mt-14 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left"
         style={{ borderTop: "1px solid hsl(var(--border-green))" }}
       >
         <p className="font-dm text-xs text-muted-foreground">

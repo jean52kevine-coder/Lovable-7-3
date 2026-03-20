@@ -1,3 +1,22 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+}
+
+img, svg, canvas {
+  max-width: 100%;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -94,6 +113,13 @@
 
   .text-gradient {
     background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-green {
+    background: linear-gradient(135deg, #1DB954 0%, #10b981 50%, #06b6d4 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -528,4 +554,13 @@
 @keyframes database-animation-path {
   0% { offset-distance: 0%; }
   100% { offset-distance: 100%; }
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+img, video, canvas, svg {
+  max-width: 100%;
 }

@@ -11,7 +11,7 @@ import ScaleSection from "@/components/animations/ScaleSection";
 import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
 import HeroBackground from "@/components/HeroBackground";
-import PopularBadge from "@/components/PopularBadge";
+import ShaderBackground from "@/components/ui/shader-background";
 
 const services = [
   {
@@ -23,11 +23,11 @@ const services = [
   {
     icon: ShoppingCart, title: "Site E-commerce", price: "747 €",
     desc: "Vendez en ligne avec une boutique performante, sécurisée et facile à gérer.",
-    features: ["Boutique complète", "Paiement sécurisé", "Gestion des stocks", "Tableau de bord", "Formation incluse"],
+    features: ["Boutique complète", "Paiement sécurisé", "Gestion des stocks", "Tableau de bord", "Support inclus"],
     link: "/services/site-ecommerce", popular: true,
   },
   {
-    icon: Wrench, title: "Maintenance & SEO", price: "dès 29€/mois",
+    icon: Wrench, title: "Maintenance & SEO", price: "dès 29 €/mois",
     desc: "Gardez votre site rapide, sécurisé et visible sur Google en permanence.",
     features: ["Mises à jour régulières", "Sauvegardes automatiques", "Support technique", "Monitoring 24/7", "Rapport mensuel"],
     link: "/services/maintenance", popular: false,
@@ -47,10 +47,13 @@ const ServicesPage = () => (
   <Layout>
     <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-[#0a0f0a]">
       <HeroBackground variant="matrix" />
+      <div className="absolute inset-0 opacity-35 pointer-events-none">
+        <ShaderBackground />
+      </div>
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f0a]/20 via-transparent to-[#0a0f0a]/80 pointer-events-none z-[1]" />
-      <div className="relative z-10 container mx-auto px-6 py-24 text-center">
+      <div className="relative z-10 container mx-auto px-6 py-12 md:py-24 text-center">
         <BlurReveal>
-          <h1 className="hero-title text-4xl md:text-6xl mb-6">
+          <h1 className="heading-display text-3xl sm:text-4xl md:text-6xl mb-6">
             NOS <RotatingWords words={["SERVICES", "SOLUTIONS", "OFFRES", "FORMULES"]} />
           </h1>
         </BlurReveal>
@@ -60,31 +63,64 @@ const ServicesPage = () => (
       </div>
     </section>
 
-    <section style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }} className="relative overflow-hidden py-12 md:py-24">
+    <section style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }} className="py-[100px] relative overflow-hidden">
+      <div className="absolute inset-0 opacity-25 pointer-events-none">
+        <ShaderBackground />
+      </div>
       <div className="section-container relative z-10">
         <BlurReveal className="text-center mb-14">
           <h2 className="heading-display mb-4 leading-tight" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}><span className="inline">CHOISISSEZ VOTRE </span><span className="text-gradient-green-subtle whitespace-nowrap inline">FORMULE</span></h2>
         </BlurReveal>
 
         <ScaleSection>
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={0.15}>
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 overflow-visible" staggerDelay={0.15}>
             {services.map((s, i) => (
-              <motion.div key={i} variants={itemVariants} className="relative rounded-2xl pt-6 transition-all duration-300 md:hover:-translate-y-1.5 group">
-                <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
-                <div className="relative z-10 rounded-2xl p-7 overflow-hidden h-full" style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}>
-                  {s.popular && <PopularBadge />}
-                  {s.popular && <BorderBeam size={250} duration={12} delay={0} />}
-                  <span className="inline-block text-[13px] font-semibold px-3 py-1 rounded-full text-primary mb-4" style={{ background: "rgba(29,185,84,0.12)" }}>{s.price}</span>
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4"><s.icon className="text-primary" size={20} /></div>
-                  <h3 className="font-display font-black text-xl text-foreground mb-2">{s.title}</h3>
-                  <p className="font-dm text-sm mb-5 text-muted-foreground">{s.desc}</p>
-                  <ul className="space-y-2 mb-6">
-                    {s.features.map((f, j) => (
-                      <li key={j} className="flex items-center gap-2 text-sm text-muted-foreground"><span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />{f}</li>
-                    ))}
-                  </ul>
-                  <Link to={s.link} className="text-primary text-sm font-semibold hover:underline">En savoir plus →</Link>
-                </div>
+              <motion.div key={i} variants={itemVariants} className="relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5 group">
+                {s.popular ? (
+                  <div className="relative flex flex-col">
+                    <div className="flex justify-center mb-[-1px]">
+                      <div className="inline-flex items-center gap-2 bg-[#0a0f0a] border border-[#1DB954]/60 rounded-t-xl px-5 py-2 shadow-[0_0_20px_rgba(29,185,84,0.25)]">
+                        <span className="relative flex h-2 w-2 shrink-0">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1DB954] opacity-70" />
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-[#1DB954]" />
+                        </span>
+                        <span className="text-[#1DB954] text-xs font-bold tracking-[0.18em] uppercase whitespace-nowrap" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                          LE PLUS CHOISI
+                        </span>
+                      </div>
+                    </div>
+                    <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
+                    <div className="relative z-10 border-2 border-[#1DB954]/50 rounded-2xl rounded-tl-none bg-[#0d1a0d] p-7 flex flex-col gap-6 shadow-[0_0_60px_rgba(29,185,84,0.12)] hover:shadow-[0_0_80px_rgba(29,185,84,0.18)] transition-shadow duration-300 h-full">
+                      <BorderBeam size={250} duration={12} delay={0} />
+                      <span className="inline-block text-[13px] font-semibold px-3 py-1 rounded-full text-primary mb-1" style={{ background: "rgba(29,185,84,0.12)" }}>{s.price}</span>
+                      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center"><s.icon className="text-primary" size={20} /></div>
+                      <h3 className="font-display font-black text-xl text-foreground">{s.title}</h3>
+                      <p className="font-dm text-sm text-muted-foreground">{s.desc}</p>
+                      <ul className="space-y-2 mb-2">
+                        {s.features.map((f, j) => (
+                          <li key={j} className="flex items-center gap-2 text-sm text-muted-foreground"><span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />{f}</li>
+                        ))}
+                      </ul>
+                      <Link to={s.link} className="text-primary text-sm font-semibold hover:underline mt-auto">En savoir plus →</Link>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
+                    <div className="relative z-10 rounded-2xl p-7 overflow-hidden h-full" style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}>
+                      <span className="inline-block text-[13px] font-semibold px-3 py-1 rounded-full text-primary mb-4" style={{ background: "rgba(29,185,84,0.12)" }}>{s.price}</span>
+                      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4"><s.icon className="text-primary" size={20} /></div>
+                      <h3 className="font-display font-black text-xl text-foreground mb-2">{s.title}</h3>
+                      <p className="font-dm text-sm mb-5 text-muted-foreground">{s.desc}</p>
+                      <ul className="space-y-2 mb-6">
+                        {s.features.map((f, j) => (
+                          <li key={j} className="flex items-center gap-2 text-sm text-muted-foreground"><span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />{f}</li>
+                        ))}
+                      </ul>
+                      <Link to={s.link} className="text-primary text-sm font-semibold hover:underline">En savoir plus →</Link>
+                    </div>
+                  </>
+                )}
               </motion.div>
             ))}
           </StaggerContainer>
@@ -111,10 +147,10 @@ const ServicesPage = () => (
 
     <CtaSection
       title="Prêt à lancer votre projet ?"
-      description="Consultation 30min offerte, devis gratuit et sans engagement."
+      description="Échange découverte offert — par email ou par appel."
       buttonText="Demander un devis gratuit"
       buttonUrl="/contact"
-      items={["Réponse sous 24h", "Sans engagement", "Devis personnalisé", "Prix fixe garanti", "Formation incluse"]}
+      items={["Réponse sous 24h", "Sans engagement", "Devis personnalisé", "Prix fixe garanti", "Support inclus"]}
     />
   </Layout>
 );

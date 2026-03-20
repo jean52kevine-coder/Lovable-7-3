@@ -5,15 +5,12 @@ import Layout from "@/components/Layout";
 import {
   Send, User, Briefcase, MessageSquare, Check, ArrowRight, ArrowLeft,
   Globe, ShoppingCart, Wrench, Sparkles, Phone, Mail, MapPin, Clock,
-  Calendar, PenTool
+  MessageCircle, PenTool
 } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import HeroBackground from "@/components/HeroBackground";
 import emailjs from "@emailjs/browser";
-
-const EMAILJS_SERVICE_ID = "REMPLACER_PAR_TON_SERVICE_ID";
-const EMAILJS_TEMPLATE_ID = "REMPLACER_PAR_TON_TEMPLATE_ID";
-const EMAILJS_PUBLIC_KEY = "REMPLACER_PAR_TA_PUBLIC_KEY";
+import { EMAILJS_CONFIG } from "../config/emailjs";
 
 const steps = [
   { label: "Votre projet", num: 1 },
@@ -84,6 +81,9 @@ const ContactPage = () => {
   const [touched, setTouched] = useState({ prenom: false, nom: false, email: false });
   const [messageEditedByUser, setMessageEditedByUser] = useState(false);
   const [error, setError] = useState("");
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState<string | null>(null);
+  const [sendSuccess, setSendSuccess] = useState(false);
 
   const update = (field: string, value: string) => setForm((p) => ({ ...p, [field]: value }));
 
@@ -135,26 +135,38 @@ const ContactPage = () => {
     });
   };
 
-  const handleSubmit = async () => {
+  const handleFinalSubmit = async () => {
+    setSending(true);
+    setSendError(null);
+
     try {
       setError("");
       await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
         {
           from_name: `${form.prenom} ${form.nom}`,
           from_email: form.email,
-          phone: form.telephone || "Non renseigné",
-          service: form.projectType,
-          message: form.message,
           reply_to: form.email,
+          phone: form.telephone || "Non renseigné",
+          service: form.projectType || preselectedService || "Non précisé",
+          budget: form.budget || "Non précisé",
+          message: form.message || "Aucun message",
+          date: new Date().toLocaleDateString("fr-FR", {
+            day: "2-digit", month: "long", year: "numeric",
+            hour: "2-digit", minute: "2-digit",
+          }),
         },
-        EMAILJS_PUBLIC_KEY
+        EMAILJS_CONFIG.PUBLIC_KEY
       );
+      setSendSuccess(true);
       setSubmitted(true);
-    } catch (error) {
-      console.error("EmailJS error:", error);
+    } catch (submitError) {
+      console.error("EmailJS error:", submitError);
+      setSendError("Erreur lors de l'envoi. Veuillez réessayer ou écrire directement à contact@altera.fr");
       setError("Erreur lors de l'envoi. Veuillez réessayer ou écrire directement à contact@altera.fr");
+    } finally {
+      setSending(false);
     }
   };
 
@@ -169,8 +181,12 @@ const ContactPage = () => {
                 <Check className="text-primary" size={40} />
               </div>
             </div>
-            <h1 className="heading-display text-3xl md:text-5xl mb-4">DEMANDE <span className="text-primary">ENVOYÉE</span></h1>
-            <p className="font-dm text-lg text-muted-foreground max-w-md mx-auto mb-8">Merci pour votre confiance ! Nous vous répondrons sous 24h avec un devis personnalisé.</p>
+            <h1 className="heading-display text-xl sm:text-2xl md:text-3xl md:text-2xl sm:text-xl sm:text-2xl md:text-3xl md:text-5xl mb-4">DEMANDE <span className="text-primary">ENVOYÉE</span></h1>
+            <p className="font-dm text-lg text-muted-foreground max-w-md mx-auto mb-8">
+              {sendSuccess
+                ? "Merci pour votre confiance ! Nous vous répondrons sous 24h avec un devis personnalisé."
+                : "Merci pour votre confiance ! Nous vous répondrons sous 24h."}
+            </p>
             <div className="flex flex-wrap justify-center gap-6 font-dm text-[13px]" style={{ color: "rgba(255,255,255,0.4)" }}>
               <span>✓ Réponse sous 24h</span><span>✓ Devis gratuit</span><span>✓ Sans engagement</span>
             </div>
@@ -189,16 +205,16 @@ const ContactPage = () => {
         <div className="absolute top-0 left-1/4 w-[500px] h-[300px] rounded-full opacity-20 blur-[120px]" style={{ background: "linear-gradient(135deg, hsl(145,63%,42%), hsl(200,80%,50%))" }} />
         <div className="absolute top-10 right-1/4 w-[400px] h-[250px] rounded-full opacity-15 blur-[100px]" style={{ background: "linear-gradient(135deg, hsl(260,70%,50%), hsl(145,63%,42%))" }} />
 
-        <motion.div className="relative z-10 container mx-auto px-6 py-24 text-center" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+        <motion.div className="relative z-10 container mx-auto px-6 py-12 md:py-24 text-center" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold font-display tracking-[0.15em] uppercase mb-6 border" style={{ borderColor: "rgba(29,185,84,0.3)", color: "hsl(145,63%,42%)", backgroundColor: "rgba(29,185,84,0.08)" }}>
             <span className="w-2 h-2 rounded-full bg-primary" /> Contact
           </span>
-          <h1 className="hero-title text-4xl md:text-6xl lg:text-7xl mb-4">
+          <h1 className="heading-display text-2xl sm:text-4xl md:text-6xl lg:text-7xl mb-4">
             Parlons de votre{" "}
             <span className="bg-gradient-to-r from-primary via-emerald-400 to-primary bg-clip-text text-transparent">projet</span>
           </h1>
           <p className="font-dm text-base md:text-lg text-muted-foreground max-w-xl mx-auto">
-            Réponse garantie sous 24h · Consultation 30 min offerte · Devis gratuit
+            Réponse garantie sous 24h · Échange par email ou par appel · Devis gratuit
           </p>
           {preselectedLabel && (
             <div className="mt-5 inline-flex items-center gap-3 px-4 py-2 rounded-full border text-sm" style={{ borderColor: "rgba(29,185,84,0.35)", color: "#1DB954", backgroundColor: "rgba(29,185,84,0.1)" }}>
@@ -218,22 +234,23 @@ const ContactPage = () => {
               {/* Consultation card */}
               <div className="relative rounded-2xl">
                 <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
-                <div className="relative z-10 rounded-2xl p-6" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+                <div className="relative z-10 rounded-2xl p-4 md:p-6" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
                   <div className="w-10 h-10 rounded-xl bg-primary/15 flex items-center justify-center mb-4">
-                    <Calendar className="text-primary" size={20} />
+                    <MessageCircle className="text-primary" size={20} />
                   </div>
-                  <h3 className="font-display font-bold text-white text-lg mb-2">Consultation offerte</h3>
-                  <p className="font-dm text-sm text-muted-foreground leading-relaxed">30 minutes pour définir ensemble votre projet, vos objectifs et le meilleur chemin pour y arriver.</p>
+                  <h3 className="font-display font-bold text-white text-lg mb-2">Échange découverte</h3>
+                  <p className="font-dm text-sm text-muted-foreground leading-relaxed">Par email ou par appel — comme vous préférez. On définit ensemble votre projet, vos objectifs et le meilleur chemin pour y arriver. Aucun engagement, aucune pression.</p>
                 </div>
               </div>
 
               {/* Contact info card */}
               <div className="relative rounded-2xl">
                 <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
-                <div className="relative z-10 rounded-2xl p-6 space-y-4" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+                <div className="relative z-10 rounded-2xl p-4 md:p-6 space-y-4" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
                   {[
-                    { icon: Mail, text: "contact@altera.fr" },
-                    { icon: MapPin, text: "Saint-Dizier, France (remote)" },
+                    { icon: Mail, text: "contact@altéra.fr" },
+                    { icon: Phone, text: "06 52 55 42 83" },
+                    { icon: MapPin, text: "Reims, Grand Est" },
                     { icon: Clock, text: "Réponse sous 24h" },
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-3">
@@ -249,7 +266,7 @@ const ContactPage = () => {
               {/* Testimonial card */}
               <div className="relative rounded-2xl">
                 <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
-                <div className="relative z-10 rounded-2xl p-6" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+                <div className="relative z-10 rounded-2xl p-4 md:p-6" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
                   <p className="font-dm text-sm italic text-foreground/70 leading-relaxed mb-3">
                     "Votre investissement est récupéré en moyenne en 4 à 6 mois grâce aux nouveaux clients générés."
                   </p>
@@ -262,7 +279,7 @@ const ContactPage = () => {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }}>
               <div className="relative rounded-2xl">
                 <GlowingEffect spread={50} glow proximity={80} inactiveZone={0.01} borderWidth={2} disabled={false} />
-                <div className="relative z-10 rounded-2xl p-4 md:p-8" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+                <div className="relative z-10 rounded-2xl p-4 md:p-6 md:p-8" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
                   {/* Stepper */}
                   <div className="flex items-center justify-between mb-8">
                     {steps.map((s, i) => (
@@ -299,7 +316,7 @@ const ContactPage = () => {
                     {/* Step 1: Votre projet */}
                     {step === 0 && (
                       <motion.div key="s0" {...fadeSlide} className="space-y-5">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-4">
                           <InputField label="PRÉNOM *" placeholder="Jean" value={form.prenom} onChange={(v) => update("prenom", v)} state={inputState.prenom} errorMessage="Prénom requis" onTouched={() => setTouched((prev) => ({ ...prev, prenom: true }))} />
                           <InputField label="NOM *" placeholder="Dupont" value={form.nom} onChange={(v) => update("nom", v)} state={inputState.nom} errorMessage="Nom requis" onTouched={() => setTouched((prev) => ({ ...prev, nom: true }))} />
                         </div>
@@ -308,7 +325,7 @@ const ContactPage = () => {
 
                         <div>
                           <label className="block text-[11px] font-display font-bold tracking-[0.15em] uppercase text-muted-foreground mb-3">TYPE DE PROJET *</label>
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             {projectTypes.map((p) => (
                               <button
                                 key={p.id}
@@ -416,13 +433,31 @@ const ContactPage = () => {
                           <button onClick={() => setStep(1)} className="flex-1 inline-flex items-center justify-center font-bold px-6 py-3.5 rounded-xl transition-all duration-200 text-white gap-2 font-display text-sm" style={{ border: "1px solid rgba(255,255,255,0.15)" }}>
                             <ArrowLeft size={16} /> Retour
                           </button>
-                          {error && (
-                          <p className="text-sm text-red-400">{error}</p>
-                        )}
-                        <button onClick={handleSubmit} className="flex-1 inline-flex items-center justify-center font-bold px-6 py-3.5 rounded-xl text-primary-foreground transition-all duration-200 hover:-translate-y-0.5 gap-2 font-display text-sm" style={{ background: "linear-gradient(135deg, hsl(145,63%,42%), hsl(160,60%,45%))" }}>
-                            Envoyer ma demande <Check size={16} />
+                          {error && <p className="text-sm text-red-400">{error}</p>}
+                          <button
+                            onClick={handleFinalSubmit}
+                            disabled={sending}
+                            className={`flex-1 py-4 rounded-xl font-bold text-sm transition-all duration-200 ${sending ? "bg-[#1DB954]/50 text-black/50 cursor-not-allowed" : "bg-[#1DB954] hover:bg-[#17a349] text-black hover:scale-[1.02]"}`}
+                            style={{ fontFamily: "'DM Sans', sans-serif" }}
+                          >
+                            {sending ? (
+                              <span className="flex items-center justify-center gap-2">
+                                <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                                </svg>
+                                Envoi en cours...
+                              </span>
+                            ) : (
+                              "Envoyer ma demande →"
+                            )}
                           </button>
                         </div>
+                        {sendError && (
+                          <div className="mt-3 p-3 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 text-xs text-center" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                            {sendError}
+                          </div>
+                        )}
                       </motion.div>
                     )}
                   </AnimatePresence>

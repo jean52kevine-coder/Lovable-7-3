@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
-import { ShoppingCart, Check, Package, CreditCard, BarChart3, GraduationCap, ArrowRight } from "lucide-react";
+import { ShoppingCart, Check, Package, CreditCard, BarChart3, Headset, ArrowRight } from "lucide-react";
 import { CtaSection } from "@/components/ui/cta-section";
 import { FeaturesBento } from "@/components/ui/features-bento";
 import { BorderBeam } from "@/components/ui/border-beam";
@@ -10,7 +10,6 @@ import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { EcommerceHeroIllustration } from "@/components/illustrations/SvgIllustrations";
 import BlurReveal from "@/components/animations/BlurReveal";
 import ScaleSection from "@/components/animations/ScaleSection";
-import RotatingWords from "@/components/RotatingWords";
 import { StaggerContainer, itemVariants } from "@/components/animations/StaggerContainer";
 import HeroBackground from "@/components/HeroBackground";
 
@@ -23,7 +22,7 @@ const bentoItems = [
   { title: "Catalogue produits", description: "Gérez vos produits, variantes, photos et descriptions facilement depuis votre tableau de bord.", icon: <Package className="h-5 w-5" /> },
   { title: "Paiement sécurisé", description: "Acceptez CB, PayPal et autres moyens de paiement en toute sécurité pour vos clients.", icon: <CreditCard className="h-5 w-5" /> },
   { title: "Analytics intégrés", description: "Suivez vos ventes, panier moyen et taux de conversion en temps réel.", icon: <BarChart3 className="h-5 w-5" /> },
-  { title: "Formation incluse", description: "On vous forme à la gestion de votre boutique. Vous êtes autonome dès le jour 1.", icon: <GraduationCap className="h-5 w-5" /> },
+  { title: "Support inclus", description: "On reste disponible pour répondre à vos questions et vous accompagner après la mise en ligne.", icon: <Headset className="h-5 w-5" /> },
 ];
 
 const cibles = ["Boutiques et commerces de détail", "Artisans créateurs", "Producteurs locaux", "Marques indépendantes", "Associations vendant des produits"];
@@ -44,7 +43,7 @@ const comparisonRows = [
   { feature: "Gestion des stocks", vitrine: false, ecommerce: true },
   { feature: "Dashboard commandes", vitrine: false, ecommerce: true },
   { feature: "Facturation automatique", vitrine: false, ecommerce: true },
-  { feature: "Formation 2h incluse", vitrine: false, ecommerce: true },
+  { feature: "Support post-livraison", vitrine: false, ecommerce: true },
 ];
 
 const faqs = [
@@ -78,18 +77,31 @@ const SiteEcommercePage = () => (
     <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-[#0a0f0a]">
       <HeroBackground variant="dataflow" />
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f0a]/20 via-transparent to-[#0a0f0a]/80 pointer-events-none z-[1]" />
-      <div className="relative z-10 container mx-auto px-6 py-24 flex flex-col lg:flex-row items-center gap-10">
+      <div className="relative z-10 container mx-auto px-6 py-12 md:py-24 flex flex-col md:flex-row items-center gap-10">
         <div className="text-center lg:text-left flex-1">
           <BlurReveal>
             <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto lg:mx-0 mb-6"><ShoppingCart className="text-primary" size={32} /></div>
           </BlurReveal>
           <BlurReveal delay={0.1}>
-            <h1 className="hero-title text-4xl md:text-6xl mb-4">
-              SITE <RotatingWords words={["E-COMMERCE", "BOUTIQUE", "SHOP", "MARCHAND"]} />
+            <h1
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black italic leading-[0.95] tracking-tight text-white"
+              style={{ fontFamily: "'Barlow', sans-serif" }}
+            >
+              SITE{" "}
+              <span className="text-gradient-green whitespace-nowrap">
+                E-COMMERCE
+              </span>
             </h1>
           </BlurReveal>
-          <BlurReveal delay={0.3}><p className="text-primary heading-display text-3xl mb-4">747 €</p></BlurReveal>
-          <BlurReveal delay={0.4}><p className="font-dm text-lg max-w-xl mx-auto lg:mx-0 text-muted-foreground">Vendez vos produits en ligne avec une boutique performante, sécurisée et facile à gérer.</p></BlurReveal>
+          <BlurReveal delay={0.3}><p className="text-primary heading-display text-xl sm:text-2xl md:text-3xl mb-4">747 €</p></BlurReveal>
+          <BlurReveal delay={0.4}>
+            <p
+              className="text-base sm:text-lg md:text-xl text-white/55 mt-6 max-w-xl leading-relaxed mx-auto lg:mx-0"
+              style={{ fontFamily: "'DM Sans', sans-serif" }}
+            >
+              Vendez vos produits en ligne avec une boutique performante, sécurisée et facile à gérer.
+            </p>
+          </BlurReveal>
         </div>
         <BlurReveal delay={0.3} className="hidden md:block flex-1">
           <EcommerceHeroIllustration />
@@ -101,14 +113,14 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">CE QUI EST </span><span className="text-gradient-green-subtle whitespace-nowrap inline">INCLUS</span></h2>
+          <h2 className="heading-display text-xl sm:text-2xl md:text-3xl"><span className="inline">CE QUI EST </span><span className="text-[#1DB954] whitespace-nowrap inline">INCLUS</span></h2>
         </BlurReveal>
         <ScaleSection>
           <div className="relative max-w-2xl mx-auto rounded-2xl">
             <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
-            <div className="relative z-10 rounded-2xl p-8 md:p-10 overflow-hidden" style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}>
+            <div className="relative z-10 rounded-2xl p-5 md:p-8 md:p-10 overflow-hidden" style={{ backgroundColor: "hsl(var(--card-dark))", border: "1px solid hsl(var(--border-green))" }}>
               <BorderBeam size={300} duration={20} />
-              <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-4" staggerDelay={0.08}>
+              <StaggerContainer className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-4" staggerDelay={0.08}>
                 {inclus.map((item, i) => (
                   <motion.div key={i} className="flex items-center gap-3" variants={itemVariants}>
                     <Check className="text-primary flex-shrink-0" size={20} /><span className="text-foreground text-sm">{item}</span>
@@ -125,10 +137,10 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">FONCTIONNALITÉS </span><span className="text-gradient-green-subtle whitespace-nowrap inline">CLÉS</span></h2>
+          <h2 className="heading-display text-xl sm:text-2xl md:text-3xl"><span className="inline">FONCTIONNALITÉS </span><span className="text-[#1DB954] whitespace-nowrap inline">CLÉS</span></h2>
         </BlurReveal>
         <ScaleSection>
-          <FeaturesBento items={bentoItems} className="max-w-4xl mx-auto grid-cols-1 md:grid-cols-2" />
+          <FeaturesBento items={bentoItems} className="max-w-4xl mx-auto grid-cols-1 md:grid-cols-1 sm:grid-cols-2" />
         </ScaleSection>
       </div>
     </section>
@@ -137,7 +149,7 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">À QUI ÇA </span><span className="text-gradient-green-subtle whitespace-nowrap inline">S'ADRESSE</span></h2>
+          <h2 className="heading-display text-xl sm:text-2xl md:text-3xl"><span className="inline">À QUI ÇA </span><span className="text-[#1DB954] whitespace-nowrap inline">S'ADRESSE</span></h2>
         </BlurReveal>
         <ScaleSection>
           <StaggerContainer className="flex flex-wrap justify-center gap-4" staggerDelay={0.1}>
@@ -156,15 +168,15 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-14">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">FAITS POUR DES GENS </span><span className="text-gradient-green-subtle whitespace-nowrap inline">COMME VOUS</span></h2>
+          <h2 className="heading-display text-xl sm:text-2xl md:text-3xl"><span className="inline">FAITS POUR DES GENS </span><span className="text-[#1DB954] whitespace-nowrap inline">COMME VOUS</span></h2>
         </BlurReveal>
         <ScaleSection>
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.12}>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={0.12}>
             {profils.map((p, i) => (
               <motion.div key={i} variants={itemVariants} className="relative rounded-xl">
                 <GlowingEffect spread={30} glow proximity={50} inactiveZone={0.01} borderWidth={2} disabled={false} />
-                <div className="relative z-10 rounded-xl p-6 h-full" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
-                  <span className="text-3xl block mb-4">{p.emoji}</span>
+                <div className="relative z-10 rounded-xl p-4 md:p-6 h-full" style={{ backgroundColor: "#111811", border: "1px solid #1a2e1a" }}>
+                  <span className="text-xl sm:text-2xl md:text-3xl block mb-4">{p.emoji}</span>
                   <h3 className="font-display font-black text-white mb-3">{p.name}</h3>
                   <p className="font-dm text-sm leading-relaxed mb-4" style={{ color: "rgba(255,255,255,0.6)" }}>{p.text}</p>
                 </div>
@@ -179,15 +191,15 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container">
         <BlurReveal className="text-center mb-14">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">VITRINE OU </span><span className="text-gradient-green-subtle whitespace-nowrap inline">E-COMMERCE ?</span></h2>
+          <h2 className="heading-display text-xl sm:text-2xl md:text-3xl"><span className="inline">VITRINE OU </span><span className="text-[#1DB954] whitespace-nowrap inline">E-COMMERCE ?</span></h2>
           <p className="font-dm text-muted-foreground mt-3">Choisissez selon votre besoin.</p>
         </BlurReveal>
         <ScaleSection>
-          <div className="relative mx-auto max-w-3xl overflow-hidden rounded-xl">
-            <div className="overflow-x-auto -mx-4 px-4">
-            <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
-            <div className="relative z-10" style={{ border: "1px solid #1a2e1a" }}>
-              <table className="min-w-[600px] w-full text-sm">
+          <div className="overflow-x-auto rounded-xl -mx-4 px-4 md:mx-0 md:px-0">
+            <div className="relative max-w-3xl mx-auto rounded-xl overflow-hidden min-w-[600px]">
+              <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} borderWidth={2} disabled={false} />
+              <div className="relative z-10" style={{ border: "1px solid #1a2e1a" }}>
+                <table className="w-full text-sm">
                 <thead>
                   <tr style={{ backgroundColor: "#0d130d" }}>
                     <th className="text-left p-4 font-dm font-semibold text-muted-foreground">Fonctionnalité</th>
@@ -204,7 +216,8 @@ const SiteEcommercePage = () => (
                     </tr>
                   ))}
                 </tbody>
-              </table>
+                </table>
+              </div>
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
@@ -226,7 +239,7 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--hero-bg) / 0.8)" }}>
       <div className="section-container text-center max-w-2xl mx-auto">
         <BlurReveal>
-          <h2 className="heading-display text-2xl md:text-3xl mb-6"><span className="inline">POURQUOI </span><span className="text-gradient-green-subtle whitespace-nowrap inline">MAINTENANT</span><span className="inline"> ?</span></h2>
+          <h2 className="heading-display text-xl sm:text-2xl md:text-3xl mb-6"><span className="inline">POURQUOI </span><span className="text-[#1DB954] whitespace-nowrap inline">MAINTENANT</span><span className="inline"> ?</span></h2>
           <p className="font-dm text-muted-foreground text-base leading-relaxed">Le e-commerce en France croît de <span className="text-primary font-semibold">15% par an</span>. Vos clients achètent en ligne — soyez là où ils cherchent.</p>
         </BlurReveal>
       </div>
@@ -236,7 +249,7 @@ const SiteEcommercePage = () => (
     <section className="py-[100px]" style={{ backgroundColor: "hsl(var(--section-alt-bg) / 0.8)" }}>
       <div className="section-container max-w-2xl mx-auto">
         <BlurReveal className="text-center mb-12">
-          <h2 className="heading-display text-2xl md:text-3xl"><span className="inline">QUESTIONS </span><span className="text-gradient-green-subtle whitespace-nowrap inline">FRÉQUENTES</span></h2>
+          <h2 className="heading-display text-xl sm:text-2xl md:text-3xl"><span className="inline">QUESTIONS </span><span className="text-[#1DB954] whitespace-nowrap inline">FRÉQUENTES</span></h2>
         </BlurReveal>
         <div className="space-y-4">
           {faqs.map((faq, i) => <FAQItem key={i} faq={faq} index={i} />)}
@@ -244,7 +257,7 @@ const SiteEcommercePage = () => (
       </div>
     </section>
 
-    <CtaSection title="Lancez votre boutique en ligne" description="14 jours, 747€, tout inclus. Formation et support compris." buttonText="Demander un devis gratuit" buttonUrl="/contact?service=ecommerce" />
+    <CtaSection title="Lancez votre boutique en ligne" description="14 jours, 747€, tout inclus. Support compris." buttonText="Demander un devis gratuit" buttonUrl="/contact?service=ecommerce" />
   </Layout>
 );
 
