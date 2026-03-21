@@ -111,9 +111,9 @@ const ContactPage = () => {
   const canGoNext = isPrenomValid && isNomValid && isEmailValid;
 
   const inputState = useMemo(() => ({
-    prenom: touched.prenom ? (isPrenomValid ? "valid" : "invalid") : "default",
-    nom: touched.nom ? (isNomValid ? "valid" : "invalid") : "default",
-    email: touched.email ? (isEmailValid ? "valid" : "invalid") : "default",
+    prenom: (touched.prenom ? (isPrenomValid ? "valid" : "invalid") : "default") as "default" | "invalid" | "valid",
+    nom: (touched.nom ? (isNomValid ? "valid" : "invalid") : "default") as "default" | "invalid" | "valid",
+    email: (touched.email ? (isEmailValid ? "valid" : "invalid") : "default") as "default" | "invalid" | "valid",
   }), [isEmailValid, isNomValid, isPrenomValid, touched]);
 
   const preselectedLabel = preselectedService ? serviceToDisplayLabel[preselectedService] : null;
