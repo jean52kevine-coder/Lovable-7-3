@@ -72,9 +72,9 @@ const Footer = () => (
           <h4 className="font-display font-bold text-foreground text-sm uppercase tracking-wider mb-5">Contact</h4>
           <ul className="space-y-4">
             {contactInfo.map(({ icon: Icon, text, href }) => (
-              <li key={text} className="flex items-start gap-3">
+              <li key={text} className="flex items-center gap-3">
                 <div
-                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg mt-0.5"
+                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg"
                   style={{ backgroundColor: "hsl(var(--primary) / 0.1)" }}
                 >
                   <Icon size={14} className="text-primary" />
