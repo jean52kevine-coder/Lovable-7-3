@@ -20,6 +20,7 @@ const PourquoiPage = lazy(() => import("./pages/PourquoiPage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
 const SeoGeneratorPage = lazy(() => import("./pages/SeoGeneratorPage"));
 const CGVPage = lazy(() => import("./pages/CGVPage"));
+const PaiementPage = lazy(() => import("./pages/PaiementPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -47,6 +48,7 @@ const App = () => (
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/seo-generator" element={<SeoGeneratorPage />} />
                 <Route path="/cgv" element={<CGVPage />} />
+                <Route path="/paiement" element={<PaiementPage />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>
