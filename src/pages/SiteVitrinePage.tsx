@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Layout from "@/components/Layout";
-import { Helmet } from "react-helmet-async";
+import SEOHead from "@/components/SEOHead";
 import { Globe, Check, Users, Briefcase, Store, ChefHat, Dumbbell } from "lucide-react";
 import { CtaSection } from "@/components/ui/cta-section";
 import { BorderBeam } from "@/components/ui/border-beam";
@@ -106,14 +106,13 @@ const FAQItem = ({ faq, index }: { faq: { q: string; a: string }; index: number 
 
 const SiteVitrinePage = () => (
   <Layout>
-    <Helmet>
-      <title>Site Vitrine 497€ — Design Sur-Mesure en 14 jours | ALTÉRA</title>
-      <meta name="description" content="Création de site vitrine professionnel à 497€. Design 100% sur-mesure, responsive, SEO optimisé, livré en 14 jours. Pour artisans, commerçants et PME du Grand Est. Sans abonnement caché." />
-      <meta name="keywords" content="site vitrine artisan, création site vitrine 497€, site web plombier, site web électricien, site web coiffeur, site web Grand Est" />
-      <link rel="canonical" href="https://altera.fr/services/site-vitrine" />
-      <meta property="og:title" content="Site Vitrine 497€ | ALTÉRA Digital Studio" />
-      <meta property="og:url" content="https://altera.fr/services/site-vitrine" />
-    </Helmet>
+    <SEOHead
+      title="Site Vitrine 497€ — Design Sur-Mesure en 14 jours | ALTÉRA"
+      description="Création de site vitrine professionnel à 497€. Design 100% sur-mesure, responsive, SEO optimisé, livré en 14 jours. Pour artisans, commerçants et PME du Grand Est. Sans abonnement caché."
+      canonical="https://altera.fr/services/site-vitrine"
+      keywords="site vitrine artisan, création site vitrine 497€, site web plombier, site web électricien, site web coiffeur, site web Grand Est"
+      jsonLd={{ "@context": "https://schema.org", "@type": "Product", "name": "Site Vitrine ALTÉRA", "description": "Création de site vitrine professionnel sur-mesure, livré en 14 jours", "offers": { "@type": "Offer", "price": "497", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" } }}
+    />
     {/* Hero */}
     <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-[#0a0f0a]">
       <HeroBackground variant="constellation" />

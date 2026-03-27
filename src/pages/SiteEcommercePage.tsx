@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
-import { Helmet } from "react-helmet-async";
+import SEOHead from "@/components/SEOHead";
 import { ShoppingCart, Check, Package, CreditCard, BarChart3, Headset, ArrowRight } from "lucide-react";
 import { CtaSection } from "@/components/ui/cta-section";
 import { FeaturesBento } from "@/components/ui/features-bento";
@@ -74,12 +74,13 @@ const FAQItem = ({ faq, index }: { faq: { q: string; a: string }; index: number 
 
 const SiteEcommercePage = () => (
   <Layout>
-    <Helmet>
-      <title>Site E-commerce 747€ — Boutique en Ligne Clé en Main | ALTÉRA</title>
-      <meta name="description" content="Création de boutique en ligne à 747€. Paiement Stripe, gestion des stocks, responsive mobile, SEO e-commerce. Livraison en 14 jours pour commerces du Grand Est." />
-      <meta name="keywords" content="création site e-commerce Grand Est, boutique en ligne artisan, site vente en ligne 747€, e-commerce Reims, e-commerce Metz, e-commerce Nancy" />
-      <link rel="canonical" href="https://altera.fr/services/site-ecommerce" />
-    </Helmet>
+    <SEOHead
+      title="Site E-commerce 747€ — Boutique en Ligne Clé en Main | ALTÉRA"
+      description="Création de boutique en ligne à 747€. Paiement Stripe, gestion des stocks, responsive mobile, SEO e-commerce. Livraison en 14 jours pour commerces du Grand Est."
+      canonical="https://altera.fr/services/site-ecommerce"
+      keywords="création site e-commerce Grand Est, boutique en ligne artisan, site vente en ligne 747€, e-commerce Reims, e-commerce Metz, e-commerce Nancy"
+      jsonLd={{ "@context": "https://schema.org", "@type": "Product", "name": "Site E-commerce ALTÉRA", "description": "Création de boutique en ligne complète, livrée en 14 jours", "offers": { "@type": "Offer", "price": "747", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" } }}
+    />
     {/* Hero */}
     <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-[#0a0f0a]">
       <HeroBackground variant="dataflow" />

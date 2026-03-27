@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSearchParams } from "react-router-dom";
 import Layout from "@/components/Layout";
-import { Helmet } from "react-helmet-async";
+import SEOHead from "@/components/SEOHead";
 import {
   Send, User, Briefcase, MessageSquare, Check, ArrowRight, ArrowLeft,
   Globe, ShoppingCart, Wrench, Sparkles, Phone, Mail, MapPin, Clock,
@@ -174,11 +174,11 @@ const ContactPage = () => {
   if (submitted) {
     return (
       <Layout>
-    <Helmet>
-      <title>Devis Gratuit — Parlons de Votre Projet Web | ALTÉRA</title>
-      <meta name="description" content="Demandez votre devis gratuit pour la création de votre site web. Réponse sous 24h, échange par email ou par téléphone. ALTÉRA Digital Studio, Grand Est." />
-      <link rel="canonical" href="https://altera.fr/contact" />
-    </Helmet>
+    <SEOHead
+      title="Devis Gratuit — Parlons de Votre Projet Web | ALTÉRA"
+      description="Demandez votre devis gratuit pour la création de votre site web. Réponse sous 24h, échange par email ou par téléphone. ALTÉRA Digital Studio, Grand Est."
+      canonical="https://altera.fr/contact"
+    />
         <section className="min-h-screen flex items-center justify-center" style={{ backgroundColor: "#0a0f0a" }}>
           <motion.div className="text-center section-container" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }}>
             <div className="relative w-20 h-20 rounded-full mx-auto mb-8">
@@ -204,11 +204,11 @@ const ContactPage = () => {
 
   return (
     <Layout>
-      <Helmet>
-        <title>Devis Gratuit — Parlons de Votre Projet Web | ALTÉRA</title>
-        <meta name="description" content="Demandez votre devis gratuit pour la création de votre site web. Réponse sous 24h, échange par email ou par téléphone. ALTÉRA Digital Studio, Grand Est." />
-        <link rel="canonical" href="https://altera.fr/contact" />
-      </Helmet>
+      <SEOHead
+        title="Devis Gratuit — Parlons de Votre Projet Web | ALTÉRA"
+        description="Demandez votre devis gratuit pour la création de votre site web. Réponse sous 24h, échange par email ou par téléphone. ALTÉRA Digital Studio, Grand Est."
+        canonical="https://altera.fr/contact"
+      />
       {/* Hero */}
       <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-[#0a0f0a]">
         <HeroBackground variant="constellation" />

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEOHead from "@/components/SEOHead";
 import { motion } from 'framer-motion';
 import { useSearchParams } from 'react-router-dom';
 import {
@@ -71,12 +71,12 @@ export default function PaiementPage() {
 
   return (
     <>
-      <Helmet>
-        <title>Paiement sécurisé — ALTÉRA Digital Studio</title>
-        <meta name="robots" content="noindex, nofollow" />
-        <meta name="stripe-public-key" content={PAYMENT_CONFIG.STRIPE_PUBLIC_KEY} />
-        <meta name="paypal-client-id" content={PAYMENT_CONFIG.PAYPAL_CLIENT_ID} />
-      </Helmet>
+      <SEOHead
+        title="Paiement sécurisé — ALTÉRA Digital Studio"
+        description="Paiement sécurisé pour votre projet web ALTÉRA."
+        canonical="https://altera.fr/paiement"
+        noIndex
+      />
 
       <div className="min-h-screen bg-[#0a0f0a] px-4 py-8">
         <div className="mx-auto mb-8 max-w-2xl">
