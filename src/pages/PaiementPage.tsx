@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEOHead from "@/components/SEOHead";
 import { motion } from 'framer-motion';
 import { useSearchParams } from 'react-router-dom';
 import {
