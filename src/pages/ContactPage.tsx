@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSearchParams } from "react-router-dom";
 import Layout from "@/components/Layout";
-import { Helmet } from "react-helmet-async";
+import SEOHead from "@/components/SEOHead";
 import {
   Send, User, Briefcase, MessageSquare, Check, ArrowRight, ArrowLeft,
   Globe, ShoppingCart, Wrench, Sparkles, Phone, Mail, MapPin, Clock,
