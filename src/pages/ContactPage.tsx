@@ -204,11 +204,11 @@ const ContactPage = () => {
 
   return (
     <Layout>
-      <Helmet>
-        <title>Devis Gratuit — Parlons de Votre Projet Web | ALTÉRA</title>
-        <meta name="description" content="Demandez votre devis gratuit pour la création de votre site web. Réponse sous 24h, échange par email ou par téléphone. ALTÉRA Digital Studio, Grand Est." />
-        <link rel="canonical" href="https://altera.fr/contact" />
-      </Helmet>
+      <SEOHead
+        title="Devis Gratuit — Parlons de Votre Projet Web | ALTÉRA"
+        description="Demandez votre devis gratuit pour la création de votre site web. Réponse sous 24h, échange par email ou par téléphone. ALTÉRA Digital Studio, Grand Est."
+        canonical="https://altera.fr/contact"
+      />
       {/* Hero */}
       <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-[#0a0f0a]">
         <HeroBackground variant="constellation" />
