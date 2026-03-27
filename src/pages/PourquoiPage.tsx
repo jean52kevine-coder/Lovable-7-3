@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Layout from "@/components/Layout";
-import { Helmet } from "react-helmet-async";
+import SEOHead from "@/components/SEOHead";
 import {
   XCircle,
   CheckCircle,
