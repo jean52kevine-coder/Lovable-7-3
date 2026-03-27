@@ -9,6 +9,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import BackToTop from "@/components/BackToTop";
 import LoadingScreen from "@/components/LoadingScreen";
 import ChatWidget from "@/components/ChatWidget";
+import CanonicalPathRedirect from "@/components/CanonicalPathRedirect";
 
 const Index = lazy(() => import("./pages/Index"));
 const ServicesPage = lazy(() => import("./pages/ServicesPage"));
@@ -35,6 +36,7 @@ const App = () => (
         <div className="w-full max-w-full overflow-x-hidden">
           <ScrollToTop />
           <BackToTop />
+          <CanonicalPathRedirect />
           <AnimatePresence mode="wait">
             <Suspense fallback={null}>
               <Routes>
