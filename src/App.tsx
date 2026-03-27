@@ -31,7 +31,7 @@ const App = () => (
       <LoadingScreen />
       <Toaster />
       <Sonner />
-      <HashRouter>
+      <BrowserRouter>
         <div className="w-full max-w-full overflow-x-hidden">
           <ScrollToTop />
           <BackToTop />
@@ -54,7 +54,7 @@ const App = () => (
             </Suspense>
           </AnimatePresence>
         </div>
-      </HashRouter>
+      </BrowserRouter>
       <ChatWidget />
     </TooltipProvider>
   </QueryClientProvider>

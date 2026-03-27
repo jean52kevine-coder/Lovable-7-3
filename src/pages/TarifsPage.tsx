@@ -49,12 +49,16 @@ const FAQItem = ({ faq, index }: { faq: { q: string; a: string }; index: number 
 
 const TarifsPage = () => (
   <Layout>
-    <Helmet>
-      <title>Tarifs Création Site Web — Prix Clairs Sans Surprise | ALTÉRA</title>
-      <meta name="description" content="Tarifs transparents pour la création de site web. Site vitrine 497€, e-commerce 747€, maintenance dès 29€/mois. Prix fixes, tout inclus, zéro frais caché." />
-      <meta name="keywords" content="tarif site web, prix création site internet, combien coûte un site web, devis site web Grand Est" />
-      <link rel="canonical" href="https://altera.fr/tarifs" />
-    </Helmet>
+    <SEOHead
+      title="Tarifs Création Site Web — Prix Clairs Sans Surprise | ALTÉRA"
+      description="Tarifs transparents pour la création de site web. Site vitrine 497€, e-commerce 747€, maintenance dès 29€/mois. Prix fixes, tout inclus, zéro frais caché."
+      canonical="https://altera.fr/tarifs"
+      keywords="tarif site web, prix création site internet, combien coûte un site web, devis site web Grand Est"
+      jsonLd={[
+        { "@context": "https://schema.org", "@type": "Product", "name": "Site Vitrine ALTÉRA", "description": "Création de site vitrine professionnel sur-mesure", "offers": { "@type": "Offer", "price": "497", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" } },
+        { "@context": "https://schema.org", "@type": "Product", "name": "Site E-commerce ALTÉRA", "description": "Création de boutique en ligne complète", "offers": { "@type": "Offer", "price": "747", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" } }
+      ]}
+    />
     {/* Hero */}
     <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-[#0a0f0a]">
       <HeroBackground variant="circuit" />

@@ -85,11 +85,12 @@ const whyFeatures = [
 
 const ServicesPage = () => (
   <Layout>
-    <Helmet>
-      <title>Nos Services Web — Vitrine, E-commerce, Maintenance | ALTÉRA</title>
-      <meta name="description" content="Création de sites web sur-mesure pour artisans et PME du Grand Est. Site vitrine, boutique e-commerce ou maintenance : des solutions adaptées à votre activité." />
-      <link rel="canonical" href="https://altera.fr/services" />
-    </Helmet>
+    <SEOHead
+      title="Nos Services Web — Vitrine, E-commerce, Maintenance | ALTÉRA"
+      description="Création de sites web sur-mesure pour artisans et PME du Grand Est. Site vitrine, boutique e-commerce ou maintenance : des solutions adaptées à votre activité."
+      canonical="https://altera.fr/services"
+      keywords="services web Grand Est, création site artisan, site vitrine PME, e-commerce Grand Est"
+    />
 
     {/* Hero */}
     <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-[#0a0f0a]">
