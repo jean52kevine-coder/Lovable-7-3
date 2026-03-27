@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Layout from "@/components/Layout";
-import { Helmet } from "react-helmet-async";
+import SEOHead from "@/components/SEOHead";
 import { Globe, Check, Users, Briefcase, Store, ChefHat, Dumbbell } from "lucide-react";
 import { CtaSection } from "@/components/ui/cta-section";
 import { BorderBeam } from "@/components/ui/border-beam";
