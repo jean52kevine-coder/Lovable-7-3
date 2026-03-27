@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
-import { Helmet } from "react-helmet-async";
+import SEOHead from "@/components/SEOHead";
 import { Globe, ShoppingCart, Wrench, Check, ArrowRight, Zap, Shield, Palette, Clock, HeadphonesIcon, TrendingUp } from "lucide-react";
 import { FeatureCard } from "@/components/ui/grid-feature-cards";
 import { CtaSection } from "@/components/ui/cta-section";
